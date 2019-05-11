@@ -1,0 +1,46 @@
+/* General - Begin */
+div.tsm-notice.notice {
+  padding: 10px;
+  margin: 10px;
+}
+/* General - End */
+
+/* User - Begin */
+.tsm-field-wrap {
+  margin: 10px;
+}
+.tsm-label {
+  font-weight: 600;
+  min-width: 200px;
+  display: inline-block;
+}
+.tsm-field {
+  min-width: 200px;
+}
+.my-10 {
+  margin: 10px 0;
+}
+.tsm-wrapper {
+  margin: 10px auto;
+}
+.tsm-wrapper .button {
+  font-size: .7em;
+}
+.text-center {
+  text-align: center;
+}
+@media only screen and (max-width: 578px) {
+  .tsm-field {
+    width: 100%;
+  }
+  .col-sm-0 {
+    display: none;
+  }
+}
+/* User - End */
+
+/* Admin - Begin */
+input.max-allowance {
+  width: 40px;
+}
+/* Admin - End */
