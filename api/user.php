@@ -9,8 +9,8 @@ if (isset($_GET['username'])) {
     require_once(__DIR__ . '/../helpers/Helper.php');
 
     $is_teacher = false;
-    $teacher_ID = false;
-    $teacher_username = false;
+    $teacher_ID = '';
+    $teacher_username = '';
     $username = sanitize_user($_GET['username']);
     $helper = new Helper();
     $user = get_user_by('login', $username);
