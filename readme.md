@@ -10,4 +10,5 @@ and instead of `80` you can set any number.
 
 
 To use user API, call endpoint from this URI using GET method:
-`URI/wp-content/plugins/tsm/api/user.php?id=USER_ID`
+
+`URI/wp-content/plugins/tsm/api/user.php?username=USERNAME`
