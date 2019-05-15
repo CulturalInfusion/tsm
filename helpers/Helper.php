@@ -5,7 +5,7 @@ class Helper
     protected $teacher;
     protected $base_url;
     protected $admin_base_url_of_plugin;
-    protected $table;
+    public $table;
     protected $feature_table;
     protected $user_table;
     protected $user_membership_level_table;
@@ -39,6 +39,18 @@ class Helper
     {
         return array(
             'contributor'
+        );
+    }
+
+    /**
+     * Get student roles.
+     *
+     * @return array
+     */
+    public static function get_student_roles()
+    {
+        return array(
+            'subscriber'
         );
     }
 
