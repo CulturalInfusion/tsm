@@ -57,7 +57,7 @@ class FrontController extends Helper
                                 $this->add_notification('error', 'Sorry, that username already exists!', $this->tsm_front_notification_key);
                                 $errorFlag = true;
                             }
-                            if (! validate_username($username)) {
+                            if (!validate_username($username)) {
                                 $this->add_notification('error', 'Sorry, the username you entered is not valid', $this->tsm_front_notification_key);
                                 $errorFlag = true;
                             }
@@ -85,16 +85,18 @@ class FrontController extends Helper
                                 );
                                 $user_ID = wp_insert_user($userdata);
                                 if (!is_wp_error($user_ID)) {
+
                                     // Update his/her role
                                     wp_update_user(array('ID' => $user_ID, 'role' => 'subscriber')) ;
 
-                                    // Add the membership - SINGLE
-                                    $singleLevel = self::get_user_level_info('SINGLE');
+                                    // Add the membership - Get from teacher
+                                    $teacherLevels = pmpro_getMembershipLevelsForUser($this->teacher->ID);
+                                    
                                     $wpdb->insert(
                                         $this->user_membership_level_table,
                                         array(
                                             'user_id' => $user_ID,
-                                            'membership_id' => $singleLevel['id'],
+                                            'membership_id' => $teacherLevels[0]->id,
                                             'cycle_period' => '',
                                             'status' => 'active',
                                             'startdate' => date('Y-m-d H:i:s')
