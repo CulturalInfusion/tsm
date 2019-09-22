@@ -90,6 +90,7 @@ class Helper
         global $wpdb;
         $tables = array(
             'feature_table' => $wpdb->prefix . 'teacher_features',
+            'user_membership_level' => $wpdb->prefix . 'pmpro_memberships_users'
         );
         return (isset($tables[$key]) ? $tables[$key] : null);
     }
@@ -151,8 +152,10 @@ class Helper
     {
         $_SESSION[$notification_key]['status'] = $status;
 
-        if (!isset($_SESSION[$notification_key]['messages']) ||
-            !is_array($_SESSION[$notification_key]['messages'])) {
+        if (
+            !isset($_SESSION[$notification_key]['messages']) ||
+            !is_array($_SESSION[$notification_key]['messages'])
+        ) {
             $_SESSION[$notification_key]['messages'] = array();
         }
         array_push($_SESSION[$notification_key]['messages'], $message);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A plugin for manage students membership by teacher.
  *
@@ -8,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.2.2
+ * Version:           1.3.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -17,7 +18,7 @@
  */
 
 // If this file is called directly, abort.
-if (! defined('WPINC')) {
+if (!defined('WPINC')) {
     die;
 }
 
@@ -88,6 +89,27 @@ function initalize_teacher_features($user_id)
     $roles = $user->roles;
     if (count($roles) > 0 && in_array($roles[0], $teacher_roles)) {
         update_max_allowance($user);
+    }
+}
+
+// Hook after plan is changed
+add_action('pmpro_after_change_membership_level', 'update_students_plans', 10, 2);
+function update_students_plans($level_id, $user_id)
+{
+    global $wpdb;
+    $helper = new Helper;
+    $teacher_roles = $helper::get_teacher_roles();
+    // Check if user is teacher
+    $user = get_userdata($user_id);
+    $roles = $user->roles;
+    if (count($roles) > 0 && in_array($roles[0], $teacher_roles)) {
+        update_max_allowance($user);
+
+        // Update students levels
+        $students = $helper->get_students($user_id);
+        foreach ($students as $student) {
+            pmpro_changeMembershipLevel($level_id, $student->ID);
+        }
     }
 }
 
