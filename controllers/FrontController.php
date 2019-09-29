@@ -25,11 +25,12 @@ class FrontController extends Helper
         if (isset($_POST['task'])) {
             switch ($_POST['task']) {
                 case 'store':
-                    if (isset($_POST['first_name']) &&
-                    isset($_POST['last_name']) &&
-                    isset($_POST['user_login']) &&
-                    isset($_POST['user_pass']) &&
-                    isset($_POST['user_email'])
+                    if (
+                        isset($_POST['first_name']) &&
+                        isset($_POST['last_name']) &&
+                        isset($_POST['user_login']) &&
+                        isset($_POST['user_pass']) &&
+                        isset($_POST['user_email'])
                     ) {
                         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'create_student')) {
                             exit;
@@ -87,16 +88,16 @@ class FrontController extends Helper
                                 if (!is_wp_error($user_ID)) {
 
                                     // Update his/her role
-                                    wp_update_user(array('ID' => $user_ID, 'role' => 'subscriber')) ;
+                                    wp_update_user(array('ID' => $user_ID, 'role' => 'subscriber'));
 
                                     // Add the membership - Get from teacher
-                                    $teacherLevels = pmpro_getMembershipLevelsForUser($this->teacher->ID);
-                                    
+                                    $teacherLevel = pmpro_getMembershipLevelForUser($this->teacher->ID);
+
                                     $wpdb->insert(
                                         $this->user_membership_level_table,
                                         array(
                                             'user_id' => $user_ID,
-                                            'membership_id' => $teacherLevels[0]->id,
+                                            'membership_id' => $teacherLevel->id,
                                             'cycle_period' => '',
                                             'status' => 'active',
                                             'startdate' => date('Y-m-d H:i:s')
@@ -129,13 +130,14 @@ class FrontController extends Helper
                             }
                             $this->redirect($this->base_url);
                         } else {
-                            $this->add_notification('error', 'Sorry, you reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
+                            $this->add_notification('error', 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
                             $this->redirect($this->base_url);
                         }
                     }
                     break;
                 case 'update':
-                    if (isset($_GET['student_ID']) &&
+                    if (
+                        isset($_GET['student_ID']) &&
                         is_numeric($_GET['student_ID']) &&
                         isset($_POST['first_name']) &&
                         isset($_POST['last_name']) &&
@@ -145,7 +147,7 @@ class FrontController extends Helper
                         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'update_student')) {
                             exit;
                         }
-                        $student_ID = (int)$_GET['student_ID'];
+                        $student_ID = (int) $_GET['student_ID'];
                         // Check if student is registerd by the teacher
                         $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d AND `student_ID` = %d";
                         $result = $wpdb->get_results($wpdb->prepare($query, $this->teacher->ID, $student_ID));
@@ -178,7 +180,7 @@ class FrontController extends Helper
 
                             if (!$errorFlag) {
                                 $userdata = array(
-                                    'ID'            =>   (int)$student->ID,
+                                    'ID'            =>   (int) $student->ID,
                                     'user_login'    =>   sanitize_user($student->user_login),
                                     'user_email'    =>   sanitize_email($email),
                                     'first_name'    =>   sanitize_text_field($first_name),
@@ -199,13 +201,14 @@ class FrontController extends Helper
                     }
                     break;
                 case 'destroy':
-                    if (isset($_POST['student_ID'])
+                    if (
+                        isset($_POST['student_ID'])
                         && is_numeric($_POST['student_ID'])
                     ) {
                         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'delete_student')) {
                             exit;
                         }
-                        $student_ID = (int)$_POST['student_ID'];
+                        $student_ID = (int) $_POST['student_ID'];
                         // Check if student is registerd by the teacher
                         $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d AND `student_ID` = %d";
                         $result = $wpdb->get_results($wpdb->prepare($query, $this->teacher->ID, $student_ID));
@@ -214,7 +217,7 @@ class FrontController extends Helper
                             $query = "DELETE FROM $this->table WHERE `teacher_ID` = %d AND `student_ID` = %d";
                             $wpdb->query($wpdb->prepare($query, $this->teacher->ID, $student_ID));
 
-                            require_once(ABSPATH.'wp-admin/includes/user.php');
+                            require_once(ABSPATH . 'wp-admin/includes/user.php');
                             wp_delete_user($student_ID);
                             $this->add_notification('success', 'Student has been delete successfully. Id: ' . $student_ID, $this->tsm_front_notification_key);
                             $this->redirect($this->base_url);
@@ -245,10 +248,11 @@ class FrontController extends Helper
                 require_once(__DIR__ . '/../views/front/create.php');
                 break;
             case 'edit':
-                if (isset($_GET['student_ID'])
-                && is_numeric($_GET['student_ID'])
+                if (
+                    isset($_GET['student_ID'])
+                    && is_numeric($_GET['student_ID'])
                 ) {
-                    $student_ID = (int)$_GET['student_ID'];
+                    $student_ID = (int) $_GET['student_ID'];
                     // Check if student is registerd by the teacher
                     $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d AND `student_ID` = %d";
                     $result = $wpdb->get_results($wpdb->prepare($query, $this->teacher->ID, $student_ID));

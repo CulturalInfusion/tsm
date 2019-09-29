@@ -36,7 +36,7 @@
                     <td>
                         <?php
                         $roles = $teacher->roles;
-                        echo $roles[0];
+                        echo implode(', ', $roles);
                         ?>
                     </td>
                     <td>
@@ -66,7 +66,8 @@
                             </td>
                             <td>
                                 <?php
-                                echo esc_html($student->user_login); ?>
+                                echo esc_html($student->user_login); 
+                                ?>
                             </td>
                             <td>
                                 <?php
@@ -79,7 +80,7 @@
                             <td>
                                 <?php
                                 $roles = $student->roles;
-                                echo $roles[0];
+                                echo implode(', ', $roles);
                                 ?>
                             </td>
                             <td>

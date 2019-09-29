@@ -22,6 +22,7 @@ class Helper
         $this->teacher = wp_get_current_user();
         $this->base_url = home_url($wp->request);
         $this->admin_base_url_of_plugin = admin_url('admin.php?page=teacher-students-management');
+        $this->admin_utility_url_of_plugin = admin_url('admin.php?page=teacher-students-management-utility');
         $this->table = $wpdb->prefix . "teacher_students";
         $this->feature_table = $wpdb->prefix . "teacher_features";
         $this->user_table = $wpdb->prefix . "users";

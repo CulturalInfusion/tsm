@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Get some info of a specific user.
  */
@@ -16,11 +17,11 @@ if (isset($_GET['username'])) {
     $user = get_user_by('login', $username);
     if ($user) {
         $roles = $user->roles;
-        if (count($roles) > 0 && in_array($roles[0], $helper::get_teacher_roles())) {
+        if (count($roles) > 0 && count(array_intersect($helper::get_teacher_roles(), $roles)) > 0) {
             $is_teacher = true;
             $teacher_ID = $user->ID;
             $teacher_username = $user->user_login;
-        } if (count($roles) > 0 && in_array($roles[0], $helper::get_student_roles())) {
+        } else {
             global $wpdb;
             $query = "SELECT `teacher_ID` FROM $helper->table WHERE `student_ID` = %d";
             $results = $wpdb->get_results($wpdb->prepare($query, $user->ID));

@@ -2,7 +2,7 @@
 
 class BackController extends Helper
 {
-    protected $view;
+    public $view;
 
     /**
      * Construct the object and initalize the properties;
@@ -25,17 +25,18 @@ class BackController extends Helper
         if (isset($_POST['task'])) {
             switch ($_POST['task']) {
                 case 'update':
-                    if (isset($_POST['teacher_ID']) &&
-                    isset($_POST['max_allowance']) &&
-                    is_numeric($_POST['max_allowance'])
+                    if (
+                        isset($_POST['teacher_ID']) &&
+                        isset($_POST['max_allowance']) &&
+                        is_numeric($_POST['max_allowance'])
                     ) {
                         if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'update_teacher')) {
                             exit;
                         }
-                        $teacher = get_userdata((int)$_POST['teacher_ID']);
+                        $teacher = get_userdata((int) $_POST['teacher_ID']);
                         if (!is_null($teacher)) {
                             // Check if user is teacher
-                            if (in_array($teacher->roles[0], self::get_teacher_roles())) {
+                            if (count(array_intersect(self::get_teacher_roles(), $teacher->roles)) > 0) {
                                 $query = "SELECT COUNT(*) AS `count` FROM $this->feature_table WHERE `teacher_ID` = %d";
                                 $result = $wpdb->get_results($wpdb->prepare($query, $teacher->ID));
                                 $count = $result[0]->count;
@@ -49,7 +50,7 @@ class BackController extends Helper
                                         array(
                                             'created_at' => 'now()',
                                             'teacher_ID' => $teacher->ID,
-                                            'max_allowance' => (int)$_POST['max_allowance']
+                                            'max_allowance' => (int) $_POST['max_allowance']
                                         ),
                                         array(
                                             'ID' => $ID
@@ -65,7 +66,7 @@ class BackController extends Helper
                                         array(
                                             'created_at' => date('Y-m-d H:i:s'),
                                             'teacher_ID' => $teacher->ID,
-                                            'max_allowance' => (int)$_POST['max_allowance']
+                                            'max_allowance' => (int) $_POST['max_allowance']
                                         ),
                                         array(
                                             '%s',
@@ -82,6 +83,71 @@ class BackController extends Helper
                         $this->redirect($this->admin_base_url_of_plugin);
                     }
                     break;
+                case 'move_students':
+                    if (
+                        isset($_POST['teacher_ID']) &&
+                        isset($_POST['users']) &&
+                        is_array($_POST['users'])
+                    ) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'move_students')) {
+                            exit;
+                        }
+                        $students = $_POST['users'];
+                        $teacher = get_userdata((int) $_POST['teacher_ID']);
+                        if (!is_null($teacher)) {
+                            // Check if user is teacher
+                            if (count(array_intersect(self::get_teacher_roles(), $teacher->roles)) > 0) {
+                                $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d";
+                                $result = $wpdb->get_results($wpdb->prepare($query, $teacher->ID));
+                                $count = $result[0]->count;
+                                $maximum_signup_allowance = $this->get_maximum_signup_allowance($teacher->ID);
+                                if (
+                                    $count < $maximum_signup_allowance
+                                    && count($students) <= ($maximum_signup_allowance - $count)
+                                ) {
+                                    $teacherLevel = pmpro_getMembershipLevelForUser($teacher->ID);
+                                    foreach ($students as $student_ID) {
+                                        $student = get_userdata((int) $student_ID);
+                                        $student->remove_role('contributor');
+                                        $student->add_role('subscriber');
+                                        pmpro_changeMembershipLevel($teacherLevel->id, $student->ID);
+
+                                        // add to table
+                                        // delete from table if existed
+                                        $query = "DELETE FROM $this->table WHERE `student_ID` = %d";
+                                        $wpdb->query($wpdb->prepare($query, $student->ID));
+
+                                        // insert into it
+                                        $wpdb->insert(
+                                            $this->table,
+                                            array(
+                                                'created_at' => date('Y-m-d H:i:s'),
+                                                'teacher_ID' => $teacher->ID,
+                                                'student_ID' => $student->ID
+                                            ),
+                                            array(
+                                                '%s',
+                                                '%d',
+                                                '%d'
+                                            )
+                                        );
+                                    }
+                                    $this->add_notification(
+                                        'success',
+                                        'Students have been moved successfully!',
+                                        $this->tsm_back_notification_key
+                                    );
+                                    $this->redirect($this->admin_utility_url_of_plugin);
+                                } else {
+                                    $this->add_notification('error', 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_back_notification_key);
+                                    $this->redirect($this->admin_utility_url_of_plugin);
+                                }
+                            }
+                        }
+                        $this->add_notification('error', 'There were some problems while moving students!', $this->tsm_back_notification_key);
+                        $this->redirect($this->admin_utility_url_of_plugin);
+                    }
+                    break;
             }
         }
     }
@@ -95,7 +161,7 @@ class BackController extends Helper
         global $wpdb;
         switch ($this->view) {
             case 'index':
-                global $wpdb;
+            case 'utility':
                 $args = array(
                     'role__in'    => self::get_teacher_roles(),
                     'orderby' => 'ID',
@@ -106,7 +172,12 @@ class BackController extends Helper
                     $this->print_messages($_SESSION[$this->tsm_back_notification_key]['status'], $_SESSION[$this->tsm_back_notification_key]['messages']);
                     unset($_SESSION[$this->tsm_back_notification_key]);
                 }
-                require_once(__DIR__ . '/../views/back/index.php');
+
+                if ($this->view == 'utility') {
+                    $users = get_users(array('orderby' => 'ID'));
+                }
+
+                require_once(__DIR__ . '/../views/back/' . $this->view . '.php');
                 break;
         }
     }

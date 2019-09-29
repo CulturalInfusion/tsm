@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.3.0
+ * Version:           1.4.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -87,7 +87,7 @@ function initalize_teacher_features($user_id)
     // Check if user is teacher
     $user = get_userdata($user_id);
     $roles = $user->roles;
-    if (count($roles) > 0 && in_array($roles[0], $teacher_roles)) {
+    if (count($roles) > 0 && count(array_intersect($teacher_roles, $roles)) > 0) {
         update_max_allowance($user);
     }
 }
@@ -102,7 +102,7 @@ function update_students_plans($level_id, $user_id)
     // Check if user is teacher
     $user = get_userdata($user_id);
     $roles = $user->roles;
-    if (count($roles) > 0 && in_array($roles[0], $teacher_roles)) {
+    if (count($roles) > 0 && count(array_intersect($teacher_roles, $roles)) > 0) {
         update_max_allowance($user);
 
         // Update students levels
@@ -122,7 +122,7 @@ function update_teacher_features($user_id)
     if (current_user_can('edit_user', $user_id)) {
         $teacher = get_userdata($user_id);
         // Check if user is teacher
-        if (in_array($teacher->roles[0], Helper::get_teacher_roles())) {
+        if (count(array_intersect(Helper::get_teacher_roles(), $teacher->roles)) > 0) {
             update_max_allowance($teacher);
         }
     }
@@ -194,7 +194,7 @@ function wrapper()
     $teacher = wp_get_current_user();
     $teacher_roles = Helper::get_teacher_roles();
     // Check if user is teacher
-    if (count($teacher->roles) > 0 && in_array($teacher->roles[0], $teacher_roles)) {
+    if (count($teacher->roles) > 0 && count(array_intersect($teacher_roles, $teacher->roles)) > 0) {
         require_once(__DIR__ . '/controllers/FrontController.php');
         $frontController = new FrontController();
         $frontController->process_request();
@@ -224,6 +224,22 @@ function teacher_students_management_menu()
         $function,
         $icon_url
     );
+    add_submenu_page(
+        $menu_slug,
+        'List',
+        'List',
+        'manage_options',
+        $menu_slug,
+        'teacher_students_management_page'
+    );
+    add_submenu_page(
+        $menu_slug,
+        'Utility',
+        'Utility',
+        'manage_options',
+        'teacher-students-management-utility',
+        'teacher_students_management_utility_page'
+    );
 }
 
 /**
@@ -234,6 +250,19 @@ function teacher_students_management_page()
     global $wp, $wpdb;
     require_once(__DIR__ . '/controllers/BackController.php');
     $backController = new BackController();
+    $backController->process_request();
+    $backController->initialize_page();
+}
+
+/**
+ * Utility page for the plugin.
+ */
+function teacher_students_management_utility_page()
+{
+    global $wp, $wpdb;
+    require_once(__DIR__ . '/controllers/BackController.php');
+    $backController = new BackController();
+    $backController->view = 'utility';
     $backController->process_request();
     $backController->initialize_page();
 }
