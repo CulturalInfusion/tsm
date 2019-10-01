@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.4.0
+ * Version:           1.6.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -183,6 +183,80 @@ function update_max_allowance($teacher)
                 );
             }
         }
+    }
+}
+
+add_action('admin_init', 'export_list_to_csv');
+/**
+ * Export list to a CSV file.
+ */
+function export_list_to_csv()
+{
+    if (
+        isset($_GET['page']) &&
+        $_GET['page'] == 'teacher-students-management' &&
+        isset($_GET['task']) &&
+        $_GET['task'] == 'export'
+    ) {
+        header('Expires: Tue, 03 Jul 2001 06:00:00 GMT');
+        header('Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate');
+        header('Last-Modified: {' . gmdate('D, d M Y H:i:s') . '} GMT');
+
+        // force download  
+        header('Content-Type: application/force-download');
+        header('Content-Type: application/octet-stream');
+        header('Content-Type: application/download');
+
+        // disposition / encoding on response body
+        header('Content-Disposition: attachment;filename=data_export_' . date('Y-m-d_H-i-s') . '.csv');
+        header('Content-Transfer-Encoding: binary');
+        $fp = fopen('php://output', 'w');
+
+        $table_header = array('Id', '', 'Username', 'Name', 'Email', 'Roles', 'Teacher', 'School / Org');
+        fputcsv($fp, $table_header);
+        fputcsv($fp, array());
+
+        $helper = new Helper();
+
+        $args = array(
+            'role__in'    => $helper::get_teacher_roles(),
+            'orderby' => 'ID',
+            'order'   => 'ASC'
+        );
+        $teachers = get_users($args);
+        foreach ($teachers as $teacher) {
+            $orgName = get_user_meta($teacher->ID, 'orgname', true);
+            fputcsv($fp, array(
+                $teacher->ID,
+                '',
+                $teacher->user_login,
+                $teacher->first_name . ' ' . $teacher->last_name,
+                $teacher->user_email,
+                implode(', ', $teacher->roles),
+                '-',
+                $orgName
+            ));
+
+            $studentsOfTeacher = $helper->get_students($teacher->ID);
+            if (!is_null($studentsOfTeacher)) {
+                foreach($studentsOfTeacher as $student) {
+                    $student = get_userdata($student->ID);
+                    fputcsv($fp, array(
+                        '',
+                        $student->ID,
+                        $student->user_login,
+                        $student->first_name . ' ' . $student->last_name,
+                        $student->user_email,
+                        implode(', ', $student->roles),
+                        $teacher->user_login,
+                        $orgName
+                    ));
+                }
+            }
+        }
+
+        fclose($fp);
+        die();
     }
 }
 

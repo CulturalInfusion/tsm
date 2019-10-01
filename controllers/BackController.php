@@ -22,8 +22,8 @@ class BackController extends Helper
     {
         global $wp;
         global $wpdb;
-        if (isset($_POST['task'])) {
-            switch ($_POST['task']) {
+        if (isset($_REQUEST['task'])) {
+            switch ($_REQUEST['task']) {
                 case 'update':
                     if (
                         isset($_POST['teacher_ID']) &&
@@ -150,6 +150,7 @@ class BackController extends Helper
                     break;
             }
         }
+
     }
 
     /**

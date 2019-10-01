@@ -1,5 +1,6 @@
 <link href="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/css/style.css' ?>" rel="stylesheet" type="text/css" />
 <div>
+    <h3>Move students</h3>
     <form action="" method="post">
         <table class="widefat fixed" cellspacing="0">
             <thead>
@@ -36,7 +37,7 @@
                     <td>
                         <?php wp_nonce_field('move_students'); ?>
                         <input type="hidden" name="task" value="move_students">
-                        <button class="button button-primary" onclick="return confirmAction();">Move</a>
+                        <button class="button button-primary" onclick="return confirmAction();">Move</button>
                     </td>
                 </tr>
             </tbody>

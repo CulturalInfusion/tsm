@@ -3,6 +3,9 @@ div.tsm-notice.notice {
   padding: 10px;
   margin: 10px;
 }
+select {
+	max-width: 100%;
+}
 /* General - End */
 
 /* User - Begin */
