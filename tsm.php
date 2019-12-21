@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.6.0
+ * Version:           1.8.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -61,6 +61,16 @@ function tsm_install()
         UNIQUE KEY (`teacher_ID`),
         FOREIGN KEY (`teacher_ID`) REFERENCES `" . $wpdb->prefix . "users`(`ID`) ON UPDATE CASCADE ON DELETE RESTRICT
 	) $charset_collate;";
+    dbDelta($sql);
+
+    $report_table = $wpdb->prefix . "tsm_reports";
+
+    $sql = "CREATE TABLE IF NOT EXISTS $report_table (
+		`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+        `created_at` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		`query` TEXT NOT NULL,
+		PRIMARY KEY  (`ID`)
+    ) $charset_collate;";
     dbDelta($sql);
 
     add_option('db_version', '1.0');
@@ -239,7 +249,7 @@ function export_list_to_csv()
 
             $studentsOfTeacher = $helper->get_students($teacher->ID);
             if (!is_null($studentsOfTeacher)) {
-                foreach($studentsOfTeacher as $student) {
+                foreach ($studentsOfTeacher as $student) {
                     $student = get_userdata($student->ID);
                     fputcsv($fp, array(
                         '',
@@ -276,6 +286,26 @@ function wrapper()
     }
 }
 add_shortcode('tsm', 'wrapper');
+
+function report_shortcode($atts, $content = null)
+{
+    if (isset($atts['report'])) {
+        global $wpdb;
+        $helper = new Helper();
+        $report = $wpdb->get_results($wpdb->prepare("SELECT `query` FROM " . $helper->report_table . " WHERE `ID` = %d", (int) $atts['report']));
+        if (!is_null($report) && count($report) > 0) {
+            $query = stripslashes($report[0]->query);
+            $records = $wpdb->get_results($query, ARRAY_A);
+            $columns = array();
+            if (is_array($records) && count($records) > 0) {
+                $columns = array_keys($records[0]);
+            }
+            require_once(__DIR__ . '/views/front/report-template.php');
+        }
+    }
+}
+add_shortcode('tsm-report', 'report_shortcode');
+
 
 add_action('admin_menu', 'teacher_students_management_menu');
 /**
@@ -314,6 +344,14 @@ function teacher_students_management_menu()
         'teacher-students-management-utility',
         'teacher_students_management_utility_page'
     );
+    add_submenu_page(
+        $menu_slug,
+        'Report',
+        'Report',
+        'manage_options',
+        'teacher-students-management-report',
+        'teacher_students_management_report_page'
+    );
 }
 
 /**
@@ -337,6 +375,19 @@ function teacher_students_management_utility_page()
     require_once(__DIR__ . '/controllers/BackController.php');
     $backController = new BackController();
     $backController->view = 'utility';
+    $backController->process_request();
+    $backController->initialize_page();
+}
+
+/**
+ * Report page for the plugin.
+ */
+function teacher_students_management_report_page()
+{
+    global $wp, $wpdb;
+    require_once(__DIR__ . '/controllers/BackController.php');
+    $backController = new BackController();
+    $backController->view = 'report';
     $backController->process_request();
     $backController->initialize_page();
 }

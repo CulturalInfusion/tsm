@@ -148,9 +148,50 @@ class BackController extends Helper
                         $this->redirect($this->admin_utility_url_of_plugin);
                     }
                     break;
+                case 'save_report':
+                    if (isset($_POST['query'])) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'save_report')) {
+                            exit;
+                        }
+                        // insert into it
+                        $wpdb->insert(
+                            $this->report_table,
+                            array(
+                                'created_at' => date('Y-m-d H:i:s'),
+                                'query' => $_POST['query'],
+                            ),
+                            array(
+                                '%s',
+                                '%s'
+                            )
+                        );
+                        $this->add_notification(
+                            'success',
+                            'Query has been saved successfully!',
+                            $this->tsm_back_notification_key
+                        );
+                        $this->redirect($this->admin_report_url_of_plugin);
+                    }
+                    break;
+                case 'remove_report':
+                    if (isset($_POST['report_ID'])) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'remove_report')) {
+                            exit;
+                        }
+
+                        // delete from table if existed
+                        $query = "DELETE FROM $this->report_table WHERE `ID` = %d";
+                        $wpdb->query($wpdb->prepare($query, intval($_POST['report_ID'])));
+
+                        $this->add_notification(
+                            'success',
+                            'Query has been removed successfully!',
+                            $this->tsm_back_notification_key
+                        );
+                        $this->redirect($this->admin_report_url_of_plugin);
+                    }
             }
         }
-
     }
 
     /**
@@ -163,6 +204,7 @@ class BackController extends Helper
         switch ($this->view) {
             case 'index':
             case 'utility':
+            case 'report':
                 $args = array(
                     'role__in'    => self::get_teacher_roles(),
                     'orderby' => 'ID',
@@ -178,6 +220,9 @@ class BackController extends Helper
                     $users = get_users(array('orderby' => 'ID'));
                 }
 
+                if ($this->view == 'report') {
+                    $reports = $wpdb->get_results('SELECT * FROM ' . $this->report_table);
+                }
                 require_once(__DIR__ . '/../views/back/' . $this->view . '.php');
                 break;
         }

@@ -6,7 +6,8 @@ class Helper
     protected $base_url;
     protected $admin_base_url_of_plugin;
     public $table;
-    protected $feature_table;
+    public $feature_table;
+    public $report_table;
     protected $user_table;
     protected $user_membership_level_table;
     protected $tsm_front_notification_key;
@@ -23,8 +24,10 @@ class Helper
         $this->base_url = home_url($wp->request);
         $this->admin_base_url_of_plugin = admin_url('admin.php?page=teacher-students-management');
         $this->admin_utility_url_of_plugin = admin_url('admin.php?page=teacher-students-management-utility');
+        $this->admin_report_url_of_plugin = admin_url('admin.php?page=teacher-students-management-report');
         $this->table = $wpdb->prefix . "teacher_students";
         $this->feature_table = $wpdb->prefix . "teacher_features";
+        $this->report_table = $wpdb->prefix . "tsm_reports";
         $this->user_table = $wpdb->prefix . "users";
         $this->user_membership_level_table = $wpdb->prefix . "pmpro_memberships_users";
         $this->tsm_front_notification_key = 'tsm_front_notification';
