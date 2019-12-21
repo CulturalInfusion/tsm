@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.8.1
+ * Version:           1.8.2
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -287,6 +287,9 @@ function wrapper()
 }
 add_shortcode('tsm', 'wrapper');
 
+/**
+ * Report shortcode.
+ */
 function report_shortcode($atts, $content = null)
 {
     if (isset($atts['report'])) {
@@ -300,7 +303,36 @@ function report_shortcode($atts, $content = null)
             if (is_array($records) && count($records) > 0) {
                 $columns = array_keys($records[0]);
             }
-            require_once(__DIR__ . '/views/front/report-template.php');
+            $return = "
+            <div>
+                <h3>Report</h3>";
+                if (!is_null($columns) && !is_null($records)) {
+                    $return .= "
+                    <div>
+                        <table class='widefat fixed' cellspacing='0'>
+                            <thead>
+                                <tr>";
+                                    foreach ($columns as $column) {
+                                        $return .= "<th>" . $column . "</th>";
+                                    }
+                                $return .= "
+                                </tr>
+                            </thead>
+                            <tbody>";
+                                foreach ($records as $record) {
+                                    $return .= "<tr>";
+                                        foreach ($columns as $column) {
+                                            $return .= "<td>" . $record[$column] . "</td>";
+                                        }
+                                    $return .= "</tr>";
+                                }
+                    $return .= "
+                            </tbody>
+                        </table>
+                    </div>";
+                }
+            $return .= "</div>";
+            return $return;
         }
     }
 }
