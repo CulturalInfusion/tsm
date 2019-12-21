@@ -190,6 +190,7 @@ class BackController extends Helper
                         );
                         $this->redirect($this->admin_report_url_of_plugin);
                     }
+                    break;
             }
         }
     }

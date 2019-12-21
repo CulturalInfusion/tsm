@@ -1,40 +1,44 @@
 <link href="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/css/style.css' ?>" rel="stylesheet" type="text/css" />
 <div>
     <h3>Report</h3>
-    <form action="" method="post">
-        <table class="widefat fixed" cellspacing="0">
+    <table class="widefat fixed" cellspacing="0">
+        <?php
+        if (count($reports) > 0) {
+        ?>
+            <thead>
+                <tr>
+                    <th class="manage-column" scope="col">Shortcode</th>
+                    <th class="manage-column" scope="col">Query</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <?php
+        }
+        ?>
+        <tbody>
             <?php
-            if (count($reports) > 0) {
+            foreach ($reports as $report) {
             ?>
-                <thead>
-                    <tr>
-                        <th class="manage-column" scope="col">Shortcode</th>
-                        <th class="manage-column" scope="col">Query</th>
-                        <th></th>
-                    </tr>
-                </thead>
+                <tr>
+                    <td>[tsm-report report=<?php echo $report->ID ?>]</td>
+                    <td><?php echo $report->query ?></td>
+                    <td>
+                        <form action="" method="post">
+                            <?php wp_nonce_field('remove_report'); ?>
+                            <input type="hidden" name="report_ID" value="<?php echo $report->ID ?>">
+                            <input type="hidden" name="task" value="remove_report">
+                            <button class="button button-danger" onclick="return confirmAction();">X</button>
+                        </form>
+                    </td>
+                </tr>
             <?php
             }
             ?>
+        </tbody>
+    </table>
+    <form action="" method="post">
+        <table>
             <tbody>
-                <?php
-                foreach ($reports as $report) {
-                ?>
-                    <tr>
-                        <td>[tsm-report report=<?php echo $report->ID ?>]</td>
-                        <td><?php echo $report->query ?></td>
-                        <td>
-                            <form action="" method="post">
-                                <?php wp_nonce_field('remove_report'); ?>
-                                <input type="hidden" name="report_ID" value="<?php echo $report->ID ?>">
-                                <input type="hidden" name="task" value="remove_report">
-                                <button class="button button-danger" onclick="return confirmAction();">X</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
                 <tr>
                     <td colspan="2">
                         <textarea name="query" cols="60" rows="10" placeholder="Enter the query (please have security in mind)"></textarea>
