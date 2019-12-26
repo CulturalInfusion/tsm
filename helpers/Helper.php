@@ -204,7 +204,7 @@ class Helper
     protected static function get_columns_by_query($query)
     {
         global $wpdb;
-        $records = $wpdb->get_results($query, ARRAY_A);
+        $records = $wpdb->get_results(stripslashes($query), ARRAY_A);
         $columns = array();
         if (is_array($records) && count($records) > 0) {
             $columns = array_keys($records[0]);
