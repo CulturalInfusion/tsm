@@ -194,4 +194,21 @@ class Helper
         }
         return $max_allowance;
     }
+
+    /**
+     * Get columns by query
+     *
+     * @param  string  $query
+     * @return array $columns
+     */
+    protected static function get_columns_by_query($query)
+    {
+        global $wpdb;
+        $records = $wpdb->get_results($query, ARRAY_A);
+        $columns = array();
+        if (is_array($records) && count($records) > 0) {
+            $columns = array_keys($records[0]);
+        }
+        return $columns;
+    }
 }

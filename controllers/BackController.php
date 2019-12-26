@@ -23,7 +23,8 @@ class BackController extends Helper
         global $wp;
         global $wpdb;
         if (isset($_REQUEST['task'])) {
-            switch ($_REQUEST['task']) {
+            $requested_task = $_REQUEST['task'];
+            switch ($requested_task) {
                 case 'update':
                     if (
                         isset($_POST['teacher_ID']) &&
@@ -173,22 +174,57 @@ class BackController extends Helper
                         $this->redirect($this->admin_report_url_of_plugin);
                     }
                     break;
+                case 'edit_report':
                 case 'remove_report':
                     if (isset($_POST['report_ID'])) {
-                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'remove_report')) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'edit_remove_report')) {
                             exit;
                         }
+                    }
+                    $ID = intval($_POST['report_ID']);
+                    switch ($requested_task) {
+                        case 'edit_report':
+                            if (
+                                isset($_POST['query']) &&
+                                isset($_POST['filters']) &&
+                                is_array($_POST['filters'])
+                            ) {
+                                $filters = implode(',', $_POST['filters']);
+                                $wpdb->update(
+                                    $this->report_table,
+                                    array(
+                                        'query' => $_POST['query'],
+                                        'filters' => $filters
+                                    ),
+                                    array(
+                                        'ID' => $ID
+                                    ),
+                                    array(
+                                        '%s',
+                                        '%s'
+                                    )
+                                );
+                                $this->add_notification(
+                                    'success',
+                                    'Query has been updated successfully!',
+                                    $this->tsm_back_notification_key
+                                );
+                                $this->redirect($this->admin_report_url_of_plugin);
+                            }
+                            break;
 
-                        // delete from table if existed
-                        $query = "DELETE FROM $this->report_table WHERE `ID` = %d";
-                        $wpdb->query($wpdb->prepare($query, intval($_POST['report_ID'])));
+                        case 'remove_report':
+                            // delete from table if existed
+                            $query = "DELETE FROM $this->report_table WHERE `ID` = %d";
+                            $wpdb->query($wpdb->prepare($query, $ID));
 
-                        $this->add_notification(
-                            'success',
-                            'Query has been removed successfully!',
-                            $this->tsm_back_notification_key
-                        );
-                        $this->redirect($this->admin_report_url_of_plugin);
+                            $this->add_notification(
+                                'success',
+                                'Query has been removed successfully!',
+                                $this->tsm_back_notification_key
+                            );
+                            $this->redirect($this->admin_report_url_of_plugin);
+                            break;
                     }
                     break;
             }

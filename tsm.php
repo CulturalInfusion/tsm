@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.8.2
+ * Version:           1.9.2
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -69,6 +69,7 @@ function tsm_install()
 		`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
         `created_at` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		`query` TEXT NOT NULL,
+        `filters` TEXT NOT NULL,
 		PRIMARY KEY  (`ID`)
     ) $charset_collate;";
     dbDelta($sql);
@@ -295,42 +296,120 @@ function report_shortcode($atts, $content = null)
     if (isset($atts['report'])) {
         global $wpdb;
         $helper = new Helper();
-        $report = $wpdb->get_results($wpdb->prepare("SELECT `query` FROM " . $helper->report_table . " WHERE `ID` = %d", (int) $atts['report']));
+        $report = $wpdb->get_results($wpdb->prepare("SELECT `query`, `filters` FROM " . $helper->report_table . " WHERE `ID` = %d", (int) $atts['report']));
         if (!is_null($report) && count($report) > 0) {
-            $query = stripslashes($report[0]->query);
+            $field_pre_key = 'tsm_report_field_';
+            $original_query = $query = stripslashes($report[0]->query);
+            $filters = explode(',', $report[0]->filters);
+            if (isset($_GET['tsm_report_action'])) {
+                $i = 0;
+                $query_condition = '';
+                foreach (array_keys($_GET) as $getIndex) {
+                    if (strpos($getIndex, $field_pre_key) !== false && !empty($_GET[$getIndex])) {
+                        if ($i > 0) {
+                            $query_condition .= ' AND ';
+                        }
+                        $query_condition .= 'WHERE s.' . esc_sql(substr($getIndex, strlen($field_pre_key))) . '="' . esc_sql($_GET[$getIndex]) . '"';
+                        $i++;
+                    }
+                }
+                if ($i > 0) {
+                    $query = 'SELECT s.* FROM (' . $query . ') AS s ' . $query_condition;
+                }
+            }
             $records = $wpdb->get_results($query, ARRAY_A);
             $columns = array();
             if (is_array($records) && count($records) > 0) {
                 $columns = array_keys($records[0]);
             }
+
+            if (
+                isset($_GET['tsm_report_action']) &&
+                $_GET['tsm_report_action'] == 'export'
+            ) {
+                header('Expires: Tue, 03 Jul 2001 06:00:00 GMT');
+                header('Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate');
+                header('Last-Modified: {' . gmdate('D, d M Y H:i:s') . '} GMT');
+
+                // force download  
+                header('Content-Type: application/force-download');
+                header('Content-Type: application/octet-stream');
+                header('Content-Type: application/download');
+
+                // disposition / encoding on response body
+                header('Content-Disposition: attachment;filename=data_export_' . date('Y-m-d_H-i-s') . '.csv');
+                header('Content-Transfer-Encoding: binary');
+                ob_end_clean();
+                $fp = fopen('php://output', 'w');
+
+                $table_header = $columns;
+                fputcsv($fp, $table_header);
+                fputcsv($fp, array());
+
+                foreach ($records as $record) {
+                    $array = array();
+                    foreach ($columns as $column) {
+                        array_push($array, $record[$column]);
+                    }
+                    fputcsv($fp, $array);
+                }
+
+                fclose($fp);
+                die();
+            }
+
+            // prepare select box for each filter
+            $filtersInHtml = '';
+            foreach ($filters as $key => $filter) {
+                $filter_values = $wpdb->get_results("SELECT s." . $filter . " FROM (" . $original_query . ") AS s", ARRAY_A);
+                if (count($filter_values) > 0) {
+                    $filtersInHtml .= "<select name='" . $field_pre_key . $filter . "' style='margin-right: 10px;'>
+                    <option value=''>...</option>
+                    ";
+                    foreach ($filter_values as $value) {
+                        $filtersInHtml .= "<option value='" . $value[$filter] . "'>" . $value[$filter] . "</option>";
+                    }
+                    $filtersInHtml .= "</select>";
+                }
+            }
+
             $return = "
             <div>
                 <h3>Report</h3>";
-                if (!is_null($columns) && !is_null($records)) {
-                    $return .= "
+            if (!empty($filtersInHtml)) {
+                $return .= "<div>
+                    <form action='' method='GET'>
+                        " . $filtersInHtml . "
+                        <button class='button button-primary' type='submit' name='tsm_report_action' value='do_filter'>Filter</button>
+                        <button class='button button-primary' type='submit' name='tsm_report_action' value='export'>Export</button>
+                    </form>
+                </div>";
+            }
+            if (!is_null($columns) && !is_null($records)) {
+                $return .= "
                     <div>
                         <table class='widefat fixed' cellspacing='0'>
                             <thead>
                                 <tr>";
-                                    foreach ($columns as $column) {
-                                        $return .= "<th>" . $column . "</th>";
-                                    }
-                                $return .= "
+                foreach ($columns as $column) {
+                    $return .= "<th>" . $column . "</th>";
+                }
+                $return .= "
                                 </tr>
                             </thead>
                             <tbody>";
-                                foreach ($records as $record) {
-                                    $return .= "<tr>";
-                                        foreach ($columns as $column) {
-                                            $return .= "<td>" . $record[$column] . "</td>";
-                                        }
-                                    $return .= "</tr>";
-                                }
-                    $return .= "
+                foreach ($records as $record) {
+                    $return .= "<tr>";
+                    foreach ($columns as $column) {
+                        $return .= "<td>" . $record[$column] . "</td>";
+                    }
+                    $return .= "</tr>";
+                }
+                $return .= "
                             </tbody>
                         </table>
                     </div>";
-                }
+            }
             $return .= "</div>";
             return $return;
         }

@@ -7,9 +7,10 @@
         ?>
             <thead>
                 <tr>
-                    <th class="manage-column" scope="col">Shortcode</th>
-                    <th class="manage-column" scope="col">Query</th>
-                    <th></th>
+                    <th class="manage-column" scope="col" width="20%">Shortcode</th>
+                    <th class="manage-column" scope="col" width="30%">Query</th>
+                    <th class="manage-column" scope="col" width="30%">Filters</th>
+                    <th width="20%"></th>
                 </tr>
             </thead>
         <?php
@@ -18,16 +19,34 @@
         <tbody>
             <?php
             foreach ($reports as $report) {
+                $filters = explode(',', $report->filters);
             ?>
                 <tr>
-                    <td>[tsm-report report=<?php echo $report->ID ?>]</td>
-                    <td><?php echo $report->query ?></td>
-                    <td>
+                    <td colspan="4">
                         <form action="" method="post">
-                            <?php wp_nonce_field('remove_report'); ?>
-                            <input type="hidden" name="report_ID" value="<?php echo $report->ID ?>">
-                            <input type="hidden" name="task" value="remove_report">
-                            <button class="button button-danger" onclick="return confirmAction();">X</button>
+                            <table width="100%">
+                                <tr>
+                                    <td width="20%">[tsm-report report=<?php echo $report->ID ?>]</td>
+                                    <td width="30%"><textarea name="query"><?php echo stripslashes($report->query) ?></textarea></td>
+                                    <td width="30%">
+                                        <select name="filters[]" class="searchable-selector" multiple>
+                                            <?php
+                                            foreach (Helper::get_columns_by_query($report->query) as $column) {
+                                                echo "<option value='" . $column . "' " . (in_array($column, $filters) ? 'selected' : '') . ">" . $column . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
+                                    <td width="10%">
+                                        <button class="button button-primary" name="task" value="edit_report" onclick="return confirmAction();">Save</
+                                    </td>
+                                    <td width="10%">
+                                        <?php wp_nonce_field('edit_remove_report'); ?>
+                                        <input type="hidden" name="report_ID" value="<?php echo $report->ID ?>">
+                                        <button class="button button-secondary" name="task" value="remove_report" onclick="return confirmAction();">X</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                     </td>
                 </tr>
@@ -89,3 +108,12 @@
     ?>
 </div>
 <script type="text/javascript" src="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/script.js' ?>"></script>
+
+<!-- Searchable selectors -->
+<link rel="stylesheet" href="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/css/chosen.min.css' ?>">
+<script src="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/chosen.jquery.min.js' ?>"></script>
+<script type="text/javascript">
+    jQuery('.searchable-selector').chosen({
+        width: "95%"
+    });
+</script>
