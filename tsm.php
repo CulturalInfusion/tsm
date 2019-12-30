@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.9.3
+ * Version:           1.9.4
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -296,12 +296,17 @@ function report_shortcode($atts, $content = null)
     if (isset($atts['report'])) {
         global $wpdb;
         $helper = new Helper();
-        $report = $wpdb->get_results($wpdb->prepare("SELECT `query`, `filters` FROM " . $helper->report_table . " WHERE `ID` = %d", (int) $atts['report']));
+        $report_ID = (int) $atts['report'];
+        $report = $wpdb->get_results($wpdb->prepare("SELECT `query`, `filters` FROM " . $helper->report_table . " WHERE `ID` = %d", $report_ID));
         if (!is_null($report) && count($report) > 0) {
             $field_pre_key = 'tsm_report_field_';
             $original_query = $query = stripslashes($report[0]->query);
             $filters = explode(',', $report[0]->filters);
-            if (isset($_GET['tsm_report_action'])) {
+            if (
+                isset($_GET['tsm_report_action']) &&
+                isset($_GET['tsm_report_id']) &&
+                $_GET['tsm_report_id'] == $report_ID
+            ) {
                 $i = 0;
                 $query_condition = '';
                 foreach (array_keys($_GET) as $getIndex) {
@@ -325,7 +330,9 @@ function report_shortcode($atts, $content = null)
 
             if (
                 isset($_GET['tsm_report_action']) &&
-                $_GET['tsm_report_action'] == 'export'
+                $_GET['tsm_report_action'] == 'export' &&
+                isset($_GET['tsm_report_id']) &&
+                $_GET['tsm_report_id'] == $report_ID
             ) {
                 header('Expires: Tue, 03 Jul 2001 06:00:00 GMT');
                 header('Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate');
@@ -361,12 +368,15 @@ function report_shortcode($atts, $content = null)
             // prepare select box for each filter
             $filtersInHtml = '';
             foreach ($filters as $key => $filter) {
-                $filter_values = $wpdb->get_results("SELECT s." . $filter . " FROM (" . $original_query . ") AS s", ARRAY_A);
+                $filter_values = $wpdb->get_results("SELECT DISTINCT s." . $filter . " FROM (" . $original_query . ") AS s", ARRAY_A);
                 if (count($filter_values) > 0) {
-                    $filtersInHtml .= "<select name='" . $field_pre_key . $filter . "' style='margin-right: 10px;'>
+                    $filtersInHtml .= "<label>" . $filter . "</label><select name='" . $field_pre_key . $filter . "' style='margin-right: 10px;'>
                     <option value=''>...</option>
                     ";
                     foreach ($filter_values as $value) {
+                        if (empty($value[$filter])) {
+                            continue;
+                        }
                         $filtersInHtml .= "<option value='" . $value[$filter] . "'>" . $value[$filter] . "</option>";
                     }
                     $filtersInHtml .= "</select>";
@@ -376,15 +386,19 @@ function report_shortcode($atts, $content = null)
             $return = "
             <div>
                 <h3>Report</h3>";
+            $return .= "<div>
+                <form action='' method='GET'>";
             if (!empty($filtersInHtml)) {
-                $return .= "<div>
-                    <form action='' method='GET'>
-                        " . $filtersInHtml . "
-                        <button class='button button-primary' type='submit' name='tsm_report_action' value='do_filter'>Filter</button>
-                        <button class='button button-primary' type='submit' name='tsm_report_action' value='export'>Export</button>
-                    </form>
-                </div>";
+                $return .= $filtersInHtml .
+                    "<br><button class='button button-primary' type='submit' name='tsm_report_action' value='do_filter'>Filter</button>";
             }
+            $return .= "
+            <input type='hidden' name='tsm_report_id' value='" . $report_ID . "'>
+            <button class='button button-primary' type='submit' name='tsm_report_action' value='export'>
+                " . (!empty($filtersInHtml) ? 'Filter and ' : '') . "Export
+                </button>
+                </form>
+            </div>";
             if (!is_null($columns) && !is_null($records)) {
                 $return .= "
                     <div>

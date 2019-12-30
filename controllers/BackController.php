@@ -184,12 +184,14 @@ class BackController extends Helper
                     $ID = intval($_POST['report_ID']);
                     switch ($requested_task) {
                         case 'edit_report':
-                            if (
-                                isset($_POST['query']) &&
-                                isset($_POST['filters']) &&
-                                is_array($_POST['filters'])
-                            ) {
-                                $filters = implode(',', $_POST['filters']);
+                            if (isset($_POST['query'])) {
+                                $filters = '';
+                                if (
+                                    isset($_POST['filters']) &&
+                                    is_array($_POST['filters'])
+                                ) {
+                                    $filters = implode(',', $_POST['filters']);
+                                }
                                 $wpdb->update(
                                     $this->report_table,
                                     array(
