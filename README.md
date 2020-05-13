@@ -16,4 +16,4 @@ and instead of `80` you can set any number.
 - To use import from `Google Classroom` feature:
 
 From `https://developers.google.com/classroom/quickstart/php` Enable Classroom API and then set `Web Server` and callback
-`URL/PAGE?page=tsm-front&task=set-google-auth-code` (in addition to `URL`, replace `PAGE` with path to the page which holds tsm shortcode like `teachers-dashboard`) then download `credentials.js` and copy content of it as JSON string, then copy `credentials.php.example` to `credentials.php` at the root of plugin and paste the JSON string in there.
+`URL/PAGE?page=tsm-front&task=set-google-auth-code` (in addition to `URL`, replace `PAGE` with path to the page which holds tsm shortcode like `teachers-dashboard`) then download `credentials.js` and copy content of it as JSON string, then copy `credentials.php.example` to `credentials.php` at the root of plugin and paste the JSON string in there. **Please note if it asks for verification proceed with [link](https://console.cloud.google.com/apis/credentials/consent)**

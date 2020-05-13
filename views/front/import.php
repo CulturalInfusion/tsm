@@ -33,6 +33,10 @@
             </h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="tsm-field-wrap">
+                    <label class="tsm-label">CSV Sample file</label>
+                    <a href="<?= plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/csv/students.csv' ?>" class="button">Download</a>
+                </div>
+                <div class="tsm-field-wrap">
                     <label class="tsm-label" for="file">CSV file</label>
                     <input name="csv" type="file" id="file" class="tsm-field" required>
                 </div>
@@ -49,4 +53,4 @@
     }
     ?>
 </div>
-<script type="text/javascript" src="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/script.js' ?>"></script>
+<script type="text/javascript" src="<?= plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/script.js' ?>"></script>
