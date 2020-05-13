@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.9.4
+ * Version:           1.11.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -270,6 +270,31 @@ function export_list_to_csv()
         die();
     }
 }
+
+
+/**
+ * Google auth callback
+ */
+add_action('init', 'tsm_request_init');
+function tsm_request_init()
+{
+    if (
+        isset($_GET['page']) &&
+        $_GET['page'] == 'tsm-front'
+    ) {
+        require_once(__DIR__ . '/controllers/FrontController.php');
+        $frontController = new FrontController();
+        if (
+            isset($_GET['task']) &&
+            $_GET['task'] == 'set-google-auth-code' &&
+            isset($_GET['code'])
+        ) {
+            // Google Classroom Callback
+            $frontController->process_request($_GET['code']);
+        }
+    }
+}
+
 
 /**
  * Wrapper for the plugin to be called inside the application.

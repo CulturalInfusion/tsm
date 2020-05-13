@@ -114,6 +114,127 @@ class Helper
     }
 
     /**
+     * Add new student
+     * 
+     * 
+     */
+    public function add_student($teacher_ID, $first_name, $last_name, $username, $password, $email, $showNotification = true)
+    {
+        global $wpdb;
+        $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d";
+        $result = $wpdb->get_results($wpdb->prepare($query, $teacher_ID));
+        $count = $result[0]->count;
+        if ($count < $this->get_maximum_signup_allowance($teacher_ID)) {
+            $errorFlag = false;
+            if (empty($first_name) || empty($last_name) || empty($email) || empty($username) || empty($password)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Required form field is missing', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (4 > strlen($username)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Username too short. At least 4 characters is required', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (username_exists($username)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Sorry, that username already exists!', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (!validate_username($username)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Sorry, the username you entered is not valid', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (5 > strlen($password)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Password length must be greater than 5', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (!is_email($email)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Email is not valid', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+            if (email_exists($email)) {
+                if ($showNotification) {
+                    $this->add_notification('error', 'Email Already in use', $this->tsm_front_notification_key);
+                }
+                $errorFlag = true;
+            }
+
+            if (!$errorFlag) {
+                // New student
+                $userdata = array(
+                    'user_login'    =>   sanitize_user($username),
+                    'user_pass'     =>   esc_attr($password),
+                    'user_email'    =>   sanitize_email($email),
+                    'first_name'    =>   sanitize_text_field($first_name),
+                    'last_name'     =>   sanitize_text_field($last_name)
+                );
+                $user_ID = wp_insert_user($userdata);
+                if (!is_wp_error($user_ID)) {
+
+                    // Update his/her role
+                    wp_update_user(array('ID' => $user_ID, 'role' => 'subscriber'));
+
+                    // Add the membership - Get from teacher
+                    $teacherLevel = pmpro_getMembershipLevelForUser($teacher_ID);
+
+                    $wpdb->insert(
+                        $this->user_membership_level_table,
+                        array(
+                            'user_id' => $user_ID,
+                            'membership_id' => $teacherLevel->id,
+                            'cycle_period' => '',
+                            'status' => 'active',
+                            'startdate' => date('Y-m-d H:i:s')
+                        ),
+                        array(
+                            '%d',
+                            '%d',
+                            '%s',
+                            '%s',
+                            '%s'
+                        )
+                    );
+
+                    // Add relation to the teacher
+                    $wpdb->insert(
+                        $this->table,
+                        array(
+                            'created_at' => date('Y-m-d H:i:s'),
+                            'teacher_ID' => $teacher_ID,
+                            'student_ID' => $user_ID
+                        ),
+                        array(
+                            '%s',
+                            '%d',
+                            '%d'
+                        )
+                    );
+                    if ($showNotification) {
+                        $this->add_notification('success', 'New student has been added successfully. Id: ' . $user_ID, $this->tsm_front_notification_key);
+                    }
+                    return $user_ID;
+                }
+                return -1;
+            }
+            return -2;
+        }
+        if ($showNotification) {
+            $this->add_notification('error', 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
+        }
+        return -3;
+    }
+
+    /**
      * Print the message.
      *
      * @param  string  $status
@@ -210,5 +331,71 @@ class Helper
             $columns = array_keys($records[0]);
         }
         return $columns;
+    }
+
+    /**
+     * Returns an authorized API client.
+     * 
+     * @param  string  $authCode
+     * 
+     * @return mixed the authorized client object
+     */
+    function get_google_client($authCode = null)
+    {
+        require_once(__DIR__ . '/../vendor/autoload.php');
+        $client = new Google_Client();
+        $client->setApplicationName('TSM Google Classroom API');
+        $client->setScopes([
+            Google_Service_Classroom::CLASSROOM_COURSES_READONLY,
+            'https://www.googleapis.com/auth/classroom.profile.emails',
+            'https://www.googleapis.com/auth/classroom.profile.photos',
+            'https://www.googleapis.com/auth/classroom.rosters.readonly'
+        ]);
+        $credentials = require_once(__DIR__ . '/../credentials.php');
+        $credentials = json_decode($credentials, true);
+        $client->setAuthConfig($credentials);
+        $client->setAccessType('offline');
+        $client->setPrompt('select_account consent');
+
+        // Load previously authorized token from a file, if it exists.
+        // The file token.json stores the user's access and refresh tokens, and is
+        // created automatically when the authorization flow completes for the first
+        // time.
+        // $tokenPath = 'token.json';
+        // if (file_exists($tokenPath)) {
+        //     $accessToken = json_decode(file_get_contents($tokenPath), true);
+        //     $client->setAccessToken($accessToken);
+        // }
+
+        // If there is no previous token or it's expired.
+        if ($client->isAccessTokenExpired()) {
+            // Refresh the token if possible, else fetch a new one.
+            if ($client->getRefreshToken()) {
+                $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+            } else if (is_null($authCode)) {
+                // Request authorization from the user.
+                $authUrl = $client->createAuthUrl();
+                // printf("Open the following link in your browser:\n%s\n", $authUrl);
+                // print 'Enter verification code: ';
+                // $authCode = trim(fgets(STDIN));
+                return $authUrl;
+            } else {
+                // Exchange authorization code for an access token.
+                $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
+                $client->setAccessToken($accessToken);
+
+                // Check to see if there was an error.
+                if (array_key_exists('error', $accessToken)) {
+                    // throw new Exception(join(', ', $accessToken));
+                    return false;
+                }
+            }
+            // Save the token to a file.
+            // if (!file_exists(dirname($tokenPath))) {
+            //     mkdir(dirname($tokenPath), 0700, true);
+            // }
+            // file_put_contents($tokenPath, json_encode($client->getAccessToken()));
+        }
+        return $client;
     }
 }
