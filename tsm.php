@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.11.1
+ * Version:           1.11.4
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -502,6 +502,14 @@ function teacher_students_management_menu()
         'teacher-students-management-report',
         'teacher_students_management_report_page'
     );
+    add_submenu_page(
+        $menu_slug,
+        'Settings',
+        'Settings',
+        'manage_options',
+        'teacher-students-management-settings',
+        'teacher_students_management_settings_page'
+    );
 }
 
 /**
@@ -538,6 +546,19 @@ function teacher_students_management_report_page()
     require_once(__DIR__ . '/controllers/BackController.php');
     $backController = new BackController();
     $backController->view = 'report';
+    $backController->process_request();
+    $backController->initialize_page();
+}
+
+/**
+ * Settings page for the plugin.
+ */
+function teacher_students_management_settings_page()
+{
+    global $wp, $wpdb;
+    require_once(__DIR__ . '/controllers/BackController.php');
+    $backController = new BackController();
+    $backController->view = 'settings';
     $backController->process_request();
     $backController->initialize_page();
 }

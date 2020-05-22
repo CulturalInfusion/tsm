@@ -11,16 +11,24 @@
             <form action="" method="post">
                 <div class="tsm-field-wrap">
                     <?php
-                    if (!empty($googleAuthUrl)) {
+                    if (!isset($_SESSION['tsm_google_classroom_token'])) {
                     ?>
-                        <a href="<?= $googleAuthUrl ?>" class="button">Authorize & Import from google</a>
+                        <a href="<?= $googleAuthUrl ?>" class="button">Authorize by Google</a>
                     <?php
+                    } else {
+                        echo "<select name='course_id'>";
+                        foreach ($courses as $course) {
+                            echo "<option value='" . $course->getId() . "'>" . $course->getName() . "</option>";
+                        }
+                        echo "</select>";
                     }
                     ?>
                 </div>
                 <div class="tsm-field-wrap tsm-submit-wrap">
                     <?php wp_nonce_field('import'); ?>
-                    <input type="hidden" name="task" value="store_csv">
+                    <input type="hidden" name="task" value="import">
+                    <input type="hidden" name="form" value="google-classroom">
+                    <input name="submit" type="submit" value="Import" class="button">
                     <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button">Back</a>
                 </div>
             </form>

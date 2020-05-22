@@ -22,7 +22,6 @@ class FrontController extends Helper
     {
         global $wp;
         global $wpdb;
-
         if (isset($_POST['task']) || !is_null($google_auth_callback_code)) {
             $task = isset($_POST['task']) ? $_POST['task'] : 'import';
             switch ($task) {
@@ -44,7 +43,7 @@ class FrontController extends Helper
                                         if ($row == 1) {
                                             continue;
                                         }
-                                        $student_ID = $this->add_student($this->teacher->ID, $data[0], $data[1], $data[2], $data[3], $data[4], false);
+                                        $student_ID = $this->add_student($this->teacher->ID, $data[0], $data[1], $data[2], $data[3], $data[4], ['duplicate_email'], true);
                                         if ($student_ID > 0) {
                                             $successful++;
                                         } else if ($student_ID < 0) {
@@ -58,43 +57,47 @@ class FrontController extends Helper
                             case 'google-classroom':
                                 if (!is_null($google_auth_callback_code)) {
                                     // After callback
-
+                                    $_SESSION['tsm_google_auth_callback_code'] = $google_auth_callback_code;
+                                    $currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                    $this->redirect(strtok($currentUrl, '?') . '?view=import&form=google-classroom');
+                                } else if (isset($_POST['course_id'])) {
                                     // Get the API client and construct the service object.
                                     try {
+                                        $courseId = $_POST['course_id'];
                                         require_once(__DIR__ . '/../vendor/autoload.php');
-                                        $client = $this->get_google_client($google_auth_callback_code);
+                                        $client = $this->get_google_client($_SESSION['tsm_google_auth_callback_code']);
                                         $service = new Google_Service_Classroom($client);
-                                        $results = $service->courses->listCourses(['pageSize' => 0]);
-                                        if (count($results->getCourses()) != 0) {
-                                            $row = 0;
-                                            $successful = 0;
-                                            $failed = 0;
-                                            foreach ($results->getCourses() as $course) {
-                                                $students = $service->courses_students->listCoursesStudents($course->getId(), ['pageSize' => 0])->getStudents();
-                                                foreach ($students as $student) {
-                                                    $profile = $student->getProfile();
-                                                    $email = $profile->emailAddress;
-                                                    $first_name = $profile->name->givenName;
-                                                    $last_name = $profile->name->familyName;
-                                                    $username = $email;
-                                                    $password = $email;
+                                        $row = 0;
+                                        $successful = 0;
+                                        $failed = 0;
+                                        $students = $service->courses_students->listCoursesStudents($courseId, ['pageSize' => 0])->getStudents();
+                                        foreach ($students as $student) {
+                                            $profile = $student->getProfile();
+                                            $email = $profile->emailAddress;
+                                            $first_name = $profile->name->givenName;
+                                            $last_name = $profile->name->familyName;
+                                            $username = $email;
+                                            $password = $email;
 
-                                                    $student_ID = $this->add_student($this->teacher->ID, $first_name, $last_name, $username, $password, $email, false);
-                                                    if ($student_ID > 0) {
-                                                        $successful++;
-                                                    } else if ($student_ID < 0) {
-                                                        $failed++;
-                                                    }
-                                                }
+                                            $student_ID = $this->add_student($this->teacher->ID, $first_name, $last_name, $username, $password, $email, ['duplicate_email'], true);
+                                            if ($student_ID > 0) {
+                                                $successful++;
+                                            } else if ($student_ID < 0) {
+                                                $failed++;
                                             }
-                                            $this->add_notification('success', 'Import process is done. Successful: ' . $successful . ', ' . 'Failed: ' . $failed, $this->tsm_front_notification_key);
                                         }
-                                        $currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                                        $this->redirect(strtok($currentUrl, '?'));
+                                        unset($_SESSION['tsm_google_classroom_token']);
+                                        unset($_SESSION['tsm_google_auth_callback_code']);
+                                        $this->add_notification('success', 'Import process is done. Successful: ' . $successful . ', ' . 'Failed: ' . $failed, $this->tsm_front_notification_key);
+                                        $this->redirect($this->base_url);
+
+                                        // $currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                        // $this->redirect(strtok($currentUrl, '?'));
                                     } catch (Exception $e) {
                                         $e->getMessage();
                                     }
                                 }
+                                
                                 break;
                         }
                     }
@@ -232,16 +235,20 @@ class FrontController extends Helper
                 break;
             case 'import':
                 if (isset($_GET['form']) && $_GET['form'] == 'google-classroom') {
-                    $googleClient = $this->get_google_client();
+                    $authCode = null;
+                    if (isset($_SESSION['tsm_google_auth_callback_code'])) {
+                        $authCode = $_SESSION['tsm_google_auth_callback_code'];
+                    }
+                    $googleClient = $this->get_google_client($authCode);
                     $googleAuthUrl = '';
                     if (is_string($googleClient)) {
                         $googleAuthUrl = $googleClient;
+                    } else {
+                        $service = new Google_Service_Classroom($googleClient);
+                        $courses = $service->courses->listCourses(['pageSize' => 0]);
                     }
                 }
                 require_once(__DIR__ . '/../views/front/import.php');
-                break;
-            case 'import-google-classroom':
-                require_once(__DIR__ . '/../views/front/import-google-classroom.php');
                 break;
             case 'edit':
                 if (

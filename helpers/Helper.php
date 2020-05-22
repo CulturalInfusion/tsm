@@ -115,15 +115,18 @@ class Helper
 
     /**
      * Add new student
-     * 
-     * 
      */
-    public function add_student($teacher_ID, $first_name, $last_name, $username, $password, $email, $showNotification = true)
+    public function add_student($teacher_ID, $first_name, $last_name, $username, $password, $email, $showNotification = [], $randomEmail = false)
     {
         global $wpdb;
         $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d";
         $result = $wpdb->get_results($wpdb->prepare($query, $teacher_ID));
         $count = $result[0]->count;
+        
+        if ($randomEmail && empty($email)) {
+            $email = time() . '@example.com';
+        }
+
         if ($count < $this->get_maximum_signup_allowance($teacher_ID)) {
             $errorFlag = false;
             if (empty($first_name) || empty($last_name) || empty($email) || empty($username) || empty($password)) {
@@ -163,7 +166,7 @@ class Helper
                 $errorFlag = true;
             }
             if (email_exists($email)) {
-                if ($showNotification) {
+                if ($showNotification && in_array('duplicate_email', $showNotification)) {
                     $this->add_notification('error', 'Email Already in use', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
@@ -351,21 +354,20 @@ class Helper
             'https://www.googleapis.com/auth/classroom.profile.photos',
             'https://www.googleapis.com/auth/classroom.rosters.readonly'
         ]);
-        $credentials = require_once(__DIR__ . '/../credentials.php');
+        $credentials = stripslashes(get_option('tsm_google_classroom_api_credentials'));
         $credentials = json_decode($credentials, true);
         $client->setAuthConfig($credentials);
         $client->setAccessType('offline');
         $client->setPrompt('select_account consent');
 
-        // Load previously authorized token from a file, if it exists.
-        // The file token.json stores the user's access and refresh tokens, and is
+        // Load previously authorized token from session, if it exists.
+        // The session variable stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
-        // $tokenPath = 'token.json';
-        // if (file_exists($tokenPath)) {
-        //     $accessToken = json_decode(file_get_contents($tokenPath), true);
-        //     $client->setAccessToken($accessToken);
-        // }
+        if (isset($_SESSION['tsm_google_classroom_token'])) {
+            $accessToken = json_decode($_SESSION['tsm_google_classroom_token'], true);
+            $client->setAccessToken($accessToken);
+        }
 
         // If there is no previous token or it's expired.
         if ($client->isAccessTokenExpired()) {
@@ -375,9 +377,6 @@ class Helper
             } else if (is_null($authCode)) {
                 // Request authorization from the user.
                 $authUrl = $client->createAuthUrl();
-                // printf("Open the following link in your browser:\n%s\n", $authUrl);
-                // print 'Enter verification code: ';
-                // $authCode = trim(fgets(STDIN));
                 return $authUrl;
             } else {
                 // Exchange authorization code for an access token.
@@ -390,11 +389,7 @@ class Helper
                     return false;
                 }
             }
-            // Save the token to a file.
-            // if (!file_exists(dirname($tokenPath))) {
-            //     mkdir(dirname($tokenPath), 0700, true);
-            // }
-            // file_put_contents($tokenPath, json_encode($client->getAccessToken()));
+            $_SESSION['tsm_google_classroom_token'] = json_encode($client->getAccessToken());
         }
         return $client;
     }

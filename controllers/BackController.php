@@ -229,6 +229,15 @@ class BackController extends Helper
                             break;
                     }
                     break;
+
+                case 'save_settings':
+                    if (isset($_POST['tsm_google_classroom_api_credentials'])) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'save_settings')) {
+                            exit;
+                        }
+                        update_option('tsm_google_classroom_api_credentials', $_POST['tsm_google_classroom_api_credentials']);
+                    }
+                    break;
             }
         }
     }
@@ -244,6 +253,7 @@ class BackController extends Helper
             case 'index':
             case 'utility':
             case 'report':
+            case 'settings':
                 $args = array(
                     'role__in'    => self::get_teacher_roles(),
                     'orderby' => 'ID',
@@ -261,6 +271,14 @@ class BackController extends Helper
 
                 if ($this->view == 'report') {
                     $reports = $wpdb->get_results('SELECT * FROM ' . $this->report_table);
+                }
+
+                if ($this->view == 'settings') {
+                    $googleClassroomApiCredentials = get_option('tsm_google_classroom_api_credentials');
+                    if (!$googleClassroomApiCredentials) {
+                        $googleClassroomApiCredentials = add_option('tsm_google_classroom_api_credentials', 'credentials');
+                    }
+                    $googleClassroomApiCredentials = stripslashes($googleClassroomApiCredentials);
                 }
                 require_once(__DIR__ . '/../views/back/' . $this->view . '.php');
                 break;
