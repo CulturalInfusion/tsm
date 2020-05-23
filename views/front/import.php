@@ -39,6 +39,16 @@
             <h2>
                 Import student from a CSV file
             </h2>
+            <h4>
+                <ul>
+                    <li>
+                        Please note, all fields should be filled.
+                    </li>
+                    <li>
+                        If your students do not have an email address, please leave it as blank.
+                    </li>
+                </ul>
+            </h4>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="tsm-field-wrap">
                     <label class="tsm-label">CSV Sample file</label>
