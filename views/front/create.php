@@ -13,12 +13,12 @@
             <input name="last_name" type="text" id="last-name" class="tsm-field" required>
         </div>
         <div class="tsm-field-wrap">
-            <label class="tsm-label" for="username">Username</label>
-            <input name="user_login" type="text" id="username" class="tsm-field" minlength="4" required>
+            <label class="tsm-label" for="username" >Username</label>
+            <input name="user_login" type="text" id="username" placeholder="Choose a unique username" class="tsm-field" minlength="4" required>
         </div>
         <div class="tsm-field-wrap">
             <label class="tsm-label" for="password">Password</label>
-            <input name="user_pass" type="password" id="password" class="tsm-field" minlength="5" required>
+            <input name="user_pass" type="password" id="password" placeholder="Choose a static and strong password" class="tsm-field" minlength="5" required>
         </div>
         <div class="tsm-field-wrap">
             <label class="tsm-label" for="password-confirmation">Confirm password</label>
@@ -26,7 +26,7 @@
         </div>
         <div class="tsm-field-wrap">
             <label class="tsm-label" for="email">Email</label>
-            <input name="user_email" type="email" id="email" class="tsm-field" required>
+            <input name="user_email" type="email" id="email"  placeholder="Student's email" class="tsm-field" required>
         </div>
         <div class="tsm-field-wrap tsm-submit-wrap">
             <?php wp_nonce_field('create_student'); ?>
@@ -34,6 +34,7 @@
             <input name="submit" type="submit" value="Save" class="button" onclick="return confirmPassword();">
             <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button">Back</a>
         </div>
+		<span> * If student does not have an email, just enter a sample name@yourschool.com (which may not exist) </span>
     </form>
 </div>
 <script type="text/javascript" src="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/script.js'?>"></script>

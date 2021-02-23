@@ -14,7 +14,7 @@ select {
 }
 .tsm-label {
   font-weight: 600;
-  min-width: 200px;
+  min-width: 300px;
   display: inline-block;
 }
 .tsm-field {
@@ -46,4 +46,4 @@ select {
 input.max-allowance {
   width: 40px;
 }
-/* Admin - End */
+/* Admin - End  */
