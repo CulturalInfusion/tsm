@@ -116,7 +116,7 @@ class Helper
     /**
      * Add new student
      */
-    public function add_student($teacher_ID, $first_name, $last_name, $username, $password, $email, $showNotification = [], $randomEmail = false)
+    public function add_student($teacher_ID, $first_name, $last_name, $username, $password, $email, $showNotification = [], $randomEmail = false, $row = '')
     {
         global $wpdb;
         $query = "SELECT COUNT(*) AS `count` FROM $this->table WHERE `teacher_ID` = %d";
@@ -124,50 +124,50 @@ class Helper
         $count = $result[0]->count;
         
         if ($randomEmail && empty($email)) {
-            $email = time() . '@example.com';
+            $email = md5(microtime(true)) . '@example.com';
         }
 
         if ($count < $this->get_maximum_signup_allowance($teacher_ID)) {
             $errorFlag = false;
             if (empty($first_name) || empty($last_name) || empty($email) || empty($username) || empty($password)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Required form field is missing', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Required form field is missing', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (4 > strlen($username)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Username too short. At least 4 characters is required', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Username too short. At least 4 characters is required', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (username_exists($username)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Sorry, that username already exists!', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Sorry, that username already exists!', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (!validate_username($username)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Sorry, the username you entered is not valid', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Sorry, the username you entered is not valid', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (5 > strlen($password)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Password length must be greater than 5', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Password length must be greater than 5', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (!is_email($email)) {
                 if ($showNotification) {
-                    $this->add_notification('error', 'Email is not valid', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Email is not valid', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
             if (email_exists($email)) {
                 if ($showNotification && in_array('duplicate_email', $showNotification)) {
-                    $this->add_notification('error', 'Email Already in use', $this->tsm_front_notification_key);
+                    $this->add_notification('error', $row . 'Email Already in use', $this->tsm_front_notification_key);
                 }
                 $errorFlag = true;
             }
@@ -223,7 +223,7 @@ class Helper
                         )
                     );
                     if ($showNotification) {
-                        $this->add_notification('success', 'New student has been added successfully. Id: ' . $user_ID, $this->tsm_front_notification_key);
+                        $this->add_notification('success', $row . 'New student has been added successfully. Id: ' . $user_ID, $this->tsm_front_notification_key);
                     }
                     return $user_ID;
                 }
@@ -232,7 +232,7 @@ class Helper
             return -2;
         }
         if ($showNotification) {
-            $this->add_notification('error', 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
+            $this->add_notification('error', $row . 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
         }
         return -3;
     }

@@ -43,7 +43,7 @@ class FrontController extends Helper
                                         if ($row == 1) {
                                             continue;
                                         }
-                                        $student_ID = $this->add_student($this->teacher->ID, $data[0], $data[1], $data[2], $data[3], $data[4], ['duplicate_email'], true);
+                                        $student_ID = $this->add_student($this->teacher->ID, $data[0], $data[1], $data[2], $data[3], $data[4], ['duplicate_email'], true, $row . ': ');
                                         if ($student_ID > 0) {
                                             $successful++;
                                         } else if ($student_ID < 0) {
