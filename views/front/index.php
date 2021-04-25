@@ -17,7 +17,7 @@
             <th class="col-sm-0">
                 Name
             </th>
-            <th class="col-sm-0">
+            <th class="col-sm-0 email-col">
                 User Email
             </th>
             <th>
@@ -41,7 +41,7 @@
                     <?php
                     echo $student->first_name . ' ' . $student->last_name; ?>
                 </td>
-                <td class="col-sm-0">
+                <td class="col-sm-0 email-col">
                     <?php
                     echo $student->user_email; ?>
                 </td>
