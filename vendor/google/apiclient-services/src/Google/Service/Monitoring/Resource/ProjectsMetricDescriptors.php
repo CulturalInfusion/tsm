@@ -30,8 +30,9 @@ class Google_Service_Monitoring_Resource_ProjectsMetricDescriptors extends Googl
    * custom metrics (https://cloud.google.com/monitoring/custom-metrics).
    * (metricDescriptors.create)
    *
-   * @param string $name Required. The project on which to execute the request.
-   * The format is: projects/[PROJECT_ID_OR_NUMBER]
+   * @param string $name Required. The project
+   * (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+   * the request. The format is: 4 projects/PROJECT_ID_OR_NUMBER
    * @param Google_Service_Monitoring_MetricDescriptor $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Monitoring_MetricDescriptor
@@ -82,22 +83,23 @@ class Google_Service_Monitoring_Resource_ProjectsMetricDescriptors extends Googl
    * Lists metric descriptors that match a filter. This method does not require a
    * Workspace. (metricDescriptors.listProjectsMetricDescriptors)
    *
-   * @param string $name Required. The project on which to execute the request.
-   * The format is: projects/[PROJECT_ID_OR_NUMBER]
+   * @param string $name Required. The project
+   * (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+   * the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken If this field is not empty then it must contain
-   * the nextPageToken value returned by a previous call to this method. Using
-   * this field causes the method to return additional results from the previous
-   * method call.
-   * @opt_param int pageSize A positive number that is the maximum number of
-   * results to return.
    * @opt_param string filter If this field is empty, all custom and system-
    * defined metric descriptors are returned. Otherwise, the filter
    * (https://cloud.google.com/monitoring/api/v3/filters) specifies which metric
    * descriptors are to be returned. For example, the following filter matches all
    * custom metrics (https://cloud.google.com/monitoring/custom-metrics):
    * metric.type = starts_with("custom.googleapis.com/")
+   * @opt_param int pageSize A positive number that is the maximum number of
+   * results to return.
+   * @opt_param string pageToken If this field is not empty then it must contain
+   * the nextPageToken value returned by a previous call to this method. Using
+   * this field causes the method to return additional results from the previous
+   * method call.
    * @return Google_Service_Monitoring_ListMetricDescriptorsResponse
    */
   public function listProjectsMetricDescriptors($name, $optParams = array())

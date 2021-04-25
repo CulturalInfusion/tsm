@@ -18,17 +18,38 @@
 class Google_Service_Dataproc_GceClusterConfig extends Google_Collection
 {
   protected $collection_key = 'tags';
+  protected $confidentialInstanceConfigType = 'Google_Service_Dataproc_ConfidentialInstanceConfig';
+  protected $confidentialInstanceConfigDataType = '';
   public $internalIpOnly;
   public $metadata;
   public $networkUri;
+  protected $nodeGroupAffinityType = 'Google_Service_Dataproc_NodeGroupAffinity';
+  protected $nodeGroupAffinityDataType = '';
+  public $privateIpv6GoogleAccess;
   protected $reservationAffinityType = 'Google_Service_Dataproc_ReservationAffinity';
   protected $reservationAffinityDataType = '';
   public $serviceAccount;
   public $serviceAccountScopes;
+  protected $shieldedInstanceConfigType = 'Google_Service_Dataproc_ShieldedInstanceConfig';
+  protected $shieldedInstanceConfigDataType = '';
   public $subnetworkUri;
   public $tags;
   public $zoneUri;
 
+  /**
+   * @param Google_Service_Dataproc_ConfidentialInstanceConfig
+   */
+  public function setConfidentialInstanceConfig(Google_Service_Dataproc_ConfidentialInstanceConfig $confidentialInstanceConfig)
+  {
+    $this->confidentialInstanceConfig = $confidentialInstanceConfig;
+  }
+  /**
+   * @return Google_Service_Dataproc_ConfidentialInstanceConfig
+   */
+  public function getConfidentialInstanceConfig()
+  {
+    return $this->confidentialInstanceConfig;
+  }
   public function setInternalIpOnly($internalIpOnly)
   {
     $this->internalIpOnly = $internalIpOnly;
@@ -52,6 +73,28 @@ class Google_Service_Dataproc_GceClusterConfig extends Google_Collection
   public function getNetworkUri()
   {
     return $this->networkUri;
+  }
+  /**
+   * @param Google_Service_Dataproc_NodeGroupAffinity
+   */
+  public function setNodeGroupAffinity(Google_Service_Dataproc_NodeGroupAffinity $nodeGroupAffinity)
+  {
+    $this->nodeGroupAffinity = $nodeGroupAffinity;
+  }
+  /**
+   * @return Google_Service_Dataproc_NodeGroupAffinity
+   */
+  public function getNodeGroupAffinity()
+  {
+    return $this->nodeGroupAffinity;
+  }
+  public function setPrivateIpv6GoogleAccess($privateIpv6GoogleAccess)
+  {
+    $this->privateIpv6GoogleAccess = $privateIpv6GoogleAccess;
+  }
+  public function getPrivateIpv6GoogleAccess()
+  {
+    return $this->privateIpv6GoogleAccess;
   }
   /**
    * @param Google_Service_Dataproc_ReservationAffinity
@@ -82,6 +125,20 @@ class Google_Service_Dataproc_GceClusterConfig extends Google_Collection
   public function getServiceAccountScopes()
   {
     return $this->serviceAccountScopes;
+  }
+  /**
+   * @param Google_Service_Dataproc_ShieldedInstanceConfig
+   */
+  public function setShieldedInstanceConfig(Google_Service_Dataproc_ShieldedInstanceConfig $shieldedInstanceConfig)
+  {
+    $this->shieldedInstanceConfig = $shieldedInstanceConfig;
+  }
+  /**
+   * @return Google_Service_Dataproc_ShieldedInstanceConfig
+   */
+  public function getShieldedInstanceConfig()
+  {
+    return $this->shieldedInstanceConfig;
   }
   public function setSubnetworkUri($subnetworkUri)
   {

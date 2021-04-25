@@ -18,18 +18,27 @@
 class Google_Service_Compute_DistributionPolicy extends Google_Collection
 {
   protected $collection_key = 'zones';
+  public $targetShape;
   protected $zonesType = 'Google_Service_Compute_DistributionPolicyZoneConfiguration';
   protected $zonesDataType = 'array';
 
+  public function setTargetShape($targetShape)
+  {
+    $this->targetShape = $targetShape;
+  }
+  public function getTargetShape()
+  {
+    return $this->targetShape;
+  }
   /**
-   * @param Google_Service_Compute_DistributionPolicyZoneConfiguration
+   * @param Google_Service_Compute_DistributionPolicyZoneConfiguration[]
    */
   public function setZones($zones)
   {
     $this->zones = $zones;
   }
   /**
-   * @return Google_Service_Compute_DistributionPolicyZoneConfiguration
+   * @return Google_Service_Compute_DistributionPolicyZoneConfiguration[]
    */
   public function getZones()
   {

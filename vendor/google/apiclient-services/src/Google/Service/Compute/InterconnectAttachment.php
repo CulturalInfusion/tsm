@@ -17,19 +17,23 @@
 
 class Google_Service_Compute_InterconnectAttachment extends Google_Collection
 {
-  protected $collection_key = 'candidateSubnets';
+  protected $collection_key = 'ipsecInternalAddresses';
   public $adminEnabled;
   public $bandwidth;
   public $candidateSubnets;
   public $cloudRouterIpAddress;
   public $creationTimestamp;
   public $customerRouterIpAddress;
+  public $dataplaneVersion;
   public $description;
   public $edgeAvailabilityDomain;
+  public $encryption;
   public $googleReferenceId;
   public $id;
   public $interconnect;
+  public $ipsecInternalAddresses;
   public $kind;
+  public $mtu;
   public $name;
   public $operationalStatus;
   public $pairingKey;
@@ -93,6 +97,14 @@ class Google_Service_Compute_InterconnectAttachment extends Google_Collection
   {
     return $this->customerRouterIpAddress;
   }
+  public function setDataplaneVersion($dataplaneVersion)
+  {
+    $this->dataplaneVersion = $dataplaneVersion;
+  }
+  public function getDataplaneVersion()
+  {
+    return $this->dataplaneVersion;
+  }
   public function setDescription($description)
   {
     $this->description = $description;
@@ -108,6 +120,14 @@ class Google_Service_Compute_InterconnectAttachment extends Google_Collection
   public function getEdgeAvailabilityDomain()
   {
     return $this->edgeAvailabilityDomain;
+  }
+  public function setEncryption($encryption)
+  {
+    $this->encryption = $encryption;
+  }
+  public function getEncryption()
+  {
+    return $this->encryption;
   }
   public function setGoogleReferenceId($googleReferenceId)
   {
@@ -133,6 +153,14 @@ class Google_Service_Compute_InterconnectAttachment extends Google_Collection
   {
     return $this->interconnect;
   }
+  public function setIpsecInternalAddresses($ipsecInternalAddresses)
+  {
+    $this->ipsecInternalAddresses = $ipsecInternalAddresses;
+  }
+  public function getIpsecInternalAddresses()
+  {
+    return $this->ipsecInternalAddresses;
+  }
   public function setKind($kind)
   {
     $this->kind = $kind;
@@ -140,6 +168,14 @@ class Google_Service_Compute_InterconnectAttachment extends Google_Collection
   public function getKind()
   {
     return $this->kind;
+  }
+  public function setMtu($mtu)
+  {
+    $this->mtu = $mtu;
+  }
+  public function getMtu()
+  {
+    return $this->mtu;
   }
   public function setName($name)
   {

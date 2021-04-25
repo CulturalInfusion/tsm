@@ -17,8 +17,35 @@
 
 class Google_Service_AndroidManagement_AdvancedSecurityOverrides extends Google_Model
 {
+  public $commonCriteriaMode;
+  public $developerSettings;
+  public $googlePlayProtectVerifyApps;
   public $untrustedAppsPolicy;
 
+  public function setCommonCriteriaMode($commonCriteriaMode)
+  {
+    $this->commonCriteriaMode = $commonCriteriaMode;
+  }
+  public function getCommonCriteriaMode()
+  {
+    return $this->commonCriteriaMode;
+  }
+  public function setDeveloperSettings($developerSettings)
+  {
+    $this->developerSettings = $developerSettings;
+  }
+  public function getDeveloperSettings()
+  {
+    return $this->developerSettings;
+  }
+  public function setGooglePlayProtectVerifyApps($googlePlayProtectVerifyApps)
+  {
+    $this->googlePlayProtectVerifyApps = $googlePlayProtectVerifyApps;
+  }
+  public function getGooglePlayProtectVerifyApps()
+  {
+    return $this->googlePlayProtectVerifyApps;
+  }
   public function setUntrustedAppsPolicy($untrustedAppsPolicy)
   {
     $this->untrustedAppsPolicy = $untrustedAppsPolicy;

@@ -84,6 +84,30 @@ class BackController extends Helper
                         $this->redirect($this->admin_base_url_of_plugin);
                     }
                     break;
+                case 'remove_teacher_hierarchy':
+                    if (
+                        isset($_POST['teacher_ID'])
+                    ) {
+                        if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'remove_teacher_hierarchy')) {
+                            exit;
+                        }
+                        $teacher = get_userdata((int) $_POST['teacher_ID']);
+                        if (!is_null($teacher) && count(array_intersect(self::get_teacher_roles(), $teacher->roles)) > 0) {
+                            $ids = [];
+                            $students = $this->get_students($teacher->ID);
+                            foreach ($students as $student) {
+                                wp_delete_user($student->ID);
+                                array_push($ids, $student->ID);
+                            }
+                            wp_delete_user($teacher->ID);
+                            array_push($ids, $teacher->ID);
+                            $this->add_notification('success', 'Teacher and students have been removed, IDs are: ' . implode(',', $ids), $this->tsm_back_notification_key);
+                            $this->redirect($this->admin_base_url_of_plugin);
+                        }
+                        $this->add_notification('error', 'There were some problems while removing users.', $this->tsm_back_notification_key);
+                        $this->redirect($this->admin_base_url_of_plugin);
+                    }
+                    break;
                 case 'move_students':
                     if (
                         isset($_POST['teacher_ID']) &&

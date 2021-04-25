@@ -30,14 +30,14 @@
  */
 class Google_Service_CloudIAP extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_brands;
   public $projects_brands_identityAwareProxyClients;
   public $v1;
-  
+
   /**
    * Constructs the internal representation of the CloudIAP service.
    *
@@ -138,13 +138,13 @@ class Google_Service_CloudIAP extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'resetSecret' => array(

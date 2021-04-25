@@ -27,6 +27,8 @@ class Google_Service_Compute_Autoscaler extends Google_Collection
   public $name;
   public $recommendedSize;
   public $region;
+  protected $scalingScheduleStatusType = 'Google_Service_Compute_ScalingScheduleStatus';
+  protected $scalingScheduleStatusDataType = 'map';
   public $selfLink;
   public $status;
   protected $statusDetailsType = 'Google_Service_Compute_AutoscalerStatusDetails';
@@ -104,6 +106,20 @@ class Google_Service_Compute_Autoscaler extends Google_Collection
   {
     return $this->region;
   }
+  /**
+   * @param Google_Service_Compute_ScalingScheduleStatus[]
+   */
+  public function setScalingScheduleStatus($scalingScheduleStatus)
+  {
+    $this->scalingScheduleStatus = $scalingScheduleStatus;
+  }
+  /**
+   * @return Google_Service_Compute_ScalingScheduleStatus[]
+   */
+  public function getScalingScheduleStatus()
+  {
+    return $this->scalingScheduleStatus;
+  }
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
@@ -121,14 +137,14 @@ class Google_Service_Compute_Autoscaler extends Google_Collection
     return $this->status;
   }
   /**
-   * @param Google_Service_Compute_AutoscalerStatusDetails
+   * @param Google_Service_Compute_AutoscalerStatusDetails[]
    */
   public function setStatusDetails($statusDetails)
   {
     $this->statusDetails = $statusDetails;
   }
   /**
-   * @return Google_Service_Compute_AutoscalerStatusDetails
+   * @return Google_Service_Compute_AutoscalerStatusDetails[]
    */
   public function getStatusDetails()
   {

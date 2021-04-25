@@ -30,7 +30,7 @@
  */
 class Google_Service_Translate extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Translate text from one language to another using Google Translate. */
@@ -41,7 +41,7 @@ class Google_Service_Translate extends Google_Service
   public $projects_locations;
   public $projects_locations_glossaries;
   public $projects_locations_operations;
-  
+
   /**
    * Constructs the internal representation of the Translate service.
    *
@@ -82,11 +82,11 @@ class Google_Service_Translate extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'model' => array(
+                'displayLanguageCode' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'displayLanguageCode' => array(
+                'model' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -150,11 +150,11 @@ class Google_Service_Translate extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'model' => array(
+                'displayLanguageCode' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'displayLanguageCode' => array(
+                'model' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -168,7 +168,7 @@ class Google_Service_Translate extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -176,7 +176,7 @@ class Google_Service_Translate extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'filter' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -244,13 +244,13 @@ class Google_Service_Translate extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -302,7 +302,7 @@ class Google_Service_Translate extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -310,7 +310,7 @@ class Google_Service_Translate extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'filter' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

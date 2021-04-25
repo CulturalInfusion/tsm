@@ -72,18 +72,13 @@ class Google_Service_Container_Resource_ProjectsZonesClusters extends Google_Ser
   }
   /**
    * Creates a cluster, consisting of the specified number and type of Google
-   * Compute Engine instances.
-   *
-   * By default, the cluster is created in the project's [default
-   * network](https://cloud.google.com/compute/docs/networks-and-
-   * firewalls#networks).
-   *
-   * One firewall is added for the cluster. After cluster creation, the Kubelet
-   * creates routes for each node to allow the containers on that node to
-   * communicate with all other instances in the cluster.
-   *
-   * Finally, an entry is added to the project's global metadata indicating which
-   * CIDR range the cluster is using. (clusters.create)
+   * Compute Engine instances. By default, the cluster is created in the project's
+   * [default network](https://cloud.google.com/compute/docs/networks-and-
+   * firewalls#networks). One firewall is added for the cluster. After cluster
+   * creation, the Kubelet creates routes for each node to allow the containers on
+   * that node to communicate with all other instances in the cluster. Finally, an
+   * entry is added to the project's global metadata indicating which CIDR range
+   * the cluster is using. (clusters.create)
    *
    * @param string $projectId Deprecated. The Google Developers Console [project
    * ID or project number](https://support.google.com/cloud/answer/6158840). This
@@ -104,13 +99,10 @@ class Google_Service_Container_Resource_ProjectsZonesClusters extends Google_Ser
   }
   /**
    * Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
-   *
    * Firewalls and routes that were configured during cluster creation are also
-   * deleted.
-   *
-   * Other Google Compute Engine resources that might be in use by the cluster,
-   * such as load balancer resources, are not deleted if they weren't present when
-   * the cluster was initially created. (clusters.delete)
+   * deleted. Other Google Compute Engine resources that might be in use by the
+   * cluster, such as load balancer resources, are not deleted if they weren't
+   * present when the cluster was initially created. (clusters.delete)
    *
    * @param string $projectId Deprecated. The Google Developers Console [project
    * ID or project number](https://support.google.com/cloud/answer/6158840). This
@@ -124,7 +116,7 @@ class Google_Service_Container_Resource_ProjectsZonesClusters extends Google_Ser
    * @param array $optParams Optional parameters.
    *
    * @opt_param string name The name (project, location, cluster) of the cluster
-   * to delete. Specified in the format 'projects/locations/clusters'.
+   * to delete. Specified in the format `projects/locations/clusters`.
    * @return Google_Service_Container_Operation
    */
   public function delete($projectId, $zone, $clusterId, $optParams = array())
@@ -148,7 +140,7 @@ class Google_Service_Container_Resource_ProjectsZonesClusters extends Google_Ser
    * @param array $optParams Optional parameters.
    *
    * @opt_param string name The name (project, location, cluster) of the cluster
-   * to retrieve. Specified in the format 'projects/locations/clusters'.
+   * to retrieve. Specified in the format `projects/locations/clusters`.
    * @return Google_Service_Container_Cluster
    */
   public function get($projectId, $zone, $clusterId, $optParams = array())
@@ -194,7 +186,7 @@ class Google_Service_Container_Resource_ProjectsZonesClusters extends Google_Ser
    * @param array $optParams Optional parameters.
    *
    * @opt_param string parent The parent (project and location) where the clusters
-   * will be listed. Specified in the format 'projects/locations'. Location "-"
+   * will be listed. Specified in the format `projects/locations`. Location "-"
    * matches all zones and all regions.
    * @return Google_Service_Container_ListClustersResponse
    */

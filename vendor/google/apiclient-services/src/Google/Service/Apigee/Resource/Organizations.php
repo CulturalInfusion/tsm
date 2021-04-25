@@ -26,16 +26,16 @@
 class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resource
 {
   /**
-   * Creates an Apigee organization. See [Create an
-   * organization](https://docs.apigee.com/hybrid/latest/precog-provision).
-   * (organizations.create)
+   * Creates an Apigee organization. See [Create an Apigee
+   * organization](https://cloud.google.com/apigee/docs/api-platform/get-started
+   * /create-org). (organizations.create)
    *
    * @param Google_Service_Apigee_GoogleCloudApigeeV1Organization $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string parent Required. Name of the GCP project in which to
    * associate the Apigee organization. Pass the information as a query parameter
-   * using the following structure in your request:   `projects/`
+   * using the following structure in your request: `projects/`
    * @return Google_Service_Apigee_GoogleLongrunningOperation
    */
   public function create(Google_Service_Apigee_GoogleCloudApigeeV1Organization $postBody, $optParams = array())
@@ -45,11 +45,27 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
     return $this->call('create', array($params), "Google_Service_Apigee_GoogleLongrunningOperation");
   }
   /**
-   * Gets the profile for an Apigee organization. See [Organizations](https://docs
-   * .apigee.com/hybrid/latest/terminology#organizations). (organizations.get)
+   * Delete an Apigee organization. Only supported for SubscriptionType TRIAL.
+   * (organizations.delete)
+   *
+   * @param string $name Required. Name of the organization. Use the following
+   * structure in your request: `organizations/{org}`
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Apigee_GoogleLongrunningOperation
+   */
+  public function delete($name, $optParams = array())
+  {
+    $params = array('name' => $name);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params), "Google_Service_Apigee_GoogleLongrunningOperation");
+  }
+  /**
+   * Gets the profile for an Apigee organization. See [Understanding
+   * organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals
+   * /organization-structure). (organizations.get)
    *
    * @param string $name Required. Apigee organization name in the following
-   * format:   `organizations/{org}`
+   * format: `organizations/{org}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Apigee_GoogleCloudApigeeV1Organization
    */
@@ -60,24 +76,39 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
     return $this->call('get', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1Organization");
   }
   /**
+   * Gets the deployed ingress configuration for an organization.
+   * (organizations.getDeployedIngressConfig)
+   *
+   * @param string $name Required. Name of the deployed configuration for the
+   * organization in the following format:
+   * 'organizations/{org}/deployedIngressConfig'.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string view When set to FULL, additional details about the
+   * specific deployments receiving traffic will be included in the IngressConfig
+   * response's RoutingRules.
+   * @return Google_Service_Apigee_GoogleCloudApigeeV1IngressConfig
+   */
+  public function getDeployedIngressConfig($name, $optParams = array())
+  {
+    $params = array('name' => $name);
+    $params = array_merge($params, $optParams);
+    return $this->call('getDeployedIngressConfig', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1IngressConfig");
+  }
+  /**
    * Lists the service accounts with the permissions required to allow the
-   * Synchronizer to download environment data from the control plane.
-   *
-   * An ETag is returned in the response to `getSyncAuthorization`. Pass that ETag
-   * when calling [setSyncAuthorization](setSyncAuthorization) to ensure that you
-   * are updating the correct version. If you don't pass the ETag in the call to
+   * Synchronizer to download environment data from the control plane. An ETag is
+   * returned in the response to `getSyncAuthorization`. Pass that ETag when
+   * calling [setSyncAuthorization](setSyncAuthorization) to ensure that you are
+   * updating the correct version. If you don't pass the ETag in the call to
    * `setSyncAuthorization`, then the existing authorization is overwritten
-   * indiscriminately.
-   *
-   * For more information, see [Enable Synchronizer
-   * access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-
-   * synchronizer-access).
-   *
-   * **Note**: Available to Apigee hybrid only.
+   * indiscriminately. For more information, see [Configure the
+   * Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest
+   * /synchronizer-access). **Note**: Available to Apigee hybrid only.
    * (organizations.getSyncAuthorization)
    *
    * @param string $name Required. Name of the Apigee organization. Use the
-   * following structure in your request:  `organizations/{org}`
+   * following structure in your request: `organizations/{org}`
    * @param Google_Service_Apigee_GoogleCloudApigeeV1GetSyncAuthorizationRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Apigee_GoogleCloudApigeeV1SyncAuthorization
@@ -90,8 +121,9 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
   }
   /**
    * Lists the Apigee organizations and associated GCP projects that you have
-   * permission to access. See [Organizations](https://docs.apigee.com/hybrid/late
-   * st/terminology#organizations). (organizations.listOrganizations)
+   * permission to access. See [Understanding
+   * organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals
+   * /organization-structure). (organizations.listOrganizations)
    *
    * @param string $parent Required. Use the following structure in your request:
    * `organizations`
@@ -105,25 +137,36 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
     return $this->call('list', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1ListOrganizationsResponse");
   }
   /**
+   * Configures the add-ons for the Apigee organization. The existing add-on
+   * configuration will be fully replaced. (organizations.setAddons)
+   *
+   * @param string $org Required. Name of the organization. Use the following
+   * structure in your request: `organizations/{org}`
+   * @param Google_Service_Apigee_GoogleCloudApigeeV1SetAddonsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Apigee_GoogleLongrunningOperation
+   */
+  public function setAddons($org, Google_Service_Apigee_GoogleCloudApigeeV1SetAddonsRequest $postBody, $optParams = array())
+  {
+    $params = array('org' => $org, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('setAddons', array($params), "Google_Service_Apigee_GoogleLongrunningOperation");
+  }
+  /**
    * Sets the permissions required to allow the Synchronizer to download
    * environment data from the control plane. You must call this API to enable
-   * proper functioning of hybrid.
-   *
-   * Pass the ETag when calling `setSyncAuthorization` to ensure that you are
-   * updating the correct version. To get an ETag, call
-   * [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag in
-   * the call to `setSyncAuthorization`, then the existing authorization is
-   * overwritten indiscriminately.
-   *
-   * For more information, see [Enable Synchronizer
-   * access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-
-   * synchronizer-access).
-   *
-   * **Note**: Available to Apigee hybrid only.
+   * proper functioning of hybrid. Pass the ETag when calling
+   * `setSyncAuthorization` to ensure that you are updating the correct version.
+   * To get an ETag, call [getSyncAuthorization](getSyncAuthorization). If you
+   * don't pass the ETag in the call to `setSyncAuthorization`, then the existing
+   * authorization is overwritten indiscriminately. For more information, see
+   * [Configure the
+   * Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest
+   * /synchronizer-access). **Note**: Available to Apigee hybrid only.
    * (organizations.setSyncAuthorization)
    *
    * @param string $name Required. Name of the Apigee organization. Use the
-   * following structure in your request:  `organizations/{org}`
+   * following structure in your request: `organizations/{org}`
    * @param Google_Service_Apigee_GoogleCloudApigeeV1SyncAuthorization $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Apigee_GoogleCloudApigeeV1SyncAuthorization
@@ -139,7 +182,7 @@ class Google_Service_Apigee_Resource_Organizations extends Google_Service_Resour
    * organization profile will be updated. (organizations.update)
    *
    * @param string $name Required. Apigee organization name in the following
-   * format:   `organizations/{org}`
+   * format: `organizations/{org}`
    * @param Google_Service_Apigee_GoogleCloudApigeeV1Organization $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Apigee_GoogleCloudApigeeV1Organization

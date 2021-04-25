@@ -31,7 +31,7 @@
  */
 class Google_Service_CloudDebugger extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Use Stackdriver Debugger. */
@@ -42,7 +42,7 @@ class Google_Service_CloudDebugger extends Google_Service
   public $controller_debuggees_breakpoints;
   public $debugger_debuggees;
   public $debugger_debuggees_breakpoints;
-  
+
   /**
    * Constructs the internal representation of the CloudDebugger service.
    *
@@ -199,11 +199,7 @@ class Google_Service_CloudDebugger extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'stripResults' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'waitToken' => array(
+                'action.value' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -211,17 +207,21 @@ class Google_Service_CloudDebugger extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'action.value' => array(
+                'includeAllUsers' => array(
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'boolean',
                 ),
                 'includeInactive' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
-                'includeAllUsers' => array(
+                'stripResults' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'waitToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'set' => array(
@@ -233,11 +233,11 @@ class Google_Service_CloudDebugger extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'clientVersion' => array(
+                'canaryOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'canaryOption' => array(
+                'clientVersion' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

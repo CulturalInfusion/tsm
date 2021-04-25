@@ -84,6 +84,11 @@ class ServiceAccountCredentials extends CredentialsLoader implements
      */
     protected $projectId;
 
+    /*
+     * @var array|null
+     */
+    private $lastReceivedJwtAccessToken;
+
     /**
      * Create a new ServiceAccountCredentials.
      *
@@ -112,18 +117,21 @@ class ServiceAccountCredentials extends CredentialsLoader implements
         }
         if (!array_key_exists('client_email', $jsonKey)) {
             throw new \InvalidArgumentException(
-                'json key is missing the client_email field');
+                'json key is missing the client_email field'
+            );
         }
         if (!array_key_exists('private_key', $jsonKey)) {
             throw new \InvalidArgumentException(
-                'json key is missing the private_key field');
+                'json key is missing the private_key field'
+            );
         }
-        if (array_key_exists('quota_project', $jsonKey)) {
-            $this->quotaProject = (string) $jsonKey['quota_project'];
+        if (array_key_exists('quota_project_id', $jsonKey)) {
+            $this->quotaProject = (string) $jsonKey['quota_project_id'];
         }
         if ($scope && $targetAudience) {
             throw new InvalidArgumentException(
-                'Scope and targetAudience cannot both be supplied');
+                'Scope and targetAudience cannot both be supplied'
+            );
         }
         $additionalClaims = [];
         if ($targetAudience) {
@@ -177,7 +185,11 @@ class ServiceAccountCredentials extends CredentialsLoader implements
      */
     public function getLastReceivedToken()
     {
-        return $this->auth->getLastReceivedToken();
+        // If self-signed JWTs are being used, fetch the last received token
+        // from memory. Else, fetch it from OAuth2
+        return $this->useSelfSignedJwt()
+            ? $this->lastReceivedJwtAccessToken
+            : $this->auth->getLastReceivedToken();
     }
 
     /**
@@ -199,7 +211,6 @@ class ServiceAccountCredentials extends CredentialsLoader implements
      * @param array $metadata metadata hashmap
      * @param string $authUri optional auth uri
      * @param callable $httpHandler callback which delivers psr7 request
-     *
      * @return array updated metadata hashmap
      */
     public function updateMetadata(
@@ -208,8 +219,7 @@ class ServiceAccountCredentials extends CredentialsLoader implements
         callable $httpHandler = null
     ) {
         // scope exists. use oauth implementation
-        $scope = $this->auth->getScope();
-        if (!is_null($scope)) {
+        if (!$this->useSelfSignedJwt()) {
             return parent::updateMetadata($metadata, $authUri, $httpHandler);
         }
 
@@ -220,7 +230,14 @@ class ServiceAccountCredentials extends CredentialsLoader implements
         );
         $jwtCreds = new ServiceAccountJwtAccessCredentials($credJson);
 
-        return $jwtCreds->updateMetadata($metadata, $authUri, $httpHandler);
+        $updatedMetadata = $jwtCreds->updateMetadata($metadata, $authUri, $httpHandler);
+
+        if ($lastReceivedToken = $jwtCreds->getLastReceivedToken()) {
+            // Keep self-signed JWTs in memory as the last received token
+            $this->lastReceivedJwtAccessToken = $lastReceivedToken;
+        }
+
+        return $updatedMetadata;
     }
 
     /**
@@ -253,5 +270,10 @@ class ServiceAccountCredentials extends CredentialsLoader implements
     public function getQuotaProject()
     {
         return $this->quotaProject;
+    }
+
+    private function useSelfSignedJwt()
+    {
+        return is_null($this->auth->getScope());
     }
 }

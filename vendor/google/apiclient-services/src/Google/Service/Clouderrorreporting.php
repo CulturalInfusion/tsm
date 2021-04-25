@@ -32,7 +32,7 @@
  */
 class Google_Service_Clouderrorreporting extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -40,7 +40,7 @@ class Google_Service_Clouderrorreporting extends Google_Service
   public $projects_events;
   public $projects_groupStats;
   public $projects_groups;
-  
+
   /**
    * Constructs the internal representation of the Clouderrorreporting service.
    *
@@ -91,23 +91,7 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'serviceFilter.resourceType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'timeRange.period' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'groupId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'serviceFilter.service' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -115,7 +99,23 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'serviceFilter.resourceType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'serviceFilter.service' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'serviceFilter.version' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'timeRange.period' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -153,12 +153,16 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'alignmentTime' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'groupId' => array(
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
                 ),
-                'serviceFilter.service' => array(
+                'order' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -166,11 +170,7 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'order' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'serviceFilter.version' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -178,19 +178,19 @@ class Google_Service_Clouderrorreporting extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'alignmentTime' => array(
+                'serviceFilter.service' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'timedCountDuration' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
+                'serviceFilter.version' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
                 'timeRange.period' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'timedCountDuration' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

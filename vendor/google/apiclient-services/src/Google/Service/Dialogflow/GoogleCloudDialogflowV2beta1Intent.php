@@ -27,6 +27,7 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Intent extends Googl
   protected $followupIntentInfoDataType = 'array';
   public $inputContextNames;
   public $isFallback;
+  public $liveAgentHandoff;
   protected $messagesType = 'Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage';
   protected $messagesDataType = 'array';
   public $mlDisabled;
@@ -85,14 +86,14 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Intent extends Googl
     return $this->events;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo[]
    */
   public function setFollowupIntentInfo($followupIntentInfo)
   {
     $this->followupIntentInfo = $followupIntentInfo;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo[]
    */
   public function getFollowupIntentInfo()
   {
@@ -114,15 +115,23 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Intent extends Googl
   {
     return $this->isFallback;
   }
+  public function setLiveAgentHandoff($liveAgentHandoff)
+  {
+    $this->liveAgentHandoff = $liveAgentHandoff;
+  }
+  public function getLiveAgentHandoff()
+  {
+    return $this->liveAgentHandoff;
+  }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage[]
    */
   public function setMessages($messages)
   {
     $this->messages = $messages;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage[]
    */
   public function getMessages()
   {
@@ -153,28 +162,28 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Intent extends Googl
     return $this->name;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context[]
    */
   public function setOutputContexts($outputContexts)
   {
     $this->outputContexts = $outputContexts;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context[]
    */
   public function getOutputContexts()
   {
     return $this->outputContexts;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentParameter
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentParameter[]
    */
   public function setParameters($parameters)
   {
     $this->parameters = $parameters;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentParameter
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentParameter[]
    */
   public function getParameters()
   {
@@ -213,14 +222,14 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Intent extends Googl
     return $this->rootFollowupIntentName;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentTrainingPhrase
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentTrainingPhrase[]
    */
   public function setTrainingPhrases($trainingPhrases)
   {
     $this->trainingPhrases = $trainingPhrases;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentTrainingPhrase
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentTrainingPhrase[]
    */
   public function getTrainingPhrases()
   {

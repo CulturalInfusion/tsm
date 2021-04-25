@@ -28,6 +28,8 @@ class Google_Service_AlertCenter_RuleViolationInfo extends Google_Collection
   protected $ruleInfoDataType = '';
   public $suppressedActionTypes;
   public $trigger;
+  protected $triggeredActionInfoType = 'Google_Service_AlertCenter_ActionInfo';
+  protected $triggeredActionInfoDataType = 'array';
   public $triggeredActionTypes;
   public $triggeringUserEmail;
 
@@ -40,14 +42,14 @@ class Google_Service_AlertCenter_RuleViolationInfo extends Google_Collection
     return $this->dataSource;
   }
   /**
-   * @param Google_Service_AlertCenter_MatchInfo
+   * @param Google_Service_AlertCenter_MatchInfo[]
    */
   public function setMatchInfo($matchInfo)
   {
     $this->matchInfo = $matchInfo;
   }
   /**
-   * @return Google_Service_AlertCenter_MatchInfo
+   * @return Google_Service_AlertCenter_MatchInfo[]
    */
   public function getMatchInfo()
   {
@@ -104,6 +106,20 @@ class Google_Service_AlertCenter_RuleViolationInfo extends Google_Collection
   public function getTrigger()
   {
     return $this->trigger;
+  }
+  /**
+   * @param Google_Service_AlertCenter_ActionInfo[]
+   */
+  public function setTriggeredActionInfo($triggeredActionInfo)
+  {
+    $this->triggeredActionInfo = $triggeredActionInfo;
+  }
+  /**
+   * @return Google_Service_AlertCenter_ActionInfo[]
+   */
+  public function getTriggeredActionInfo()
+  {
+    return $this->triggeredActionInfo;
   }
   public function setTriggeredActionTypes($triggeredActionTypes)
   {

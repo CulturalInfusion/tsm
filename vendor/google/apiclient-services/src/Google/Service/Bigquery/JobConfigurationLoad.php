@@ -24,6 +24,7 @@ class Google_Service_Bigquery_JobConfigurationLoad extends Google_Collection
   protected $clusteringType = 'Google_Service_Bigquery_Clustering';
   protected $clusteringDataType = '';
   public $createDisposition;
+  public $decimalTargetTypes;
   protected $destinationEncryptionConfigurationType = 'Google_Service_Bigquery_EncryptionConfiguration';
   protected $destinationEncryptionConfigurationDataType = '';
   protected $destinationTableType = 'Google_Service_Bigquery_TableReference';
@@ -35,8 +36,11 @@ class Google_Service_Bigquery_JobConfigurationLoad extends Google_Collection
   protected $hivePartitioningOptionsType = 'Google_Service_Bigquery_HivePartitioningOptions';
   protected $hivePartitioningOptionsDataType = '';
   public $ignoreUnknownValues;
+  public $jsonExtension;
   public $maxBadRecords;
   public $nullMarker;
+  protected $parquetOptionsType = 'Google_Service_Bigquery_ParquetOptions';
+  protected $parquetOptionsDataType = '';
   public $projectionFields;
   public $quote;
   protected $rangePartitioningType = 'Google_Service_Bigquery_RangePartitioning';
@@ -99,6 +103,14 @@ class Google_Service_Bigquery_JobConfigurationLoad extends Google_Collection
   public function getCreateDisposition()
   {
     return $this->createDisposition;
+  }
+  public function setDecimalTargetTypes($decimalTargetTypes)
+  {
+    $this->decimalTargetTypes = $decimalTargetTypes;
+  }
+  public function getDecimalTargetTypes()
+  {
+    return $this->decimalTargetTypes;
   }
   /**
    * @param Google_Service_Bigquery_EncryptionConfiguration
@@ -180,6 +192,14 @@ class Google_Service_Bigquery_JobConfigurationLoad extends Google_Collection
   {
     return $this->ignoreUnknownValues;
   }
+  public function setJsonExtension($jsonExtension)
+  {
+    $this->jsonExtension = $jsonExtension;
+  }
+  public function getJsonExtension()
+  {
+    return $this->jsonExtension;
+  }
   public function setMaxBadRecords($maxBadRecords)
   {
     $this->maxBadRecords = $maxBadRecords;
@@ -195,6 +215,20 @@ class Google_Service_Bigquery_JobConfigurationLoad extends Google_Collection
   public function getNullMarker()
   {
     return $this->nullMarker;
+  }
+  /**
+   * @param Google_Service_Bigquery_ParquetOptions
+   */
+  public function setParquetOptions(Google_Service_Bigquery_ParquetOptions $parquetOptions)
+  {
+    $this->parquetOptions = $parquetOptions;
+  }
+  /**
+   * @return Google_Service_Bigquery_ParquetOptions
+   */
+  public function getParquetOptions()
+  {
+    return $this->parquetOptions;
   }
   public function setProjectionFields($projectionFields)
   {

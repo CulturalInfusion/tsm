@@ -20,34 +20,46 @@ class Google_Service_Bigquery_QueryRequest extends Google_Collection
   protected $collection_key = 'queryParameters';
   protected $connectionPropertiesType = 'Google_Service_Bigquery_ConnectionProperty';
   protected $connectionPropertiesDataType = 'array';
+  public $createSession;
   protected $defaultDatasetType = 'Google_Service_Bigquery_DatasetReference';
   protected $defaultDatasetDataType = '';
   public $dryRun;
   public $kind;
+  public $labels;
   public $location;
   public $maxResults;
+  public $maximumBytesBilled;
   public $parameterMode;
   public $preserveNulls;
   public $query;
   protected $queryParametersType = 'Google_Service_Bigquery_QueryParameter';
   protected $queryParametersDataType = 'array';
+  public $requestId;
   public $timeoutMs;
   public $useLegacySql;
   public $useQueryCache;
 
   /**
-   * @param Google_Service_Bigquery_ConnectionProperty
+   * @param Google_Service_Bigquery_ConnectionProperty[]
    */
   public function setConnectionProperties($connectionProperties)
   {
     $this->connectionProperties = $connectionProperties;
   }
   /**
-   * @return Google_Service_Bigquery_ConnectionProperty
+   * @return Google_Service_Bigquery_ConnectionProperty[]
    */
   public function getConnectionProperties()
   {
     return $this->connectionProperties;
+  }
+  public function setCreateSession($createSession)
+  {
+    $this->createSession = $createSession;
+  }
+  public function getCreateSession()
+  {
+    return $this->createSession;
   }
   /**
    * @param Google_Service_Bigquery_DatasetReference
@@ -79,6 +91,14 @@ class Google_Service_Bigquery_QueryRequest extends Google_Collection
   {
     return $this->kind;
   }
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  public function getLabels()
+  {
+    return $this->labels;
+  }
   public function setLocation($location)
   {
     $this->location = $location;
@@ -94,6 +114,14 @@ class Google_Service_Bigquery_QueryRequest extends Google_Collection
   public function getMaxResults()
   {
     return $this->maxResults;
+  }
+  public function setMaximumBytesBilled($maximumBytesBilled)
+  {
+    $this->maximumBytesBilled = $maximumBytesBilled;
+  }
+  public function getMaximumBytesBilled()
+  {
+    return $this->maximumBytesBilled;
   }
   public function setParameterMode($parameterMode)
   {
@@ -120,18 +148,26 @@ class Google_Service_Bigquery_QueryRequest extends Google_Collection
     return $this->query;
   }
   /**
-   * @param Google_Service_Bigquery_QueryParameter
+   * @param Google_Service_Bigquery_QueryParameter[]
    */
   public function setQueryParameters($queryParameters)
   {
     $this->queryParameters = $queryParameters;
   }
   /**
-   * @return Google_Service_Bigquery_QueryParameter
+   * @return Google_Service_Bigquery_QueryParameter[]
    */
   public function getQueryParameters()
   {
     return $this->queryParameters;
+  }
+  public function setRequestId($requestId)
+  {
+    $this->requestId = $requestId;
+  }
+  public function getRequestId()
+  {
+    return $this->requestId;
   }
   public function setTimeoutMs($timeoutMs)
   {

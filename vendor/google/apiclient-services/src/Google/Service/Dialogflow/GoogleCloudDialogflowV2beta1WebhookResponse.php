@@ -24,6 +24,7 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1WebhookResponse exte
   protected $fulfillmentMessagesType = 'Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage';
   protected $fulfillmentMessagesDataType = 'array';
   public $fulfillmentText;
+  public $liveAgentHandoff;
   protected $outputContextsType = 'Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context';
   protected $outputContextsDataType = 'array';
   public $payload;
@@ -54,14 +55,14 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1WebhookResponse exte
     return $this->followupEventInput;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage[]
    */
   public function setFulfillmentMessages($fulfillmentMessages)
   {
     $this->fulfillmentMessages = $fulfillmentMessages;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1IntentMessage[]
    */
   public function getFulfillmentMessages()
   {
@@ -75,15 +76,23 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1WebhookResponse exte
   {
     return $this->fulfillmentText;
   }
+  public function setLiveAgentHandoff($liveAgentHandoff)
+  {
+    $this->liveAgentHandoff = $liveAgentHandoff;
+  }
+  public function getLiveAgentHandoff()
+  {
+    return $this->liveAgentHandoff;
+  }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context[]
    */
   public function setOutputContexts($outputContexts)
   {
     $this->outputContexts = $outputContexts;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1Context[]
    */
   public function getOutputContexts()
   {
@@ -98,14 +107,14 @@ class Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1WebhookResponse exte
     return $this->payload;
   }
   /**
-   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1SessionEntityType
+   * @param Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1SessionEntityType[]
    */
   public function setSessionEntityTypes($sessionEntityTypes)
   {
     $this->sessionEntityTypes = $sessionEntityTypes;
   }
   /**
-   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1SessionEntityType
+   * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2beta1SessionEntityType[]
    */
   public function getSessionEntityTypes()
   {

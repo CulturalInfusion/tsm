@@ -39,7 +39,7 @@ class Google_Service_SystemsManagement_Resource_ProjectsPatchJobsInstanceDetails
    * @opt_param string pageToken A pagination token returned from a previous call
    * that indicates where this listing should continue from.
    * @opt_param int pageSize The maximum number of instance details records to
-   * return.  Default is 100.
+   * return. Default is 100.
    * @return Google_Service_SystemsManagement_ListPatchJobInstanceDetailsResponse
    */
   public function listProjectsPatchJobsInstanceDetails($parent, $optParams = array())

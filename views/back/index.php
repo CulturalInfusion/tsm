@@ -60,6 +60,13 @@
                             <input type="hidden" name="task" value="update">
                             <button class="button button-primary" onclick="return confirmAction();">Save</button>
                         </form>
+
+                        <form action="" method="post">
+                            <?php wp_nonce_field('remove_teacher_hierarchy'); ?>
+                            <input type="hidden" name="teacher_ID" value="<?php echo $teacher->ID ?>">
+                            <input type="hidden" name="task" value="remove_teacher_hierarchy">
+                            <button class="button button-secondary deletion" onclick="return confirmAction();">Delete all</button>
+                        </form>
                     </td>
                 </tr>
                 <?php

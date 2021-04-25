@@ -30,7 +30,7 @@
  */
 class Google_Service_CloudProfiler extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and write monitoring data for all of your Google and third-party Cloud and API projects. */
@@ -41,7 +41,7 @@ class Google_Service_CloudProfiler extends Google_Service
       "https://www.googleapis.com/auth/monitoring.write";
 
   public $projects_profiles;
-  
+
   /**
    * Constructs the internal representation of the CloudProfiler service.
    *

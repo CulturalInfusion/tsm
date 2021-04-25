@@ -20,8 +20,13 @@ class Google_Service_Dataflow_LaunchFlexTemplateParameter extends Google_Model
   protected $containerSpecType = 'Google_Service_Dataflow_ContainerSpec';
   protected $containerSpecDataType = '';
   public $containerSpecGcsPath;
+  protected $environmentType = 'Google_Service_Dataflow_FlexTemplateRuntimeEnvironment';
+  protected $environmentDataType = '';
   public $jobName;
+  public $launchOptions;
   public $parameters;
+  public $transformNameMappings;
+  public $update;
 
   /**
    * @param Google_Service_Dataflow_ContainerSpec
@@ -45,6 +50,20 @@ class Google_Service_Dataflow_LaunchFlexTemplateParameter extends Google_Model
   {
     return $this->containerSpecGcsPath;
   }
+  /**
+   * @param Google_Service_Dataflow_FlexTemplateRuntimeEnvironment
+   */
+  public function setEnvironment(Google_Service_Dataflow_FlexTemplateRuntimeEnvironment $environment)
+  {
+    $this->environment = $environment;
+  }
+  /**
+   * @return Google_Service_Dataflow_FlexTemplateRuntimeEnvironment
+   */
+  public function getEnvironment()
+  {
+    return $this->environment;
+  }
   public function setJobName($jobName)
   {
     $this->jobName = $jobName;
@@ -53,6 +72,14 @@ class Google_Service_Dataflow_LaunchFlexTemplateParameter extends Google_Model
   {
     return $this->jobName;
   }
+  public function setLaunchOptions($launchOptions)
+  {
+    $this->launchOptions = $launchOptions;
+  }
+  public function getLaunchOptions()
+  {
+    return $this->launchOptions;
+  }
   public function setParameters($parameters)
   {
     $this->parameters = $parameters;
@@ -60,5 +87,21 @@ class Google_Service_Dataflow_LaunchFlexTemplateParameter extends Google_Model
   public function getParameters()
   {
     return $this->parameters;
+  }
+  public function setTransformNameMappings($transformNameMappings)
+  {
+    $this->transformNameMappings = $transformNameMappings;
+  }
+  public function getTransformNameMappings()
+  {
+    return $this->transformNameMappings;
+  }
+  public function setUpdate($update)
+  {
+    $this->update = $update;
+  }
+  public function getUpdate()
+  {
+    return $this->update;
   }
 }

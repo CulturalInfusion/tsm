@@ -120,10 +120,10 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    * @opt_param string jobStateMatcher Optional. Specifies enumerated categories
    * of jobs to list. (default = match ALL jobs).If filter is provided,
    * jobStateMatcher will be ignored.
-   * @opt_param string pageToken Optional. The page token, returned by a previous
-   * call, to request the next page of results.
    * @opt_param int pageSize Optional. The number of results to return in each
    * response.
+   * @opt_param string pageToken Optional. The page token, returned by a previous
+   * call, to request the next page of results.
    * @return Google_Service_Dataproc_ListJobsResponse
    */
   public function listProjectsRegionsJobs($projectId, $region, $optParams = array())
@@ -146,7 +146,7 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    * @opt_param string updateMask Required. Specifies the path, relative to Job,
    * of the field to update. For example, to update the labels of a Job the
    * update_mask parameter would be specified as labels, and the PATCH request
-   * body would specify the new value. Note: Currently, labels is the only field
+   * body would specify the new value. *Note:* Currently, labels is the only field
    * that can be updated.
    * @return Google_Service_Dataproc_Job
    */
@@ -158,8 +158,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
   }
   /**
    * Sets the access control policy on the specified resource. Replaces any
-   * existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
-   * PERMISSION_DENIED (jobs.setIamPolicy)
+   * existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
+   * errors. (jobs.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
    * specified. See the operation documentation for the appropriate value for this

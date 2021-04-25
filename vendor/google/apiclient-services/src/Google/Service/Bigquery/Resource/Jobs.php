@@ -46,6 +46,26 @@ class Google_Service_Bigquery_Resource_Jobs extends Google_Service_Resource
     return $this->call('cancel', array($params), "Google_Service_Bigquery_JobCancelResponse");
   }
   /**
+   * Requests that a job is deleted. This call will return when the job is
+   * deleted. This method is available in limited preview. (jobs.delete)
+   *
+   * @param string $projectId Required. Project ID of the job to be deleted.
+   * @param string $jobId Required. Job ID of the job to be deleted. If this is a
+   * parent job which has child jobs, all child jobs will be deleted as well.
+   * Deletion of child jobs directly is not allowed.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string location The geographic location of the job. Required. See
+   * details at:
+   * https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+   */
+  public function delete($projectId, $jobId, $optParams = array())
+  {
+    $params = array('projectId' => $projectId, 'jobId' => $jobId);
+    $params = array_merge($params, $optParams);
+    return $this->call('delete', array($params));
+  }
+  /**
    * Returns information about a specific job. Job information is available for a
    * six month period after creation. Requires that you're the person who ran the
    * job, or have the Is Owner project role. (jobs.get)
@@ -72,17 +92,17 @@ class Google_Service_Bigquery_Resource_Jobs extends Google_Service_Resource
    * @param string $jobId [Required] Job ID of the query job
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string startIndex Zero-based index of the starting row
    * @opt_param string location The geographic location where the job should run.
    * Required except for US and EU. See details at
    * https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+   * @opt_param string maxResults Maximum number of results to read
    * @opt_param string pageToken Page token, returned by a previous call, to
    * request the next page of results
+   * @opt_param string startIndex Zero-based index of the starting row
    * @opt_param string timeoutMs How long to wait for the query to complete, in
    * milliseconds, before returning. Default is 10 seconds. If the timeout passes
    * before the job completes, the 'jobComplete' field in the response will be
    * false
-   * @opt_param string maxResults Maximum number of results to read
    * @return Google_Service_Bigquery_GetQueryResultsResponse
    */
   public function getQueryResults($projectId, $jobId, $optParams = array())
@@ -117,21 +137,21 @@ class Google_Service_Bigquery_Resource_Jobs extends Google_Service_Resource
    * @param string $projectId Project ID of the jobs to list
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string projection Restrict information returned to a set of
-   * selected fields
-   * @opt_param string parentJobId If set, retrieves only jobs whose parent is
-   * this job. Otherwise, retrieves only jobs which have no parent
+   * @opt_param bool allUsers Whether to display jobs owned by all users in the
+   * project. Default false
+   * @opt_param string maxCreationTime Max value for job creation time, in
+   * milliseconds since the POSIX epoch. If set, only jobs created before or at
+   * this timestamp are returned
+   * @opt_param string maxResults Maximum number of results to return
    * @opt_param string minCreationTime Min value for job creation time, in
    * milliseconds since the POSIX epoch. If set, only jobs created after or at
    * this timestamp are returned
    * @opt_param string pageToken Page token, returned by a previous call, to
    * request the next page of results
-   * @opt_param bool allUsers Whether to display jobs owned by all users in the
-   * project. Default false
-   * @opt_param string maxResults Maximum number of results to return
-   * @opt_param string maxCreationTime Max value for job creation time, in
-   * milliseconds since the POSIX epoch. If set, only jobs created before or at
-   * this timestamp are returned
+   * @opt_param string parentJobId If set, retrieves only jobs whose parent is
+   * this job. Otherwise, retrieves only jobs which have no parent
+   * @opt_param string projection Restrict information returned to a set of
+   * selected fields
    * @opt_param string stateFilter Filter for job state
    * @return Google_Service_Bigquery_JobList
    */

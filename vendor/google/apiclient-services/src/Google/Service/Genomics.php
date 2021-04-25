@@ -30,7 +30,7 @@
  */
 class Google_Service_Genomics extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage Genomics data. */
@@ -38,7 +38,7 @@ class Google_Service_Genomics extends Google_Service
       "https://www.googleapis.com/auth/genomics";
 
   public $operations;
-  
+
   /**
    * Constructs the internal representation of the Genomics service.
    *
@@ -89,7 +89,7 @@ class Google_Service_Genomics extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -97,7 +97,7 @@ class Google_Service_Genomics extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'filter' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

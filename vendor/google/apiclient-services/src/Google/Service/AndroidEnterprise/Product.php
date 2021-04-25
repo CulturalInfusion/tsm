@@ -32,7 +32,6 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
   public $distributionChannel;
   public $features;
   public $iconUrl;
-  public $kind;
   public $lastUpdatedTimestampMillis;
   public $minAndroidSdkVersion;
   protected $permissionsType = 'Google_Service_AndroidEnterprise_ProductPermission';
@@ -49,28 +48,28 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
   public $workDetailsUrl;
 
   /**
-   * @param Google_Service_AndroidEnterprise_TrackInfo
+   * @param Google_Service_AndroidEnterprise_TrackInfo[]
    */
   public function setAppTracks($appTracks)
   {
     $this->appTracks = $appTracks;
   }
   /**
-   * @return Google_Service_AndroidEnterprise_TrackInfo
+   * @return Google_Service_AndroidEnterprise_TrackInfo[]
    */
   public function getAppTracks()
   {
     return $this->appTracks;
   }
   /**
-   * @param Google_Service_AndroidEnterprise_AppVersion
+   * @param Google_Service_AndroidEnterprise_AppVersion[]
    */
   public function setAppVersion($appVersion)
   {
     $this->appVersion = $appVersion;
   }
   /**
-   * @return Google_Service_AndroidEnterprise_AppVersion
+   * @return Google_Service_AndroidEnterprise_AppVersion[]
    */
   public function getAppVersion()
   {
@@ -156,14 +155,6 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
   {
     return $this->iconUrl;
   }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
   public function setLastUpdatedTimestampMillis($lastUpdatedTimestampMillis)
   {
     $this->lastUpdatedTimestampMillis = $lastUpdatedTimestampMillis;
@@ -181,14 +172,14 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
     return $this->minAndroidSdkVersion;
   }
   /**
-   * @param Google_Service_AndroidEnterprise_ProductPermission
+   * @param Google_Service_AndroidEnterprise_ProductPermission[]
    */
   public function setPermissions($permissions)
   {
     $this->permissions = $permissions;
   }
   /**
-   * @return Google_Service_AndroidEnterprise_ProductPermission
+   * @return Google_Service_AndroidEnterprise_ProductPermission[]
    */
   public function getPermissions()
   {

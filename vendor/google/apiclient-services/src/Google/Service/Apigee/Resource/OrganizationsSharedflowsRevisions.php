@@ -30,8 +30,8 @@ class Google_Service_Apigee_Resource_OrganizationsSharedflowsRevisions extends G
    * You must undeploy the shared flow before deleting it. (revisions.delete)
    *
    * @param string $name Required. The name of the shared flow revision to delete.
-   * Must be of the form:   `organizations/{organization_id}/sharedflows/{shared_f
-   * low_id}/revisions/{revision_id}`
+   * Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flo
+   * w_id}/revisions/{revision_id}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Apigee_GoogleCloudApigeeV1SharedFlowRevision
    */
@@ -42,14 +42,17 @@ class Google_Service_Apigee_Resource_OrganizationsSharedflowsRevisions extends G
     return $this->call('delete', array($params), "Google_Service_Apigee_GoogleCloudApigeeV1SharedFlowRevision");
   }
   /**
-   * Gets a revision of a shared flow.
-   *
-   * If `format=bundle` is passed, it instead outputs a shared flow revision as a
-   * ZIP-formatted bundle of code and config files. (revisions.get)
+   * Gets a revision of a shared flow. To download the shared flow configuration
+   * bundle for the specified revision as a zip file, set the `format` query
+   * parameter to `bundle`. If you are using curl, specify `-o filename.zip` to
+   * save the output to a file; otherwise, it displays to `stdout`. Then, develop
+   * the shared flow configuration locally and upload the updated sharedFlow
+   * configuration revision, as described in
+   * [updateSharedFlowRevision](updateSharedFlowRevision). (revisions.get)
    *
    * @param string $name Required. The name of the shared flow revision to get.
-   * Must be of the form:   `organizations/{organization_id}/sharedflows/{shared_f
-   * low_id}/revisions/{revision_id}`
+   * Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flo
+   * w_id}/revisions/{revision_id}`
    * @param array $optParams Optional parameters.
    *
    * @opt_param string format Specify `bundle` to export the contents of the
@@ -65,15 +68,13 @@ class Google_Service_Apigee_Resource_OrganizationsSharedflowsRevisions extends G
   /**
    * Updates a shared flow revision. This operation is only allowed on revisions
    * which have never been deployed. After deployment a revision becomes
-   * immutable, even if it becomes undeployed.
-   *
-   * The payload is a ZIP-formatted shared flow.  Content type must be either
-   * multipart/form-data or application/octet-stream.
-   * (revisions.updateSharedFlowRevision)
+   * immutable, even if it becomes undeployed. The payload is a ZIP-formatted
+   * shared flow. Content type must be either multipart/form-data or application
+   * /octet-stream. (revisions.updateSharedFlowRevision)
    *
    * @param string $name Required. The name of the shared flow revision to update.
-   * Must be of the form:   `organizations/{organization_id}/sharedflows/{shared_f
-   * low_id}/revisions/{revision_id}`
+   * Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flo
+   * w_id}/revisions/{revision_id}`
    * @param Google_Service_Apigee_GoogleApiHttpBody $postBody
    * @param array $optParams Optional parameters.
    *

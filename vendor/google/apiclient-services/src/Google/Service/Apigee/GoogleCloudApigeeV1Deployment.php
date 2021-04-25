@@ -17,14 +17,20 @@
 
 class Google_Service_Apigee_GoogleCloudApigeeV1Deployment extends Google_Collection
 {
-  protected $collection_key = 'pods';
+  protected $collection_key = 'routeConflicts';
   public $apiProxy;
-  public $basePath;
   public $deployStartTime;
   public $environment;
+  protected $errorsType = 'Google_Service_Apigee_GoogleRpcStatus';
+  protected $errorsDataType = 'array';
+  protected $instancesType = 'Google_Service_Apigee_GoogleCloudApigeeV1InstanceDeploymentStatus';
+  protected $instancesDataType = 'array';
   protected $podsType = 'Google_Service_Apigee_GoogleCloudApigeeV1PodStatus';
   protected $podsDataType = 'array';
   public $revision;
+  protected $routeConflictsType = 'Google_Service_Apigee_GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict';
+  protected $routeConflictsDataType = 'array';
+  public $state;
 
   public function setApiProxy($apiProxy)
   {
@@ -33,14 +39,6 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Deployment extends Google_Collect
   public function getApiProxy()
   {
     return $this->apiProxy;
-  }
-  public function setBasePath($basePath)
-  {
-    $this->basePath = $basePath;
-  }
-  public function getBasePath()
-  {
-    return $this->basePath;
   }
   public function setDeployStartTime($deployStartTime)
   {
@@ -59,14 +57,42 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Deployment extends Google_Collect
     return $this->environment;
   }
   /**
-   * @param Google_Service_Apigee_GoogleCloudApigeeV1PodStatus
+   * @param Google_Service_Apigee_GoogleRpcStatus[]
+   */
+  public function setErrors($errors)
+  {
+    $this->errors = $errors;
+  }
+  /**
+   * @return Google_Service_Apigee_GoogleRpcStatus[]
+   */
+  public function getErrors()
+  {
+    return $this->errors;
+  }
+  /**
+   * @param Google_Service_Apigee_GoogleCloudApigeeV1InstanceDeploymentStatus[]
+   */
+  public function setInstances($instances)
+  {
+    $this->instances = $instances;
+  }
+  /**
+   * @return Google_Service_Apigee_GoogleCloudApigeeV1InstanceDeploymentStatus[]
+   */
+  public function getInstances()
+  {
+    return $this->instances;
+  }
+  /**
+   * @param Google_Service_Apigee_GoogleCloudApigeeV1PodStatus[]
    */
   public function setPods($pods)
   {
     $this->pods = $pods;
   }
   /**
-   * @return Google_Service_Apigee_GoogleCloudApigeeV1PodStatus
+   * @return Google_Service_Apigee_GoogleCloudApigeeV1PodStatus[]
    */
   public function getPods()
   {
@@ -79,5 +105,27 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Deployment extends Google_Collect
   public function getRevision()
   {
     return $this->revision;
+  }
+  /**
+   * @param Google_Service_Apigee_GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict[]
+   */
+  public function setRouteConflicts($routeConflicts)
+  {
+    $this->routeConflicts = $routeConflicts;
+  }
+  /**
+   * @return Google_Service_Apigee_GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict[]
+   */
+  public function getRouteConflicts()
+  {
+    return $this->routeConflicts;
+  }
+  public function setState($state)
+  {
+    $this->state = $state;
+  }
+  public function getState()
+  {
+    return $this->state;
   }
 }

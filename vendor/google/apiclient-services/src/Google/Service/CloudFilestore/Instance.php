@@ -27,6 +27,7 @@ class Google_Service_CloudFilestore_Instance extends Google_Collection
   public $name;
   protected $networksType = 'Google_Service_CloudFilestore_NetworkConfig';
   protected $networksDataType = 'array';
+  public $satisfiesPzs;
   public $state;
   public $statusMessage;
   public $tier;
@@ -56,14 +57,14 @@ class Google_Service_CloudFilestore_Instance extends Google_Collection
     return $this->etag;
   }
   /**
-   * @param Google_Service_CloudFilestore_FileShareConfig
+   * @param Google_Service_CloudFilestore_FileShareConfig[]
    */
   public function setFileShares($fileShares)
   {
     $this->fileShares = $fileShares;
   }
   /**
-   * @return Google_Service_CloudFilestore_FileShareConfig
+   * @return Google_Service_CloudFilestore_FileShareConfig[]
    */
   public function getFileShares()
   {
@@ -86,18 +87,26 @@ class Google_Service_CloudFilestore_Instance extends Google_Collection
     return $this->name;
   }
   /**
-   * @param Google_Service_CloudFilestore_NetworkConfig
+   * @param Google_Service_CloudFilestore_NetworkConfig[]
    */
   public function setNetworks($networks)
   {
     $this->networks = $networks;
   }
   /**
-   * @return Google_Service_CloudFilestore_NetworkConfig
+   * @return Google_Service_CloudFilestore_NetworkConfig[]
    */
   public function getNetworks()
   {
     return $this->networks;
+  }
+  public function setSatisfiesPzs($satisfiesPzs)
+  {
+    $this->satisfiesPzs = $satisfiesPzs;
+  }
+  public function getSatisfiesPzs()
+  {
+    return $this->satisfiesPzs;
   }
   public function setState($state)
   {

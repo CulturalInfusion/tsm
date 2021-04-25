@@ -31,13 +31,13 @@
  */
 class Google_Service_Texttospeech extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $text;
   public $voices;
-  
+
   /**
    * Constructs the internal representation of the Texttospeech service.
    *

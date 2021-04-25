@@ -18,6 +18,7 @@
 class Google_Service_DisplayVideo_InsertionOrderBudgetSegment extends Google_Model
 {
   public $budgetAmountMicros;
+  public $campaignBudgetId;
   protected $dateRangeType = 'Google_Service_DisplayVideo_DateRange';
   protected $dateRangeDataType = '';
   public $description;
@@ -29,6 +30,14 @@ class Google_Service_DisplayVideo_InsertionOrderBudgetSegment extends Google_Mod
   public function getBudgetAmountMicros()
   {
     return $this->budgetAmountMicros;
+  }
+  public function setCampaignBudgetId($campaignBudgetId)
+  {
+    $this->campaignBudgetId = $campaignBudgetId;
+  }
+  public function getCampaignBudgetId()
+  {
+    return $this->campaignBudgetId;
   }
   /**
    * @param Google_Service_DisplayVideo_DateRange

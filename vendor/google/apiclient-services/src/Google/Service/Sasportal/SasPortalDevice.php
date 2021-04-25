@@ -20,8 +20,14 @@ class Google_Service_Sasportal_SasPortalDevice extends Google_Collection
   protected $collection_key = 'grants';
   protected $activeConfigType = 'Google_Service_Sasportal_SasPortalDeviceConfig';
   protected $activeConfigDataType = '';
+  protected $currentChannelsType = 'Google_Service_Sasportal_SasPortalChannelWithScore';
+  protected $currentChannelsDataType = 'array';
+  protected $deviceMetadataType = 'Google_Service_Sasportal_SasPortalDeviceMetadata';
+  protected $deviceMetadataDataType = '';
   public $displayName;
   public $fccId;
+  protected $grantRangeAllowlistsType = 'Google_Service_Sasportal_SasPortalFrequencyRange';
+  protected $grantRangeAllowlistsDataType = 'array';
   protected $grantsType = 'Google_Service_Sasportal_SasPortalDeviceGrant';
   protected $grantsDataType = 'array';
   public $name;
@@ -44,6 +50,34 @@ class Google_Service_Sasportal_SasPortalDevice extends Google_Collection
   {
     return $this->activeConfig;
   }
+  /**
+   * @param Google_Service_Sasportal_SasPortalChannelWithScore[]
+   */
+  public function setCurrentChannels($currentChannels)
+  {
+    $this->currentChannels = $currentChannels;
+  }
+  /**
+   * @return Google_Service_Sasportal_SasPortalChannelWithScore[]
+   */
+  public function getCurrentChannels()
+  {
+    return $this->currentChannels;
+  }
+  /**
+   * @param Google_Service_Sasportal_SasPortalDeviceMetadata
+   */
+  public function setDeviceMetadata(Google_Service_Sasportal_SasPortalDeviceMetadata $deviceMetadata)
+  {
+    $this->deviceMetadata = $deviceMetadata;
+  }
+  /**
+   * @return Google_Service_Sasportal_SasPortalDeviceMetadata
+   */
+  public function getDeviceMetadata()
+  {
+    return $this->deviceMetadata;
+  }
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
@@ -61,14 +95,28 @@ class Google_Service_Sasportal_SasPortalDevice extends Google_Collection
     return $this->fccId;
   }
   /**
-   * @param Google_Service_Sasportal_SasPortalDeviceGrant
+   * @param Google_Service_Sasportal_SasPortalFrequencyRange[]
+   */
+  public function setGrantRangeAllowlists($grantRangeAllowlists)
+  {
+    $this->grantRangeAllowlists = $grantRangeAllowlists;
+  }
+  /**
+   * @return Google_Service_Sasportal_SasPortalFrequencyRange[]
+   */
+  public function getGrantRangeAllowlists()
+  {
+    return $this->grantRangeAllowlists;
+  }
+  /**
+   * @param Google_Service_Sasportal_SasPortalDeviceGrant[]
    */
   public function setGrants($grants)
   {
     $this->grants = $grants;
   }
   /**
-   * @return Google_Service_Sasportal_SasPortalDeviceGrant
+   * @return Google_Service_Sasportal_SasPortalDeviceGrant[]
    */
   public function getGrants()
   {

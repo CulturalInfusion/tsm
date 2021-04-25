@@ -15,23 +15,12 @@
  * the License.
  */
 
-class Google_Service_ServiceManagement_Endpoint extends Google_Collection
+class Google_Service_ServiceManagement_Endpoint extends Google_Model
 {
-  protected $collection_key = 'features';
-  public $aliases;
   public $allowCors;
-  public $features;
   public $name;
   public $target;
 
-  public function setAliases($aliases)
-  {
-    $this->aliases = $aliases;
-  }
-  public function getAliases()
-  {
-    return $this->aliases;
-  }
   public function setAllowCors($allowCors)
   {
     $this->allowCors = $allowCors;
@@ -39,14 +28,6 @@ class Google_Service_ServiceManagement_Endpoint extends Google_Collection
   public function getAllowCors()
   {
     return $this->allowCors;
-  }
-  public function setFeatures($features)
-  {
-    $this->features = $features;
-  }
-  public function getFeatures()
-  {
-    return $this->features;
   }
   public function setName($name)
   {

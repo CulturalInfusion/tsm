@@ -92,7 +92,7 @@ class Google_Service_Container_Resource_ProjectsZonesClustersNodePools extends G
    *
    * @opt_param string name The name (project, location, cluster, node pool id) of
    * the node pool to delete. Specified in the format
-   * 'projects/locations/clusters/nodePools'.
+   * `projects/locations/clusters/nodePools`.
    * @return Google_Service_Container_Operation
    */
   public function delete($projectId, $zone, $clusterId, $nodePoolId, $optParams = array())
@@ -120,7 +120,7 @@ class Google_Service_Container_Resource_ProjectsZonesClustersNodePools extends G
    *
    * @opt_param string name The name (project, location, cluster, node pool id) of
    * the node pool to get. Specified in the format
-   * 'projects/locations/clusters/nodePools'.
+   * `projects/locations/clusters/nodePools`.
    * @return Google_Service_Container_NodePool
    */
   public function get($projectId, $zone, $clusterId, $nodePoolId, $optParams = array())
@@ -147,7 +147,7 @@ class Google_Service_Container_Resource_ProjectsZonesClustersNodePools extends G
    *
    * @opt_param string parent The parent (project, location, cluster id) where the
    * node pools will be listed. Specified in the format
-   * 'projects/locations/clusters'.
+   * `projects/locations/clusters`.
    * @return Google_Service_Container_ListNodePoolsResponse
    */
   public function listProjectsZonesClustersNodePools($projectId, $zone, $clusterId, $optParams = array())
@@ -206,7 +206,9 @@ class Google_Service_Container_Resource_ProjectsZonesClustersNodePools extends G
     return $this->call('setManagement', array($params), "Google_Service_Container_Operation");
   }
   /**
-   * Sets the size for a specific node pool. (nodePools.setSize)
+   * Sets the size for a specific node pool. The new size will be used for all
+   * replicas, including future replicas created by modifying NodePool.locations.
+   * (nodePools.setSize)
    *
    * @param string $projectId Deprecated. The Google Developers Console [project
    * ID or project number](https://support.google.com/cloud/answer/6158840). This

@@ -19,12 +19,14 @@ class Google_Service_PagespeedInsights_PagespeedApiLoadingExperienceV5 extends G
 {
   protected $internal_gapi_mappings = array(
         "initialUrl" => "initial_url",
+        "originFallback" => "origin_fallback",
         "overallCategory" => "overall_category",
   );
   public $id;
   public $initialUrl;
   protected $metricsType = 'Google_Service_PagespeedInsights_UserPageLoadMetricV5';
   protected $metricsDataType = 'map';
+  public $originFallback;
   public $overallCategory;
 
   public function setId($id)
@@ -44,18 +46,26 @@ class Google_Service_PagespeedInsights_PagespeedApiLoadingExperienceV5 extends G
     return $this->initialUrl;
   }
   /**
-   * @param Google_Service_PagespeedInsights_UserPageLoadMetricV5
+   * @param Google_Service_PagespeedInsights_UserPageLoadMetricV5[]
    */
   public function setMetrics($metrics)
   {
     $this->metrics = $metrics;
   }
   /**
-   * @return Google_Service_PagespeedInsights_UserPageLoadMetricV5
+   * @return Google_Service_PagespeedInsights_UserPageLoadMetricV5[]
    */
   public function getMetrics()
   {
     return $this->metrics;
+  }
+  public function setOriginFallback($originFallback)
+  {
+    $this->originFallback = $originFallback;
+  }
+  public function getOriginFallback()
+  {
+    return $this->originFallback;
   }
   public function setOverallCategory($overallCategory)
   {

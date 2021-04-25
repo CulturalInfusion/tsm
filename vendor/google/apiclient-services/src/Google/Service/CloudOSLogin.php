@@ -30,7 +30,7 @@
  */
 class Google_Service_CloudOSLogin extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage your Google Compute Engine resources. */
@@ -40,7 +40,7 @@ class Google_Service_CloudOSLogin extends Google_Service
   public $users;
   public $users_projects;
   public $users_sshPublicKeys;
-  
+
   /**
    * Constructs the internal representation of the CloudOSLogin service.
    *

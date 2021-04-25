@@ -24,8 +24,10 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   protected $availableVersionType = 'Google_Service_DataFusion_Version';
   protected $availableVersionDataType = 'array';
   public $createTime;
+  public $dataprocServiceAccount;
   public $description;
   public $displayName;
+  public $enableRbac;
   public $enableStackdriverLogging;
   public $enableStackdriverMonitoring;
   public $gcsBucket;
@@ -34,25 +36,27 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   protected $networkConfigType = 'Google_Service_DataFusion_NetworkConfig';
   protected $networkConfigDataType = '';
   public $options;
+  public $p4ServiceAccount;
   public $privateInstance;
   public $serviceAccount;
   public $serviceEndpoint;
   public $state;
   public $stateMessage;
+  public $tenantProjectId;
   public $type;
   public $updateTime;
   public $version;
   public $zone;
 
   /**
-   * @param Google_Service_DataFusion_Accelerator
+   * @param Google_Service_DataFusion_Accelerator[]
    */
   public function setAccelerators($accelerators)
   {
     $this->accelerators = $accelerators;
   }
   /**
-   * @return Google_Service_DataFusion_Accelerator
+   * @return Google_Service_DataFusion_Accelerator[]
    */
   public function getAccelerators()
   {
@@ -67,14 +71,14 @@ class Google_Service_DataFusion_Instance extends Google_Collection
     return $this->apiEndpoint;
   }
   /**
-   * @param Google_Service_DataFusion_Version
+   * @param Google_Service_DataFusion_Version[]
    */
   public function setAvailableVersion($availableVersion)
   {
     $this->availableVersion = $availableVersion;
   }
   /**
-   * @return Google_Service_DataFusion_Version
+   * @return Google_Service_DataFusion_Version[]
    */
   public function getAvailableVersion()
   {
@@ -87,6 +91,14 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   public function getCreateTime()
   {
     return $this->createTime;
+  }
+  public function setDataprocServiceAccount($dataprocServiceAccount)
+  {
+    $this->dataprocServiceAccount = $dataprocServiceAccount;
+  }
+  public function getDataprocServiceAccount()
+  {
+    return $this->dataprocServiceAccount;
   }
   public function setDescription($description)
   {
@@ -103,6 +115,14 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+  public function setEnableRbac($enableRbac)
+  {
+    $this->enableRbac = $enableRbac;
+  }
+  public function getEnableRbac()
+  {
+    return $this->enableRbac;
   }
   public function setEnableStackdriverLogging($enableStackdriverLogging)
   {
@@ -166,6 +186,14 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   {
     return $this->options;
   }
+  public function setP4ServiceAccount($p4ServiceAccount)
+  {
+    $this->p4ServiceAccount = $p4ServiceAccount;
+  }
+  public function getP4ServiceAccount()
+  {
+    return $this->p4ServiceAccount;
+  }
   public function setPrivateInstance($privateInstance)
   {
     $this->privateInstance = $privateInstance;
@@ -205,6 +233,14 @@ class Google_Service_DataFusion_Instance extends Google_Collection
   public function getStateMessage()
   {
     return $this->stateMessage;
+  }
+  public function setTenantProjectId($tenantProjectId)
+  {
+    $this->tenantProjectId = $tenantProjectId;
+  }
+  public function getTenantProjectId()
+  {
+    return $this->tenantProjectId;
   }
   public function setType($type)
   {

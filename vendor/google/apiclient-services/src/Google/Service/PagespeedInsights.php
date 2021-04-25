@@ -20,7 +20,7 @@
  *
  * <p>
  * The PageSpeed Insights API lets you analyze the performance of your website
- * with a simple API.  It offers tailored suggestions for how you can optimize
+ * with a simple API. It offers tailored suggestions for how you can optimize
  * your site, and lets you easily integrate PageSpeed Insights analysis into
  * your development tools and workflow.</p>
  *
@@ -38,7 +38,7 @@ class Google_Service_PagespeedInsights extends Google_Service
       "openid";
 
   public $pagespeedapi;
-  
+
   /**
    * Constructs the internal representation of the PagespeedInsights service.
    *
@@ -64,11 +64,12 @@ class Google_Service_PagespeedInsights extends Google_Service
               'path' => 'pagespeedonline/v5/runPagespeed',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'strategy' => array(
+                'url' => array(
                   'location' => 'query',
                   'type' => 'string',
+                  'required' => true,
                 ),
-                'utm_source' => array(
+                'captchaToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -81,7 +82,7 @@ class Google_Service_PagespeedInsights extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'url' => array(
+                'strategy' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -89,7 +90,7 @@ class Google_Service_PagespeedInsights extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'captchaToken' => array(
+                'utm_source' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

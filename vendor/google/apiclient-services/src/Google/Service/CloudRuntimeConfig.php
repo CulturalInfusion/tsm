@@ -33,7 +33,7 @@
  */
 class Google_Service_CloudRuntimeConfig extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Manage your Google Cloud Platform services' runtime configuration. */
@@ -41,7 +41,7 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
       "https://www.googleapis.com/auth/cloudruntimeconfig";
 
   public $operations;
-  
+
   /**
    * Constructs the internal representation of the CloudRuntimeConfig service.
    *
@@ -92,7 +92,7 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -100,7 +100,7 @@ class Google_Service_CloudRuntimeConfig extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'filter' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

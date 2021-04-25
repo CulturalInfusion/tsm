@@ -19,7 +19,8 @@
  * Service definition for IAMCredentials (v1).
  *
  * <p>
- * Creates short-lived, limited-privilege credentials for IAM service accounts.</p>
+ * Creates short-lived credentials for impersonating IAM service accounts. To
+ * enable this API, you must enable the IAM API (iam.googleapis.com).</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -30,12 +31,12 @@
  */
 class Google_Service_IAMCredentials extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_serviceAccounts;
-  
+
   /**
    * Constructs the internal representation of the IAMCredentials service.
    *

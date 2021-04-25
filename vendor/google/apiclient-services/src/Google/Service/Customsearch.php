@@ -33,7 +33,7 @@ class Google_Service_Customsearch extends Google_Service
 
 
   public $cse;
-  public $siterestrict;
+  public $cse_siterestrict;
   
   /**
    * Constructs the internal representation of the Customsearch service.
@@ -60,23 +60,7 @@ class Google_Service_Customsearch extends Google_Service
               'path' => 'customsearch/v1',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'siteSearch' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'excludeTerms' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'exactTerms' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'num' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'c2coff' => array(
+                'rights' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -84,11 +68,27 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'filter' => array(
+                'excludeTerms' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'highRange' => array(
+                'num' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'searchType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'dateRestrict' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'relatedSite' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -96,11 +96,35 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'hl' => array(
+                'c2coff' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'googlehost' => array(
+                'siteSearch' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'highRange' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'exactTerms' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'linkSite' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'cx' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'siteSearchFilter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'lr' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -112,23 +136,7 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'orTerms' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'dateRestrict' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'q' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'rights' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'cx' => array(
+                'imgColorType' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -136,15 +144,11 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'lr' => array(
+                'googlehost' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'imgColorType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'imgDominantColor' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -152,27 +156,19 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'siteSearchFilter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'start' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'sort' => array(
+                'q' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'linkSite' => array(
+                'orTerms' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'hq' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'searchType' => array(
+                'imgDominantColor' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -180,7 +176,11 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'relatedSite' => array(
+                'hq' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hl' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -189,7 +189,7 @@ class Google_Service_Customsearch extends Google_Service
           )
         )
     );
-    $this->siterestrict = new Google_Service_Customsearch_Resource_Siterestrict(
+    $this->cse_siterestrict = new Google_Service_Customsearch_Resource_CseSiterestrict(
         $this,
         $this->serviceName,
         'siterestrict',
@@ -199,7 +199,43 @@ class Google_Service_Customsearch extends Google_Service
               'path' => 'customsearch/v1/siterestrict',
               'httpMethod' => 'GET',
               'parameters' => array(
+                'siteSearch' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'cx' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'safe' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'imgColorType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'dateRestrict' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'sort' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'imgDominantColor' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'searchType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'siteSearchFilter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -211,67 +247,7 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'imgDominantColor' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'imgColorType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'safe' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'siteSearchFilter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'start' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'sort' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'linkSite' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'hq' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'searchType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'fileType' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'relatedSite' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'siteSearch' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'excludeTerms' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'exactTerms' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'num' => array(
-                  'location' => 'query',
-                  'type' => 'integer',
-                ),
-                'c2coff' => array(
+                'rights' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -279,31 +255,19 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'filter' => array(
+                'q' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'highRange' => array(
+                'num' => array(
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'integer',
                 ),
                 'gl' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'hl' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'googlehost' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'cr' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'imgSize' => array(
+                'c2coff' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -311,15 +275,51 @@ class Google_Service_Customsearch extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'dateRestrict' => array(
+                'exactTerms' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'rights' => array(
+                'excludeTerms' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'q' => array(
+                'imgSize' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'cr' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'googlehost' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'relatedSite' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'fileType' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'start' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'highRange' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'linkSite' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hl' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'hq' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

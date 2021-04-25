@@ -18,6 +18,8 @@
 class Google_Service_CloudSearch_SearchRequest extends Google_Collection
 {
   protected $collection_key = 'facetOptions';
+  protected $contextAttributesType = 'Google_Service_CloudSearch_ContextAttribute';
+  protected $contextAttributesDataType = 'array';
   protected $dataSourceRestrictionsType = 'Google_Service_CloudSearch_DataSourceRestriction';
   protected $dataSourceRestrictionsDataType = 'array';
   protected $facetOptionsType = 'Google_Service_CloudSearch_FacetOptions';
@@ -33,28 +35,42 @@ class Google_Service_CloudSearch_SearchRequest extends Google_Collection
   public $start;
 
   /**
-   * @param Google_Service_CloudSearch_DataSourceRestriction
+   * @param Google_Service_CloudSearch_ContextAttribute[]
+   */
+  public function setContextAttributes($contextAttributes)
+  {
+    $this->contextAttributes = $contextAttributes;
+  }
+  /**
+   * @return Google_Service_CloudSearch_ContextAttribute[]
+   */
+  public function getContextAttributes()
+  {
+    return $this->contextAttributes;
+  }
+  /**
+   * @param Google_Service_CloudSearch_DataSourceRestriction[]
    */
   public function setDataSourceRestrictions($dataSourceRestrictions)
   {
     $this->dataSourceRestrictions = $dataSourceRestrictions;
   }
   /**
-   * @return Google_Service_CloudSearch_DataSourceRestriction
+   * @return Google_Service_CloudSearch_DataSourceRestriction[]
    */
   public function getDataSourceRestrictions()
   {
     return $this->dataSourceRestrictions;
   }
   /**
-   * @param Google_Service_CloudSearch_FacetOptions
+   * @param Google_Service_CloudSearch_FacetOptions[]
    */
   public function setFacetOptions($facetOptions)
   {
     $this->facetOptions = $facetOptions;
   }
   /**
-   * @return Google_Service_CloudSearch_FacetOptions
+   * @return Google_Service_CloudSearch_FacetOptions[]
    */
   public function getFacetOptions()
   {

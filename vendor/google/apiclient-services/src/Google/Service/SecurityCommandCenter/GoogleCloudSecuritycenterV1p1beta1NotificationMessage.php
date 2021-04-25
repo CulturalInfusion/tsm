@@ -20,8 +20,8 @@ class Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Not
   protected $findingType = 'Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Finding';
   protected $findingDataType = '';
   public $notificationConfigName;
-  protected $temporalAssetType = 'Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1TemporalAsset';
-  protected $temporalAssetDataType = '';
+  protected $resourceType = 'Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Resource';
+  protected $resourceDataType = '';
 
   /**
    * @param Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Finding
@@ -46,17 +46,17 @@ class Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Not
     return $this->notificationConfigName;
   }
   /**
-   * @param Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1TemporalAsset
+   * @param Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Resource
    */
-  public function setTemporalAsset(Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1TemporalAsset $temporalAsset)
+  public function setResource(Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Resource $resource)
   {
-    $this->temporalAsset = $temporalAsset;
+    $this->resource = $resource;
   }
   /**
-   * @return Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1TemporalAsset
+   * @return Google_Service_SecurityCommandCenter_GoogleCloudSecuritycenterV1p1beta1Resource
    */
-  public function getTemporalAsset()
+  public function getResource()
   {
-    return $this->temporalAsset;
+    return $this->resource;
   }
 }

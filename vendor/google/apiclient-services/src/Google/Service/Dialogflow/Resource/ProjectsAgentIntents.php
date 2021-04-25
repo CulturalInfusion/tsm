@@ -26,9 +26,7 @@
 class Google_Service_Dialogflow_Resource_ProjectsAgentIntents extends Google_Service_Resource
 {
   /**
-   * Deletes intents in the specified agent.
-   *
-   * Operation  (intents.batchDelete)
+   * Deletes intents in the specified agent. Operation  (intents.batchDelete)
    *
    * @param string $parent Required. The name of the agent to delete all entities
    * types for. Format: `projects//agent`.
@@ -43,9 +41,8 @@ class Google_Service_Dialogflow_Resource_ProjectsAgentIntents extends Google_Ser
     return $this->call('batchDelete', array($params), "Google_Service_Dialogflow_GoogleLongrunningOperation");
   }
   /**
-   * Updates/Creates multiple intents in the specified agent.
-   *
-   * Operation  (intents.batchUpdate)
+   * Updates/Creates multiple intents in the specified agent. Operation
+   * (intents.batchUpdate)
    *
    * @param string $parent Required. The name of the agent to update or create
    * intents in. Format: `projects//agent`.
@@ -128,8 +125,6 @@ class Google_Service_Dialogflow_Resource_ProjectsAgentIntents extends Google_Ser
    * `projects//agent`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Optional. The maximum number of items to return in a
-   * single page. By default 100 and at most 1000.
    * @opt_param string intentView Optional. The resource view to apply to the
    * returned intent.
    * @opt_param string languageCode Optional. The language used to access
@@ -137,6 +132,8 @@ class Google_Service_Dialogflow_Resource_ProjectsAgentIntents extends Google_Ser
    * used. For more information, see [Multilingual intent and entity
    * data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
    * entity).
+   * @opt_param int pageSize Optional. The maximum number of items to return in a
+   * single page. By default 100 and at most 1000.
    * @opt_param string pageToken Optional. The next_page_token value returned from
    * a previous list request.
    * @return Google_Service_Dialogflow_GoogleCloudDialogflowV2ListIntentsResponse

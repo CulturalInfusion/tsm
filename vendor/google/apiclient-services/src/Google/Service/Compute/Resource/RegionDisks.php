@@ -132,6 +132,24 @@ class Google_Service_Compute_Resource_RegionDisks extends Google_Service_Resourc
     return $this->call('get', array($params), "Google_Service_Compute_Disk");
   }
   /**
+   * Gets the access control policy for a resource. May be empty if no such policy
+   * or resource exists. (regionDisks.getIamPolicy)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int optionsRequestedPolicyVersion Requested IAM Policy version.
+   * @return Google_Service_Compute_Policy
+   */
+  public function getIamPolicy($project, $region, $resource, $optParams = array())
+  {
+    $params = array('project' => $project, 'region' => $region, 'resource' => $resource);
+    $params = array_merge($params, $optParams);
+    return $this->call('getIamPolicy', array($params), "Google_Service_Compute_Policy");
+  }
+  /**
    * Creates a persistent regional disk in the specified project using the data
    * included in the request. (regionDisks.insert)
    *
@@ -152,7 +170,8 @@ class Google_Service_Compute_Resource_RegionDisks extends Google_Service_Resourc
    *
    * The request ID must be a valid UUID with the exception that zero UUID is not
    * supported (00000000-0000-0000-0000-000000000000).
-   * @opt_param string sourceImage Optional. Source image to restore onto a disk.
+   * @opt_param string sourceImage Source image to restore onto a disk. This field
+   * is optional.
    * @return Google_Service_Compute_Operation
    */
   public function insert($project, $region, Google_Service_Compute_Disk $postBody, $optParams = array())
@@ -207,6 +226,9 @@ class Google_Service_Compute_Resource_RegionDisks extends Google_Service_Resourc
    * @opt_param string pageToken Specifies a page token to use. Set `pageToken` to
    * the `nextPageToken` returned by a previous list request to get the next page
    * of results.
+   * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
+   * which provides partial results in case of failure. The default value is
+   * false.
    * @return Google_Service_Compute_DiskList
    */
   public function listRegionDisks($project, $region, $optParams = array())
@@ -273,6 +295,23 @@ class Google_Service_Compute_Resource_RegionDisks extends Google_Service_Resourc
     $params = array('project' => $project, 'region' => $region, 'disk' => $disk, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('resize', array($params), "Google_Service_Compute_Operation");
+  }
+  /**
+   * Sets the access control policy on the specified resource. Replaces any
+   * existing policy. (regionDisks.setIamPolicy)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param string $resource Name or id of the resource for this request.
+   * @param Google_Service_Compute_RegionSetPolicyRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Compute_Policy
+   */
+  public function setIamPolicy($project, $region, $resource, Google_Service_Compute_RegionSetPolicyRequest $postBody, $optParams = array())
+  {
+    $params = array('project' => $project, 'region' => $region, 'resource' => $resource, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('setIamPolicy', array($params), "Google_Service_Compute_Policy");
   }
   /**
    * Sets the labels on the target regional disk. (regionDisks.setLabels)

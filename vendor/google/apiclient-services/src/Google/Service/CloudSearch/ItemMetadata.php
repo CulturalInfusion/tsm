@@ -20,6 +20,8 @@ class Google_Service_CloudSearch_ItemMetadata extends Google_Collection
   protected $collection_key = 'keywords';
   public $containerName;
   public $contentLanguage;
+  protected $contextAttributesType = 'Google_Service_CloudSearch_ContextAttribute';
+  protected $contextAttributesDataType = 'array';
   public $createTime;
   public $hash;
   protected $interactionsType = 'Google_Service_CloudSearch_Interaction';
@@ -49,6 +51,20 @@ class Google_Service_CloudSearch_ItemMetadata extends Google_Collection
   {
     return $this->contentLanguage;
   }
+  /**
+   * @param Google_Service_CloudSearch_ContextAttribute[]
+   */
+  public function setContextAttributes($contextAttributes)
+  {
+    $this->contextAttributes = $contextAttributes;
+  }
+  /**
+   * @return Google_Service_CloudSearch_ContextAttribute[]
+   */
+  public function getContextAttributes()
+  {
+    return $this->contextAttributes;
+  }
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
@@ -66,14 +82,14 @@ class Google_Service_CloudSearch_ItemMetadata extends Google_Collection
     return $this->hash;
   }
   /**
-   * @param Google_Service_CloudSearch_Interaction
+   * @param Google_Service_CloudSearch_Interaction[]
    */
   public function setInteractions($interactions)
   {
     $this->interactions = $interactions;
   }
   /**
-   * @return Google_Service_CloudSearch_Interaction
+   * @return Google_Service_CloudSearch_Interaction[]
    */
   public function getInteractions()
   {

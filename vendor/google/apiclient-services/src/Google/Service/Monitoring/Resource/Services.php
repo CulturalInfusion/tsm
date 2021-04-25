@@ -28,8 +28,9 @@ class Google_Service_Monitoring_Resource_Services extends Google_Service_Resourc
   /**
    * Create a Service. (services.create)
    *
-   * @param string $parent Required. Resource name of the parent workspace. The
-   * format is: projects/[PROJECT_ID_OR_NUMBER]
+   * @param string $parent Required. Resource name
+   * (https://cloud.google.com/monitoring/api/v3#project_name) of the parent
+   * workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
    * @param Google_Service_Monitoring_Service $postBody
    * @param array $optParams Optional parameters.
    *
@@ -76,24 +77,30 @@ class Google_Service_Monitoring_Resource_Services extends Google_Service_Resourc
    * List Services for this workspace. (services.listServices)
    *
    * @param string $parent Required. Resource name of the parent containing the
-   * listed services, either a project or a Monitoring Workspace. The formats are:
-   * projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
+   * listed services, either a project
+   * (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring
+   * Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER]
+   * workspaces/[HOST_PROJECT_ID_OR_NUMBER]
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter A filter specifying what Services to return. The
    * filter currently supports the following fields: - `identifier_case` -
-   * `app_engine.module_id` - `cloud_endpoints.service` - `cluster_istio.location`
-   * - `cluster_istio.cluster_name` - `cluster_istio.service_namespace` -
-   * `cluster_istio.service_name` identifier_case refers to which option in the
-   * identifier oneof is populated. For example, the filter identifier_case =
-   * "CUSTOM" would match all services with a value for the custom field. Valid
-   * options are "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", and "CLUSTER_ISTIO".
+   * `app_engine.module_id` - `cloud_endpoints.service` (reserved for future use)
+   * - `mesh_istio.mesh_uid` - `mesh_istio.service_namespace` -
+   * `mesh_istio.service_name` - `cluster_istio.location` (deprecated) -
+   * `cluster_istio.cluster_name` (deprecated) - `cluster_istio.service_namespace`
+   * (deprecated) - `cluster_istio.service_name` (deprecated) identifier_case
+   * refers to which option in the identifier oneof is populated. For example, the
+   * filter identifier_case = "CUSTOM" would match all services with a value for
+   * the custom field. Valid options are "CUSTOM", "APP_ENGINE", "MESH_ISTIO",
+   * plus "CLUSTER_ISTIO" (deprecated) and "CLOUD_ENDPOINTS" (reserved for future
+   * use).
+   * @opt_param int pageSize A non-negative number that is the maximum number of
+   * results to return. When 0, use default page size.
    * @opt_param string pageToken If this field is not empty then it must contain
    * the nextPageToken value returned by a previous call to this method. Using
    * this field causes the method to return additional results from the previous
    * method call.
-   * @opt_param int pageSize A non-negative number that is the maximum number of
-   * results to return. When 0, use default page size.
    * @return Google_Service_Monitoring_ListServicesResponse
    */
   public function listServices($parent, $optParams = array())

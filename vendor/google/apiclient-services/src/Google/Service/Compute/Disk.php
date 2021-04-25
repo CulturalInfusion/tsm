@@ -32,14 +32,19 @@ class Google_Service_Compute_Disk extends Google_Collection
   public $lastDetachTimestamp;
   public $licenseCodes;
   public $licenses;
+  public $locationHint;
   public $name;
   public $options;
   public $physicalBlockSizeBytes;
+  public $provisionedIops;
   public $region;
   public $replicaZones;
   public $resourcePolicies;
+  public $satisfiesPzs;
   public $selfLink;
   public $sizeGb;
+  public $sourceDisk;
+  public $sourceDiskId;
   public $sourceImage;
   protected $sourceImageEncryptionKeyType = 'Google_Service_Compute_CustomerEncryptionKey';
   protected $sourceImageEncryptionKeyDataType = '';
@@ -48,6 +53,7 @@ class Google_Service_Compute_Disk extends Google_Collection
   protected $sourceSnapshotEncryptionKeyType = 'Google_Service_Compute_CustomerEncryptionKey';
   protected $sourceSnapshotEncryptionKeyDataType = '';
   public $sourceSnapshotId;
+  public $sourceStorageObject;
   public $status;
   public $type;
   public $users;
@@ -84,14 +90,14 @@ class Google_Service_Compute_Disk extends Google_Collection
     return $this->diskEncryptionKey;
   }
   /**
-   * @param Google_Service_Compute_GuestOsFeature
+   * @param Google_Service_Compute_GuestOsFeature[]
    */
   public function setGuestOsFeatures($guestOsFeatures)
   {
     $this->guestOsFeatures = $guestOsFeatures;
   }
   /**
-   * @return Google_Service_Compute_GuestOsFeature
+   * @return Google_Service_Compute_GuestOsFeature[]
    */
   public function getGuestOsFeatures()
   {
@@ -161,6 +167,14 @@ class Google_Service_Compute_Disk extends Google_Collection
   {
     return $this->licenses;
   }
+  public function setLocationHint($locationHint)
+  {
+    $this->locationHint = $locationHint;
+  }
+  public function getLocationHint()
+  {
+    return $this->locationHint;
+  }
   public function setName($name)
   {
     $this->name = $name;
@@ -184,6 +198,14 @@ class Google_Service_Compute_Disk extends Google_Collection
   public function getPhysicalBlockSizeBytes()
   {
     return $this->physicalBlockSizeBytes;
+  }
+  public function setProvisionedIops($provisionedIops)
+  {
+    $this->provisionedIops = $provisionedIops;
+  }
+  public function getProvisionedIops()
+  {
+    return $this->provisionedIops;
   }
   public function setRegion($region)
   {
@@ -209,6 +231,14 @@ class Google_Service_Compute_Disk extends Google_Collection
   {
     return $this->resourcePolicies;
   }
+  public function setSatisfiesPzs($satisfiesPzs)
+  {
+    $this->satisfiesPzs = $satisfiesPzs;
+  }
+  public function getSatisfiesPzs()
+  {
+    return $this->satisfiesPzs;
+  }
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
@@ -224,6 +254,22 @@ class Google_Service_Compute_Disk extends Google_Collection
   public function getSizeGb()
   {
     return $this->sizeGb;
+  }
+  public function setSourceDisk($sourceDisk)
+  {
+    $this->sourceDisk = $sourceDisk;
+  }
+  public function getSourceDisk()
+  {
+    return $this->sourceDisk;
+  }
+  public function setSourceDiskId($sourceDiskId)
+  {
+    $this->sourceDiskId = $sourceDiskId;
+  }
+  public function getSourceDiskId()
+  {
+    return $this->sourceDiskId;
   }
   public function setSourceImage($sourceImage)
   {
@@ -284,6 +330,14 @@ class Google_Service_Compute_Disk extends Google_Collection
   public function getSourceSnapshotId()
   {
     return $this->sourceSnapshotId;
+  }
+  public function setSourceStorageObject($sourceStorageObject)
+  {
+    $this->sourceStorageObject = $sourceStorageObject;
+  }
+  public function getSourceStorageObject()
+  {
+    return $this->sourceStorageObject;
   }
   public function setStatus($status)
   {

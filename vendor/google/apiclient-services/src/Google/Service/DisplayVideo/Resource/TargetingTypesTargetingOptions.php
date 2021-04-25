@@ -54,31 +54,31 @@ class Google_Service_DisplayVideo_Resource_TargetingTypesTargetingOptions extend
    *
    * @opt_param string advertiserId Required. The Advertiser this request is being
    * made in the context of.
-   * @opt_param string orderBy Field by which to sort the list. Acceptable values
-   * are:
-   *
-   * * `targetingOptionId` (default)
-   *
-   * The default sorting order is ascending. To specify descending order for a
-   * field, a suffix "desc" should be added to the field name. Example:
-   * `targetingOptionId desc`.
    * @opt_param string filter Allows filtering by targeting option properties.
-   *
-   * Supported syntax:
-   *
-   * * Filter expressions are made up of one or more restrictions. * Restrictions
-   * can be combined by `OR` logical operators. * A restriction has the form of
-   * `{field} {operator} {value}`. * The operator must be "=" (equal sign). *
-   * Supported fields:     - `targetingOptionId`
-   *
-   * The length of this field should be no more than 500 characters.
+   * Supported syntax: * Filter expressions are made up of one or more
+   * restrictions. * Restrictions can be combined by `OR` logical operators. * A
+   * restriction has the form of `{field} {operator} {value}`. * The operator must
+   * be "=" (equal sign). * Supported fields: - `carrierAndIspDetails.type` -
+   * `geoRegionDetails.geoRegionType` - `targetingOptionId` Examples: * All `GEO
+   * REGION` targeting options that belong to sub type `GEO_REGION_TYPE_COUNTRY`
+   * or `GEO_REGION_TYPE_STATE`:
+   * `geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR
+   * geoRegionDetails.geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND
+   * ISP` targeting options that belong to sub type
+   * `CARRIER_AND_ISP_TYPE_CARRIER`:
+   * `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length of
+   * this field should be no more than 500 characters.
+   * @opt_param string orderBy Field by which to sort the list. Acceptable values
+   * are: * `targetingOptionId` (default) The default sorting order is ascending.
+   * To specify descending order for a field, a suffix "desc" should be added to
+   * the field name. Example: `targetingOptionId desc`.
+   * @opt_param int pageSize Requested page size. Must be between `1` and `100`.
+   * If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+   * if an invalid value is specified.
    * @opt_param string pageToken A token identifying a page of results the server
    * should return. Typically, this is the value of next_page_token returned from
    * the previous call to `ListTargetingOptions` method. If not specified, the
    * first page of results will be returned.
-   * @opt_param int pageSize Requested page size. Must be between `1` and `100`.
-   * If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-   * if an invalid value is specified.
    * @return Google_Service_DisplayVideo_ListTargetingOptionsResponse
    */
   public function listTargetingTypesTargetingOptions($targetingType, $optParams = array())
@@ -86,5 +86,21 @@ class Google_Service_DisplayVideo_Resource_TargetingTypesTargetingOptions extend
     $params = array('targetingType' => $targetingType);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_DisplayVideo_ListTargetingOptionsResponse");
+  }
+  /**
+   * Searches for targeting options of a given type based on the given search
+   * terms. (targetingOptions.search)
+   *
+   * @param string $targetingType Required. The type of targeting options to
+   * retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION`
+   * @param Google_Service_DisplayVideo_SearchTargetingOptionsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_DisplayVideo_SearchTargetingOptionsResponse
+   */
+  public function search($targetingType, Google_Service_DisplayVideo_SearchTargetingOptionsRequest $postBody, $optParams = array())
+  {
+    $params = array('targetingType' => $targetingType, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('search', array($params), "Google_Service_DisplayVideo_SearchTargetingOptionsResponse");
   }
 }
