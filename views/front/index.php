@@ -9,9 +9,6 @@
     <table>
         <tr>
             <th>
-                ID
-            </th>
-            <th>
                 Username
             </th>
             <th class="col-sm-0">
@@ -29,10 +26,6 @@
             $student = get_userdata($student->ID);
             ?>
             <tr>
-                <td>
-                    <?php
-                    echo $student->ID; ?>
-                </td>
                 <td>
                     <?php
                     echo $student->user_login; ?>
