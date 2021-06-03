@@ -9,6 +9,9 @@
     <table>
         <tr>
             <th>
+                #
+            </th>
+            <th>
                 Username
             </th>
             <th class="col-sm-0">
@@ -22,10 +25,14 @@
             </th>
         </tr>
         <?php
-        foreach ($students as $student) {
+        foreach ($students as $key => $student) {
             $student = get_userdata($student->ID);
             ?>
             <tr>
+                <td>
+                    <?php
+                    echo $key + 1; ?>
+                </td>
                 <td>
                     <?php
                     echo $student->user_login; ?>
@@ -44,7 +51,7 @@
                         <?php wp_nonce_field('delete_student'); ?>
                         <input type="hidden" name="task" value="destroy">
                         <input type="hidden" name="student_ID" value="<?php echo $student->ID ?>">
-                        <button class="button" onclick="return confirmAction();">Delete</a>
+                        <button class="button" onclick="return confirmAction();">Delete</button>
                     </form>
                 </td>
             </tr>
