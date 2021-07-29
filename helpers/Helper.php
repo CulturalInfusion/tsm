@@ -8,6 +8,7 @@ class Helper
     public $table;
     public $feature_table;
     public $report_table;
+    public $student_info_table;
     protected $user_table;
     protected $user_membership_level_table;
     protected $tsm_front_notification_key;
@@ -28,6 +29,7 @@ class Helper
         $this->table = $wpdb->prefix . "teacher_students";
         $this->feature_table = $wpdb->prefix . "teacher_features";
         $this->report_table = $wpdb->prefix . "tsm_reports";
+        $this->student_info_table = $wpdb->prefix . "tsm_student_info";
         $this->user_table = $wpdb->prefix . "users";
         $this->user_membership_level_table = $wpdb->prefix . "pmpro_memberships_users";
         $this->tsm_front_notification_key = 'tsm_front_notification';
@@ -235,6 +237,63 @@ class Helper
             $this->add_notification('error', $row . 'Sorry, you\'ve reached your limit. Upgrade your plan to add new members.', $this->tsm_front_notification_key);
         }
         return -3;
+    }
+
+    /**
+     * Student Info.
+     * 
+     * @param  int  $ID
+     * @param  array  $course
+     */
+    public function update_student_info($ID, $course)
+    {
+        global $wpdb;
+        $query = "SELECT COUNT(*) AS `count` FROM $this->student_info_table WHERE `student_ID` = %d";
+        $result = $wpdb->get_results($wpdb->prepare($query, $ID));
+        $count = $result[0]->count;
+        if ($count > 0) {
+            $wpdb->update(
+                $this->student_info_table,
+                array(
+                    'course' => json_encode($course)
+                ),
+                array(
+                    'student_ID' => $ID
+                ),
+                array(
+                    '%s'
+                ),
+                array(
+                    '%d'
+                )
+            );
+        } else {
+            $wpdb->insert(
+                $this->student_info_table,
+                array(
+                    'student_ID' => $ID,
+                    'course' => json_encode($course)
+                ),
+                array(
+                    '%d',
+                    '%s'
+                )
+            );
+        }
+    }
+
+    /**
+     * Student Info.
+     * 
+     * @param  int  $ID
+     * @param  array  $course
+     */
+    public function get_student_info($ID)
+    {
+        global $wpdb;
+        $query = "SELECT * FROM $this->student_info_table WHERE `student_ID` = %d";
+        $result = $wpdb->get_results($wpdb->prepare($query, $ID));
+        return (isset($result[0])) ? $result[0] : false;
     }
 
     /**

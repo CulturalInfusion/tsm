@@ -67,6 +67,11 @@ class FrontController extends Helper
                                         require_once(__DIR__ . '/../vendor/autoload.php');
                                         $client = $this->get_google_client($_SESSION['tsm_google_auth_callback_code']);
                                         $service = new Google_Service_Classroom($client);
+                                        $courseInfo = $service->courses->get($courseId);
+                                        $course = [
+                                            'id' => $courseId,
+                                            'name' => $courseInfo->name
+                                        ];
                                         $row = 0;
                                         $successful = 0;
                                         $failed = 0;
@@ -74,13 +79,14 @@ class FrontController extends Helper
                                         foreach ($students as $student) {
                                             $profile = $student->getProfile();
                                             $email = $profile->emailAddress;
-                                            $first_name = $profile->name->givenName;
-                                            $last_name = $profile->name->familyName;
+                                            $first_name = $profile->name->givenName ?? 'NO_FIRST_NAME';
+                                            $last_name = $profile->name->familyName ?? 'NO_LAST_NAME';
                                             $username = $email;
                                             $password = $email;
 
                                             $student_ID = $this->add_student($this->teacher->ID, $first_name, $last_name, $username, $password, $email, ['duplicate_email'], true);
                                             if ($student_ID > 0) {
+                                                $this->update_student_info($student_ID, $course);
                                                 $successful++;
                                             } else if ($student_ID < 0) {
                                                 $failed++;
@@ -90,9 +96,6 @@ class FrontController extends Helper
                                         unset($_SESSION['tsm_google_auth_callback_code']);
                                         $this->add_notification('success', 'Import process is done. Successful: ' . $successful . ', ' . 'Failed: ' . $failed, $this->tsm_front_notification_key);
                                         $this->redirect($this->base_url);
-
-                                        // $currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                                        // $this->redirect(strtok($currentUrl, '?'));
                                     } catch (Exception $e) {
                                         $e->getMessage();
                                     }

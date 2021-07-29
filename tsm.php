@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.13.4
+ * Version:           1.14.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+
@@ -38,7 +38,6 @@ function tsm_install()
     $charset_collate = $wpdb->get_charset_collate();
 
     $teacher_students_table = $wpdb->prefix . "teacher_students";
-
     $sql = "CREATE TABLE IF NOT EXISTS $teacher_students_table (
 		`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 		`created_at` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -51,7 +50,6 @@ function tsm_install()
     dbDelta($sql);
 
     $feature_table = $wpdb->prefix . "teacher_features";
-
     $sql = "CREATE TABLE IF NOT EXISTS $feature_table (
 		`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 		`created_at` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -64,7 +62,6 @@ function tsm_install()
     dbDelta($sql);
 
     $report_table = $wpdb->prefix . "tsm_reports";
-
     $sql = "CREATE TABLE IF NOT EXISTS $report_table (
 		`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
         `created_at` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -74,7 +71,15 @@ function tsm_install()
     ) $charset_collate;";
     dbDelta($sql);
 
-    add_option('db_version', '1.0');
+    $student_info_table = $wpdb->prefix . "tsm_student_info";
+    $sql = "CREATE TABLE IF NOT EXISTS $student_info_table (
+		`student_ID` BIGINT(20) UNSIGNED NOT NULL,
+        `course` JSON,
+		PRIMARY KEY  (`student_ID`)
+    ) $charset_collate;";
+    dbDelta($sql);
+
+    add_option('db_version', '2.0');
 
     // Update max allowance for each teacher
     $args = array(

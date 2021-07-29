@@ -18,7 +18,10 @@
                 Name
             </th>
             <th class="col-sm-0 email-col">
-                User Email
+                Email
+            </th>
+            <th class="col-sm-0 email-col">
+                Course
             </th>
             <th>
                 Operations
@@ -27,6 +30,7 @@
         <?php
         foreach ($students as $key => $student) {
             $student = get_userdata($student->ID);
+            $student_info = $this->get_student_info($student->ID);
             ?>
             <tr>
                 <td>
@@ -44,6 +48,14 @@
                 <td class="col-sm-0 email-col">
                     <?php
                     echo $student->user_email; ?>
+                </td>
+                <td class="col-sm-0 email-col">
+                    <?php
+                    if ($student_info) {
+                        $course = json_decode($student_info->course);
+                        echo $course->name;
+                    }
+                    ?>
                 </td>
                 <td class="text-center">
                     <a class="button my-10" href="<?php echo $this->add_parameters($this->base_url, 'view=edit&student_ID=' . $student->ID) ?>">Edit</a>
