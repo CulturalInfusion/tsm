@@ -1,11 +1,17 @@
 {
-  "updateTime": "2021-04-20T19:33:51.577525Z",
   "sources": [
+    {
+      "git": {
+        "name": ".",
+        "remote": "https://github.com/googleapis/google-api-php-client-services.git",
+        "sha": "b03655385f0752502d5e6d5a745a1c010411bdd4"
+      }
+    },
     {
       "git": {
         "name": "discovery-artifact-manager",
         "remote": "https://github.com/googleapis/discovery-artifact-manager.git",
-        "sha": "ac5b2c9734fe63a55382d76a38ee775d72431348"
+        "sha": "3c082abf6b1cd81a24665a9175de6f25c2bd461b"
       }
     }
   ]

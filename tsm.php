@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.14.0
+ * Version:           1.15.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+

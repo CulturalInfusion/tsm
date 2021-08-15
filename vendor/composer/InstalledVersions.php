@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '24e6a96c1865a5169abee8bb94d9e5fdbca5d9e9',
+    'reference' => '21d8fb4edb4d911c46686adfb0616ca09728b31a',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,43 +31,43 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '24e6a96c1865a5169abee8bb94d9e5fdbca5d9e9',
+      'reference' => '21d8fb4edb4d911c46686adfb0616ca09728b31a',
     ),
     'firebase/php-jwt' => 
     array (
-      'pretty_version' => 'v5.2.1',
-      'version' => '5.2.1.0',
+      'pretty_version' => 'v5.4.0',
+      'version' => '5.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f42c9110abe98dd6cfe9053c49bc86acc70b2d23',
+      'reference' => 'd2113d9b2e0e349796e72d2a63cf9319100382d2',
     ),
     'google/apiclient' => 
     array (
-      'pretty_version' => 'v2.9.1',
-      'version' => '2.9.1.0',
+      'pretty_version' => 'v2.10.1',
+      'version' => '2.10.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2fb6e702aca5d68203fa737f89f6f774022494c6',
+      'reference' => '11871e94006ce7a419bb6124d51b6f9ace3f679b',
     ),
     'google/apiclient-services' => 
     array (
-      'pretty_version' => 'v0.170.0',
-      'version' => '0.170.0.0',
+      'pretty_version' => 'v0.207.0',
+      'version' => '0.207.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b45ddc3d82b2c8f328d869d55db88c1885d898ee',
+      'reference' => 'bd88717a5526f0db721e8f4309ef06d142894844',
     ),
     'google/auth' => 
     array (
-      'pretty_version' => 'v1.15.1',
-      'version' => '1.15.1.0',
+      'pretty_version' => 'v1.16.0',
+      'version' => '1.16.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4e0c9367719df9703e96f5ad613041b87742471c',
+      'reference' => 'c747738d2dd450f541f09f26510198fbedd1c8a0',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -89,21 +89,21 @@ private static $installed = array (
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.8.1',
-      'version' => '1.8.1.0',
+      'pretty_version' => '1.8.2',
+      'version' => '1.8.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '35ea11d335fd638b5882ff1725228b3d35496ab1',
+      'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
     ),
     'monolog/monolog' => 
     array (
-      'pretty_version' => '2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => '2.3.2',
+      'version' => '2.3.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+      'reference' => '71312564759a7db5b789296369c1a264efc43aad',
     ),
     'paragonie/constant_time_encoding' => 
     array (
@@ -125,12 +125,12 @@ private static $installed = array (
     ),
     'phpseclib/phpseclib' => 
     array (
-      'pretty_version' => '3.0.8',
-      'version' => '3.0.8.0',
+      'pretty_version' => '3.0.9',
+      'version' => '3.0.9.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd9615a6fb970d9933866ca8b4036ec3407b020b6',
+      'reference' => 'a127a5133804ff2f47ae629dd529b129da616ad7',
     ),
     'psr/cache' => 
     array (
@@ -175,12 +175,12 @@ private static $installed = array (
     ),
     'psr/log' => 
     array (
-      'pretty_version' => '1.1.3',
-      'version' => '1.1.3.0',
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
     ),
     'psr/log-implementation' => 
     array (
