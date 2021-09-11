@@ -13,6 +13,10 @@
             <input name="last_name" type="text" id="last-name" class="tsm-field" required>
         </div>
         <div class="tsm-field-wrap">
+            <label class="tsm-label" for="course">Course</label>
+            <input value="Default" type="text" id="course" readonly class="tsm-field">
+        </div>
+        <div class="tsm-field-wrap">
             <label class="tsm-label" for="username" >Username</label>
             <input name="user_login" type="text" id="username" placeholder="Choose a unique username" class="tsm-field" minlength="4" required>
         </div>

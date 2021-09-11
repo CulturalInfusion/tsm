@@ -265,6 +265,11 @@ class FrontController extends Helper
                     $count = $result[0]->count;
                     if ($count == 1) {
                         $student = get_userdata($student_ID);
+                        $student_info = $this->get_student_info($student_ID);
+                        $course = 'Default';
+                        if (!is_null($student_info)) {
+                            $course = json_decode($student_info->course)->name;
+                        }
                         require_once(__DIR__ . '/../views/front/edit.php');
                     }
                 }

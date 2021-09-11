@@ -51,9 +51,10 @@
                 </td>
                 <td class="col-sm-0 email-col">
                     <?php
-                    if ($student_info) {
-                        $course = json_decode($student_info->course);
-                        echo $course->name;
+                    if (!is_null($student_info)) {
+                        echo json_decode($student_info->course)->name;
+                    } else {
+                        echo 'Default';
                     }
                     ?>
                 </td>

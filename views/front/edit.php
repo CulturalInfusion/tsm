@@ -13,6 +13,10 @@
             <input name="last_name" type="text" id="last-name" class="tsm-field" value="<?php echo $student->last_name ?>" required>
         </div>
         <div class="tsm-field-wrap">
+            <label class="tsm-label" for="course">Course</label>
+            <input type="text" id="course" readonly class="tsm-field" value="<?php echo $course ?>">
+        </div>
+        <div class="tsm-field-wrap">
             <label class="tsm-label">Username</label>
             <input type="text" readonly disabled value="<?php echo $student->user_login ?>" class="tsm-field">
         </div>
