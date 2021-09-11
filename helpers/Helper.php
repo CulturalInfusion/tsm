@@ -288,11 +288,31 @@ class Helper
      * @param  int  $ID
      * @param  array  $course
      */
-    public function get_student_info($ID)
+    public function get_student_info($ID, $get_course_name = true, $full_json = false)
     {
         global $wpdb;
         $query = "SELECT * FROM $this->student_info_table WHERE `student_ID` = %d";
-        $result = $wpdb->get_results($wpdb->prepare($query, $ID));
+        $result = $wpdb->get_results($wpdb->prepare($query, $ID));   
+
+        if ($get_course_name) {
+            if (isset($result[0])) {
+                $course = json_decode($result[0]->course);
+                $name = $course->name;
+                $id = $course->id;
+            } else {
+                $name = 'Default';
+                $id = 0;
+            }
+            if ($full_json) {
+                return json_encode([
+                    'id' => $id,
+                    'name' => $name
+                ]);
+            } else {
+                return $name;
+            }
+        }
+
         return (isset($result[0])) ? $result[0] : false;
     }
 

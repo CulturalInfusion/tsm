@@ -56,12 +56,9 @@ if (isset($_GET['username'])) {
 function get_student_api_output($helper, $student_ID)
 {
     $student = get_userdata($student_ID);
-    $student_info = $helper->get_student_info($student_ID);
     $output = new stdClass;
+    $output->course = $helper->get_student_info($student_ID, true, true);
     $output->ID = $student_ID;
-    if ($student_info) {
-        $output->course = $student_info->course;
-    }
     $output->username = $student->user_login;
     $output->name = $student->user_nicename;
     return $output;

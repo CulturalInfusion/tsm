@@ -30,7 +30,7 @@
         <?php
         foreach ($students as $key => $student) {
             $student = get_userdata($student->ID);
-            $student_info = $this->get_student_info($student->ID);
+            $course = $this->get_student_info($student->ID);
             ?>
             <tr>
                 <td>
@@ -51,11 +51,7 @@
                 </td>
                 <td class="col-sm-0 email-col">
                     <?php
-                    if (!is_null($student_info)) {
-                        echo json_decode($student_info->course)->name;
-                    } else {
-                        echo 'Default';
-                    }
+                    echo $course;
                     ?>
                 </td>
                 <td class="text-center">
