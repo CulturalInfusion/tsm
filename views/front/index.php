@@ -64,8 +64,17 @@
                     </form>
                 </td>
             </tr>
-        <?php
+            <?php
         } ?>
     </table>
 </div>
+<?php
+if (!$notification_flag) {
+?>
+    <script type="text/javascript">
+        var no_hash=true;
+    </script>
+<?php
+}
+?>
 <script type="text/javascript" src="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/js/script.js'?>"></script>

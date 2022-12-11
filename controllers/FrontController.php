@@ -50,7 +50,7 @@ class FrontController extends Helper
                                             $failed++;
                                         }
                                     }
-                                    $this->add_notification('success', 'Import process is done. Successful: ' . $successful . ', ' . 'Failed: ' . $failed, $this->tsm_front_notification_key);
+                                    $this->add_notification('info', 'Import process is done. Successful: ' . $successful . ', ' . 'Failed: ' . $failed, $this->tsm_front_notification_key);
                                     $this->redirect($this->base_url);
                                 }
                                 break;
@@ -121,6 +121,7 @@ class FrontController extends Helper
                         $password = $_POST['user_pass'];
                         $email = $_POST['user_email'];
                         $student_ID = $this->add_student($this->teacher->ID, $first_name, $last_name, $username, $password, $email);
+                        $this->add_notification('success', 'Student has been updated successfully. Id: ' . $student_ID, $this->tsm_front_notification_key);
                         $this->redirect($this->base_url);
                     }
                     break;
@@ -208,7 +209,7 @@ class FrontController extends Helper
 
                             require_once(ABSPATH . 'wp-admin/includes/user.php');
                             wp_delete_user($student_ID);
-                            $this->add_notification('success', 'Student has been delete successfully. Id: ' . $student_ID, $this->tsm_front_notification_key);
+                            $this->add_notification('success', 'Student has been deleted successfully. Id: ' . $student_ID, $this->tsm_front_notification_key);
                             $this->redirect($this->base_url);
                         }
                     }
@@ -227,8 +228,10 @@ class FrontController extends Helper
         switch ($this->view) {
             case 'index':
                 $students = $this->get_students($this->teacher->ID);
+                $notification_flag = false;
                 if (isset($_SESSION[$this->tsm_front_notification_key])) {
                     $this->print_messages($_SESSION[$this->tsm_front_notification_key]['status'], $_SESSION[$this->tsm_front_notification_key]['messages']);
+                    $notification_flag = true;
                     unset($_SESSION[$this->tsm_front_notification_key]);
                 }
                 require_once(__DIR__ . '/../views/front/index.php');

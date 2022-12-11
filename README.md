@@ -14,6 +14,8 @@ MySQL must be upper than 5.7.8 (or support JSON).
 
 and instead of `80` you can set any number.
 
+- If you're using tab, add `students` id to the one containing `tsm` shortcode.
+
 - To use user API, call endpoint from this URI using GET method:
 
 `URL/wp-content/plugins/tsm/api/user.php?username=USERNAME`

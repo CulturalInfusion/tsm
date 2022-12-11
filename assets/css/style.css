@@ -2,6 +2,7 @@
 div.tsm-notice.notice {
   padding: 10px;
   margin: 10px;
+  border: 1px solid #ccc;
 }
 select {
 	max-width: 100%;
