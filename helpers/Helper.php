@@ -44,7 +44,8 @@ class Helper
     public static function get_teacher_roles()
     {
         return array(
-            'contributor'
+            'contributor',
+			'teacher'
         );
     }
 
