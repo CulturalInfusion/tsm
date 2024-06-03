@@ -45,7 +45,7 @@ class Helper
     {
         return array(
             'contributor',
-			'teacher'
+	    'teacher'
         );
     }
 
