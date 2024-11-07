@@ -4,8 +4,8 @@
         List of students
     </h2>
     <a href="<?php echo $this->add_parameters($this->base_url, 'view=create') ?>" title="Add new student" class="button my-10">Add new</a>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Import from CSV" class="button my-10">Import from CSV</a>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=google-classroom') ?>" title="Import from Google Classroom" class="button my-10">Import from Google Classroom</a>
+    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Upload your spreadsheet" class="button my-10">Import from CSV</a>
+    <!-- <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=google-classroom') ?>" title="Import from Google Classroom" class="button my-10">Import from Google Classroom</a> -->
     <table>
         <tr>
             <th>
@@ -20,9 +20,9 @@
             <th class="col-sm-0 email-col">
                 Email
             </th>
-            <th class="col-sm-0 email-col">
+           <!-- <th class="col-sm-0 email-col">
                 Course
-            </th>
+            </th> -->
             <th>
                 Operations
             </th>
@@ -48,12 +48,12 @@
                 <td class="col-sm-0 email-col">
                     <?php
                     echo $student->user_email; ?>
-                </td>
+                <-- </td>
                 <td class="col-sm-0 email-col">
                     <?php
                     echo $course;
                     ?>
-                </td>
+                </td> -->
                 <td class="text-center">
                     <a class="button my-10" href="<?php echo $this->add_parameters($this->base_url, 'view=edit&student_ID=' . $student->ID) ?>">Edit</a>
                     <form id="delete_student_<?php $student->ID ?>" method="post">
