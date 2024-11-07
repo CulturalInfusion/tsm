@@ -19,9 +19,6 @@
             <th class="col-sm-0 email-col">
                 Email
             </th>
-           <!-- <th class="col-sm-0 email-col">
-                Course
-            </th> -->
             <th>
                 Operations
             </th>
@@ -47,12 +44,6 @@
                 <td class="col-sm-0 email-col">
                     <?php
                     echo $student->user_email; ?>
-                <-- </td>
-                <td class="col-sm-0 email-col">
-                    <?php
-                    echo $course;
-                    ?>
-                </td> -->
                 <td class="text-center">
                     <a class="button my-10" href="<?php echo $this->add_parameters($this->base_url, 'view=edit&student_ID=' . $student->ID) ?>">Edit</a>
                     <form id="delete_student_<?php $student->ID ?>" method="post">
