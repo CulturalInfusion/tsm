@@ -50,7 +50,7 @@
                 <li><strong>Set Passwords:</strong> 
                 Passwords must be at least 8 characters long and include uppercase, lowercase, and a special character. Students will have the option to change their passwords later.</li>
                 <li><strong>Save and Upload:</strong> Once completed, save your file as a CSV and click "Upload List" to submit it here. The upload may take a couple of minutes. If any errors occur, you’ll have the option to edit and re-upload the affected items.</li>
-                <li>Need Assistance? If you prefer, you can contact our team directly. One of our friendly team members will help you upload the list on your behalf.</li>
+                <li><strong>Need Assistance?</strong> If you prefer, you can contact our team directly. One of our friendly team members will help you upload the list on your behalf.</li>
             </ol>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="tsm-field-wrap">
