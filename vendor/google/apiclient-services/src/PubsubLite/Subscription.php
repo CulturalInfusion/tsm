@@ -21,7 +21,15 @@ class Subscription extends \Google\Model
 {
   protected $deliveryConfigType = DeliveryConfig::class;
   protected $deliveryConfigDataType = '';
+  protected $exportConfigType = ExportConfig::class;
+  protected $exportConfigDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $topic;
 
   /**
@@ -38,18 +46,44 @@ class Subscription extends \Google\Model
   {
     return $this->deliveryConfig;
   }
+  /**
+   * @param ExportConfig
+   */
+  public function setExportConfig(ExportConfig $exportConfig)
+  {
+    $this->exportConfig = $exportConfig;
+  }
+  /**
+   * @return ExportConfig
+   */
+  public function getExportConfig()
+  {
+    return $this->exportConfig;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setTopic($topic)
   {
     $this->topic = $topic;
   }
+  /**
+   * @return string
+   */
   public function getTopic()
   {
     return $this->topic;

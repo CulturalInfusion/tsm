@@ -19,31 +19,24 @@ namespace Google\Service\DoubleClickBidManager;
 
 class Options extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $includeOnlyTargetedUserLists;
-  protected $pathQueryOptionsType = PathQueryOptions::class;
-  protected $pathQueryOptionsDataType = '';
 
+  /**
+   * @param bool
+   */
   public function setIncludeOnlyTargetedUserLists($includeOnlyTargetedUserLists)
   {
     $this->includeOnlyTargetedUserLists = $includeOnlyTargetedUserLists;
   }
+  /**
+   * @return bool
+   */
   public function getIncludeOnlyTargetedUserLists()
   {
     return $this->includeOnlyTargetedUserLists;
-  }
-  /**
-   * @param PathQueryOptions
-   */
-  public function setPathQueryOptions(PathQueryOptions $pathQueryOptions)
-  {
-    $this->pathQueryOptions = $pathQueryOptions;
-  }
-  /**
-   * @return PathQueryOptions
-   */
-  public function getPathQueryOptions()
-  {
-    return $this->pathQueryOptions;
   }
 }
 

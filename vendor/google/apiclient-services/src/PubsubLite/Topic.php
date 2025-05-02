@@ -19,16 +19,27 @@ namespace Google\Service\PubsubLite;
 
 class Topic extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $name;
   protected $partitionConfigType = PartitionConfig::class;
   protected $partitionConfigDataType = '';
+  protected $reservationConfigType = ReservationConfig::class;
+  protected $reservationConfigDataType = '';
   protected $retentionConfigType = RetentionConfig::class;
   protected $retentionConfigDataType = '';
 
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -46,6 +57,20 @@ class Topic extends \Google\Model
   public function getPartitionConfig()
   {
     return $this->partitionConfig;
+  }
+  /**
+   * @param ReservationConfig
+   */
+  public function setReservationConfig(ReservationConfig $reservationConfig)
+  {
+    $this->reservationConfig = $reservationConfig;
+  }
+  /**
+   * @return ReservationConfig
+   */
+  public function getReservationConfig()
+  {
+    return $this->reservationConfig;
   }
   /**
    * @param RetentionConfig

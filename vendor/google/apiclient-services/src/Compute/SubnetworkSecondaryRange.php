@@ -19,24 +19,60 @@ namespace Google\Service\Compute;
 
 class SubnetworkSecondaryRange extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $ipCidrRange;
+  /**
+   * @var string
+   */
   public $rangeName;
+  /**
+   * @var string
+   */
+  public $reservedInternalRange;
 
+  /**
+   * @param string
+   */
   public function setIpCidrRange($ipCidrRange)
   {
     $this->ipCidrRange = $ipCidrRange;
   }
+  /**
+   * @return string
+   */
   public function getIpCidrRange()
   {
     return $this->ipCidrRange;
   }
+  /**
+   * @param string
+   */
   public function setRangeName($rangeName)
   {
     $this->rangeName = $rangeName;
   }
+  /**
+   * @return string
+   */
   public function getRangeName()
   {
     return $this->rangeName;
+  }
+  /**
+   * @param string
+   */
+  public function setReservedInternalRange($reservedInternalRange)
+  {
+    $this->reservedInternalRange = $reservedInternalRange;
+  }
+  /**
+   * @return string
+   */
+  public function getReservedInternalRange()
+  {
+    return $this->reservedInternalRange;
   }
 }
 

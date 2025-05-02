@@ -19,24 +19,60 @@ namespace Google\Service\ServiceDirectory;
 
 class ServicedirectoryNamespace extends \Google\Model
 {
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
+  public $uid;
 
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param string
+   */
+  public function setUid($uid)
+  {
+    $this->uid = $uid;
+  }
+  /**
+   * @return string
+   */
+  public function getUid()
+  {
+    return $this->uid;
   }
 }
 

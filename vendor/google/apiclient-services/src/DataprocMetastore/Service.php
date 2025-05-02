@@ -19,13 +19,33 @@ namespace Google\Service\DataprocMetastore;
 
 class Service extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $artifactGcsUri;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
+  public $databaseType;
+  /**
+   * @var bool
+   */
+  public $deletionProtection;
   protected $encryptionConfigType = EncryptionConfig::class;
   protected $encryptionConfigDataType = '';
+  /**
+   * @var string
+   */
   public $endpointUri;
   protected $hiveMetastoreConfigType = HiveMetastoreConfig::class;
   protected $hiveMetastoreConfigDataType = '';
+  /**
+   * @var string[]
+   */
   public $labels;
   protected $maintenanceWindowType = MaintenanceWindow::class;
   protected $maintenanceWindowDataType = '';
@@ -33,31 +53,106 @@ class Service extends \Google\Model
   protected $metadataIntegrationDataType = '';
   protected $metadataManagementActivityType = MetadataManagementActivity::class;
   protected $metadataManagementActivityDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $network;
+  protected $networkConfigType = NetworkConfig::class;
+  protected $networkConfigDataType = '';
+  /**
+   * @var int
+   */
   public $port;
+  /**
+   * @var string
+   */
   public $releaseChannel;
+  protected $scalingConfigType = ScalingConfig::class;
+  protected $scalingConfigDataType = '';
+  protected $scheduledBackupType = ScheduledBackup::class;
+  protected $scheduledBackupDataType = '';
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $stateMessage;
+  protected $telemetryConfigType = TelemetryConfig::class;
+  protected $telemetryConfigDataType = '';
+  /**
+   * @var string
+   */
   public $tier;
+  /**
+   * @var string
+   */
   public $uid;
+  /**
+   * @var string
+   */
   public $updateTime;
 
+  /**
+   * @param string
+   */
   public function setArtifactGcsUri($artifactGcsUri)
   {
     $this->artifactGcsUri = $artifactGcsUri;
   }
+  /**
+   * @return string
+   */
   public function getArtifactGcsUri()
   {
     return $this->artifactGcsUri;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
+  }
+  /**
+   * @param string
+   */
+  public function setDatabaseType($databaseType)
+  {
+    $this->databaseType = $databaseType;
+  }
+  /**
+   * @return string
+   */
+  public function getDatabaseType()
+  {
+    return $this->databaseType;
+  }
+  /**
+   * @param bool
+   */
+  public function setDeletionProtection($deletionProtection)
+  {
+    $this->deletionProtection = $deletionProtection;
+  }
+  /**
+   * @return bool
+   */
+  public function getDeletionProtection()
+  {
+    return $this->deletionProtection;
   }
   /**
    * @param EncryptionConfig
@@ -73,10 +168,16 @@ class Service extends \Google\Model
   {
     return $this->encryptionConfig;
   }
+  /**
+   * @param string
+   */
   public function setEndpointUri($endpointUri)
   {
     $this->endpointUri = $endpointUri;
   }
+  /**
+   * @return string
+   */
   public function getEndpointUri()
   {
     return $this->endpointUri;
@@ -95,10 +196,16 @@ class Service extends \Google\Model
   {
     return $this->hiveMetastoreConfig;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
@@ -145,74 +252,184 @@ class Service extends \Google\Model
   {
     return $this->metadataManagementActivity;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setNetwork($network)
   {
     $this->network = $network;
   }
+  /**
+   * @return string
+   */
   public function getNetwork()
   {
     return $this->network;
   }
+  /**
+   * @param NetworkConfig
+   */
+  public function setNetworkConfig(NetworkConfig $networkConfig)
+  {
+    $this->networkConfig = $networkConfig;
+  }
+  /**
+   * @return NetworkConfig
+   */
+  public function getNetworkConfig()
+  {
+    return $this->networkConfig;
+  }
+  /**
+   * @param int
+   */
   public function setPort($port)
   {
     $this->port = $port;
   }
+  /**
+   * @return int
+   */
   public function getPort()
   {
     return $this->port;
   }
+  /**
+   * @param string
+   */
   public function setReleaseChannel($releaseChannel)
   {
     $this->releaseChannel = $releaseChannel;
   }
+  /**
+   * @return string
+   */
   public function getReleaseChannel()
   {
     return $this->releaseChannel;
   }
+  /**
+   * @param ScalingConfig
+   */
+  public function setScalingConfig(ScalingConfig $scalingConfig)
+  {
+    $this->scalingConfig = $scalingConfig;
+  }
+  /**
+   * @return ScalingConfig
+   */
+  public function getScalingConfig()
+  {
+    return $this->scalingConfig;
+  }
+  /**
+   * @param ScheduledBackup
+   */
+  public function setScheduledBackup(ScheduledBackup $scheduledBackup)
+  {
+    $this->scheduledBackup = $scheduledBackup;
+  }
+  /**
+   * @return ScheduledBackup
+   */
+  public function getScheduledBackup()
+  {
+    return $this->scheduledBackup;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setStateMessage($stateMessage)
   {
     $this->stateMessage = $stateMessage;
   }
+  /**
+   * @return string
+   */
   public function getStateMessage()
   {
     return $this->stateMessage;
   }
+  /**
+   * @param TelemetryConfig
+   */
+  public function setTelemetryConfig(TelemetryConfig $telemetryConfig)
+  {
+    $this->telemetryConfig = $telemetryConfig;
+  }
+  /**
+   * @return TelemetryConfig
+   */
+  public function getTelemetryConfig()
+  {
+    return $this->telemetryConfig;
+  }
+  /**
+   * @param string
+   */
   public function setTier($tier)
   {
     $this->tier = $tier;
   }
+  /**
+   * @return string
+   */
   public function getTier()
   {
     return $this->tier;
   }
+  /**
+   * @param string
+   */
   public function setUid($uid)
   {
     $this->uid = $uid;
   }
+  /**
+   * @return string
+   */
   public function getUid()
   {
     return $this->uid;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

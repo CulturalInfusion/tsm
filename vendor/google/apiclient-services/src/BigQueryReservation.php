@@ -34,10 +34,10 @@ use Google\Client;
  */
 class BigQueryReservation extends \Google\Service
 {
-  /** View and manage your data in Google BigQuery. */
+  /** View and manage your data in Google BigQuery and see the email address for your Google Account. */
   const BIGQUERY =
       "https://www.googleapis.com/auth/bigquery";
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -45,6 +45,7 @@ class BigQueryReservation extends \Google\Service
   public $projects_locations_capacityCommitments;
   public $projects_locations_reservations;
   public $projects_locations_reservations_assignments;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the BigQueryReservation service.
@@ -57,6 +58,7 @@ class BigQueryReservation extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://bigqueryreservation.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://bigqueryreservation.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -173,6 +175,10 @@ class BigQueryReservation extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'force' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'get' => [
               'path' => 'v1/{+name}',
@@ -263,6 +269,16 @@ class BigQueryReservation extends \Google\Service
             ],'delete' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'failoverReservation' => [
+              'path' => 'v1/{+name}:failoverReservation',
+              'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
@@ -372,6 +388,20 @@ class BigQueryReservation extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],

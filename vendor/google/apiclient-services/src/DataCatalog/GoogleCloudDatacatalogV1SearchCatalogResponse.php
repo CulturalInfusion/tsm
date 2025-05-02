@@ -20,15 +20,31 @@ namespace Google\Service\DataCatalog;
 class GoogleCloudDatacatalogV1SearchCatalogResponse extends \Google\Collection
 {
   protected $collection_key = 'unreachable';
+  /**
+   * @var string
+   */
   public $nextPageToken;
   protected $resultsType = GoogleCloudDatacatalogV1SearchCatalogResult::class;
   protected $resultsDataType = 'array';
+  /**
+   * @var int
+   */
+  public $totalSize;
+  /**
+   * @var string[]
+   */
   public $unreachable;
 
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;
@@ -47,10 +63,30 @@ class GoogleCloudDatacatalogV1SearchCatalogResponse extends \Google\Collection
   {
     return $this->results;
   }
+  /**
+   * @param int
+   */
+  public function setTotalSize($totalSize)
+  {
+    $this->totalSize = $totalSize;
+  }
+  /**
+   * @return int
+   */
+  public function getTotalSize()
+  {
+    return $this->totalSize;
+  }
+  /**
+   * @param string[]
+   */
   public function setUnreachable($unreachable)
   {
     $this->unreachable = $unreachable;
   }
+  /**
+   * @return string[]
+   */
   public function getUnreachable()
   {
     return $this->unreachable;

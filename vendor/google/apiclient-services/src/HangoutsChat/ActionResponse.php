@@ -21,7 +21,15 @@ class ActionResponse extends \Google\Model
 {
   protected $dialogActionType = DialogAction::class;
   protected $dialogActionDataType = '';
+  /**
+   * @var string
+   */
   public $type;
+  protected $updatedWidgetType = UpdatedWidget::class;
+  protected $updatedWidgetDataType = '';
+  /**
+   * @var string
+   */
   public $url;
 
   /**
@@ -38,18 +46,44 @@ class ActionResponse extends \Google\Model
   {
     return $this->dialogAction;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;
   }
+  /**
+   * @param UpdatedWidget
+   */
+  public function setUpdatedWidget(UpdatedWidget $updatedWidget)
+  {
+    $this->updatedWidget = $updatedWidget;
+  }
+  /**
+   * @return UpdatedWidget
+   */
+  public function getUpdatedWidget()
+  {
+    return $this->updatedWidget;
+  }
+  /**
+   * @param string
+   */
   public function setUrl($url)
   {
     $this->url = $url;
   }
+  /**
+   * @return string
+   */
   public function getUrl()
   {
     return $this->url;

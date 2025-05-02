@@ -30,7 +30,7 @@ use Google\Service\Apigateway\ApigatewayTestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $apigatewayService = new Google\Service\Apigateway(...);
- *   $gateways = $apigatewayService->gateways;
+ *   $gateways = $apigatewayService->projects_locations_gateways;
  *  </code>
  */
 class ProjectsLocationsGateways extends \Google\Service\Resource
@@ -46,6 +46,7 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * @opt_param string gatewayId Required. Identifier to assign to the Gateway.
    * Must be unique within scope of the parent resource.
    * @return ApigatewayOperation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, ApigatewayGateway $postBody, $optParams = [])
   {
@@ -60,6 +61,7 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * `projects/locations/gateways`
    * @param array $optParams Optional parameters.
    * @return ApigatewayOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -74,6 +76,7 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * `projects/locations/gateways`
    * @param array $optParams Optional parameters.
    * @return ApigatewayGateway
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -86,19 +89,25 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * resource exists and does not have a policy set. (gateways.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return ApigatewayPolicy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -119,6 +128,7 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * @opt_param int pageSize Page size.
    * @opt_param string pageToken Page token.
    * @return ApigatewayListGatewaysResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsGateways($parent, $optParams = [])
   {
@@ -140,6 +150,7 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * will be overwritten if it is in the mask. If the user does not provide a mask
    * then all fields will be overwritten.
    * @return ApigatewayOperation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, ApigatewayGateway $postBody, $optParams = [])
   {
@@ -153,11 +164,13 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (gateways.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param ApigatewaySetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return ApigatewayPolicy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, ApigatewaySetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -173,11 +186,13 @@ class ProjectsLocationsGateways extends \Google\Service\Resource
    * This operation may "fail open" without warning. (gateways.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param ApigatewayTestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return ApigatewayTestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, ApigatewayTestIamPermissionsRequest $postBody, $optParams = [])
   {

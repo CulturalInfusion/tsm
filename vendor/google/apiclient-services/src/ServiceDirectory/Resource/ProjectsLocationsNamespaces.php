@@ -31,7 +31,7 @@ use Google\Service\ServiceDirectory\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $servicedirectoryService = new Google\Service\ServiceDirectory(...);
- *   $namespaces = $servicedirectoryService->namespaces;
+ *   $namespaces = $servicedirectoryService->projects_locations_namespaces;
  *  </code>
  */
 class ProjectsLocationsNamespaces extends \Google\Service\Resource
@@ -51,6 +51,7 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * lowercase letter, and all following characters must be a dash, lowercase
    * letter, or digit, except the last character, which cannot be a dash.
    * @return ServicedirectoryNamespace
+   * @throws \Google\Service\Exception
    */
   public function create($parent, ServicedirectoryNamespace $postBody, $optParams = [])
   {
@@ -65,6 +66,7 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * @param string $name Required. The name of the namespace to delete.
    * @param array $optParams Optional parameters.
    * @return ServicedirectoryEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -78,6 +80,7 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * @param string $name Required. The name of the namespace to retrieve.
    * @param array $optParams Optional parameters.
    * @return ServicedirectoryNamespace
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -90,11 +93,13 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * (namespaces.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -134,6 +139,7 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * @opt_param string pageToken Optional. The next_page_token value returned from
    * a previous List request, if any.
    * @return ListNamespacesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsNamespaces($parent, $optParams = [])
   {
@@ -152,6 +158,7 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * @opt_param string updateMask Required. List of fields to be updated in this
    * request.
    * @return ServicedirectoryNamespace
+   * @throws \Google\Service\Exception
    */
   public function patch($name, ServicedirectoryNamespace $postBody, $optParams = [])
   {
@@ -164,11 +171,13 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * (namespaces.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -181,11 +190,13 @@ class ProjectsLocationsNamespaces extends \Google\Service\Resource
    * (namespaces.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

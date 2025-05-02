@@ -19,21 +19,89 @@ namespace Google\Service\YouTube;
 
 class ChannelToStoreLinkDetails extends \Google\Model
 {
+  protected $billingDetailsType = ChannelToStoreLinkDetailsBillingDetails::class;
+  protected $billingDetailsDataType = '';
+  protected $merchantAffiliateProgramDetailsType = ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails::class;
+  protected $merchantAffiliateProgramDetailsDataType = '';
+  /**
+   * @var string
+   */
+  public $merchantId;
+  /**
+   * @var string
+   */
   public $storeName;
+  /**
+   * @var string
+   */
   public $storeUrl;
 
+  /**
+   * @param ChannelToStoreLinkDetailsBillingDetails
+   */
+  public function setBillingDetails(ChannelToStoreLinkDetailsBillingDetails $billingDetails)
+  {
+    $this->billingDetails = $billingDetails;
+  }
+  /**
+   * @return ChannelToStoreLinkDetailsBillingDetails
+   */
+  public function getBillingDetails()
+  {
+    return $this->billingDetails;
+  }
+  /**
+   * @param ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
+   */
+  public function setMerchantAffiliateProgramDetails(ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails $merchantAffiliateProgramDetails)
+  {
+    $this->merchantAffiliateProgramDetails = $merchantAffiliateProgramDetails;
+  }
+  /**
+   * @return ChannelToStoreLinkDetailsMerchantAffiliateProgramDetails
+   */
+  public function getMerchantAffiliateProgramDetails()
+  {
+    return $this->merchantAffiliateProgramDetails;
+  }
+  /**
+   * @param string
+   */
+  public function setMerchantId($merchantId)
+  {
+    $this->merchantId = $merchantId;
+  }
+  /**
+   * @return string
+   */
+  public function getMerchantId()
+  {
+    return $this->merchantId;
+  }
+  /**
+   * @param string
+   */
   public function setStoreName($storeName)
   {
     $this->storeName = $storeName;
   }
+  /**
+   * @return string
+   */
   public function getStoreName()
   {
     return $this->storeName;
   }
+  /**
+   * @param string
+   */
   public function setStoreUrl($storeUrl)
   {
     $this->storeUrl = $storeUrl;
   }
+  /**
+   * @return string
+   */
   public function getStoreUrl()
   {
     return $this->storeUrl;

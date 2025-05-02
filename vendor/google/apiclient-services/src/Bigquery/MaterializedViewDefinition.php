@@ -19,39 +19,111 @@ namespace Google\Service\Bigquery;
 
 class MaterializedViewDefinition extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $allowNonIncrementalDefinition;
+  /**
+   * @var bool
+   */
   public $enableRefresh;
+  /**
+   * @var string
+   */
   public $lastRefreshTime;
+  /**
+   * @var string
+   */
+  public $maxStaleness;
+  /**
+   * @var string
+   */
   public $query;
+  /**
+   * @var string
+   */
   public $refreshIntervalMs;
 
+  /**
+   * @param bool
+   */
+  public function setAllowNonIncrementalDefinition($allowNonIncrementalDefinition)
+  {
+    $this->allowNonIncrementalDefinition = $allowNonIncrementalDefinition;
+  }
+  /**
+   * @return bool
+   */
+  public function getAllowNonIncrementalDefinition()
+  {
+    return $this->allowNonIncrementalDefinition;
+  }
+  /**
+   * @param bool
+   */
   public function setEnableRefresh($enableRefresh)
   {
     $this->enableRefresh = $enableRefresh;
   }
+  /**
+   * @return bool
+   */
   public function getEnableRefresh()
   {
     return $this->enableRefresh;
   }
+  /**
+   * @param string
+   */
   public function setLastRefreshTime($lastRefreshTime)
   {
     $this->lastRefreshTime = $lastRefreshTime;
   }
+  /**
+   * @return string
+   */
   public function getLastRefreshTime()
   {
     return $this->lastRefreshTime;
   }
+  /**
+   * @param string
+   */
+  public function setMaxStaleness($maxStaleness)
+  {
+    $this->maxStaleness = $maxStaleness;
+  }
+  /**
+   * @return string
+   */
+  public function getMaxStaleness()
+  {
+    return $this->maxStaleness;
+  }
+  /**
+   * @param string
+   */
   public function setQuery($query)
   {
     $this->query = $query;
   }
+  /**
+   * @return string
+   */
   public function getQuery()
   {
     return $this->query;
   }
+  /**
+   * @param string
+   */
   public function setRefreshIntervalMs($refreshIntervalMs)
   {
     $this->refreshIntervalMs = $refreshIntervalMs;
   }
+  /**
+   * @return string
+   */
   public function getRefreshIntervalMs()
   {
     return $this->refreshIntervalMs;

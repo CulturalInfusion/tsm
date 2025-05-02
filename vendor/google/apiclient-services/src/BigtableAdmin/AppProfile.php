@@ -19,26 +19,69 @@ namespace Google\Service\BigtableAdmin;
 
 class AppProfile extends \Google\Model
 {
+  protected $dataBoostIsolationReadOnlyType = DataBoostIsolationReadOnly::class;
+  protected $dataBoostIsolationReadOnlyDataType = '';
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $etag;
   protected $multiClusterRoutingUseAnyType = MultiClusterRoutingUseAny::class;
   protected $multiClusterRoutingUseAnyDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
+  public $priority;
   protected $singleClusterRoutingType = SingleClusterRouting::class;
   protected $singleClusterRoutingDataType = '';
+  protected $standardIsolationType = StandardIsolation::class;
+  protected $standardIsolationDataType = '';
 
+  /**
+   * @param DataBoostIsolationReadOnly
+   */
+  public function setDataBoostIsolationReadOnly(DataBoostIsolationReadOnly $dataBoostIsolationReadOnly)
+  {
+    $this->dataBoostIsolationReadOnly = $dataBoostIsolationReadOnly;
+  }
+  /**
+   * @return DataBoostIsolationReadOnly
+   */
+  public function getDataBoostIsolationReadOnly()
+  {
+    return $this->dataBoostIsolationReadOnly;
+  }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setEtag($etag)
   {
     $this->etag = $etag;
   }
+  /**
+   * @return string
+   */
   public function getEtag()
   {
     return $this->etag;
@@ -57,13 +100,33 @@ class AppProfile extends \Google\Model
   {
     return $this->multiClusterRoutingUseAny;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param string
+   */
+  public function setPriority($priority)
+  {
+    $this->priority = $priority;
+  }
+  /**
+   * @return string
+   */
+  public function getPriority()
+  {
+    return $this->priority;
   }
   /**
    * @param SingleClusterRouting
@@ -78,6 +141,20 @@ class AppProfile extends \Google\Model
   public function getSingleClusterRouting()
   {
     return $this->singleClusterRouting;
+  }
+  /**
+   * @param StandardIsolation
+   */
+  public function setStandardIsolation(StandardIsolation $standardIsolation)
+  {
+    $this->standardIsolation = $standardIsolation;
+  }
+  /**
+   * @return StandardIsolation
+   */
+  public function getStandardIsolation()
+  {
+    return $this->standardIsolation;
   }
 }
 

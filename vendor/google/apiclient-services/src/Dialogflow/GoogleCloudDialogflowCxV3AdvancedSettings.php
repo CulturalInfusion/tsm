@@ -19,9 +19,43 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowCxV3AdvancedSettings extends \Google\Model
 {
+  protected $audioExportGcsDestinationType = GoogleCloudDialogflowCxV3GcsDestination::class;
+  protected $audioExportGcsDestinationDataType = '';
+  protected $dtmfSettingsType = GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings::class;
+  protected $dtmfSettingsDataType = '';
   protected $loggingSettingsType = GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings::class;
   protected $loggingSettingsDataType = '';
+  protected $speechSettingsType = GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings::class;
+  protected $speechSettingsDataType = '';
 
+  /**
+   * @param GoogleCloudDialogflowCxV3GcsDestination
+   */
+  public function setAudioExportGcsDestination(GoogleCloudDialogflowCxV3GcsDestination $audioExportGcsDestination)
+  {
+    $this->audioExportGcsDestination = $audioExportGcsDestination;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3GcsDestination
+   */
+  public function getAudioExportGcsDestination()
+  {
+    return $this->audioExportGcsDestination;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+   */
+  public function setDtmfSettings(GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings $dtmfSettings)
+  {
+    $this->dtmfSettings = $dtmfSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings
+   */
+  public function getDtmfSettings()
+  {
+    return $this->dtmfSettings;
+  }
   /**
    * @param GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
    */
@@ -35,6 +69,20 @@ class GoogleCloudDialogflowCxV3AdvancedSettings extends \Google\Model
   public function getLoggingSettings()
   {
     return $this->loggingSettings;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+   */
+  public function setSpeechSettings(GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings $speechSettings)
+  {
+    $this->speechSettings = $speechSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+   */
+  public function getSpeechSettings()
+  {
+    return $this->speechSettings;
   }
 }
 

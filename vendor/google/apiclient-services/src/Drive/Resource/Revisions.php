@@ -39,6 +39,7 @@ class Revisions extends \Google\Service\Resource
    * @param string $fileId The ID of the file.
    * @param string $revisionId The ID of the revision.
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
   public function delete($fileId, $revisionId, $optParams = [])
   {
@@ -55,8 +56,10 @@ class Revisions extends \Google\Service\Resource
    *
    * @opt_param bool acknowledgeAbuse Whether the user is acknowledging the risk
    * of downloading known malware or other abusive files. This is only applicable
-   * when alt=media.
+   * when the `alt` parameter is set to `media` and the user is the owner of the
+   * file or an organizer of the shared drive in which the file resides.
    * @return Revision
+   * @throws \Google\Service\Exception
    */
   public function get($fileId, $revisionId, $optParams = [])
   {
@@ -75,6 +78,7 @@ class Revisions extends \Google\Service\Resource
    * on the next page. This should be set to the value of 'nextPageToken' from the
    * previous response.
    * @return RevisionList
+   * @throws \Google\Service\Exception
    */
   public function listRevisions($fileId, $optParams = [])
   {
@@ -90,6 +94,7 @@ class Revisions extends \Google\Service\Resource
    * @param Revision $postBody
    * @param array $optParams Optional parameters.
    * @return Revision
+   * @throws \Google\Service\Exception
    */
   public function update($fileId, $revisionId, Revision $postBody, $optParams = [])
   {

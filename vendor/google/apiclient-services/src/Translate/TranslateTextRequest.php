@@ -20,19 +20,45 @@ namespace Google\Service\Translate;
 class TranslateTextRequest extends \Google\Collection
 {
   protected $collection_key = 'contents';
+  /**
+   * @var string[]
+   */
   public $contents;
   protected $glossaryConfigType = TranslateTextGlossaryConfig::class;
   protected $glossaryConfigDataType = '';
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $mimeType;
+  /**
+   * @var string
+   */
   public $model;
+  /**
+   * @var string
+   */
   public $sourceLanguageCode;
+  /**
+   * @var string
+   */
   public $targetLanguageCode;
+  protected $transliterationConfigType = TransliterationConfig::class;
+  protected $transliterationConfigDataType = '';
 
+  /**
+   * @param string[]
+   */
   public function setContents($contents)
   {
     $this->contents = $contents;
   }
+  /**
+   * @return string[]
+   */
   public function getContents()
   {
     return $this->contents;
@@ -51,45 +77,89 @@ class TranslateTextRequest extends \Google\Collection
   {
     return $this->glossaryConfig;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setMimeType($mimeType)
   {
     $this->mimeType = $mimeType;
   }
+  /**
+   * @return string
+   */
   public function getMimeType()
   {
     return $this->mimeType;
   }
+  /**
+   * @param string
+   */
   public function setModel($model)
   {
     $this->model = $model;
   }
+  /**
+   * @return string
+   */
   public function getModel()
   {
     return $this->model;
   }
+  /**
+   * @param string
+   */
   public function setSourceLanguageCode($sourceLanguageCode)
   {
     $this->sourceLanguageCode = $sourceLanguageCode;
   }
+  /**
+   * @return string
+   */
   public function getSourceLanguageCode()
   {
     return $this->sourceLanguageCode;
   }
+  /**
+   * @param string
+   */
   public function setTargetLanguageCode($targetLanguageCode)
   {
     $this->targetLanguageCode = $targetLanguageCode;
   }
+  /**
+   * @return string
+   */
   public function getTargetLanguageCode()
   {
     return $this->targetLanguageCode;
+  }
+  /**
+   * @param TransliterationConfig
+   */
+  public function setTransliterationConfig(TransliterationConfig $transliterationConfig)
+  {
+    $this->transliterationConfig = $transliterationConfig;
+  }
+  /**
+   * @return TransliterationConfig
+   */
+  public function getTransliterationConfig()
+  {
+    return $this->transliterationConfig;
   }
 }
 

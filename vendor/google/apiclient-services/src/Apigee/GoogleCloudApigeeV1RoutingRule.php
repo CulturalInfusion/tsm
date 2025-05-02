@@ -17,50 +17,132 @@
 
 namespace Google\Service\Apigee;
 
-class GoogleCloudApigeeV1RoutingRule extends \Google\Model
+class GoogleCloudApigeeV1RoutingRule extends \Google\Collection
 {
+  protected $collection_key = 'otherTargets';
+  /**
+   * @var string
+   */
   public $basepath;
+  /**
+   * @var string
+   */
+  public $deploymentGroup;
+  /**
+   * @var string
+   */
   public $envGroupRevision;
+  /**
+   * @var string
+   */
   public $environment;
+  /**
+   * @var string[]
+   */
+  public $otherTargets;
+  /**
+   * @var string
+   */
   public $receiver;
+  /**
+   * @var string
+   */
   public $updateTime;
 
+  /**
+   * @param string
+   */
   public function setBasepath($basepath)
   {
     $this->basepath = $basepath;
   }
+  /**
+   * @return string
+   */
   public function getBasepath()
   {
     return $this->basepath;
   }
+  /**
+   * @param string
+   */
+  public function setDeploymentGroup($deploymentGroup)
+  {
+    $this->deploymentGroup = $deploymentGroup;
+  }
+  /**
+   * @return string
+   */
+  public function getDeploymentGroup()
+  {
+    return $this->deploymentGroup;
+  }
+  /**
+   * @param string
+   */
   public function setEnvGroupRevision($envGroupRevision)
   {
     $this->envGroupRevision = $envGroupRevision;
   }
+  /**
+   * @return string
+   */
   public function getEnvGroupRevision()
   {
     return $this->envGroupRevision;
   }
+  /**
+   * @param string
+   */
   public function setEnvironment($environment)
   {
     $this->environment = $environment;
   }
+  /**
+   * @return string
+   */
   public function getEnvironment()
   {
     return $this->environment;
   }
+  /**
+   * @param string[]
+   */
+  public function setOtherTargets($otherTargets)
+  {
+    $this->otherTargets = $otherTargets;
+  }
+  /**
+   * @return string[]
+   */
+  public function getOtherTargets()
+  {
+    return $this->otherTargets;
+  }
+  /**
+   * @param string
+   */
   public function setReceiver($receiver)
   {
     $this->receiver = $receiver;
   }
+  /**
+   * @return string
+   */
   public function getReceiver()
   {
     return $this->receiver;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

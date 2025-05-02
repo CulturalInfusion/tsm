@@ -41,6 +41,7 @@ class Accounts extends \Google\Service\Resource
    * @param Account $postBody
    * @param array $optParams Optional parameters.
    * @return Account
+   * @throws \Google\Service\Exception
    */
   public function create(Account $postBody, $optParams = [])
   {
@@ -55,6 +56,7 @@ class Accounts extends \Google\Service\Resource
    * @param string $name Required. The name of the account to fetch.
    * @param array $optParams Optional parameters.
    * @return Account
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -76,7 +78,7 @@ class Accounts extends \Google\Service\Resource
    * `type=USER_GROUP` will only return user groups. The `type` field is the only
    * supported filter.
    * @opt_param int pageSize Optional. How many accounts to fetch per page. The
-   * minimum supported page_size is 2. The default and maximum is 20.
+   * default and maximum is 20.
    * @opt_param string pageToken Optional. If specified, the next page of accounts
    * is retrieved. The `pageToken` is returned when a call to `accounts.list`
    * returns more results than can fit into the requested page size.
@@ -85,6 +87,7 @@ class Accounts extends \Google\Service\Resource
    * only makes sense for Organizations and User Groups. If empty, will return
    * `ListAccounts` for the authenticated user. `accounts/{account_id}`.
    * @return ListAccountsResponse
+   * @throws \Google\Service\Exception
    */
   public function listAccounts($optParams = [])
   {
@@ -106,6 +109,7 @@ class Accounts extends \Google\Service\Resource
    * @opt_param bool validateOnly Optional. If true, the request is validated
    * without actually updating the account.
    * @return Account
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Account $postBody, $optParams = [])
   {

@@ -19,7 +19,15 @@ namespace Google\Service\Dataflow;
 
 class CounterUpdate extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $boolean;
+  protected $boundedTrieType = BoundedTrie::class;
+  protected $boundedTrieDataType = '';
+  /**
+   * @var bool
+   */
   public $cumulative;
   protected $distributionType = DistributionUpdate::class;
   protected $distributionDataType = '';
@@ -36,27 +44,59 @@ class CounterUpdate extends \Google\Model
   protected $integerListDataType = '';
   protected $integerMeanType = IntegerMean::class;
   protected $integerMeanDataType = '';
+  /**
+   * @var array
+   */
   public $internal;
   protected $nameAndKindType = NameAndKind::class;
   protected $nameAndKindDataType = '';
+  /**
+   * @var string
+   */
   public $shortId;
   protected $stringListType = StringList::class;
   protected $stringListDataType = '';
   protected $structuredNameAndMetadataType = CounterStructuredNameAndMetadata::class;
   protected $structuredNameAndMetadataDataType = '';
 
+  /**
+   * @param bool
+   */
   public function setBoolean($boolean)
   {
     $this->boolean = $boolean;
   }
+  /**
+   * @return bool
+   */
   public function getBoolean()
   {
     return $this->boolean;
   }
+  /**
+   * @param BoundedTrie
+   */
+  public function setBoundedTrie(BoundedTrie $boundedTrie)
+  {
+    $this->boundedTrie = $boundedTrie;
+  }
+  /**
+   * @return BoundedTrie
+   */
+  public function getBoundedTrie()
+  {
+    return $this->boundedTrie;
+  }
+  /**
+   * @param bool
+   */
   public function setCumulative($cumulative)
   {
     $this->cumulative = $cumulative;
   }
+  /**
+   * @return bool
+   */
   public function getCumulative()
   {
     return $this->cumulative;
@@ -167,10 +207,16 @@ class CounterUpdate extends \Google\Model
   {
     return $this->integerMean;
   }
+  /**
+   * @param array
+   */
   public function setInternal($internal)
   {
     $this->internal = $internal;
   }
+  /**
+   * @return array
+   */
   public function getInternal()
   {
     return $this->internal;
@@ -189,10 +235,16 @@ class CounterUpdate extends \Google\Model
   {
     return $this->nameAndKind;
   }
+  /**
+   * @param string
+   */
   public function setShortId($shortId)
   {
     $this->shortId = $shortId;
   }
+  /**
+   * @return string
+   */
   public function getShortId()
   {
     return $this->shortId;

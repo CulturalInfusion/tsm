@@ -20,18 +20,51 @@ namespace Google\Service\TagManager;
 class Parameter extends \Google\Collection
 {
   protected $collection_key = 'map';
+  /**
+   * @var bool
+   */
+  public $isWeakReference;
+  /**
+   * @var string
+   */
   public $key;
   protected $listType = Parameter::class;
   protected $listDataType = 'array';
   protected $mapType = Parameter::class;
   protected $mapDataType = 'array';
+  /**
+   * @var string
+   */
   public $type;
+  /**
+   * @var string
+   */
   public $value;
 
+  /**
+   * @param bool
+   */
+  public function setIsWeakReference($isWeakReference)
+  {
+    $this->isWeakReference = $isWeakReference;
+  }
+  /**
+   * @return bool
+   */
+  public function getIsWeakReference()
+  {
+    return $this->isWeakReference;
+  }
+  /**
+   * @param string
+   */
   public function setKey($key)
   {
     $this->key = $key;
   }
+  /**
+   * @return string
+   */
   public function getKey()
   {
     return $this->key;
@@ -64,18 +97,30 @@ class Parameter extends \Google\Collection
   {
     return $this->map;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;
   }
+  /**
+   * @param string
+   */
   public function setValue($value)
   {
     $this->value = $value;
   }
+  /**
+   * @return string
+   */
   public function getValue()
   {
     return $this->value;

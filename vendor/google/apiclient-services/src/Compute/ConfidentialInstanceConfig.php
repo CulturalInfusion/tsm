@@ -19,12 +19,39 @@ namespace Google\Service\Compute;
 
 class ConfidentialInstanceConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $confidentialInstanceType;
+  /**
+   * @var bool
+   */
   public $enableConfidentialCompute;
 
+  /**
+   * @param string
+   */
+  public function setConfidentialInstanceType($confidentialInstanceType)
+  {
+    $this->confidentialInstanceType = $confidentialInstanceType;
+  }
+  /**
+   * @return string
+   */
+  public function getConfidentialInstanceType()
+  {
+    return $this->confidentialInstanceType;
+  }
+  /**
+   * @param bool
+   */
   public function setEnableConfidentialCompute($enableConfidentialCompute)
   {
     $this->enableConfidentialCompute = $enableConfidentialCompute;
   }
+  /**
+   * @return bool
+   */
   public function getEnableConfidentialCompute()
   {
     return $this->enableConfidentialCompute;

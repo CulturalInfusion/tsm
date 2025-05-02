@@ -19,21 +19,57 @@ namespace Google\Service\Translate;
 
 class TranslateTextGlossaryConfig extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $contextualTranslationEnabled;
+  /**
+   * @var string
+   */
   public $glossary;
+  /**
+   * @var bool
+   */
   public $ignoreCase;
 
+  /**
+   * @param bool
+   */
+  public function setContextualTranslationEnabled($contextualTranslationEnabled)
+  {
+    $this->contextualTranslationEnabled = $contextualTranslationEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getContextualTranslationEnabled()
+  {
+    return $this->contextualTranslationEnabled;
+  }
+  /**
+   * @param string
+   */
   public function setGlossary($glossary)
   {
     $this->glossary = $glossary;
   }
+  /**
+   * @return string
+   */
   public function getGlossary()
   {
     return $this->glossary;
   }
+  /**
+   * @param bool
+   */
   public function setIgnoreCase($ignoreCase)
   {
     $this->ignoreCase = $ignoreCase;
   }
+  /**
+   * @return bool
+   */
   public function getIgnoreCase()
   {
     return $this->ignoreCase;

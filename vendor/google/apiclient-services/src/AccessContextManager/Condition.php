@@ -19,14 +19,31 @@ namespace Google\Service\AccessContextManager;
 
 class Condition extends \Google\Collection
 {
-  protected $collection_key = 'requiredAccessLevels';
+  protected $collection_key = 'vpcNetworkSources';
   protected $devicePolicyType = DevicePolicy::class;
   protected $devicePolicyDataType = '';
+  /**
+   * @var string[]
+   */
   public $ipSubnetworks;
+  /**
+   * @var string[]
+   */
   public $members;
+  /**
+   * @var bool
+   */
   public $negate;
+  /**
+   * @var string[]
+   */
   public $regions;
+  /**
+   * @var string[]
+   */
   public $requiredAccessLevels;
+  protected $vpcNetworkSourcesType = VpcNetworkSource::class;
+  protected $vpcNetworkSourcesDataType = 'array';
 
   /**
    * @param DevicePolicy
@@ -42,45 +59,89 @@ class Condition extends \Google\Collection
   {
     return $this->devicePolicy;
   }
+  /**
+   * @param string[]
+   */
   public function setIpSubnetworks($ipSubnetworks)
   {
     $this->ipSubnetworks = $ipSubnetworks;
   }
+  /**
+   * @return string[]
+   */
   public function getIpSubnetworks()
   {
     return $this->ipSubnetworks;
   }
+  /**
+   * @param string[]
+   */
   public function setMembers($members)
   {
     $this->members = $members;
   }
+  /**
+   * @return string[]
+   */
   public function getMembers()
   {
     return $this->members;
   }
+  /**
+   * @param bool
+   */
   public function setNegate($negate)
   {
     $this->negate = $negate;
   }
+  /**
+   * @return bool
+   */
   public function getNegate()
   {
     return $this->negate;
   }
+  /**
+   * @param string[]
+   */
   public function setRegions($regions)
   {
     $this->regions = $regions;
   }
+  /**
+   * @return string[]
+   */
   public function getRegions()
   {
     return $this->regions;
   }
+  /**
+   * @param string[]
+   */
   public function setRequiredAccessLevels($requiredAccessLevels)
   {
     $this->requiredAccessLevels = $requiredAccessLevels;
   }
+  /**
+   * @return string[]
+   */
   public function getRequiredAccessLevels()
   {
     return $this->requiredAccessLevels;
+  }
+  /**
+   * @param VpcNetworkSource[]
+   */
+  public function setVpcNetworkSources($vpcNetworkSources)
+  {
+    $this->vpcNetworkSources = $vpcNetworkSources;
+  }
+  /**
+   * @return VpcNetworkSource[]
+   */
+  public function getVpcNetworkSources()
+  {
+    return $this->vpcNetworkSources;
   }
 }
 

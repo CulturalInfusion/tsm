@@ -25,7 +25,7 @@ use Google\Service\RealTimeBidding\ListCreativesResponse;
  * Typical usage is:
  *  <code>
  *   $realtimebiddingService = new Google\Service\RealTimeBidding(...);
- *   $creatives = $realtimebiddingService->creatives;
+ *   $creatives = $realtimebiddingService->buyers_creatives;
  *  </code>
  */
 class BuyersCreatives extends \Google\Service\Resource
@@ -41,6 +41,7 @@ class BuyersCreatives extends \Google\Service\Resource
    * @param Creative $postBody
    * @param array $optParams Optional parameters.
    * @return Creative
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Creative $postBody, $optParams = [])
   {
@@ -60,6 +61,7 @@ class BuyersCreatives extends \Google\Service\Resource
    * the entire creative resource (including the declared fields and the creative
    * content) specify the view as "FULL".
    * @return Creative
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -68,7 +70,13 @@ class BuyersCreatives extends \Google\Service\Resource
     return $this->call('get', [$params], Creative::class);
   }
   /**
-   * Lists creatives. (creatives.listBuyersCreatives)
+   * Lists creatives as they are at the time of the initial request. This call may
+   * take multiple hours to complete. For large, paginated requests, this method
+   * returns a snapshot of creatives at the time of request for the first page.
+   * `lastStatusUpdate` and `creativeServingDecision` may be outdated for
+   * creatives on sequential pages. We recommend [Google Cloud
+   * Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status.
+   * (creatives.listBuyersCreatives)
    *
    * @param string $parent Required. Name of the parent buyer that owns the
    * creatives. The pattern for this resource is either `buyers/{buyerAccountId}`
@@ -80,8 +88,8 @@ class BuyersCreatives extends \Google\Service\Resource
    * `buyers/456`. 3. The ID of the bidder itself. So for listing creatives
    * pertaining to bidder (`123`), you would use `buyers/123`. If you want to
    * access all creatives pertaining to both the bidder and all of its child seat
-   * accounts, you would use `bidders/{bidderAccountId}`, e.g., for all creatives
-   * pertaining to bidder (`123`), use `bidders/123`.
+   * accounts, you would use `bidders/{bidderAccountId}`, for example, for all
+   * creatives pertaining to bidder (`123`), use `bidders/123`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter Query string to filter creatives. If no filter is
@@ -90,17 +98,19 @@ class BuyersCreatives extends \Google\Service\Resource
    * declaredAttributes:IS_COOKIE_TARGETED'
    * @opt_param int pageSize Requested page size. The server may return fewer
    * creatives than requested (due to timeout constraint) even if more are
-   * available via another call. If unspecified, server will pick an appropriate
-   * default. Acceptable values are 1 to 1000, inclusive.
+   * available through another call. If unspecified, server will pick an
+   * appropriate default. Acceptable values are 1 to 1000, inclusive.
    * @opt_param string pageToken A token identifying a page of results the server
    * should return. Typically, this is the value of
    * ListCreativesResponse.nextPageToken returned from the previous call to the
-   * 'ListCreatives' method.
+   * 'ListCreatives' method. Page tokens for continued pages are valid for up to
+   * five hours, counting from the call to 'ListCreatives' for the first page.
    * @opt_param string view Controls the amount of information included in the
    * response. By default only creativeServingDecision is included. To retrieve
    * the entire creative resource (including the declared fields and the creative
    * content) specify the view as "FULL".
    * @return ListCreativesResponse
+   * @throws \Google\Service\Exception
    */
   public function listBuyersCreatives($parent, $optParams = [])
   {
@@ -120,6 +130,7 @@ class BuyersCreatives extends \Google\Service\Resource
    *
    * @opt_param string updateMask Field mask to use for partial in-place updates.
    * @return Creative
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Creative $postBody, $optParams = [])
   {

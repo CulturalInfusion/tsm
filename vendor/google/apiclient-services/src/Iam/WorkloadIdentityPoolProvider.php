@@ -19,30 +19,68 @@ namespace Google\Service\Iam;
 
 class WorkloadIdentityPoolProvider extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $attributeCondition;
+  /**
+   * @var string[]
+   */
   public $attributeMapping;
   protected $awsType = Aws::class;
   protected $awsDataType = '';
+  public $aws;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var bool
+   */
   public $disabled;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $name;
   protected $oidcType = Oidc::class;
   protected $oidcDataType = '';
+  public $oidc;
+  protected $samlType = Saml::class;
+  protected $samlDataType = '';
+  public $saml;
+  /**
+   * @var string
+   */
   public $state;
 
+  /**
+   * @param string
+   */
   public function setAttributeCondition($attributeCondition)
   {
     $this->attributeCondition = $attributeCondition;
   }
+  /**
+   * @return string
+   */
   public function getAttributeCondition()
   {
     return $this->attributeCondition;
   }
+  /**
+   * @param string[]
+   */
   public function setAttributeMapping($attributeMapping)
   {
     $this->attributeMapping = $attributeMapping;
   }
+  /**
+   * @return string[]
+   */
   public function getAttributeMapping()
   {
     return $this->attributeMapping;
@@ -61,34 +99,58 @@ class WorkloadIdentityPoolProvider extends \Google\Model
   {
     return $this->aws;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param bool
+   */
   public function setDisabled($disabled)
   {
     $this->disabled = $disabled;
   }
+  /**
+   * @return bool
+   */
   public function getDisabled()
   {
     return $this->disabled;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -107,10 +169,30 @@ class WorkloadIdentityPoolProvider extends \Google\Model
   {
     return $this->oidc;
   }
+  /**
+   * @param Saml
+   */
+  public function setSaml(Saml $saml)
+  {
+    $this->saml = $saml;
+  }
+  /**
+   * @return Saml
+   */
+  public function getSaml()
+  {
+    return $this->saml;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;

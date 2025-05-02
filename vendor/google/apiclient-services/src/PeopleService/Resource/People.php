@@ -44,12 +44,13 @@ class People extends \Google\Service\Resource
 {
   /**
    * Create a batch of new contacts and return the PersonResponses for the newly
-   * created contacts. Limited to 10 parallel requests per user.
-   * (people.batchCreateContacts)
+   * Mutate requests for the same user should be sent sequentially to avoid
+   * increased latency and failures. (people.batchCreateContacts)
    *
    * @param BatchCreateContactsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return BatchCreateContactsResponse
+   * @throws \Google\Service\Exception
    */
   public function batchCreateContacts(BatchCreateContactsRequest $postBody, $optParams = [])
   {
@@ -58,12 +59,14 @@ class People extends \Google\Service\Resource
     return $this->call('batchCreateContacts', [$params], BatchCreateContactsResponse::class);
   }
   /**
-   * Delete a batch of contacts. Any non-contact data will not be deleted. Limited
-   * to 10 parallel requests per user. (people.batchDeleteContacts)
+   * Delete a batch of contacts. Any non-contact data will not be deleted. Mutate
+   * requests for the same user should be sent sequentially to avoid increased
+   * latency and failures. (people.batchDeleteContacts)
    *
    * @param BatchDeleteContactsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return PeopleEmpty
+   * @throws \Google\Service\Exception
    */
   public function batchDeleteContacts(BatchDeleteContactsRequest $postBody, $optParams = [])
   {
@@ -73,12 +76,14 @@ class People extends \Google\Service\Resource
   }
   /**
    * Update a batch of contacts and return a map of resource names to
-   * PersonResponses for the updated contacts. Limited to 10 parallel requests per
-   * user. (people.batchUpdateContacts)
+   * PersonResponses for the updated contacts. Mutate requests for the same user
+   * should be sent sequentially to avoid increased latency and failures.
+   * (people.batchUpdateContacts)
    *
    * @param BatchUpdateContactsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return BatchUpdateContactsResponse
+   * @throws \Google\Service\Exception
    */
   public function batchUpdateContacts(BatchUpdateContactsRequest $postBody, $optParams = [])
   {
@@ -90,7 +95,8 @@ class People extends \Google\Service\Resource
    * Create a new contact and return the person resource for that contact. The
    * request returns a 400 error if more than one field is specified on a field
    * that is a singleton for contact sources: * biographies * birthdays * genders
-   * * names (people.createContact)
+   * * names Mutate requests for the same user should be sent sequentially to
+   * avoid increased latency and failures. (people.createContact)
    *
    * @param Person $postBody
    * @param array $optParams Optional parameters.
@@ -106,6 +112,7 @@ class People extends \Google\Service\Resource
    * @opt_param string sources Optional. A mask of what source types to return.
    * Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
    * @return Person
+   * @throws \Google\Service\Exception
    */
   public function createContact(Person $postBody, $optParams = [])
   {
@@ -114,13 +121,15 @@ class People extends \Google\Service\Resource
     return $this->call('createContact', [$params], Person::class);
   }
   /**
-   * Delete a contact person. Any non-contact data will not be deleted.
-   * (people.deleteContact)
+   * Delete a contact person. Any non-contact data will not be deleted. Mutate
+   * requests for the same user should be sent sequentially to avoid increased
+   * latency and failures. (people.deleteContact)
    *
    * @param string $resourceName Required. The resource name of the contact to
    * delete.
    * @param array $optParams Optional parameters.
    * @return PeopleEmpty
+   * @throws \Google\Service\Exception
    */
   public function deleteContact($resourceName, $optParams = [])
   {
@@ -129,7 +138,8 @@ class People extends \Google\Service\Resource
     return $this->call('deleteContact', [$params], PeopleEmpty::class);
   }
   /**
-   * Delete a contact's photo. (people.deleteContactPhoto)
+   * Delete a contact's photo. Mutate requests for the same user should be done
+   * sequentially to avoid // lock contention. (people.deleteContactPhoto)
    *
    * @param string $resourceName Required. The resource name of the contact whose
    * photo will be deleted.
@@ -147,6 +157,7 @@ class People extends \Google\Service\Resource
    * @opt_param string sources Optional. A mask of what source types to return.
    * Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
    * @return DeleteContactPhotoResponse
+   * @throws \Google\Service\Exception
    */
   public function deleteContactPhoto($resourceName, $optParams = [])
   {
@@ -181,6 +192,7 @@ class People extends \Google\Service\Resource
    * @opt_param string sources Optional. A mask of what source types to return.
    * Defaults to READ_SOURCE_TYPE_PROFILE and READ_SOURCE_TYPE_CONTACT if not set.
    * @return Person
+   * @throws \Google\Service\Exception
    */
   public function get($resourceName, $optParams = [])
   {
@@ -209,14 +221,15 @@ class People extends \Google\Service\Resource
    * `person.`: for example, `person.names` or `person.photos`.
    * @opt_param string resourceNames Required. The resource names of the people to
    * provide information about. It's repeatable. The URL query parameter should be
-   * resourceNames==&... - To get information about the authenticated user,
-   * specify `people/me`. - To get information about a google account, specify
-   * `people/{account_id}`. - To get information about a contact, specify the
-   * resource name that identifies the contact as returned by
+   * resourceNames=&resourceNames=&... - To get information about the
+   * authenticated user, specify `people/me`. - To get information about a google
+   * account, specify `people/{account_id}`. - To get information about a contact,
+   * specify the resource name that identifies the contact as returned by
    * `people.connections.list`. There is a maximum of 200 resource names.
    * @opt_param string sources Optional. A mask of what source types to return.
    * Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
    * @return GetPeopleResponse
+   * @throws \Google\Service\Exception
    */
   public function getBatchGet($optParams = [])
   {
@@ -268,6 +281,7 @@ class People extends \Google\Service\Resource
    * to `people.listDirectoryPeople` must match the first call that provided the
    * sync token. More details about sync behavior at `people.listDirectoryPeople`.
    * @return ListDirectoryPeopleResponse
+   * @throws \Google\Service\Exception
    */
   public function listDirectoryPeople($optParams = [])
   {
@@ -279,7 +293,7 @@ class People extends \Google\Service\Resource
    * Provides a list of contacts in the authenticated user's grouped contacts that
    * matches the search query. The query matches on a contact's `names`,
    * `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields
-   * that are from the CONTACT" source. **IMPORTANT**: Before searching, clients
+   * that are from the CONTACT source. **IMPORTANT**: Before searching, clients
    * should send a warmup request with an empty query to update the cache. See
    * https://developers.google.com/people/v1/contacts#search_the_users_contacts
    * (people.searchContacts)
@@ -304,6 +318,7 @@ class People extends \Google\Service\Resource
    * @opt_param string sources Optional. A mask of what source types to return.
    * Defaults to READ_SOURCE_TYPE_CONTACT if not set.
    * @return SearchResponse
+   * @throws \Google\Service\Exception
    */
   public function searchContacts($optParams = [])
   {
@@ -340,6 +355,7 @@ class People extends \Google\Service\Resource
    * urls * userDefined
    * @opt_param string sources Required. Directory sources to return.
    * @return SearchDirectoryPeopleResponse
+   * @throws \Google\Service\Exception
    */
   public function searchDirectoryPeople($optParams = [])
   {
@@ -360,12 +376,12 @@ class People extends \Google\Service\Resource
    * returns a 400 error if `memberships` are being updated and there are no
    * contact group memberships specified on the person. The server returns a 400
    * error if more than one field is specified on a field that is a singleton for
-   * contact sources: * biographies * birthdays * genders * names
-   * (people.updateContact)
+   * contact sources: * biographies * birthdays * genders * names Mutate requests
+   * for the same user should be sent sequentially to avoid increased latency and
+   * failures. (people.updateContact)
    *
    * @param string $resourceName The resource name for the person, assigned by the
-   * server. An ASCII string with a max length of 27 characters, in the form of
-   * `people/{person_id}`.
+   * server. An ASCII string in the form of `people/{person_id}`.
    * @param Person $postBody
    * @param array $optParams Optional parameters.
    *
@@ -388,6 +404,7 @@ class People extends \Google\Service\Resource
    * occupations * organizations * phoneNumbers * relations * sipAddresses * urls
    * * userDefined
    * @return Person
+   * @throws \Google\Service\Exception
    */
   public function updateContact($resourceName, Person $postBody, $optParams = [])
   {
@@ -396,12 +413,15 @@ class People extends \Google\Service\Resource
     return $this->call('updateContact', [$params], Person::class);
   }
   /**
-   * Update a contact's photo. (people.updateContactPhoto)
+   * Update a contact's photo. Mutate requests for the same user should be sent
+   * sequentially to avoid increased latency and failures.
+   * (people.updateContactPhoto)
    *
    * @param string $resourceName Required. Person resource name
    * @param UpdateContactPhotoRequest $postBody
    * @param array $optParams Optional parameters.
    * @return UpdateContactPhotoResponse
+   * @throws \Google\Service\Exception
    */
   public function updateContactPhoto($resourceName, UpdateContactPhotoRequest $postBody, $optParams = [])
   {

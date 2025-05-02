@@ -19,14 +19,24 @@ namespace Google\Service\Iam;
 
 class CreateServiceAccountRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $accountId;
   protected $serviceAccountType = ServiceAccount::class;
   protected $serviceAccountDataType = '';
+  public $serviceAccount;
 
+  /**
+   * @param string
+   */
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
+  /**
+   * @return string
+   */
   public function getAccountId()
   {
     return $this->accountId;

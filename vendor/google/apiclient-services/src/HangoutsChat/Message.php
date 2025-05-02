@@ -19,30 +19,94 @@ namespace Google\Service\HangoutsChat;
 
 class Message extends \Google\Collection
 {
-  protected $collection_key = 'cards';
+  protected $collection_key = 'emojiReactionSummaries';
+  protected $accessoryWidgetsType = AccessoryWidget::class;
+  protected $accessoryWidgetsDataType = 'array';
   protected $actionResponseType = ActionResponse::class;
   protected $actionResponseDataType = '';
   protected $annotationsType = Annotation::class;
   protected $annotationsDataType = 'array';
+  /**
+   * @var string
+   */
   public $argumentText;
+  protected $attachedGifsType = AttachedGif::class;
+  protected $attachedGifsDataType = 'array';
   protected $attachmentType = Attachment::class;
   protected $attachmentDataType = 'array';
   protected $cardsType = Card::class;
   protected $cardsDataType = 'array';
+  protected $cardsV2Type = CardWithId::class;
+  protected $cardsV2DataType = 'array';
+  /**
+   * @var string
+   */
+  public $clientAssignedMessageId;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
+  public $deleteTime;
+  protected $deletionMetadataType = DeletionMetadata::class;
+  protected $deletionMetadataDataType = '';
+  protected $emojiReactionSummariesType = EmojiReactionSummary::class;
+  protected $emojiReactionSummariesDataType = 'array';
+  /**
+   * @var string
+   */
   public $fallbackText;
+  /**
+   * @var string
+   */
+  public $formattedText;
+  /**
+   * @var string
+   */
+  public $lastUpdateTime;
+  protected $matchedUrlType = MatchedUrl::class;
+  protected $matchedUrlDataType = '';
+  /**
+   * @var string
+   */
   public $name;
-  public $previewText;
+  protected $privateMessageViewerType = User::class;
+  protected $privateMessageViewerDataType = '';
+  protected $quotedMessageMetadataType = QuotedMessageMetadata::class;
+  protected $quotedMessageMetadataDataType = '';
   protected $senderType = User::class;
   protected $senderDataType = '';
   protected $slashCommandType = SlashCommand::class;
   protected $slashCommandDataType = '';
   protected $spaceType = Space::class;
   protected $spaceDataType = '';
+  /**
+   * @var string
+   */
   public $text;
   protected $threadType = Thread::class;
   protected $threadDataType = '';
+  /**
+   * @var bool
+   */
+  public $threadReply;
 
+  /**
+   * @param AccessoryWidget[]
+   */
+  public function setAccessoryWidgets($accessoryWidgets)
+  {
+    $this->accessoryWidgets = $accessoryWidgets;
+  }
+  /**
+   * @return AccessoryWidget[]
+   */
+  public function getAccessoryWidgets()
+  {
+    return $this->accessoryWidgets;
+  }
   /**
    * @param ActionResponse
    */
@@ -71,13 +135,33 @@ class Message extends \Google\Collection
   {
     return $this->annotations;
   }
+  /**
+   * @param string
+   */
   public function setArgumentText($argumentText)
   {
     $this->argumentText = $argumentText;
   }
+  /**
+   * @return string
+   */
   public function getArgumentText()
   {
     return $this->argumentText;
+  }
+  /**
+   * @param AttachedGif[]
+   */
+  public function setAttachedGifs($attachedGifs)
+  {
+    $this->attachedGifs = $attachedGifs;
+  }
+  /**
+   * @return AttachedGif[]
+   */
+  public function getAttachedGifs()
+  {
+    return $this->attachedGifs;
   }
   /**
    * @param Attachment[]
@@ -107,37 +191,187 @@ class Message extends \Google\Collection
   {
     return $this->cards;
   }
+  /**
+   * @param CardWithId[]
+   */
+  public function setCardsV2($cardsV2)
+  {
+    $this->cardsV2 = $cardsV2;
+  }
+  /**
+   * @return CardWithId[]
+   */
+  public function getCardsV2()
+  {
+    return $this->cardsV2;
+  }
+  /**
+   * @param string
+   */
+  public function setClientAssignedMessageId($clientAssignedMessageId)
+  {
+    $this->clientAssignedMessageId = $clientAssignedMessageId;
+  }
+  /**
+   * @return string
+   */
+  public function getClientAssignedMessageId()
+  {
+    return $this->clientAssignedMessageId;
+  }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
+  public function setDeleteTime($deleteTime)
+  {
+    $this->deleteTime = $deleteTime;
+  }
+  /**
+   * @return string
+   */
+  public function getDeleteTime()
+  {
+    return $this->deleteTime;
+  }
+  /**
+   * @param DeletionMetadata
+   */
+  public function setDeletionMetadata(DeletionMetadata $deletionMetadata)
+  {
+    $this->deletionMetadata = $deletionMetadata;
+  }
+  /**
+   * @return DeletionMetadata
+   */
+  public function getDeletionMetadata()
+  {
+    return $this->deletionMetadata;
+  }
+  /**
+   * @param EmojiReactionSummary[]
+   */
+  public function setEmojiReactionSummaries($emojiReactionSummaries)
+  {
+    $this->emojiReactionSummaries = $emojiReactionSummaries;
+  }
+  /**
+   * @return EmojiReactionSummary[]
+   */
+  public function getEmojiReactionSummaries()
+  {
+    return $this->emojiReactionSummaries;
+  }
+  /**
+   * @param string
+   */
   public function setFallbackText($fallbackText)
   {
     $this->fallbackText = $fallbackText;
   }
+  /**
+   * @return string
+   */
   public function getFallbackText()
   {
     return $this->fallbackText;
   }
+  /**
+   * @param string
+   */
+  public function setFormattedText($formattedText)
+  {
+    $this->formattedText = $formattedText;
+  }
+  /**
+   * @return string
+   */
+  public function getFormattedText()
+  {
+    return $this->formattedText;
+  }
+  /**
+   * @param string
+   */
+  public function setLastUpdateTime($lastUpdateTime)
+  {
+    $this->lastUpdateTime = $lastUpdateTime;
+  }
+  /**
+   * @return string
+   */
+  public function getLastUpdateTime()
+  {
+    return $this->lastUpdateTime;
+  }
+  /**
+   * @param MatchedUrl
+   */
+  public function setMatchedUrl(MatchedUrl $matchedUrl)
+  {
+    $this->matchedUrl = $matchedUrl;
+  }
+  /**
+   * @return MatchedUrl
+   */
+  public function getMatchedUrl()
+  {
+    return $this->matchedUrl;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
-  public function setPreviewText($previewText)
+  /**
+   * @param User
+   */
+  public function setPrivateMessageViewer(User $privateMessageViewer)
   {
-    $this->previewText = $previewText;
+    $this->privateMessageViewer = $privateMessageViewer;
   }
-  public function getPreviewText()
+  /**
+   * @return User
+   */
+  public function getPrivateMessageViewer()
   {
-    return $this->previewText;
+    return $this->privateMessageViewer;
+  }
+  /**
+   * @param QuotedMessageMetadata
+   */
+  public function setQuotedMessageMetadata(QuotedMessageMetadata $quotedMessageMetadata)
+  {
+    $this->quotedMessageMetadata = $quotedMessageMetadata;
+  }
+  /**
+   * @return QuotedMessageMetadata
+   */
+  public function getQuotedMessageMetadata()
+  {
+    return $this->quotedMessageMetadata;
   }
   /**
    * @param User
@@ -181,10 +415,16 @@ class Message extends \Google\Collection
   {
     return $this->space;
   }
+  /**
+   * @param string
+   */
   public function setText($text)
   {
     $this->text = $text;
   }
+  /**
+   * @return string
+   */
   public function getText()
   {
     return $this->text;
@@ -202,6 +442,20 @@ class Message extends \Google\Collection
   public function getThread()
   {
     return $this->thread;
+  }
+  /**
+   * @param bool
+   */
+  public function setThreadReply($threadReply)
+  {
+    $this->threadReply = $threadReply;
+  }
+  /**
+   * @return bool
+   */
+  public function getThreadReply()
+  {
+    return $this->threadReply;
   }
 }
 

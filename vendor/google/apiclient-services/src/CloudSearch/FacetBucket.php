@@ -19,23 +19,57 @@ namespace Google\Service\CloudSearch;
 
 class FacetBucket extends \Google\Model
 {
+  /**
+   * @var int
+   */
   public $count;
+  protected $filterType = Filter::class;
+  protected $filterDataType = '';
+  /**
+   * @var int
+   */
   public $percentage;
   protected $valueType = Value::class;
   protected $valueDataType = '';
 
+  /**
+   * @param int
+   */
   public function setCount($count)
   {
     $this->count = $count;
   }
+  /**
+   * @return int
+   */
   public function getCount()
   {
     return $this->count;
   }
+  /**
+   * @param Filter
+   */
+  public function setFilter(Filter $filter)
+  {
+    $this->filter = $filter;
+  }
+  /**
+   * @return Filter
+   */
+  public function getFilter()
+  {
+    return $this->filter;
+  }
+  /**
+   * @param int
+   */
   public function setPercentage($percentage)
   {
     $this->percentage = $percentage;
   }
+  /**
+   * @return int
+   */
   public function getPercentage()
   {
     return $this->percentage;

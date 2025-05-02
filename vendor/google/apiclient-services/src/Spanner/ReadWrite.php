@@ -19,6 +19,43 @@ namespace Google\Service\Spanner;
 
 class ReadWrite extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $multiplexedSessionPreviousTransactionId;
+  /**
+   * @var string
+   */
+  public $readLockMode;
+
+  /**
+   * @param string
+   */
+  public function setMultiplexedSessionPreviousTransactionId($multiplexedSessionPreviousTransactionId)
+  {
+    $this->multiplexedSessionPreviousTransactionId = $multiplexedSessionPreviousTransactionId;
+  }
+  /**
+   * @return string
+   */
+  public function getMultiplexedSessionPreviousTransactionId()
+  {
+    return $this->multiplexedSessionPreviousTransactionId;
+  }
+  /**
+   * @param string
+   */
+  public function setReadLockMode($readLockMode)
+  {
+    $this->readLockMode = $readLockMode;
+  }
+  /**
+   * @return string
+   */
+  public function getReadLockMode()
+  {
+    return $this->readLockMode;
+  }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.

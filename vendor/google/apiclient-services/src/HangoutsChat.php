@@ -23,9 +23,8 @@ use Google\Client;
  * Service definition for HangoutsChat (v1).
  *
  * <p>
- * Enables bots to fetch information and perform actions in Google Chat.
- * Authentication using a service account is a prerequisite for using the Google
- * Chat REST API.</p>
+ * The Google Chat API lets you build Chat apps to integrate your services with
+ * Google Chat and manage Chat resources such as spaces, members, and messages.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -36,17 +35,95 @@ use Google\Client;
  */
 class HangoutsChat extends \Google\Service
 {
+  /** Delete conversations and spaces owned by your organization and remove access to associated files in Google Chat. */
+  const CHAT_ADMIN_DELETE =
+      "https://www.googleapis.com/auth/chat.admin.delete";
+  /** View, add, update and remove members and managers in conversations owned by your organization. */
+  const CHAT_ADMIN_MEMBERSHIPS =
+      "https://www.googleapis.com/auth/chat.admin.memberships";
+  /** View members and managers in conversations owned by your organization. */
+  const CHAT_ADMIN_MEMBERSHIPS_READONLY =
+      "https://www.googleapis.com/auth/chat.admin.memberships.readonly";
+  /** View or edit display name, description, and other metadata for all Google Chat conversations owned by your organization. */
+  const CHAT_ADMIN_SPACES =
+      "https://www.googleapis.com/auth/chat.admin.spaces";
+  /** View display name, description, and other metadata for all Google Chat conversations owned by your organization. */
+  const CHAT_ADMIN_SPACES_READONLY =
+      "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
+  /** On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to associated files. */
+  const CHAT_APP_DELETE =
+      "https://www.googleapis.com/auth/chat.app.delete";
+  /** On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces. */
+  const CHAT_APP_MEMBERSHIPS =
+      "https://www.googleapis.com/auth/chat.app.memberships";
+  /** On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings). */
+  const CHAT_APP_SPACES =
+      "https://www.googleapis.com/auth/chat.app.spaces";
+  /** On their own behalf, apps in Google Chat can create conversations and spaces. */
+  const CHAT_APP_SPACES_CREATE =
+      "https://www.googleapis.com/auth/chat.app.spaces.create";
+  /** Private Service: https://www.googleapis.com/auth/chat.bot. */
+  const CHAT_BOT =
+      "https://www.googleapis.com/auth/chat.bot";
+  /** Delete conversations and spaces and remove access to associated files in Google Chat. */
+  const CHAT_DELETE =
+      "https://www.googleapis.com/auth/chat.delete";
+  /** Import spaces, messages, and memberships into Google Chat.. */
+  const CHAT_IMPORT =
+      "https://www.googleapis.com/auth/chat.import";
+  /** See, add, update, and remove members from conversations and spaces in Google Chat. */
+  const CHAT_MEMBERSHIPS =
+      "https://www.googleapis.com/auth/chat.memberships";
+  /** Add and remove itself from conversations and spaces in Google Chat. */
+  const CHAT_MEMBERSHIPS_APP =
+      "https://www.googleapis.com/auth/chat.memberships.app";
+  /** View members in Google Chat conversations.. */
+  const CHAT_MEMBERSHIPS_READONLY =
+      "https://www.googleapis.com/auth/chat.memberships.readonly";
+  /** See, compose, send, update, and delete messages as well as their message content; add, see, and delete reactions to messages.. */
+  const CHAT_MESSAGES =
+      "https://www.googleapis.com/auth/chat.messages";
+  /** Compose and send messages in Google Chat. */
+  const CHAT_MESSAGES_CREATE =
+      "https://www.googleapis.com/auth/chat.messages.create";
+  /** See, add, and delete reactions as well as their reaction content to messages in Google Chat. */
+  const CHAT_MESSAGES_REACTIONS =
+      "https://www.googleapis.com/auth/chat.messages.reactions";
+  /** Add reactions to messages in Google Chat. */
+  const CHAT_MESSAGES_REACTIONS_CREATE =
+      "https://www.googleapis.com/auth/chat.messages.reactions.create";
+  /** View reactions as well as their reaction content to messages in Google Chat. */
+  const CHAT_MESSAGES_REACTIONS_READONLY =
+      "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
+  /** See messages as well as their reactions and message content in Google Chat. */
+  const CHAT_MESSAGES_READONLY =
+      "https://www.googleapis.com/auth/chat.messages.readonly";
+  /** Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat. */
+  const CHAT_SPACES =
+      "https://www.googleapis.com/auth/chat.spaces";
+  /** Create new conversations and spaces in Google Chat. */
+  const CHAT_SPACES_CREATE =
+      "https://www.googleapis.com/auth/chat.spaces.create";
+  /** View chat and spaces in Google Chat. */
+  const CHAT_SPACES_READONLY =
+      "https://www.googleapis.com/auth/chat.spaces.readonly";
+  /** View and modify last read time for Google Chat conversations. */
+  const CHAT_USERS_READSTATE =
+      "https://www.googleapis.com/auth/chat.users.readstate";
+  /** View last read time for Google Chat conversations. */
+  const CHAT_USERS_READSTATE_READONLY =
+      "https://www.googleapis.com/auth/chat.users.readstate.readonly";
 
-
-  public $dms;
-  public $dms_conversations;
   public $media;
-  public $rooms;
-  public $rooms_conversations;
   public $spaces;
   public $spaces_members;
   public $spaces_messages;
   public $spaces_messages_attachments;
+  public $spaces_messages_reactions;
+  public $spaces_spaceEvents;
+  public $users_spaces;
+  public $users_spaces_threads;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the HangoutsChat service.
@@ -59,73 +136,12 @@ class HangoutsChat extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://chat.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://chat.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
     $this->serviceName = 'chat';
 
-    $this->dms = new HangoutsChat\Resource\Dms(
-        $this,
-        $this->serviceName,
-        'dms',
-        [
-          'methods' => [
-            'messages' => [
-              'path' => 'v1/{+parent}/messages',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'webhooks' => [
-              'path' => 'v1/{+parent}/webhooks',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->dms_conversations = new HangoutsChat\Resource\DmsConversations(
-        $this,
-        $this->serviceName,
-        'conversations',
-        [
-          'methods' => [
-            'messages' => [
-              'path' => 'v1/{+parent}/messages',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->media = new HangoutsChat\Resource\Media(
         $this,
         $this->serviceName,
@@ -142,66 +158,14 @@ class HangoutsChat extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],
-          ]
-        ]
-    );
-    $this->rooms = new HangoutsChat\Resource\Rooms(
-        $this,
-        $this->serviceName,
-        'rooms',
-        [
-          'methods' => [
-            'messages' => [
-              'path' => 'v1/{+parent}/messages',
+            ],'upload' => [
+              'path' => 'v1/{+parent}/attachments:upload',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'webhooks' => [
-              'path' => 'v1/{+parent}/webhooks',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->rooms_conversations = new HangoutsChat\Resource\RoomsConversations(
-        $this,
-        $this->serviceName,
-        'conversations',
-        [
-          'methods' => [
-            'messages' => [
-              'path' => 'v1/{+parent}/messages',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'threadKey' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],
@@ -214,7 +178,49 @@ class HangoutsChat extends \Google\Service
         'spaces',
         [
           'methods' => [
-            'get' => [
+            'completeImport' => [
+              'path' => 'v1/{+name}:completeImport',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'create' => [
+              'path' => 'v1/spaces',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'requestId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'findDirectMessage' => [
+              'path' => 'v1/spaces:findDirectMessage',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'get' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
@@ -223,11 +229,19 @@ class HangoutsChat extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'list' => [
               'path' => 'v1/spaces',
               'httpMethod' => 'GET',
               'parameters' => [
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -237,20 +251,53 @@ class HangoutsChat extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'webhooks' => [
-              'path' => 'v1/{+parent}/webhooks',
-              'httpMethod' => 'POST',
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => [
-                'parent' => [
+                'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
-                'threadKey' => [
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
+            ],'search' => [
+              'path' => 'v1/spaces:search',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'orderBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'query' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'setup' => [
+              'path' => 'v1/spaces:setup',
+              'httpMethod' => 'POST',
+              'parameters' => [],
             ],
           ]
         ]
@@ -261,7 +308,35 @@ class HangoutsChat extends \Google\Service
         'members',
         [
           'methods' => [
-            'get' => [
+            'create' => [
+              'path' => 'v1/{+parent}/members',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'get' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
@@ -269,6 +344,10 @@ class HangoutsChat extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
               ],
             ],'list' => [
@@ -280,6 +359,10 @@ class HangoutsChat extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -287,6 +370,36 @@ class HangoutsChat extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+                'showGroups' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'showInvited' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'useAdminAccess' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
               ],
             ],
@@ -308,6 +421,18 @@ class HangoutsChat extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'messageId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'messageReplyOption' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'requestId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'threadKey' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -322,6 +447,10 @@ class HangoutsChat extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'force' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'get' => [
               'path' => 'v1/{+name}',
@@ -333,6 +462,54 @@ class HangoutsChat extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/messages',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'orderBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'update' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'PUT',
@@ -341,6 +518,10 @@ class HangoutsChat extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
                 'updateMask' => [
                   'location' => 'query',
@@ -358,6 +539,154 @@ class HangoutsChat extends \Google\Service
         [
           'methods' => [
             'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->spaces_messages_reactions = new HangoutsChat\Resource\SpacesMessagesReactions(
+        $this,
+        $this->serviceName,
+        'reactions',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/reactions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/reactions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->spaces_spaceEvents = new HangoutsChat\Resource\SpacesSpaceEvents(
+        $this,
+        $this->serviceName,
+        'spaceEvents',
+        [
+          'methods' => [
+            'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/spaceEvents',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->users_spaces = new HangoutsChat\Resource\UsersSpaces(
+        $this,
+        $this->serviceName,
+        'spaces',
+        [
+          'methods' => [
+            'getSpaceReadState' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'updateSpaceReadState' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->users_spaces_threads = new HangoutsChat\Resource\UsersSpacesThreads(
+        $this,
+        $this->serviceName,
+        'threads',
+        [
+          'methods' => [
+            'getThreadReadState' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [

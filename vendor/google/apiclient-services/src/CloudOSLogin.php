@@ -34,16 +34,23 @@ use Google\Client;
  */
 class CloudOSLogin extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
+  const CLOUD_PLATFORM_READ_ONLY =
+      "https://www.googleapis.com/auth/cloud-platform.read-only";
   /** View and manage your Google Compute Engine resources. */
   const COMPUTE =
       "https://www.googleapis.com/auth/compute";
+  /** View your Google Compute Engine resources. */
+  const COMPUTE_READONLY =
+      "https://www.googleapis.com/auth/compute.readonly";
 
   public $users;
   public $users_projects;
   public $users_sshPublicKeys;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the CloudOSLogin service.
@@ -56,6 +63,7 @@ class CloudOSLogin extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://oslogin.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://oslogin.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -98,6 +106,11 @@ class CloudOSLogin extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'regions' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
               ],
             ],
           ]
@@ -129,7 +142,17 @@ class CloudOSLogin extends \Google\Service
         'sshPublicKeys',
         [
           'methods' => [
-            'delete' => [
+            'create' => [
+              'path' => 'v1/{+parent}/sshPublicKeys',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [

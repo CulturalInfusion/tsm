@@ -37,10 +37,9 @@ class Notifications extends \Google\Service\Resource
    * @param string $notification ID of the notification to delete.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
+   * @throws \Google\Service\Exception
    */
   public function delete($bucket, $notification, $optParams = [])
   {
@@ -55,11 +54,10 @@ class Notifications extends \Google\Service\Resource
    * @param string $notification Notification ID
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return Notification
+   * @throws \Google\Service\Exception
    */
   public function get($bucket, $notification, $optParams = [])
   {
@@ -75,11 +73,10 @@ class Notifications extends \Google\Service\Resource
    * @param Notification $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return Notification
+   * @throws \Google\Service\Exception
    */
   public function insert($bucket, Notification $postBody, $optParams = [])
   {
@@ -94,11 +91,10 @@ class Notifications extends \Google\Service\Resource
    * @param string $bucket Name of a Google Cloud Storage bucket.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return NotificationsModel
+   * @throws \Google\Service\Exception
    */
   public function listNotifications($bucket, $optParams = [])
   {

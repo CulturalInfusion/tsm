@@ -27,7 +27,7 @@ use Google\Service\Apigee\GoogleCloudApigeeV1ListApiProxiesResponse;
  * Typical usage is:
  *  <code>
  *   $apigeeService = new Google\Service\Apigee(...);
- *   $apis = $apigeeService->apis;
+ *   $apis = $apigeeService->organizations_apis;
  *  </code>
  */
 class OrganizationsApis extends \Google\Service\Resource
@@ -63,6 +63,7 @@ class OrganizationsApis extends \Google\Service\Resource
    * @opt_param bool validate Ignored. All uploads are validated regardless of the
    * value of this field. Maintained for compatibility with Apigee Edge API.
    * @return GoogleCloudApigeeV1ApiProxyRevision
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleApiHttpBody $postBody, $optParams = [])
   {
@@ -79,6 +80,7 @@ class OrganizationsApis extends \Google\Service\Resource
    * `organizations/{org}/apis/{api}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1ApiProxy
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -93,6 +95,7 @@ class OrganizationsApis extends \Google\Service\Resource
    * `organizations/{org}/apis/{api}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1ApiProxy
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -114,12 +117,31 @@ class OrganizationsApis extends \Google\Service\Resource
    * @opt_param bool includeRevisions Flag that specifies whether to include a
    * list of revisions in the response.
    * @return GoogleCloudApigeeV1ListApiProxiesResponse
+   * @throws \Google\Service\Exception
    */
   public function listOrganizationsApis($parent, $optParams = [])
   {
     $params = ['parent' => $parent];
     $params = array_merge($params, $optParams);
     return $this->call('list', [$params], GoogleCloudApigeeV1ListApiProxiesResponse::class);
+  }
+  /**
+   * Updates an existing API proxy. (apis.patch)
+   *
+   * @param string $name Required. API proxy to update in the following format:
+   * `organizations/{org}/apis/{api}`
+   * @param GoogleCloudApigeeV1ApiProxy $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string updateMask Required. The list of fields to update.
+   * @return GoogleCloudApigeeV1ApiProxy
+   * @throws \Google\Service\Exception
+   */
+  public function patch($name, GoogleCloudApigeeV1ApiProxy $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('patch', [$params], GoogleCloudApigeeV1ApiProxy::class);
   }
 }
 

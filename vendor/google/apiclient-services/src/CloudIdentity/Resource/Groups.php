@@ -22,6 +22,7 @@ use Google\Service\CloudIdentity\ListGroupsResponse;
 use Google\Service\CloudIdentity\LookupGroupNameResponse;
 use Google\Service\CloudIdentity\Operation;
 use Google\Service\CloudIdentity\SearchGroupsResponse;
+use Google\Service\CloudIdentity\SecuritySettings;
 
 /**
  * The "groups" collection of methods.
@@ -42,6 +43,7 @@ class Groups extends \Google\Service\Resource
    * @opt_param string initialGroupConfig Optional. The initial configuration
    * option for the `Group`.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create(Group $postBody, $optParams = [])
   {
@@ -54,9 +56,10 @@ class Groups extends \Google\Service\Resource
    *
    * @param string $name Required. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-   * retrieve. Must be of the form `groups/{group_id}`.
+   * retrieve. Must be of the form `groups/{group}`.
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -69,15 +72,35 @@ class Groups extends \Google\Service\Resource
    *
    * @param string $name Required. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-   * retrieve. Must be of the form `groups/{group_id}`.
+   * retrieve. Must be of the form `groups/{group}`.
    * @param array $optParams Optional parameters.
    * @return Group
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('get', [$params], Group::class);
+  }
+  /**
+   * Get Security Settings (groups.getSecuritySettings)
+   *
+   * @param string $name Required. The security settings to retrieve. Format:
+   * `groups/{group_id}/securitySettings`
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string readMask Field-level read mask of which fields to return.
+   * "*" returns all fields. If not specified, all fields will be returned. May
+   * only contain the following field: `member_restriction`.
+   * @return SecuritySettings
+   * @throws \Google\Service\Exception
+   */
+  public function getSecuritySettings($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('getSecuritySettings', [$params], SecuritySettings::class);
   }
   /**
    * Lists the `Group` resources under a customer or namespace.
@@ -96,12 +119,14 @@ class Groups extends \Google\Service\Resource
    * previous list request, if any.
    * @opt_param string parent Required. The parent resource under which to list
    * all `Group` resources. Must be of the form
-   * `identitysources/{identity_source_id}` for external- identity-mapped groups
-   * or `customers/{customer_id}` for Google Groups. The `customer_id` must begin
-   * with "C" (for example, 'C046psxkn').
+   * `identitysources/{identity_source}` for external- identity-mapped groups or
+   * `customers/{customer_id}` for Google Groups. The `customer_id` must begin
+   * with "C" (for example, 'C046psxkn'). [Find your customer ID.]
+   * (https://support.google.com/cloudidentity/answer/10070793)
    * @opt_param string view The level of detail to be returned. If unspecified,
    * defaults to `View.BASIC`.
    * @return ListGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function listGroups($optParams = [])
   {
@@ -118,15 +143,18 @@ class Groups extends \Google\Service\Resource
    *
    * @opt_param string groupKey.id The ID of the entity. For Google-managed
    * entities, the `id` should be the email address of an existing group or user.
-   * For external-identity-mapped entities, the `id` must be a string conforming
-   * to the Identity Source's requirements. Must be unique within a `namespace`.
+   * Email addresses need to adhere to [name guidelines for users and
+   * groups](https://support.google.com/a/answer/9193374). For external-identity-
+   * mapped entities, the `id` must be a string conforming to the Identity
+   * Source's requirements. Must be unique within a `namespace`.
    * @opt_param string groupKey.namespace The namespace in which the entity
    * exists. If not specified, the `EntityKey` represents a Google-managed entity
    * such as a Google user or a Google Group. If specified, the `EntityKey`
    * represents an external-identity-mapped group. The namespace must correspond
    * to an identity source created in Admin Console and must be in the form of
-   * `identitysources/{identity_source_id}`.
+   * `identitysources/{identity_source}`.
    * @return LookupGroupNameResponse
+   * @throws \Google\Service\Exception
    */
   public function lookup($optParams = [])
   {
@@ -139,13 +167,15 @@ class Groups extends \Google\Service\Resource
    *
    * @param string $name Output only. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the `Group`.
-   * Shall be of the form `groups/{group_id}`.
+   * Shall be of the form `groups/{group}`.
    * @param Group $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Required. The names of fields to update. May
-   * only contain the following fields: `display_name`, `description`, `labels`.
+   * only contain the following field names: `display_name`, `description`,
+   * `labels`.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Group $postBody, $optParams = [])
   {
@@ -167,21 +197,50 @@ class Groups extends \Google\Service\Resource
    * or 500 for `GroupView.FULL`.
    * @opt_param string pageToken The `next_page_token` value returned from a
    * previous search request, if any.
-   * @opt_param string query Required. The search query. Must be specified in
-   * [Common Expression Language](https://opensource.google/projects/cel). May
-   * only contain equality operators on the parent and inclusion operators on
-   * labels (e.g., `parent == 'customers/{customer_id}' &&
-   * 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The
-   * `customer_id` must begin with "C" (for example, 'C046psxkn').
+   * @opt_param string query Required. The search query. * Must be specified in
+   * [Common Expression Language](https://opensource.google/projects/cel). * Must
+   * contain equality operators on the parent, e.g. `parent ==
+   * 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
+   * example, 'C046psxkn'). [Find your customer ID.]
+   * (https://support.google.com/cloudidentity/answer/10070793) * Can contain
+   * optional inclusion operators on `labels` such as
+   * `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). * Can
+   * contain an optional equality operator on `domain_name`. e.g. `domain_name ==
+   * 'examplepetstore.com'` * Can contain optional `startsWith/contains/equality`
+   * operators on `group_key`, e.g. `group_key.startsWith('dev')`,
+   * `group_key.contains('dev'), group_key == 'dev@examplepetstore.com'` * Can
+   * contain optional `startsWith/contains/equality` operators on `display_name`,
+   * such as `display_name.startsWith('dev')` , `display_name.contains('dev')`,
+   * `display_name == 'dev'`
    * @opt_param string view The level of detail to be returned. If unspecified,
    * defaults to `View.BASIC`.
    * @return SearchGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function search($optParams = [])
   {
     $params = [];
     $params = array_merge($params, $optParams);
     return $this->call('search', [$params], SearchGroupsResponse::class);
+  }
+  /**
+   * Update Security Settings (groups.updateSecuritySettings)
+   *
+   * @param string $name Output only. The resource name of the security settings.
+   * Shall be of the form `groups/{group_id}/securitySettings`.
+   * @param SecuritySettings $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string updateMask Required. The fully-qualified names of fields to
+   * update. May only contain the following field: `member_restriction.query`.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function updateSecuritySettings($name, SecuritySettings $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('updateSecuritySettings', [$params], Operation::class);
   }
 }
 

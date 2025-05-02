@@ -21,9 +21,20 @@ class LiveBroadcast extends \Google\Model
 {
   protected $contentDetailsType = LiveBroadcastContentDetails::class;
   protected $contentDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $etag;
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $kind;
+  protected $monetizationDetailsType = LiveBroadcastMonetizationDetails::class;
+  protected $monetizationDetailsDataType = '';
   protected $snippetType = LiveBroadcastSnippet::class;
   protected $snippetDataType = '';
   protected $statisticsType = LiveBroadcastStatistics::class;
@@ -45,29 +56,61 @@ class LiveBroadcast extends \Google\Model
   {
     return $this->contentDetails;
   }
+  /**
+   * @param string
+   */
   public function setEtag($etag)
   {
     $this->etag = $etag;
   }
+  /**
+   * @return string
+   */
   public function getEtag()
   {
     return $this->etag;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
+  }
+  /**
+   * @param LiveBroadcastMonetizationDetails
+   */
+  public function setMonetizationDetails(LiveBroadcastMonetizationDetails $monetizationDetails)
+  {
+    $this->monetizationDetails = $monetizationDetails;
+  }
+  /**
+   * @return LiveBroadcastMonetizationDetails
+   */
+  public function getMonetizationDetails()
+  {
+    return $this->monetizationDetails;
   }
   /**
    * @param LiveBroadcastSnippet

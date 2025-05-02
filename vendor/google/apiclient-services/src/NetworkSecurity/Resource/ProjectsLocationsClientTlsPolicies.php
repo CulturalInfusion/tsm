@@ -30,7 +30,7 @@ use Google\Service\NetworkSecurity\Operation;
  * Typical usage is:
  *  <code>
  *   $networksecurityService = new Google\Service\NetworkSecurity(...);
- *   $clientTlsPolicies = $networksecurityService->clientTlsPolicies;
+ *   $clientTlsPolicies = $networksecurityService->projects_locations_clientTlsPolicies;
  *  </code>
  */
 class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
@@ -49,6 +49,7 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * long, containing only letters, numbers, hyphens, and underscores, and should
    * not start with a number. E.g. "client_mtls_policy".
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, ClientTlsPolicy $postBody, $optParams = [])
   {
@@ -63,6 +64,7 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * be in the format `projects/locations/{location}/clientTlsPolicies`.
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -77,6 +79,7 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * in the format `projects/locations/{location}/clientTlsPolicies`.
    * @param array $optParams Optional parameters.
    * @return ClientTlsPolicy
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -90,19 +93,25 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * (clientTlsPolicies.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return GoogleIamV1Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -126,6 +135,7 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * prior `ListClientTlsPolicies` call, and that the system should return the
    * next page of data.
    * @return ListClientTlsPoliciesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsClientTlsPolicies($parent, $optParams = [])
   {
@@ -148,6 +158,7 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * full request. A field will be overwritten if it is in the mask. If the user
    * does not provide a mask then all fields will be overwritten.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, ClientTlsPolicy $postBody, $optParams = [])
   {
@@ -161,11 +172,13 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (clientTlsPolicies.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GoogleIamV1SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleIamV1Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, GoogleIamV1SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -182,11 +195,13 @@ class ProjectsLocationsClientTlsPolicies extends \Google\Service\Resource
    * (clientTlsPolicies.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GoogleIamV1TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleIamV1TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, GoogleIamV1TestIamPermissionsRequest $postBody, $optParams = [])
   {

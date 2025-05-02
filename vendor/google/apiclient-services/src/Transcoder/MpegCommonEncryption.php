@@ -19,21 +19,21 @@ namespace Google\Service\Transcoder;
 
 class MpegCommonEncryption extends \Google\Model
 {
-  public $keyId;
+  /**
+   * @var string
+   */
   public $scheme;
 
-  public function setKeyId($keyId)
-  {
-    $this->keyId = $keyId;
-  }
-  public function getKeyId()
-  {
-    return $this->keyId;
-  }
+  /**
+   * @param string
+   */
   public function setScheme($scheme)
   {
     $this->scheme = $scheme;
   }
+  /**
+   * @return string
+   */
   public function getScheme()
   {
     return $this->scheme;

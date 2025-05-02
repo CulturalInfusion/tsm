@@ -19,21 +19,43 @@ namespace Google\Service\Sheets;
 
 class SpreadsheetProperties extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $autoRecalc;
   protected $defaultFormatType = CellFormat::class;
   protected $defaultFormatDataType = '';
+  /**
+   * @var bool
+   */
+  public $importFunctionsExternalUrlAccessAllowed;
   protected $iterativeCalculationSettingsType = IterativeCalculationSettings::class;
   protected $iterativeCalculationSettingsDataType = '';
+  /**
+   * @var string
+   */
   public $locale;
   protected $spreadsheetThemeType = SpreadsheetTheme::class;
   protected $spreadsheetThemeDataType = '';
+  /**
+   * @var string
+   */
   public $timeZone;
+  /**
+   * @var string
+   */
   public $title;
 
+  /**
+   * @param string
+   */
   public function setAutoRecalc($autoRecalc)
   {
     $this->autoRecalc = $autoRecalc;
   }
+  /**
+   * @return string
+   */
   public function getAutoRecalc()
   {
     return $this->autoRecalc;
@@ -53,6 +75,20 @@ class SpreadsheetProperties extends \Google\Model
     return $this->defaultFormat;
   }
   /**
+   * @param bool
+   */
+  public function setImportFunctionsExternalUrlAccessAllowed($importFunctionsExternalUrlAccessAllowed)
+  {
+    $this->importFunctionsExternalUrlAccessAllowed = $importFunctionsExternalUrlAccessAllowed;
+  }
+  /**
+   * @return bool
+   */
+  public function getImportFunctionsExternalUrlAccessAllowed()
+  {
+    return $this->importFunctionsExternalUrlAccessAllowed;
+  }
+  /**
    * @param IterativeCalculationSettings
    */
   public function setIterativeCalculationSettings(IterativeCalculationSettings $iterativeCalculationSettings)
@@ -66,10 +102,16 @@ class SpreadsheetProperties extends \Google\Model
   {
     return $this->iterativeCalculationSettings;
   }
+  /**
+   * @param string
+   */
   public function setLocale($locale)
   {
     $this->locale = $locale;
   }
+  /**
+   * @return string
+   */
   public function getLocale()
   {
     return $this->locale;
@@ -88,18 +130,30 @@ class SpreadsheetProperties extends \Google\Model
   {
     return $this->spreadsheetTheme;
   }
+  /**
+   * @param string
+   */
   public function setTimeZone($timeZone)
   {
     $this->timeZone = $timeZone;
   }
+  /**
+   * @return string
+   */
   public function getTimeZone()
   {
     return $this->timeZone;
   }
+  /**
+   * @param string
+   */
   public function setTitle($title)
   {
     $this->title = $title;
   }
+  /**
+   * @return string
+   */
   public function getTitle()
   {
     return $this->title;

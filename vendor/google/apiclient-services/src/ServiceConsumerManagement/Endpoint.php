@@ -17,32 +17,78 @@
 
 namespace Google\Service\ServiceConsumerManagement;
 
-class Endpoint extends \Google\Model
+class Endpoint extends \Google\Collection
 {
+  protected $collection_key = 'aliases';
+  /**
+   * @var string[]
+   */
+  public $aliases;
+  /**
+   * @var bool
+   */
   public $allowCors;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $target;
 
+  /**
+   * @param string[]
+   */
+  public function setAliases($aliases)
+  {
+    $this->aliases = $aliases;
+  }
+  /**
+   * @return string[]
+   */
+  public function getAliases()
+  {
+    return $this->aliases;
+  }
+  /**
+   * @param bool
+   */
   public function setAllowCors($allowCors)
   {
     $this->allowCors = $allowCors;
   }
+  /**
+   * @return bool
+   */
   public function getAllowCors()
   {
     return $this->allowCors;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setTarget($target)
   {
     $this->target = $target;
   }
+  /**
+   * @return string
+   */
   public function getTarget()
   {
     return $this->target;

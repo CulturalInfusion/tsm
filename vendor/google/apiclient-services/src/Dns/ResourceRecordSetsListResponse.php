@@ -20,39 +20,41 @@ namespace Google\Service\Dns;
 class ResourceRecordSetsListResponse extends \Google\Collection
 {
   protected $collection_key = 'rrsets';
-  protected $headerType = ResponseHeader::class;
-  protected $headerDataType = '';
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $nextPageToken;
   protected $rrsetsType = ResourceRecordSet::class;
   protected $rrsetsDataType = 'array';
 
   /**
-   * @param ResponseHeader
+   * @param string
    */
-  public function setHeader(ResponseHeader $header)
-  {
-    $this->header = $header;
-  }
-  /**
-   * @return ResponseHeader
-   */
-  public function getHeader()
-  {
-    return $this->header;
-  }
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;

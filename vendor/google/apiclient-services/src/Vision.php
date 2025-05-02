@@ -36,7 +36,7 @@ use Google\Client;
  */
 class Vision extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Apply machine learning models to understand and label images. */
@@ -57,6 +57,7 @@ class Vision extends \Google\Service
   public $projects_locations_products;
   public $projects_locations_products_referenceImages;
   public $projects_operations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Vision service.
@@ -69,6 +70,7 @@ class Vision extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://vision.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://vision.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

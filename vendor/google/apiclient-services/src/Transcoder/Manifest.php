@@ -20,30 +20,73 @@ namespace Google\Service\Transcoder;
 class Manifest extends \Google\Collection
 {
   protected $collection_key = 'muxStreams';
+  protected $dashType = DashConfig::class;
+  protected $dashDataType = '';
+  /**
+   * @var string
+   */
   public $fileName;
+  /**
+   * @var string[]
+   */
   public $muxStreams;
+  /**
+   * @var string
+   */
   public $type;
 
+  /**
+   * @param DashConfig
+   */
+  public function setDash(DashConfig $dash)
+  {
+    $this->dash = $dash;
+  }
+  /**
+   * @return DashConfig
+   */
+  public function getDash()
+  {
+    return $this->dash;
+  }
+  /**
+   * @param string
+   */
   public function setFileName($fileName)
   {
     $this->fileName = $fileName;
   }
+  /**
+   * @return string
+   */
   public function getFileName()
   {
     return $this->fileName;
   }
+  /**
+   * @param string[]
+   */
   public function setMuxStreams($muxStreams)
   {
     $this->muxStreams = $muxStreams;
   }
+  /**
+   * @return string[]
+   */
   public function getMuxStreams()
   {
     return $this->muxStreams;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

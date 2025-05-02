@@ -17,71 +17,169 @@
 
 namespace Google\Service\DisplayVideo;
 
-class CustomBiddingAlgorithm extends \Google\Model
+class CustomBiddingAlgorithm extends \Google\Collection
 {
+  protected $collection_key = 'sharedAdvertiserIds';
+  /**
+   * @var string
+   */
   public $advertiserId;
+  /**
+   * @var string
+   */
   public $customBiddingAlgorithmId;
+  /**
+   * @var string
+   */
   public $customBiddingAlgorithmType;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $entityStatus;
+  protected $modelDetailsType = CustomBiddingModelDetails::class;
+  protected $modelDetailsDataType = 'array';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $partnerId;
+  /**
+   * @var string[]
+   */
+  public $sharedAdvertiserIds;
 
+  /**
+   * @param string
+   */
   public function setAdvertiserId($advertiserId)
   {
     $this->advertiserId = $advertiserId;
   }
+  /**
+   * @return string
+   */
   public function getAdvertiserId()
   {
     return $this->advertiserId;
   }
+  /**
+   * @param string
+   */
   public function setCustomBiddingAlgorithmId($customBiddingAlgorithmId)
   {
     $this->customBiddingAlgorithmId = $customBiddingAlgorithmId;
   }
+  /**
+   * @return string
+   */
   public function getCustomBiddingAlgorithmId()
   {
     return $this->customBiddingAlgorithmId;
   }
+  /**
+   * @param string
+   */
   public function setCustomBiddingAlgorithmType($customBiddingAlgorithmType)
   {
     $this->customBiddingAlgorithmType = $customBiddingAlgorithmType;
   }
+  /**
+   * @return string
+   */
   public function getCustomBiddingAlgorithmType()
   {
     return $this->customBiddingAlgorithmType;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEntityStatus($entityStatus)
   {
     $this->entityStatus = $entityStatus;
   }
+  /**
+   * @return string
+   */
   public function getEntityStatus()
   {
     return $this->entityStatus;
   }
+  /**
+   * @param CustomBiddingModelDetails[]
+   */
+  public function setModelDetails($modelDetails)
+  {
+    $this->modelDetails = $modelDetails;
+  }
+  /**
+   * @return CustomBiddingModelDetails[]
+   */
+  public function getModelDetails()
+  {
+    return $this->modelDetails;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPartnerId($partnerId)
   {
     $this->partnerId = $partnerId;
   }
+  /**
+   * @return string
+   */
   public function getPartnerId()
   {
     return $this->partnerId;
+  }
+  /**
+   * @param string[]
+   */
+  public function setSharedAdvertiserIds($sharedAdvertiserIds)
+  {
+    $this->sharedAdvertiserIds = $sharedAdvertiserIds;
+  }
+  /**
+   * @return string[]
+   */
+  public function getSharedAdvertiserIds()
+  {
+    return $this->sharedAdvertiserIds;
   }
 }
 

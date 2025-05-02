@@ -20,7 +20,7 @@ namespace Google\Service;
 use Google\Client;
 
 /**
- * Service definition for TrafficDirectorService (v2).
+ * Service definition for TrafficDirectorService (v3).
  *
  * <p>
 </p>
@@ -34,11 +34,12 @@ use Google\Client;
  */
 class TrafficDirectorService extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $discovery;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the TrafficDirectorService
@@ -52,9 +53,10 @@ class TrafficDirectorService extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://trafficdirector.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://trafficdirector.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v2';
+    $this->version = 'v3';
     $this->serviceName = 'trafficdirector';
 
     $this->discovery = new TrafficDirectorService\Resource\Discovery(
@@ -64,7 +66,7 @@ class TrafficDirectorService extends \Google\Service
         [
           'methods' => [
             'client_status' => [
-              'path' => 'v2/discovery:client_status',
+              'path' => 'v3/discovery:client_status',
               'httpMethod' => 'POST',
               'parameters' => [],
             ],

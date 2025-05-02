@@ -26,7 +26,7 @@ use Google\Service\Appengine\Service;
  * Typical usage is:
  *  <code>
  *   $appengineService = new Google\Service\Appengine(...);
- *   $services = $appengineService->services;
+ *   $services = $appengineService->apps_services;
  *  </code>
  */
 class AppsServices extends \Google\Service\Resource
@@ -38,7 +38,12 @@ class AppsServices extends \Google\Service\Resource
    * Example: apps/myapp/services/default.
    * @param string $servicesId Part of `name`. See documentation of `appsId`.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool force Optional. If set to true, any versions of this service
+   * will also be deleted. (Otherwise, the request will only succeed if the
+   * service has no versions.)
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($appsId, $servicesId, $optParams = [])
   {
@@ -54,6 +59,7 @@ class AppsServices extends \Google\Service\Resource
    * @param string $servicesId Part of `name`. See documentation of `appsId`.
    * @param array $optParams Optional parameters.
    * @return Service
+   * @throws \Google\Service\Exception
    */
   public function get($appsId, $servicesId, $optParams = [])
   {
@@ -72,6 +78,7 @@ class AppsServices extends \Google\Service\Resource
    * @opt_param string pageToken Continuation token for fetching the next page of
    * results.
    * @return ListServicesResponse
+   * @throws \Google\Service\Exception
    */
   public function listAppsServices($appsId, $optParams = [])
   {
@@ -105,6 +112,7 @@ class AppsServices extends \Google\Service\Resource
    * @opt_param string updateMask Required. Standard field mask for the set of
    * fields to be updated.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($appsId, $servicesId, Service $postBody, $optParams = [])
   {

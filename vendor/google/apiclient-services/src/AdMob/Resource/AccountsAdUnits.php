@@ -24,7 +24,7 @@ use Google\Service\AdMob\ListAdUnitsResponse;
  * Typical usage is:
  *  <code>
  *   $admobService = new Google\Service\AdMob(...);
- *   $adUnits = $admobService->adUnits;
+ *   $adUnits = $admobService->accounts_adUnits;
  *  </code>
  */
 class AccountsAdUnits extends \Google\Service\Resource
@@ -38,12 +38,13 @@ class AccountsAdUnits extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The maximum number of ad units to return. If
-   * unspecified or 0, at most 1000 ad units will be returned. The maximum value
-   * is 10,000; values above 10,000 will be coerced to 10,000.
+   * unspecified or 0, at most 10,000 ad units will be returned. The maximum value
+   * is 20,000; values above 20,000 will be coerced to 20,000.
    * @opt_param string pageToken The value returned by the last
    * `ListAdUnitsResponse`; indicates that this is a continuation of a prior
    * `ListAdUnits` call, and that the system should return the next page of data.
    * @return ListAdUnitsResponse
+   * @throws \Google\Service\Exception
    */
   public function listAccountsAdUnits($parent, $optParams = [])
   {

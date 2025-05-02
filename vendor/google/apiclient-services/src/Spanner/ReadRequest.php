@@ -20,31 +20,103 @@ namespace Google\Service\Spanner;
 class ReadRequest extends \Google\Collection
 {
   protected $collection_key = 'columns';
+  /**
+   * @var string[]
+   */
   public $columns;
+  /**
+   * @var bool
+   */
+  public $dataBoostEnabled;
+  protected $directedReadOptionsType = DirectedReadOptions::class;
+  protected $directedReadOptionsDataType = '';
+  /**
+   * @var string
+   */
   public $index;
   protected $keySetType = KeySet::class;
   protected $keySetDataType = '';
+  /**
+   * @var string
+   */
   public $limit;
+  /**
+   * @var string
+   */
+  public $lockHint;
+  /**
+   * @var string
+   */
+  public $orderBy;
+  /**
+   * @var string
+   */
   public $partitionToken;
   protected $requestOptionsType = RequestOptions::class;
   protected $requestOptionsDataType = '';
+  /**
+   * @var string
+   */
   public $resumeToken;
+  /**
+   * @var string
+   */
   public $table;
   protected $transactionType = TransactionSelector::class;
   protected $transactionDataType = '';
 
+  /**
+   * @param string[]
+   */
   public function setColumns($columns)
   {
     $this->columns = $columns;
   }
+  /**
+   * @return string[]
+   */
   public function getColumns()
   {
     return $this->columns;
   }
+  /**
+   * @param bool
+   */
+  public function setDataBoostEnabled($dataBoostEnabled)
+  {
+    $this->dataBoostEnabled = $dataBoostEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getDataBoostEnabled()
+  {
+    return $this->dataBoostEnabled;
+  }
+  /**
+   * @param DirectedReadOptions
+   */
+  public function setDirectedReadOptions(DirectedReadOptions $directedReadOptions)
+  {
+    $this->directedReadOptions = $directedReadOptions;
+  }
+  /**
+   * @return DirectedReadOptions
+   */
+  public function getDirectedReadOptions()
+  {
+    return $this->directedReadOptions;
+  }
+  /**
+   * @param string
+   */
   public function setIndex($index)
   {
     $this->index = $index;
   }
+  /**
+   * @return string
+   */
   public function getIndex()
   {
     return $this->index;
@@ -63,18 +135,58 @@ class ReadRequest extends \Google\Collection
   {
     return $this->keySet;
   }
+  /**
+   * @param string
+   */
   public function setLimit($limit)
   {
     $this->limit = $limit;
   }
+  /**
+   * @return string
+   */
   public function getLimit()
   {
     return $this->limit;
   }
+  /**
+   * @param string
+   */
+  public function setLockHint($lockHint)
+  {
+    $this->lockHint = $lockHint;
+  }
+  /**
+   * @return string
+   */
+  public function getLockHint()
+  {
+    return $this->lockHint;
+  }
+  /**
+   * @param string
+   */
+  public function setOrderBy($orderBy)
+  {
+    $this->orderBy = $orderBy;
+  }
+  /**
+   * @return string
+   */
+  public function getOrderBy()
+  {
+    return $this->orderBy;
+  }
+  /**
+   * @param string
+   */
   public function setPartitionToken($partitionToken)
   {
     $this->partitionToken = $partitionToken;
   }
+  /**
+   * @return string
+   */
   public function getPartitionToken()
   {
     return $this->partitionToken;
@@ -93,18 +205,30 @@ class ReadRequest extends \Google\Collection
   {
     return $this->requestOptions;
   }
+  /**
+   * @param string
+   */
   public function setResumeToken($resumeToken)
   {
     $this->resumeToken = $resumeToken;
   }
+  /**
+   * @return string
+   */
   public function getResumeToken()
   {
     return $this->resumeToken;
   }
+  /**
+   * @param string
+   */
   public function setTable($table)
   {
     $this->table = $table;
   }
+  /**
+   * @return string
+   */
   public function getTable()
   {
     return $this->table;

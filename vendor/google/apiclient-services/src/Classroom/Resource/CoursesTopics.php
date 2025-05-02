@@ -26,7 +26,7 @@ use Google\Service\Classroom\Topic;
  * Typical usage is:
  *  <code>
  *   $classroomService = new Google\Service\Classroom(...);
- *   $topics = $classroomService->topics;
+ *   $topics = $classroomService->courses_topics;
  *  </code>
  */
 class CoursesTopics extends \Google\Service\Resource
@@ -35,7 +35,8 @@ class CoursesTopics extends \Google\Service\Resource
    * Creates a topic. This method returns the following error codes: *
    * `PERMISSION_DENIED` if the requesting user is not permitted to access the
    * requested course, create a topic in the requested course, or for access
-   * errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+   * errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS`
+   * if there exists a topic in the course with the same name. * `NOT_FOUND` if
    * the requested course does not exist. (topics.create)
    *
    * @param string $courseId Identifier of the course. This identifier can be
@@ -43,6 +44,7 @@ class CoursesTopics extends \Google\Service\Resource
    * @param Topic $postBody
    * @param array $optParams Optional parameters.
    * @return Topic
+   * @throws \Google\Service\Exception
    */
   public function create($courseId, Topic $postBody, $optParams = [])
   {
@@ -62,6 +64,7 @@ class CoursesTopics extends \Google\Service\Resource
    * @param string $id Identifier of the topic to delete.
    * @param array $optParams Optional parameters.
    * @return ClassroomEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($courseId, $id, $optParams = [])
   {
@@ -80,6 +83,7 @@ class CoursesTopics extends \Google\Service\Resource
    * @param string $id Identifier of the topic.
    * @param array $optParams Optional parameters.
    * @return Topic
+   * @throws \Google\Service\Exception
    */
   public function get($courseId, $id, $optParams = [])
   {
@@ -106,6 +110,7 @@ class CoursesTopics extends \Google\Service\Resource
    * list request must be otherwise identical to the one that resulted in this
    * token.
    * @return ListTopicResponse
+   * @throws \Google\Service\Exception
    */
   public function listCoursesTopics($courseId, $optParams = [])
   {
@@ -117,8 +122,9 @@ class CoursesTopics extends \Google\Service\Resource
    * Updates one or more fields of a topic. This method returns the following
    * error codes: * `PERMISSION_DENIED` if the requesting developer project did
    * not create the corresponding topic or for access errors. * `INVALID_ARGUMENT`
-   * if the request is malformed. * `NOT_FOUND` if the requested course or topic
-   * does not exist (topics.patch)
+   * if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic
+   * in the course with the same name. * `NOT_FOUND` if the requested course or
+   * topic does not exist (topics.patch)
    *
    * @param string $courseId Identifier of the course. This identifier can be
    * either the Classroom-assigned identifier or an alias.
@@ -134,6 +140,7 @@ class CoursesTopics extends \Google\Service\Resource
    * not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The
    * following fields may be specified: * `name`
    * @return Topic
+   * @throws \Google\Service\Exception
    */
   public function patch($courseId, $id, Topic $postBody, $optParams = [])
   {

@@ -19,15 +19,42 @@ namespace Google\Service\Container;
 
 class BinaryAuthorization extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $enabled;
+  /**
+   * @var string
+   */
+  public $evaluationMode;
 
+  /**
+   * @param bool
+   */
   public function setEnabled($enabled)
   {
     $this->enabled = $enabled;
   }
+  /**
+   * @return bool
+   */
   public function getEnabled()
   {
     return $this->enabled;
+  }
+  /**
+   * @param string
+   */
+  public function setEvaluationMode($evaluationMode)
+  {
+    $this->evaluationMode = $evaluationMode;
+  }
+  /**
+   * @return string
+   */
+  public function getEvaluationMode()
+  {
+    return $this->evaluationMode;
   }
 }
 

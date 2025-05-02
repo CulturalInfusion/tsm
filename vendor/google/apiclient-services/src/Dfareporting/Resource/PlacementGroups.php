@@ -37,6 +37,7 @@ class PlacementGroups extends \Google\Service\Resource
    * @param string $id Placement group ID.
    * @param array $optParams Optional parameters.
    * @return PlacementGroup
+   * @throws \Google\Service\Exception
    */
   public function get($profileId, $id, $optParams = [])
   {
@@ -51,6 +52,7 @@ class PlacementGroups extends \Google\Service\Resource
    * @param PlacementGroup $postBody
    * @param array $optParams Optional parameters.
    * @return PlacementGroup
+   * @throws \Google\Service\Exception
    */
   public function insert($profileId, PlacementGroup $postBody, $optParams = [])
   {
@@ -65,10 +67,10 @@ class PlacementGroups extends \Google\Service\Resource
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string activeStatus Select only placements with these active
+   * statuses.
    * @opt_param string advertiserIds Select only placement groups that belong to
    * these advertisers.
-   * @opt_param bool archived Select only archived placements. Don't set this
-   * field to select both archived and non-archived placements.
    * @opt_param string campaignIds Select only placement groups that belong to
    * these campaigns.
    * @opt_param string contentCategoryIds Select only placement groups that are
@@ -113,6 +115,7 @@ class PlacementGroups extends \Google\Service\Resource
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results.
    * @return PlacementGroupsListResponse
+   * @throws \Google\Service\Exception
    */
   public function listPlacementGroups($profileId, $optParams = [])
   {
@@ -125,10 +128,11 @@ class PlacementGroups extends \Google\Service\Resource
    * (placementGroups.patch)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param string $id PlacementGroup ID.
+   * @param string $id Required. Placement ID.
    * @param PlacementGroup $postBody
    * @param array $optParams Optional parameters.
    * @return PlacementGroup
+   * @throws \Google\Service\Exception
    */
   public function patch($profileId, $id, PlacementGroup $postBody, $optParams = [])
   {
@@ -143,6 +147,7 @@ class PlacementGroups extends \Google\Service\Resource
    * @param PlacementGroup $postBody
    * @param array $optParams Optional parameters.
    * @return PlacementGroup
+   * @throws \Google\Service\Exception
    */
   public function update($profileId, PlacementGroup $postBody, $optParams = [])
   {

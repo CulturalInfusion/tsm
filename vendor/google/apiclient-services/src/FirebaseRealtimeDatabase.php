@@ -23,8 +23,8 @@ use Google\Client;
  * Service definition for FirebaseRealtimeDatabase (v1beta).
  *
  * <p>
- * The Firebase Realtime Database Management API enables programmatic
- * provisioning and management of Realtime Database instances.</p>
+ * The Firebase Realtime Database API enables programmatic provisioning and
+ * management of Realtime Database instances.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -35,10 +35,10 @@ use Google\Client;
  */
 class FirebaseRealtimeDatabase extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
   /** View and administer all your Firebase data and settings. */
@@ -49,6 +49,7 @@ class FirebaseRealtimeDatabase extends \Google\Service
       "https://www.googleapis.com/auth/firebase.readonly";
 
   public $projects_locations_instances;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the FirebaseRealtimeDatabase
@@ -62,6 +63,7 @@ class FirebaseRealtimeDatabase extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://firebasedatabase.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://firebasedatabase.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1beta';
@@ -138,9 +140,23 @@ class FirebaseRealtimeDatabase extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'reenable' => [
               'path' => 'v1beta/{+name}:reenable',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'undelete' => [
+              'path' => 'v1beta/{+name}:undelete',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [

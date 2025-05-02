@@ -22,7 +22,18 @@ class MasterAuthorizedNetworksConfig extends \Google\Collection
   protected $collection_key = 'cidrBlocks';
   protected $cidrBlocksType = CidrBlock::class;
   protected $cidrBlocksDataType = 'array';
+  /**
+   * @var bool
+   */
   public $enabled;
+  /**
+   * @var bool
+   */
+  public $gcpPublicCidrsAccessEnabled;
+  /**
+   * @var bool
+   */
+  public $privateEndpointEnforcementEnabled;
 
   /**
    * @param CidrBlock[]
@@ -38,13 +49,47 @@ class MasterAuthorizedNetworksConfig extends \Google\Collection
   {
     return $this->cidrBlocks;
   }
+  /**
+   * @param bool
+   */
   public function setEnabled($enabled)
   {
     $this->enabled = $enabled;
   }
+  /**
+   * @return bool
+   */
   public function getEnabled()
   {
     return $this->enabled;
+  }
+  /**
+   * @param bool
+   */
+  public function setGcpPublicCidrsAccessEnabled($gcpPublicCidrsAccessEnabled)
+  {
+    $this->gcpPublicCidrsAccessEnabled = $gcpPublicCidrsAccessEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getGcpPublicCidrsAccessEnabled()
+  {
+    return $this->gcpPublicCidrsAccessEnabled;
+  }
+  /**
+   * @param bool
+   */
+  public function setPrivateEndpointEnforcementEnabled($privateEndpointEnforcementEnabled)
+  {
+    $this->privateEndpointEnforcementEnabled = $privateEndpointEnforcementEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getPrivateEndpointEnforcementEnabled()
+  {
+    return $this->privateEndpointEnforcementEnabled;
   }
 }
 

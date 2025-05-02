@@ -23,8 +23,9 @@ use Google\Client;
  * Service definition for BinaryAuthorization (v1).
  *
  * <p>
- * The management interface for Binary Authorization, a system providing policy
- * control for images deployed to Kubernetes Engine clusters.</p>
+ * The management interface for Binary Authorization, a service that provides
+ * policy-based deployment validation and control for images deployed to Google
+ * Kubernetes Engine (GKE), Anthos Service Mesh, Anthos Clusters, and Cloud Run.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -35,14 +36,17 @@ use Google\Client;
  */
 class BinaryAuthorization extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects;
   public $projects_attestors;
+  public $projects_platforms_gke_policies;
+  public $projects_platforms_policies;
   public $projects_policy;
   public $systempolicy;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the BinaryAuthorization service.
@@ -55,6 +59,7 @@ class BinaryAuthorization extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://binaryauthorization.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://binaryauthorization.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -197,6 +202,102 @@ class BinaryAuthorization extends \Google\Service
               'httpMethod' => 'POST',
               'parameters' => [
                 'attestor' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_platforms_gke_policies = new BinaryAuthorization\Resource\ProjectsPlatformsGkePolicies(
+        $this,
+        $this->serviceName,
+        'policies',
+        [
+          'methods' => [
+            'evaluate' => [
+              'path' => 'v1/{+name}:evaluate',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_platforms_policies = new BinaryAuthorization\Resource\ProjectsPlatformsPolicies(
+        $this,
+        $this->serviceName,
+        'policies',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/policies',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'policyId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/policies',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'replacePlatformPolicy' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PUT',
+              'parameters' => [
+                'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

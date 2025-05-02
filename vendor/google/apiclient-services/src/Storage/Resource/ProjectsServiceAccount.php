@@ -24,7 +24,7 @@ use Google\Service\Storage\ServiceAccount;
  * Typical usage is:
  *  <code>
  *   $storageService = new Google\Service\Storage(...);
- *   $serviceAccount = $storageService->serviceAccount;
+ *   $serviceAccount = $storageService->projects_serviceAccount;
  *  </code>
  */
 class ProjectsServiceAccount extends \Google\Service\Resource
@@ -36,10 +36,9 @@ class ProjectsServiceAccount extends \Google\Service\Resource
    * @param string $projectId Project ID
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * @return ServiceAccount
+   * @throws \Google\Service\Exception
    */
   public function get($projectId, $optParams = [])
   {

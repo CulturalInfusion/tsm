@@ -24,7 +24,7 @@ use Google\Service\Spanner\ListDatabaseOperationsResponse;
  * Typical usage is:
  *  <code>
  *   $spannerService = new Google\Service\Spanner(...);
- *   $databaseOperations = $spannerService->databaseOperations;
+ *   $databaseOperations = $spannerService->projects_instances_databaseOperations;
  *  </code>
  */
 class ProjectsInstancesDatabaseOperations extends \Google\Service\Resource
@@ -46,13 +46,14 @@ class ProjectsInstancesDatabaseOperations extends \Google\Service\Resource
    * operator, and a value for filtering. The value must be a string, a number, or
    * a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`,
    * `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not
-   * case sensitive. The following fields in the Operation are eligible for
+   * case sensitive. The following fields in the operation are eligible for
    * filtering: * `name` - The name of the long-running operation * `done` - False
    * if the operation is in progress, else true. * `metadata.@type` - the type of
    * metadata. For example, the type string for RestoreDatabaseMetadata is `type.g
    * oogleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata`. *
-   * `metadata.` - any field in metadata.value. * `error` - Error associated with
-   * the long-running operation. * `response.@type` - the type of response. *
+   * `metadata.` - any field in metadata.value. `metadata.@type` must be specified
+   * first, if filtering on metadata fields. * `error` - Error associated with the
+   * long-running operation. * `response.@type` - the type of response. *
    * `response.` - any field in response.value. You can combine multiple
    * expressions by enclosing each expression in parentheses. By default,
    * expressions are combined with AND logic. However, you can specify AND, OR,
@@ -73,6 +74,7 @@ class ProjectsInstancesDatabaseOperations extends \Google\Service\Resource
    * next_page_token from a previous ListDatabaseOperationsResponse to the same
    * `parent` and with the same `filter`.
    * @return ListDatabaseOperationsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsInstancesDatabaseOperations($parent, $optParams = [])
   {

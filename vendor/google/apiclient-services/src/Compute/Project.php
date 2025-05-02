@@ -20,23 +20,75 @@ namespace Google\Service\Compute;
 class Project extends \Google\Collection
 {
   protected $collection_key = 'quotas';
+  /**
+   * @var string
+   */
+  public $cloudArmorTier;
   protected $commonInstanceMetadataType = Metadata::class;
   protected $commonInstanceMetadataDataType = '';
+  /**
+   * @var string
+   */
   public $creationTimestamp;
+  /**
+   * @var string
+   */
   public $defaultNetworkTier;
+  /**
+   * @var string
+   */
   public $defaultServiceAccount;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string[]
+   */
   public $enabledFeatures;
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $name;
   protected $quotasType = Quota::class;
   protected $quotasDataType = 'array';
+  /**
+   * @var string
+   */
   public $selfLink;
   protected $usageExportLocationType = UsageExportLocation::class;
   protected $usageExportLocationDataType = '';
+  /**
+   * @var string
+   */
+  public $vmDnsSetting;
+  /**
+   * @var string
+   */
   public $xpnProjectStatus;
 
+  /**
+   * @param string
+   */
+  public function setCloudArmorTier($cloudArmorTier)
+  {
+    $this->cloudArmorTier = $cloudArmorTier;
+  }
+  /**
+   * @return string
+   */
+  public function getCloudArmorTier()
+  {
+    return $this->cloudArmorTier;
+  }
   /**
    * @param Metadata
    */
@@ -51,66 +103,114 @@ class Project extends \Google\Collection
   {
     return $this->commonInstanceMetadata;
   }
+  /**
+   * @param string
+   */
   public function setCreationTimestamp($creationTimestamp)
   {
     $this->creationTimestamp = $creationTimestamp;
   }
+  /**
+   * @return string
+   */
   public function getCreationTimestamp()
   {
     return $this->creationTimestamp;
   }
+  /**
+   * @param string
+   */
   public function setDefaultNetworkTier($defaultNetworkTier)
   {
     $this->defaultNetworkTier = $defaultNetworkTier;
   }
+  /**
+   * @return string
+   */
   public function getDefaultNetworkTier()
   {
     return $this->defaultNetworkTier;
   }
+  /**
+   * @param string
+   */
   public function setDefaultServiceAccount($defaultServiceAccount)
   {
     $this->defaultServiceAccount = $defaultServiceAccount;
   }
+  /**
+   * @return string
+   */
   public function getDefaultServiceAccount()
   {
     return $this->defaultServiceAccount;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string[]
+   */
   public function setEnabledFeatures($enabledFeatures)
   {
     $this->enabledFeatures = $enabledFeatures;
   }
+  /**
+   * @return string[]
+   */
   public function getEnabledFeatures()
   {
     return $this->enabledFeatures;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -129,10 +229,16 @@ class Project extends \Google\Collection
   {
     return $this->quotas;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
@@ -151,10 +257,30 @@ class Project extends \Google\Collection
   {
     return $this->usageExportLocation;
   }
+  /**
+   * @param string
+   */
+  public function setVmDnsSetting($vmDnsSetting)
+  {
+    $this->vmDnsSetting = $vmDnsSetting;
+  }
+  /**
+   * @return string
+   */
+  public function getVmDnsSetting()
+  {
+    return $this->vmDnsSetting;
+  }
+  /**
+   * @param string
+   */
   public function setXpnProjectStatus($xpnProjectStatus)
   {
     $this->xpnProjectStatus = $xpnProjectStatus;
   }
+  /**
+   * @return string
+   */
   public function getXpnProjectStatus()
   {
     return $this->xpnProjectStatus;

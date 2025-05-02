@@ -17,26 +17,79 @@
 
 namespace Google\Service\Compute;
 
-class SecurityPolicyAdvancedOptionsConfig extends \Google\Model
+class SecurityPolicyAdvancedOptionsConfig extends \Google\Collection
 {
+  protected $collection_key = 'userIpRequestHeaders';
+  protected $jsonCustomConfigType = SecurityPolicyAdvancedOptionsConfigJsonCustomConfig::class;
+  protected $jsonCustomConfigDataType = '';
+  /**
+   * @var string
+   */
   public $jsonParsing;
+  /**
+   * @var string
+   */
   public $logLevel;
+  /**
+   * @var string[]
+   */
+  public $userIpRequestHeaders;
 
+  /**
+   * @param SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+   */
+  public function setJsonCustomConfig(SecurityPolicyAdvancedOptionsConfigJsonCustomConfig $jsonCustomConfig)
+  {
+    $this->jsonCustomConfig = $jsonCustomConfig;
+  }
+  /**
+   * @return SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+   */
+  public function getJsonCustomConfig()
+  {
+    return $this->jsonCustomConfig;
+  }
+  /**
+   * @param string
+   */
   public function setJsonParsing($jsonParsing)
   {
     $this->jsonParsing = $jsonParsing;
   }
+  /**
+   * @return string
+   */
   public function getJsonParsing()
   {
     return $this->jsonParsing;
   }
+  /**
+   * @param string
+   */
   public function setLogLevel($logLevel)
   {
     $this->logLevel = $logLevel;
   }
+  /**
+   * @return string
+   */
   public function getLogLevel()
   {
     return $this->logLevel;
+  }
+  /**
+   * @param string[]
+   */
+  public function setUserIpRequestHeaders($userIpRequestHeaders)
+  {
+    $this->userIpRequestHeaders = $userIpRequestHeaders;
+  }
+  /**
+   * @return string[]
+   */
+  public function getUserIpRequestHeaders()
+  {
+    return $this->userIpRequestHeaders;
   }
 }
 

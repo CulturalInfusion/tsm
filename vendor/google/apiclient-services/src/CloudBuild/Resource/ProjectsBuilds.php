@@ -17,6 +17,7 @@
 
 namespace Google\Service\CloudBuild\Resource;
 
+use Google\Service\CloudBuild\ApproveBuildRequest;
 use Google\Service\CloudBuild\Build;
 use Google\Service\CloudBuild\CancelBuildRequest;
 use Google\Service\CloudBuild\ListBuildsResponse;
@@ -28,11 +29,28 @@ use Google\Service\CloudBuild\RetryBuildRequest;
  * Typical usage is:
  *  <code>
  *   $cloudbuildService = new Google\Service\CloudBuild(...);
- *   $builds = $cloudbuildService->builds;
+ *   $builds = $cloudbuildService->projects_builds;
  *  </code>
  */
 class ProjectsBuilds extends \Google\Service\Resource
 {
+  /**
+   * Approves or rejects a pending build. If approved, the returned LRO will be
+   * analogous to the LRO returned from a CreateBuild call. If rejected, the
+   * returned LRO will be immediately done. (builds.approve)
+   *
+   * @param string $name Required. Name of the target build. For example:
+   * "projects/{$project_id}/builds/{$build_id}"
+   * @param ApproveBuildRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   */
+  public function approve($name, ApproveBuildRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('approve', [$params], Operation::class);
+  }
   /**
    * Cancels a build in progress. (builds.cancel)
    *
@@ -103,7 +121,7 @@ class ProjectsBuilds extends \Google\Service\Resource
    * should be discarded, and pagination should be restarted from the first page
    * of results. See https://google.aip.dev/158 for more.
    * @opt_param string parent The parent of the collection of `Builds`. Format:
-   * `projects/{project}/locations/location`
+   * `projects/{project}/locations/{location}`
    * @return ListBuildsResponse
    */
   public function listProjectsBuilds($projectId, $optParams = [])
@@ -123,10 +141,10 @@ class ProjectsBuilds extends \Google\Service\Resource
    * same revision as the original build. * If the original build specified a
    * commit sha or revision ID, the retried build will use the identical source.
    * For builds that specify `StorageSource`: * If the original build pulled
-   * source from Google Cloud Storage without specifying the generation of the
-   * object, the new build will use the current object, which may be different
-   * from the original build source. * If the original build pulled source from
-   * Cloud Storage and specified the generation of the object, the new build will
+   * source from Cloud Storage without specifying the generation of the object,
+   * the new build will use the current object, which may be different from the
+   * original build source. * If the original build pulled source from Cloud
+   * Storage and specified the generation of the object, the new build will
    * attempt to use the same object, which may or may not be available depending
    * on the bucket's lifecycle management settings. (builds.retry)
    *

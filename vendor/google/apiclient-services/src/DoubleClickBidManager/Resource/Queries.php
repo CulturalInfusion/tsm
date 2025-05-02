@@ -19,6 +19,7 @@ namespace Google\Service\DoubleClickBidManager\Resource;
 
 use Google\Service\DoubleClickBidManager\ListQueriesResponse;
 use Google\Service\DoubleClickBidManager\Query;
+use Google\Service\DoubleClickBidManager\Report;
 use Google\Service\DoubleClickBidManager\RunQueryRequest;
 
 /**
@@ -32,77 +33,89 @@ use Google\Service\DoubleClickBidManager\RunQueryRequest;
 class Queries extends \Google\Service\Resource
 {
   /**
-   * Creates a query. (queries.createquery)
+   * Creates a new query. (queries.create)
    *
    * @param Query $postBody
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param bool asynchronous If true, tries to run the query asynchronously.
-   * Only applicable when the frequency is ONE_TIME.
    * @return Query
+   * @throws \Google\Service\Exception
    */
-  public function createquery(Query $postBody, $optParams = [])
+  public function create(Query $postBody, $optParams = [])
   {
     $params = ['postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('createquery', [$params], Query::class);
+    return $this->call('create', [$params], Query::class);
   }
   /**
-   * Deletes a stored query as well as the associated stored reports.
-   * (queries.deletequery)
+   * Deletes an existing query as well as its generated reports. (queries.delete)
    *
-   * @param string $queryId Query ID to delete.
+   * @param string $queryId Required. The ID of the query to delete.
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
-  public function deletequery($queryId, $optParams = [])
+  public function delete($queryId, $optParams = [])
   {
     $params = ['queryId' => $queryId];
     $params = array_merge($params, $optParams);
-    return $this->call('deletequery', [$params]);
+    return $this->call('delete', [$params]);
   }
   /**
-   * Retrieves a stored query. (queries.getquery)
+   * Retrieves a query. (queries.get)
    *
-   * @param string $queryId Query ID to retrieve.
+   * @param string $queryId Required. The ID of the query to retrieve.
    * @param array $optParams Optional parameters.
    * @return Query
+   * @throws \Google\Service\Exception
    */
-  public function getquery($queryId, $optParams = [])
+  public function get($queryId, $optParams = [])
   {
     $params = ['queryId' => $queryId];
     $params = array_merge($params, $optParams);
-    return $this->call('getquery', [$params], Query::class);
+    return $this->call('get', [$params], Query::class);
   }
   /**
-   * Retrieves stored queries. (queries.listqueries)
+   * Lists queries created by the current user. (queries.listQueries)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Maximum number of results per page. Must be between 1
-   * and 100. Defaults to 100 if unspecified.
-   * @opt_param string pageToken Optional pagination token.
+   * @opt_param string orderBy Field to sort the list by. Accepts the following
+   * values: * `queryId` (default) * `metadata.title` The default sorting order is
+   * ascending. To specify descending order for a field, add the suffix `desc` to
+   * the field name. For example, `queryId desc`.
+   * @opt_param int pageSize Maximum number of results per page. Must be between
+   * `1` and `100`. Defaults to `100` if unspecified.
+   * @opt_param string pageToken A token identifying which page of results the
+   * server should return. Typically, this is the value of nextPageToken, returned
+   * from the previous call to the `queries.list` method. If unspecified, the
+   * first page of results is returned.
    * @return ListQueriesResponse
+   * @throws \Google\Service\Exception
    */
-  public function listqueries($optParams = [])
+  public function listQueries($optParams = [])
   {
     $params = [];
     $params = array_merge($params, $optParams);
-    return $this->call('listqueries', [$params], ListQueriesResponse::class);
+    return $this->call('list', [$params], ListQueriesResponse::class);
   }
   /**
-   * Runs a stored query to generate a report. (queries.runquery)
+   * Runs an existing query to generate a report. (queries.run)
    *
-   * @param string $queryId Query ID to run.
+   * @param string $queryId Required. The ID of the query to run.
    * @param RunQueryRequest $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool asynchronous If true, tries to run the query asynchronously.
+   * @opt_param bool synchronous Whether the query should be run synchronously.
+   * When `true`, the request won't return until the resulting report has finished
+   * running. This parameter is `false` by default. Setting this parameter to
+   * `true` is **not recommended**.
+   * @return Report
+   * @throws \Google\Service\Exception
    */
-  public function runquery($queryId, RunQueryRequest $postBody, $optParams = [])
+  public function run($queryId, RunQueryRequest $postBody, $optParams = [])
   {
     $params = ['queryId' => $queryId, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('runquery', [$params]);
+    return $this->call('run', [$params], Report::class);
   }
 }
 

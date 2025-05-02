@@ -21,16 +21,33 @@ class Partner extends \Google\Model
 {
   protected $adServerConfigType = PartnerAdServerConfig::class;
   protected $adServerConfigDataType = '';
+  protected $billingConfigType = PartnerBillingConfig::class;
+  protected $billingConfigDataType = '';
   protected $dataAccessConfigType = PartnerDataAccessConfig::class;
   protected $dataAccessConfigDataType = '';
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $entityStatus;
   protected $exchangeConfigType = ExchangeConfig::class;
   protected $exchangeConfigDataType = '';
   protected $generalConfigType = PartnerGeneralConfig::class;
   protected $generalConfigDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $partnerId;
+  /**
+   * @var string
+   */
   public $updateTime;
 
   /**
@@ -48,6 +65,20 @@ class Partner extends \Google\Model
     return $this->adServerConfig;
   }
   /**
+   * @param PartnerBillingConfig
+   */
+  public function setBillingConfig(PartnerBillingConfig $billingConfig)
+  {
+    $this->billingConfig = $billingConfig;
+  }
+  /**
+   * @return PartnerBillingConfig
+   */
+  public function getBillingConfig()
+  {
+    return $this->billingConfig;
+  }
+  /**
    * @param PartnerDataAccessConfig
    */
   public function setDataAccessConfig(PartnerDataAccessConfig $dataAccessConfig)
@@ -61,18 +92,30 @@ class Partner extends \Google\Model
   {
     return $this->dataAccessConfig;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEntityStatus($entityStatus)
   {
     $this->entityStatus = $entityStatus;
   }
+  /**
+   * @return string
+   */
   public function getEntityStatus()
   {
     return $this->entityStatus;
@@ -105,26 +148,44 @@ class Partner extends \Google\Model
   {
     return $this->generalConfig;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPartnerId($partnerId)
   {
     $this->partnerId = $partnerId;
   }
+  /**
+   * @return string
+   */
   public function getPartnerId()
   {
     return $this->partnerId;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

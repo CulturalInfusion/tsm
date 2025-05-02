@@ -19,21 +19,57 @@ namespace Google\Service\Dataproc;
 
 class ManagedGroupConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $instanceGroupManagerName;
+  /**
+   * @var string
+   */
+  public $instanceGroupManagerUri;
+  /**
+   * @var string
+   */
   public $instanceTemplateName;
 
+  /**
+   * @param string
+   */
   public function setInstanceGroupManagerName($instanceGroupManagerName)
   {
     $this->instanceGroupManagerName = $instanceGroupManagerName;
   }
+  /**
+   * @return string
+   */
   public function getInstanceGroupManagerName()
   {
     return $this->instanceGroupManagerName;
   }
+  /**
+   * @param string
+   */
+  public function setInstanceGroupManagerUri($instanceGroupManagerUri)
+  {
+    $this->instanceGroupManagerUri = $instanceGroupManagerUri;
+  }
+  /**
+   * @return string
+   */
+  public function getInstanceGroupManagerUri()
+  {
+    return $this->instanceGroupManagerUri;
+  }
+  /**
+   * @param string
+   */
   public function setInstanceTemplateName($instanceTemplateName)
   {
     $this->instanceTemplateName = $instanceTemplateName;
   }
+  /**
+   * @return string
+   */
   public function getInstanceTemplateName()
   {
     return $this->instanceTemplateName;

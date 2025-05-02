@@ -35,11 +35,12 @@ use Google\Client;
  */
 class Fcmdata extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_androidApps_deliveryData;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Fcmdata service.
@@ -52,6 +53,7 @@ class Fcmdata extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://fcmdata.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://fcmdata.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1beta1';

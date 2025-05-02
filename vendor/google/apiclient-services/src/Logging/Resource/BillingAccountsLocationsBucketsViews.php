@@ -26,14 +26,14 @@ use Google\Service\Logging\LoggingEmpty;
  * Typical usage is:
  *  <code>
  *   $loggingService = new Google\Service\Logging(...);
- *   $views = $loggingService->views;
+ *   $views = $loggingService->billingAccounts_locations_buckets_views;
  *  </code>
  */
 class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
 {
   /**
    * Creates a view over log entries in a log bucket. A bucket may contain a
-   * maximum of 50 views. (views.create)
+   * maximum of 30 views. (views.create)
    *
    * @param string $parent Required. The bucket in which to create the view
    * `"projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For
@@ -41,8 +41,11 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
    * @param LogView $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string viewId Required. The id to use for this view.
+   * @opt_param string viewId Required. A client-assigned identifier such as "my-
+   * view". Identifiers are limited to 100 characters and can include only
+   * letters, digits, underscores, and hyphens.
    * @return LogView
+   * @throws \Google\Service\Exception
    */
   public function create($parent, LogView $postBody, $optParams = [])
   {
@@ -51,7 +54,9 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
     return $this->call('create', [$params], LogView::class);
   }
   /**
-   * Deletes a view on a log bucket. (views.delete)
+   * Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+   * indicates that system is not in a state where it can delete the view. If this
+   * occurs, please try again in a few minutes. (views.delete)
    *
    * @param string $name Required. The full resource name of the view to delete: "
    * projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW
@@ -59,12 +64,30 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
    * bucket/views/my-view"
    * @param array $optParams Optional parameters.
    * @return LoggingEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('delete', [$params], LoggingEmpty::class);
+  }
+  /**
+   * Gets a view on a log bucket. (views.get)
+   *
+   * @param string $name Required. The resource name of the policy: "projects/[PRO
+   * JECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
+   * example:"projects/my-project/locations/global/buckets/my-bucket/views/my-
+   * view"
+   * @param array $optParams Optional parameters.
+   * @return LogView
+   * @throws \Google\Service\Exception
+   */
+  public function get($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('get', [$params], LogView::class);
   }
   /**
    * Lists views on a log bucket. (views.listBillingAccountsLocationsBucketsViews)
@@ -81,6 +104,7 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
    * the value of nextPageToken from the previous response. The values of other
    * method parameters should be identical to those in the previous call.
    * @return ListViewsResponse
+   * @throws \Google\Service\Exception
    */
   public function listBillingAccountsLocationsBucketsViews($parent, $optParams = [])
   {
@@ -89,8 +113,11 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
     return $this->call('list', [$params], ListViewsResponse::class);
   }
   /**
-   * Updates a view on a log bucket. This method replaces the following fields in
-   * the existing view with values from the new view: filter. (views.patch)
+   * Updates a view on a log bucket. This method replaces the value of the filter
+   * field from the existing view with the corresponding value from the new view.
+   * If an UNAVAILABLE error is returned, this indicates that system is not in a
+   * state where it can update the view. If this occurs, please try again in a few
+   * minutes. (views.patch)
    *
    * @param string $name Required. The full resource name of the view to update "p
    * rojects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_
@@ -106,6 +133,7 @@ class BillingAccountsLocationsBucketsViews extends \Google\Service\Resource
    * buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskFor example:
    * updateMask=filter
    * @return LogView
+   * @throws \Google\Service\Exception
    */
   public function patch($name, LogView $postBody, $optParams = [])
   {

@@ -17,19 +17,76 @@
 
 namespace Google\Service\OnDemandScanning;
 
-class DiscoveryOccurrence extends \Google\Model
+class DiscoveryOccurrence extends \Google\Collection
 {
+  protected $collection_key = 'analysisError';
+  protected $analysisCompletedType = AnalysisCompleted::class;
+  protected $analysisCompletedDataType = '';
+  protected $analysisErrorType = Status::class;
+  protected $analysisErrorDataType = 'array';
+  /**
+   * @var string
+   */
   public $analysisStatus;
   protected $analysisStatusErrorType = Status::class;
   protected $analysisStatusErrorDataType = '';
+  /**
+   * @var string
+   */
+  public $archiveTime;
+  /**
+   * @var string
+   */
   public $continuousAnalysis;
+  /**
+   * @var string
+   */
   public $cpe;
+  /**
+   * @var string
+   */
   public $lastScanTime;
+  protected $sbomStatusType = SBOMStatus::class;
+  protected $sbomStatusDataType = '';
 
+  /**
+   * @param AnalysisCompleted
+   */
+  public function setAnalysisCompleted(AnalysisCompleted $analysisCompleted)
+  {
+    $this->analysisCompleted = $analysisCompleted;
+  }
+  /**
+   * @return AnalysisCompleted
+   */
+  public function getAnalysisCompleted()
+  {
+    return $this->analysisCompleted;
+  }
+  /**
+   * @param Status[]
+   */
+  public function setAnalysisError($analysisError)
+  {
+    $this->analysisError = $analysisError;
+  }
+  /**
+   * @return Status[]
+   */
+  public function getAnalysisError()
+  {
+    return $this->analysisError;
+  }
+  /**
+   * @param string
+   */
   public function setAnalysisStatus($analysisStatus)
   {
     $this->analysisStatus = $analysisStatus;
   }
+  /**
+   * @return string
+   */
   public function getAnalysisStatus()
   {
     return $this->analysisStatus;
@@ -48,29 +105,75 @@ class DiscoveryOccurrence extends \Google\Model
   {
     return $this->analysisStatusError;
   }
+  /**
+   * @param string
+   */
+  public function setArchiveTime($archiveTime)
+  {
+    $this->archiveTime = $archiveTime;
+  }
+  /**
+   * @return string
+   */
+  public function getArchiveTime()
+  {
+    return $this->archiveTime;
+  }
+  /**
+   * @param string
+   */
   public function setContinuousAnalysis($continuousAnalysis)
   {
     $this->continuousAnalysis = $continuousAnalysis;
   }
+  /**
+   * @return string
+   */
   public function getContinuousAnalysis()
   {
     return $this->continuousAnalysis;
   }
+  /**
+   * @param string
+   */
   public function setCpe($cpe)
   {
     $this->cpe = $cpe;
   }
+  /**
+   * @return string
+   */
   public function getCpe()
   {
     return $this->cpe;
   }
+  /**
+   * @param string
+   */
   public function setLastScanTime($lastScanTime)
   {
     $this->lastScanTime = $lastScanTime;
   }
+  /**
+   * @return string
+   */
   public function getLastScanTime()
   {
     return $this->lastScanTime;
+  }
+  /**
+   * @param SBOMStatus
+   */
+  public function setSbomStatus(SBOMStatus $sbomStatus)
+  {
+    $this->sbomStatus = $sbomStatus;
+  }
+  /**
+   * @return SBOMStatus
+   */
+  public function getSbomStatus()
+  {
+    return $this->sbomStatus;
   }
 }
 

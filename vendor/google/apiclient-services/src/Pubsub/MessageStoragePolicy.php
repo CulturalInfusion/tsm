@@ -20,15 +20,42 @@ namespace Google\Service\Pubsub;
 class MessageStoragePolicy extends \Google\Collection
 {
   protected $collection_key = 'allowedPersistenceRegions';
+  /**
+   * @var string[]
+   */
   public $allowedPersistenceRegions;
+  /**
+   * @var bool
+   */
+  public $enforceInTransit;
 
+  /**
+   * @param string[]
+   */
   public function setAllowedPersistenceRegions($allowedPersistenceRegions)
   {
     $this->allowedPersistenceRegions = $allowedPersistenceRegions;
   }
+  /**
+   * @return string[]
+   */
   public function getAllowedPersistenceRegions()
   {
     return $this->allowedPersistenceRegions;
+  }
+  /**
+   * @param bool
+   */
+  public function setEnforceInTransit($enforceInTransit)
+  {
+    $this->enforceInTransit = $enforceInTransit;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnforceInTransit()
+  {
+    return $this->enforceInTransit;
   }
 }
 

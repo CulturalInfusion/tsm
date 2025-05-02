@@ -17,32 +17,110 @@
 
 namespace Google\Service\DeploymentManager;
 
-class ResourceUpdateErrorErrors extends \Google\Model
+class ResourceUpdateErrorErrors extends \Google\Collection
 {
+  protected $collection_key = 'errorDetails';
+  /**
+   * @var string[]
+   */
+  public $arguments;
+  /**
+   * @var string
+   */
   public $code;
+  protected $debugInfoType = DebugInfo::class;
+  protected $debugInfoDataType = '';
+  protected $errorDetailsType = ResourceUpdateErrorErrorsErrorDetails::class;
+  protected $errorDetailsDataType = 'array';
+  /**
+   * @var string
+   */
   public $location;
+  /**
+   * @var string
+   */
   public $message;
 
+  /**
+   * @param string[]
+   */
+  public function setArguments($arguments)
+  {
+    $this->arguments = $arguments;
+  }
+  /**
+   * @return string[]
+   */
+  public function getArguments()
+  {
+    return $this->arguments;
+  }
+  /**
+   * @param string
+   */
   public function setCode($code)
   {
     $this->code = $code;
   }
+  /**
+   * @return string
+   */
   public function getCode()
   {
     return $this->code;
   }
+  /**
+   * @param DebugInfo
+   */
+  public function setDebugInfo(DebugInfo $debugInfo)
+  {
+    $this->debugInfo = $debugInfo;
+  }
+  /**
+   * @return DebugInfo
+   */
+  public function getDebugInfo()
+  {
+    return $this->debugInfo;
+  }
+  /**
+   * @param ResourceUpdateErrorErrorsErrorDetails[]
+   */
+  public function setErrorDetails($errorDetails)
+  {
+    $this->errorDetails = $errorDetails;
+  }
+  /**
+   * @return ResourceUpdateErrorErrorsErrorDetails[]
+   */
+  public function getErrorDetails()
+  {
+    return $this->errorDetails;
+  }
+  /**
+   * @param string
+   */
   public function setLocation($location)
   {
     $this->location = $location;
   }
+  /**
+   * @return string
+   */
   public function getLocation()
   {
     return $this->location;
   }
+  /**
+   * @param string
+   */
   public function setMessage($message)
   {
     $this->message = $message;
   }
+  /**
+   * @return string
+   */
   public function getMessage()
   {
     return $this->message;

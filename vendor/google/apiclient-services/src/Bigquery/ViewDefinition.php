@@ -20,32 +20,91 @@ namespace Google\Service\Bigquery;
 class ViewDefinition extends \Google\Collection
 {
   protected $collection_key = 'userDefinedFunctionResources';
+  protected $foreignDefinitionsType = ForeignViewDefinition::class;
+  protected $foreignDefinitionsDataType = 'array';
+  protected $privacyPolicyType = PrivacyPolicy::class;
+  protected $privacyPolicyDataType = '';
+  /**
+   * @var string
+   */
   public $query;
+  /**
+   * @var bool
+   */
   public $useExplicitColumnNames;
+  /**
+   * @var bool
+   */
   public $useLegacySql;
   protected $userDefinedFunctionResourcesType = UserDefinedFunctionResource::class;
   protected $userDefinedFunctionResourcesDataType = 'array';
 
+  /**
+   * @param ForeignViewDefinition[]
+   */
+  public function setForeignDefinitions($foreignDefinitions)
+  {
+    $this->foreignDefinitions = $foreignDefinitions;
+  }
+  /**
+   * @return ForeignViewDefinition[]
+   */
+  public function getForeignDefinitions()
+  {
+    return $this->foreignDefinitions;
+  }
+  /**
+   * @param PrivacyPolicy
+   */
+  public function setPrivacyPolicy(PrivacyPolicy $privacyPolicy)
+  {
+    $this->privacyPolicy = $privacyPolicy;
+  }
+  /**
+   * @return PrivacyPolicy
+   */
+  public function getPrivacyPolicy()
+  {
+    return $this->privacyPolicy;
+  }
+  /**
+   * @param string
+   */
   public function setQuery($query)
   {
     $this->query = $query;
   }
+  /**
+   * @return string
+   */
   public function getQuery()
   {
     return $this->query;
   }
+  /**
+   * @param bool
+   */
   public function setUseExplicitColumnNames($useExplicitColumnNames)
   {
     $this->useExplicitColumnNames = $useExplicitColumnNames;
   }
+  /**
+   * @return bool
+   */
   public function getUseExplicitColumnNames()
   {
     return $this->useExplicitColumnNames;
   }
+  /**
+   * @param bool
+   */
   public function setUseLegacySql($useLegacySql)
   {
     $this->useLegacySql = $useLegacySql;
   }
+  /**
+   * @return bool
+   */
   public function getUseLegacySql()
   {
     return $this->useLegacySql;

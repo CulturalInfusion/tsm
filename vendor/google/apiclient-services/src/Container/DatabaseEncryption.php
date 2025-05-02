@@ -17,23 +17,94 @@
 
 namespace Google\Service\Container;
 
-class DatabaseEncryption extends \Google\Model
+class DatabaseEncryption extends \Google\Collection
 {
+  protected $collection_key = 'lastOperationErrors';
+  /**
+   * @var string
+   */
+  public $currentState;
+  /**
+   * @var string[]
+   */
+  public $decryptionKeys;
+  /**
+   * @var string
+   */
   public $keyName;
+  protected $lastOperationErrorsType = OperationError::class;
+  protected $lastOperationErrorsDataType = 'array';
+  /**
+   * @var string
+   */
   public $state;
 
+  /**
+   * @param string
+   */
+  public function setCurrentState($currentState)
+  {
+    $this->currentState = $currentState;
+  }
+  /**
+   * @return string
+   */
+  public function getCurrentState()
+  {
+    return $this->currentState;
+  }
+  /**
+   * @param string[]
+   */
+  public function setDecryptionKeys($decryptionKeys)
+  {
+    $this->decryptionKeys = $decryptionKeys;
+  }
+  /**
+   * @return string[]
+   */
+  public function getDecryptionKeys()
+  {
+    return $this->decryptionKeys;
+  }
+  /**
+   * @param string
+   */
   public function setKeyName($keyName)
   {
     $this->keyName = $keyName;
   }
+  /**
+   * @return string
+   */
   public function getKeyName()
   {
     return $this->keyName;
   }
+  /**
+   * @param OperationError[]
+   */
+  public function setLastOperationErrors($lastOperationErrors)
+  {
+    $this->lastOperationErrors = $lastOperationErrors;
+  }
+  /**
+   * @return OperationError[]
+   */
+  public function getLastOperationErrors()
+  {
+    return $this->lastOperationErrors;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;

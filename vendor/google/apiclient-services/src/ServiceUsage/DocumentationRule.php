@@ -19,30 +19,75 @@ namespace Google\Service\ServiceUsage;
 
 class DocumentationRule extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $deprecationDescription;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
+  public $disableReplacementWords;
+  /**
+   * @var string
+   */
   public $selector;
 
+  /**
+   * @param string
+   */
   public function setDeprecationDescription($deprecationDescription)
   {
     $this->deprecationDescription = $deprecationDescription;
   }
+  /**
+   * @return string
+   */
   public function getDeprecationDescription()
   {
     return $this->deprecationDescription;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
+  public function setDisableReplacementWords($disableReplacementWords)
+  {
+    $this->disableReplacementWords = $disableReplacementWords;
+  }
+  /**
+   * @return string
+   */
+  public function getDisableReplacementWords()
+  {
+    return $this->disableReplacementWords;
+  }
+  /**
+   * @param string
+   */
   public function setSelector($selector)
   {
     $this->selector = $selector;
   }
+  /**
+   * @return string
+   */
   public function getSelector()
   {
     return $this->selector;

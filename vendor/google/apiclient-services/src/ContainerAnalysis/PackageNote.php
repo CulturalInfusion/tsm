@@ -19,155 +19,194 @@ namespace Google\Service\ContainerAnalysis;
 
 class PackageNote extends \Google\Collection
 {
-  protected $collection_key = 'filesLicenseInfo';
-  public $analyzed;
-  public $attribution;
-  public $checksum;
-  public $copyright;
-  public $detailedDescription;
-  public $downloadLocation;
-  protected $externalRefsType = ExternalRef::class;
-  protected $externalRefsDataType = 'array';
-  public $filesLicenseInfo;
-  public $homePage;
-  public $licenseDeclared;
-  public $originator;
-  public $summaryDescription;
-  public $supplier;
-  public $title;
-  public $verificationCode;
-  public $version;
+  protected $collection_key = 'distribution';
+  /**
+   * @var string
+   */
+  public $architecture;
+  /**
+   * @var string
+   */
+  public $cpeUri;
+  /**
+   * @var string
+   */
+  public $description;
+  protected $digestType = Digest::class;
+  protected $digestDataType = 'array';
+  protected $distributionType = Distribution::class;
+  protected $distributionDataType = 'array';
+  protected $licenseType = License::class;
+  protected $licenseDataType = '';
+  /**
+   * @var string
+   */
+  public $maintainer;
+  /**
+   * @var string
+   */
+  public $name;
+  /**
+   * @var string
+   */
+  public $packageType;
+  /**
+   * @var string
+   */
+  public $url;
+  protected $versionType = Version::class;
+  protected $versionDataType = '';
 
-  public function setAnalyzed($analyzed)
+  /**
+   * @param string
+   */
+  public function setArchitecture($architecture)
   {
-    $this->analyzed = $analyzed;
-  }
-  public function getAnalyzed()
-  {
-    return $this->analyzed;
-  }
-  public function setAttribution($attribution)
-  {
-    $this->attribution = $attribution;
-  }
-  public function getAttribution()
-  {
-    return $this->attribution;
-  }
-  public function setChecksum($checksum)
-  {
-    $this->checksum = $checksum;
-  }
-  public function getChecksum()
-  {
-    return $this->checksum;
-  }
-  public function setCopyright($copyright)
-  {
-    $this->copyright = $copyright;
-  }
-  public function getCopyright()
-  {
-    return $this->copyright;
-  }
-  public function setDetailedDescription($detailedDescription)
-  {
-    $this->detailedDescription = $detailedDescription;
-  }
-  public function getDetailedDescription()
-  {
-    return $this->detailedDescription;
-  }
-  public function setDownloadLocation($downloadLocation)
-  {
-    $this->downloadLocation = $downloadLocation;
-  }
-  public function getDownloadLocation()
-  {
-    return $this->downloadLocation;
+    $this->architecture = $architecture;
   }
   /**
-   * @param ExternalRef[]
+   * @return string
    */
-  public function setExternalRefs($externalRefs)
+  public function getArchitecture()
   {
-    $this->externalRefs = $externalRefs;
+    return $this->architecture;
   }
   /**
-   * @return ExternalRef[]
+   * @param string
    */
-  public function getExternalRefs()
+  public function setCpeUri($cpeUri)
   {
-    return $this->externalRefs;
+    $this->cpeUri = $cpeUri;
   }
-  public function setFilesLicenseInfo($filesLicenseInfo)
+  /**
+   * @return string
+   */
+  public function getCpeUri()
   {
-    $this->filesLicenseInfo = $filesLicenseInfo;
+    return $this->cpeUri;
   }
-  public function getFilesLicenseInfo()
+  /**
+   * @param string
+   */
+  public function setDescription($description)
   {
-    return $this->filesLicenseInfo;
+    $this->description = $description;
   }
-  public function setHomePage($homePage)
+  /**
+   * @return string
+   */
+  public function getDescription()
   {
-    $this->homePage = $homePage;
+    return $this->description;
   }
-  public function getHomePage()
+  /**
+   * @param Digest[]
+   */
+  public function setDigest($digest)
   {
-    return $this->homePage;
+    $this->digest = $digest;
   }
-  public function setLicenseDeclared($licenseDeclared)
+  /**
+   * @return Digest[]
+   */
+  public function getDigest()
   {
-    $this->licenseDeclared = $licenseDeclared;
+    return $this->digest;
   }
-  public function getLicenseDeclared()
+  /**
+   * @param Distribution[]
+   */
+  public function setDistribution($distribution)
   {
-    return $this->licenseDeclared;
+    $this->distribution = $distribution;
   }
-  public function setOriginator($originator)
+  /**
+   * @return Distribution[]
+   */
+  public function getDistribution()
   {
-    $this->originator = $originator;
+    return $this->distribution;
   }
-  public function getOriginator()
+  /**
+   * @param License
+   */
+  public function setLicense(License $license)
   {
-    return $this->originator;
+    $this->license = $license;
   }
-  public function setSummaryDescription($summaryDescription)
+  /**
+   * @return License
+   */
+  public function getLicense()
   {
-    $this->summaryDescription = $summaryDescription;
+    return $this->license;
   }
-  public function getSummaryDescription()
+  /**
+   * @param string
+   */
+  public function setMaintainer($maintainer)
   {
-    return $this->summaryDescription;
+    $this->maintainer = $maintainer;
   }
-  public function setSupplier($supplier)
+  /**
+   * @return string
+   */
+  public function getMaintainer()
   {
-    $this->supplier = $supplier;
+    return $this->maintainer;
   }
-  public function getSupplier()
+  /**
+   * @param string
+   */
+  public function setName($name)
   {
-    return $this->supplier;
+    $this->name = $name;
   }
-  public function setTitle($title)
+  /**
+   * @return string
+   */
+  public function getName()
   {
-    $this->title = $title;
+    return $this->name;
   }
-  public function getTitle()
+  /**
+   * @param string
+   */
+  public function setPackageType($packageType)
   {
-    return $this->title;
+    $this->packageType = $packageType;
   }
-  public function setVerificationCode($verificationCode)
+  /**
+   * @return string
+   */
+  public function getPackageType()
   {
-    $this->verificationCode = $verificationCode;
+    return $this->packageType;
   }
-  public function getVerificationCode()
+  /**
+   * @param string
+   */
+  public function setUrl($url)
   {
-    return $this->verificationCode;
+    $this->url = $url;
   }
-  public function setVersion($version)
+  /**
+   * @return string
+   */
+  public function getUrl()
+  {
+    return $this->url;
+  }
+  /**
+   * @param Version
+   */
+  public function setVersion(Version $version)
   {
     $this->version = $version;
   }
+  /**
+   * @return Version
+   */
   public function getVersion()
   {
     return $this->version;

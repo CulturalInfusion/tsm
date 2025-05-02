@@ -24,7 +24,7 @@ use Google\Service\AdMob\ListAppsResponse;
  * Typical usage is:
  *  <code>
  *   $admobService = new Google\Service\AdMob(...);
- *   $apps = $admobService->apps;
+ *   $apps = $admobService->accounts_apps;
  *  </code>
  */
 class AccountsApps extends \Google\Service\Resource
@@ -37,12 +37,13 @@ class AccountsApps extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The maximum number of apps to return. If unspecified
-   * or 0, at most 1000 apps will be returned. The maximum value is 10,000; values
-   * above 10,000 will be coerced to 10,000.
+   * or 0, at most 10,000 apps will be returned. The maximum value is 20,000;
+   * values above 20,000 will be coerced to 20,000.
    * @opt_param string pageToken The value returned by the last
    * `ListAppsResponse`; indicates that this is a continuation of a prior
    * `ListApps` call, and that the system should return the next page of data.
    * @return ListAppsResponse
+   * @throws \Google\Service\Exception
    */
   public function listAccountsApps($parent, $optParams = [])
   {

@@ -28,14 +28,43 @@ class LighthouseResultV5 extends \Google\Collection
   protected $categoryGroupsDataType = 'map';
   protected $configSettingsType = ConfigSettings::class;
   protected $configSettingsDataType = '';
+  protected $entitiesType = LhrEntity::class;
+  protected $entitiesDataType = 'array';
   protected $environmentType = Environment::class;
   protected $environmentDataType = '';
+  /**
+   * @var string
+   */
   public $fetchTime;
+  /**
+   * @var string
+   */
+  public $finalDisplayedUrl;
+  /**
+   * @var string
+   */
   public $finalUrl;
+  /**
+   * @var array
+   */
+  public $fullPageScreenshot;
   protected $i18nType = I18n::class;
   protected $i18nDataType = '';
+  /**
+   * @var string
+   */
   public $lighthouseVersion;
+  /**
+   * @var string
+   */
+  public $mainDocumentUrl;
+  /**
+   * @var string
+   */
   public $requestedUrl;
+  /**
+   * @var array[]
+   */
   public $runWarnings;
   protected $runtimeErrorType = RuntimeError::class;
   protected $runtimeErrorDataType = '';
@@ -43,6 +72,9 @@ class LighthouseResultV5 extends \Google\Collection
   protected $stackPacksDataType = 'array';
   protected $timingType = Timing::class;
   protected $timingDataType = '';
+  /**
+   * @var string
+   */
   public $userAgent;
 
   /**
@@ -102,6 +134,20 @@ class LighthouseResultV5 extends \Google\Collection
     return $this->configSettings;
   }
   /**
+   * @param LhrEntity[]
+   */
+  public function setEntities($entities)
+  {
+    $this->entities = $entities;
+  }
+  /**
+   * @return LhrEntity[]
+   */
+  public function getEntities()
+  {
+    return $this->entities;
+  }
+  /**
    * @param Environment
    */
   public function setEnvironment(Environment $environment)
@@ -115,21 +161,61 @@ class LighthouseResultV5 extends \Google\Collection
   {
     return $this->environment;
   }
+  /**
+   * @param string
+   */
   public function setFetchTime($fetchTime)
   {
     $this->fetchTime = $fetchTime;
   }
+  /**
+   * @return string
+   */
   public function getFetchTime()
   {
     return $this->fetchTime;
   }
+  /**
+   * @param string
+   */
+  public function setFinalDisplayedUrl($finalDisplayedUrl)
+  {
+    $this->finalDisplayedUrl = $finalDisplayedUrl;
+  }
+  /**
+   * @return string
+   */
+  public function getFinalDisplayedUrl()
+  {
+    return $this->finalDisplayedUrl;
+  }
+  /**
+   * @param string
+   */
   public function setFinalUrl($finalUrl)
   {
     $this->finalUrl = $finalUrl;
   }
+  /**
+   * @return string
+   */
   public function getFinalUrl()
   {
     return $this->finalUrl;
+  }
+  /**
+   * @param array
+   */
+  public function setFullPageScreenshot($fullPageScreenshot)
+  {
+    $this->fullPageScreenshot = $fullPageScreenshot;
+  }
+  /**
+   * @return array
+   */
+  public function getFullPageScreenshot()
+  {
+    return $this->fullPageScreenshot;
   }
   /**
    * @param I18n
@@ -145,26 +231,58 @@ class LighthouseResultV5 extends \Google\Collection
   {
     return $this->i18n;
   }
+  /**
+   * @param string
+   */
   public function setLighthouseVersion($lighthouseVersion)
   {
     $this->lighthouseVersion = $lighthouseVersion;
   }
+  /**
+   * @return string
+   */
   public function getLighthouseVersion()
   {
     return $this->lighthouseVersion;
   }
+  /**
+   * @param string
+   */
+  public function setMainDocumentUrl($mainDocumentUrl)
+  {
+    $this->mainDocumentUrl = $mainDocumentUrl;
+  }
+  /**
+   * @return string
+   */
+  public function getMainDocumentUrl()
+  {
+    return $this->mainDocumentUrl;
+  }
+  /**
+   * @param string
+   */
   public function setRequestedUrl($requestedUrl)
   {
     $this->requestedUrl = $requestedUrl;
   }
+  /**
+   * @return string
+   */
   public function getRequestedUrl()
   {
     return $this->requestedUrl;
   }
+  /**
+   * @param array[]
+   */
   public function setRunWarnings($runWarnings)
   {
     $this->runWarnings = $runWarnings;
   }
+  /**
+   * @return array[]
+   */
   public function getRunWarnings()
   {
     return $this->runWarnings;
@@ -211,10 +329,16 @@ class LighthouseResultV5 extends \Google\Collection
   {
     return $this->timing;
   }
+  /**
+   * @param string
+   */
   public function setUserAgent($userAgent)
   {
     $this->userAgent = $userAgent;
   }
+  /**
+   * @return string
+   */
   public function getUserAgent()
   {
     return $this->userAgent;

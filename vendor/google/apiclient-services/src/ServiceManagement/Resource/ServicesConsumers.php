@@ -28,7 +28,7 @@ use Google\Service\ServiceManagement\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $servicemanagementService = new Google\Service\ServiceManagement(...);
- *   $consumers = $servicemanagementService->consumers;
+ *   $consumers = $servicemanagementService->services_consumers;
  *  </code>
  */
 class ServicesConsumers extends \Google\Service\Resource
@@ -38,11 +38,13 @@ class ServicesConsumers extends \Google\Service\Resource
    * resource exists and does not have a policy set. (consumers.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -56,11 +58,13 @@ class ServicesConsumers extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (consumers.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -77,11 +81,13 @@ class ServicesConsumers extends \Google\Service\Resource
    * (consumers.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

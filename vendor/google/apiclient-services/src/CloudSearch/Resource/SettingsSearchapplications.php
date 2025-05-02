@@ -27,7 +27,7 @@ use Google\Service\CloudSearch\SearchApplication;
  * Typical usage is:
  *  <code>
  *   $cloudsearchService = new Google\Service\CloudSearch(...);
- *   $searchapplications = $cloudsearchService->searchapplications;
+ *   $searchapplications = $cloudsearchService->settings_searchapplications;
  *  </code>
  */
 class SettingsSearchapplications extends \Google\Service\Resource
@@ -39,6 +39,7 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * @param SearchApplication $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create(SearchApplication $postBody, $optParams = [])
   {
@@ -57,6 +58,7 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
    * help with debugging, set this field. Otherwise, ignore this field.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -68,13 +70,14 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * Gets the specified search application. **Note:** This API requires an admin
    * account to execute. (searchapplications.get)
    *
-   * @param string $name Name of the search application. Format:
+   * @param string $name The name of the search application. Format:
    * searchapplications/{application_id}.
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
    * help with debugging, set this field. Otherwise, ignore this field.
    * @return SearchApplication
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -94,12 +97,41 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * @opt_param string pageToken The next_page_token value returned from a
    * previous List request, if any. The default value is 10
    * @return ListSearchApplicationsResponse
+   * @throws \Google\Service\Exception
    */
   public function listSettingsSearchapplications($optParams = [])
   {
     $params = [];
     $params = array_merge($params, $optParams);
     return $this->call('list', [$params], ListSearchApplicationsResponse::class);
+  }
+  /**
+   * Updates a search application. **Note:** This API requires an admin account to
+   * execute. (searchapplications.patch)
+   *
+   * @param string $name The name of the Search Application. Format:
+   * searchapplications/{application_id}.
+   * @param SearchApplication $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string updateMask Only applies to
+   * [`settings.searchapplications.patch`](https://developers.google.com/cloud-
+   * search/docs/reference/rest/v1/settings.searchapplications/patch). Update mask
+   * to control which fields to update. Example field paths:
+   * `search_application.name`, `search_application.displayName`. * If
+   * `update_mask` is non-empty, then only the fields specified in the
+   * `update_mask` are updated. * If you specify a field in the `update_mask`, but
+   * don't specify its value in the `search_application`, then that field is
+   * cleared. * If the `update_mask` is not present or empty or has the value `*`,
+   * then all fields are updated.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function patch($name, SearchApplication $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('patch', [$params], Operation::class);
   }
   /**
    * Resets a search application to default settings. This will return an empty
@@ -111,6 +143,7 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * @param ResetSearchApplicationRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function reset($name, ResetSearchApplicationRequest $postBody, $optParams = [])
   {
@@ -122,11 +155,23 @@ class SettingsSearchapplications extends \Google\Service\Resource
    * Updates a search application. **Note:** This API requires an admin account to
    * execute. (searchapplications.update)
    *
-   * @param string $name Name of the Search Application. Format:
+   * @param string $name The name of the Search Application. Format:
    * searchapplications/{application_id}.
    * @param SearchApplication $postBody
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string updateMask Only applies to
+   * [`settings.searchapplications.patch`](https://developers.google.com/cloud-
+   * search/docs/reference/rest/v1/settings.searchapplications/patch). Update mask
+   * to control which fields to update. Example field paths:
+   * `search_application.name`, `search_application.displayName`. * If
+   * `update_mask` is non-empty, then only the fields specified in the
+   * `update_mask` are updated. * If you specify a field in the `update_mask`, but
+   * don't specify its value in the `search_application`, then that field is
+   * cleared. * If the `update_mask` is not present or empty or has the value `*`,
+   * then all fields are updated.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function update($name, SearchApplication $postBody, $optParams = [])
   {

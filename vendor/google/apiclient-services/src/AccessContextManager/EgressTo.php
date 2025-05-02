@@ -20,10 +20,31 @@ namespace Google\Service\AccessContextManager;
 class EgressTo extends \Google\Collection
 {
   protected $collection_key = 'resources';
+  /**
+   * @var string[]
+   */
+  public $externalResources;
   protected $operationsType = ApiOperation::class;
   protected $operationsDataType = 'array';
+  /**
+   * @var string[]
+   */
   public $resources;
 
+  /**
+   * @param string[]
+   */
+  public function setExternalResources($externalResources)
+  {
+    $this->externalResources = $externalResources;
+  }
+  /**
+   * @return string[]
+   */
+  public function getExternalResources()
+  {
+    return $this->externalResources;
+  }
   /**
    * @param ApiOperation[]
    */
@@ -38,10 +59,16 @@ class EgressTo extends \Google\Collection
   {
     return $this->operations;
   }
+  /**
+   * @param string[]
+   */
   public function setResources($resources)
   {
     $this->resources = $resources;
   }
+  /**
+   * @return string[]
+   */
   public function getResources()
   {
     return $this->resources;

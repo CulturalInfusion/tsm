@@ -21,6 +21,13 @@ class PreservedState extends \Google\Model
 {
   protected $disksType = PreservedStatePreservedDisk::class;
   protected $disksDataType = 'map';
+  protected $externalIPsType = PreservedStatePreservedNetworkIp::class;
+  protected $externalIPsDataType = 'map';
+  protected $internalIPsType = PreservedStatePreservedNetworkIp::class;
+  protected $internalIPsDataType = 'map';
+  /**
+   * @var string[]
+   */
   public $metadata;
 
   /**
@@ -37,10 +44,44 @@ class PreservedState extends \Google\Model
   {
     return $this->disks;
   }
+  /**
+   * @param PreservedStatePreservedNetworkIp[]
+   */
+  public function setExternalIPs($externalIPs)
+  {
+    $this->externalIPs = $externalIPs;
+  }
+  /**
+   * @return PreservedStatePreservedNetworkIp[]
+   */
+  public function getExternalIPs()
+  {
+    return $this->externalIPs;
+  }
+  /**
+   * @param PreservedStatePreservedNetworkIp[]
+   */
+  public function setInternalIPs($internalIPs)
+  {
+    $this->internalIPs = $internalIPs;
+  }
+  /**
+   * @return PreservedStatePreservedNetworkIp[]
+   */
+  public function getInternalIPs()
+  {
+    return $this->internalIPs;
+  }
+  /**
+   * @param string[]
+   */
   public function setMetadata($metadata)
   {
     $this->metadata = $metadata;
   }
+  /**
+   * @return string[]
+   */
   public function getMetadata()
   {
     return $this->metadata;

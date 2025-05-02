@@ -17,35 +17,81 @@
 
 namespace Google\Service\Monitoring;
 
-class MetricDescriptorMetadata extends \Google\Model
+class MetricDescriptorMetadata extends \Google\Collection
 {
+  protected $collection_key = 'timeSeriesResourceHierarchyLevel';
+  /**
+   * @var string
+   */
   public $ingestDelay;
+  /**
+   * @var string
+   */
   public $launchStage;
+  /**
+   * @var string
+   */
   public $samplePeriod;
+  /**
+   * @var string[]
+   */
+  public $timeSeriesResourceHierarchyLevel;
 
+  /**
+   * @param string
+   */
   public function setIngestDelay($ingestDelay)
   {
     $this->ingestDelay = $ingestDelay;
   }
+  /**
+   * @return string
+   */
   public function getIngestDelay()
   {
     return $this->ingestDelay;
   }
+  /**
+   * @param string
+   */
   public function setLaunchStage($launchStage)
   {
     $this->launchStage = $launchStage;
   }
+  /**
+   * @return string
+   */
   public function getLaunchStage()
   {
     return $this->launchStage;
   }
+  /**
+   * @param string
+   */
   public function setSamplePeriod($samplePeriod)
   {
     $this->samplePeriod = $samplePeriod;
   }
+  /**
+   * @return string
+   */
   public function getSamplePeriod()
   {
     return $this->samplePeriod;
+  }
+  /**
+   * @param string[]
+   */
+  public function setTimeSeriesResourceHierarchyLevel($timeSeriesResourceHierarchyLevel)
+  {
+    $this->timeSeriesResourceHierarchyLevel = $timeSeriesResourceHierarchyLevel;
+  }
+  /**
+   * @return string[]
+   */
+  public function getTimeSeriesResourceHierarchyLevel()
+  {
+    return $this->timeSeriesResourceHierarchyLevel;
   }
 }
 

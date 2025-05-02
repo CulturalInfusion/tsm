@@ -19,21 +19,55 @@ namespace Google\Service\Monitoring;
 
 class ContentMatcher extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $content;
+  protected $jsonPathMatcherType = JsonPathMatcher::class;
+  protected $jsonPathMatcherDataType = '';
+  /**
+   * @var string
+   */
   public $matcher;
 
+  /**
+   * @param string
+   */
   public function setContent($content)
   {
     $this->content = $content;
   }
+  /**
+   * @return string
+   */
   public function getContent()
   {
     return $this->content;
   }
+  /**
+   * @param JsonPathMatcher
+   */
+  public function setJsonPathMatcher(JsonPathMatcher $jsonPathMatcher)
+  {
+    $this->jsonPathMatcher = $jsonPathMatcher;
+  }
+  /**
+   * @return JsonPathMatcher
+   */
+  public function getJsonPathMatcher()
+  {
+    return $this->jsonPathMatcher;
+  }
+  /**
+   * @param string
+   */
   public function setMatcher($matcher)
   {
     $this->matcher = $matcher;
   }
+  /**
+   * @return string
+   */
   public function getMatcher()
   {
     return $this->matcher;

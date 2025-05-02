@@ -40,7 +40,7 @@ use Google\Client;
  */
 class RecommendationsAI extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -51,6 +51,7 @@ class RecommendationsAI extends \Google\Service
   public $projects_locations_catalogs_eventStores_predictionApiKeyRegistrations;
   public $projects_locations_catalogs_eventStores_userEvents;
   public $projects_locations_catalogs_operations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the RecommendationsAI service.
@@ -63,6 +64,7 @@ class RecommendationsAI extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://recommendationengine.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://recommendationengine.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1beta1';

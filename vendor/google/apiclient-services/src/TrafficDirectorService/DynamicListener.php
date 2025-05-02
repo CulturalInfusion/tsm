@@ -21,10 +21,17 @@ class DynamicListener extends \Google\Model
 {
   protected $activeStateType = DynamicListenerState::class;
   protected $activeStateDataType = '';
+  /**
+   * @var string
+   */
+  public $clientStatus;
   protected $drainingStateType = DynamicListenerState::class;
   protected $drainingStateDataType = '';
   protected $errorStateType = UpdateFailureState::class;
   protected $errorStateDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   protected $warmingStateType = DynamicListenerState::class;
   protected $warmingStateDataType = '';
@@ -42,6 +49,20 @@ class DynamicListener extends \Google\Model
   public function getActiveState()
   {
     return $this->activeState;
+  }
+  /**
+   * @param string
+   */
+  public function setClientStatus($clientStatus)
+  {
+    $this->clientStatus = $clientStatus;
+  }
+  /**
+   * @return string
+   */
+  public function getClientStatus()
+  {
+    return $this->clientStatus;
   }
   /**
    * @param DynamicListenerState
@@ -71,10 +92,16 @@ class DynamicListener extends \Google\Model
   {
     return $this->errorState;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;

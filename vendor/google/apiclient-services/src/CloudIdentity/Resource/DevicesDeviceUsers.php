@@ -31,7 +31,7 @@ use Google\Service\CloudIdentity\Operation;
  * Typical usage is:
  *  <code>
  *   $cloudidentityService = new Google\Service\CloudIdentity(...);
- *   $deviceUsers = $cloudidentityService->deviceUsers;
+ *   $deviceUsers = $cloudidentityService->devices_deviceUsers;
  *  </code>
  */
 class DevicesDeviceUsers extends \Google\Service\Resource
@@ -41,12 +41,13 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function approve($name, GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest $postBody, $optParams = [])
   {
@@ -59,12 +60,13 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function block($name, GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest $postBody, $optParams = [])
   {
@@ -79,12 +81,13 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function cancelWipe($name, GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest $postBody, $optParams = [])
   {
@@ -98,18 +101,19 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string customer Optional. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the customer.
    * If you're using this API for your own organization, use
    * `customers/my_customer` If you're using this API to manage another
-   * organization, use `customers/{customer_id}`, where customer_id is the
-   * customer to whom the device belongs.
+   * organization, use `customers/{customer}`, where customer is the customer to
+   * whom the device belongs.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -122,18 +126,19 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string customer Optional. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the customer.
    * If you're using this API for your own organization, use
    * `customers/my_customer` If you're using this API to manage another
-   * organization, use `customers/{customer_id}`, where customer_id is the
-   * customer to whom the device belongs.
+   * organization, use `customers/{customer}`, where customer is the customer to
+   * whom the device belongs.
    * @return GoogleAppsCloudidentityDevicesV1DeviceUser
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -153,8 +158,8 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the customer.
    * If you're using this API for your own organization, use
    * `customers/my_customer` If you're using this API to manage another
-   * organization, use `customers/{customer_id}`, where customer_id is the
-   * customer to whom the device belongs.
+   * organization, use `customers/{customer}`, where customer is the customer to
+   * whom the device belongs.
    * @opt_param string filter Optional. Additional restrictions when fetching list
    * of devices. For a list of search fields, refer to [Mobile device search
    * fields](https://developers.google.com/admin-sdk/directory/v1/search-
@@ -169,6 +174,7 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    * paginating, all other parameters provided to `ListBooks` must match the call
    * that provided the page token.
    * @return GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
+   * @throws \Google\Service\Exception
    */
   public function listDevicesDeviceUsers($parent, $optParams = [])
   {
@@ -207,13 +213,15 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    * @opt_param string rawResourceId Raw Resource Id used by Google Endpoint
    * Verification. If the user is enrolled into Google Endpoint Verification, this
    * id will be saved as the 'device_resource_id' field in the following platform
-   * dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows:
-   * C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux:
+   * dependent files. * macOS: ~/.secureConnect/context_aware_config.json *
+   * Windows: %USERPROFILE%\AppData\Local\Google\Endpoint
+   * Verification\accounts.json * Linux:
    * ~/.secureConnect/context_aware_config.json
    * @opt_param string userId The user whose DeviceUser's resource name will be
    * fetched. Must be set to 'me' to fetch the DeviceUser's resource name for the
    * calling user.
    * @return GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+   * @throws \Google\Service\Exception
    */
   public function lookup($parent, $optParams = [])
   {
@@ -232,12 +240,13 @@ class DevicesDeviceUsers extends \Google\Service\Resource
    *
    * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Device in
-   * format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id
-   * is the unique ID assigned to the Device, and device_user_id is the unique ID
-   * assigned to the User.
+   * format: `devices/{device}/deviceUsers/{device_user}`, where device is the
+   * unique ID assigned to the Device, and device_user is the unique ID assigned
+   * to the User.
    * @param GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function wipe($name, GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest $postBody, $optParams = [])
   {

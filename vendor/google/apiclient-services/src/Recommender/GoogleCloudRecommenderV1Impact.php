@@ -17,18 +17,38 @@
 
 namespace Google\Service\Recommender;
 
-class GoogleCloudRecommenderV1Impact extends \Google\Model
+class GoogleCloudRecommenderV1Impact extends \Google\Collection
 {
+  protected $collection_key = 'impactComponents';
+  /**
+   * @var string
+   */
   public $category;
   protected $costProjectionType = GoogleCloudRecommenderV1CostProjection::class;
   protected $costProjectionDataType = '';
+  protected $impactComponentsType = GoogleCloudRecommenderV1Impact::class;
+  protected $impactComponentsDataType = 'array';
+  protected $reliabilityProjectionType = GoogleCloudRecommenderV1ReliabilityProjection::class;
+  protected $reliabilityProjectionDataType = '';
   protected $securityProjectionType = GoogleCloudRecommenderV1SecurityProjection::class;
   protected $securityProjectionDataType = '';
+  /**
+   * @var string
+   */
+  public $service;
+  protected $sustainabilityProjectionType = GoogleCloudRecommenderV1SustainabilityProjection::class;
+  protected $sustainabilityProjectionDataType = '';
 
+  /**
+   * @param string
+   */
   public function setCategory($category)
   {
     $this->category = $category;
   }
+  /**
+   * @return string
+   */
   public function getCategory()
   {
     return $this->category;
@@ -48,6 +68,34 @@ class GoogleCloudRecommenderV1Impact extends \Google\Model
     return $this->costProjection;
   }
   /**
+   * @param GoogleCloudRecommenderV1Impact[]
+   */
+  public function setImpactComponents($impactComponents)
+  {
+    $this->impactComponents = $impactComponents;
+  }
+  /**
+   * @return GoogleCloudRecommenderV1Impact[]
+   */
+  public function getImpactComponents()
+  {
+    return $this->impactComponents;
+  }
+  /**
+   * @param GoogleCloudRecommenderV1ReliabilityProjection
+   */
+  public function setReliabilityProjection(GoogleCloudRecommenderV1ReliabilityProjection $reliabilityProjection)
+  {
+    $this->reliabilityProjection = $reliabilityProjection;
+  }
+  /**
+   * @return GoogleCloudRecommenderV1ReliabilityProjection
+   */
+  public function getReliabilityProjection()
+  {
+    return $this->reliabilityProjection;
+  }
+  /**
    * @param GoogleCloudRecommenderV1SecurityProjection
    */
   public function setSecurityProjection(GoogleCloudRecommenderV1SecurityProjection $securityProjection)
@@ -60,6 +108,34 @@ class GoogleCloudRecommenderV1Impact extends \Google\Model
   public function getSecurityProjection()
   {
     return $this->securityProjection;
+  }
+  /**
+   * @param string
+   */
+  public function setService($service)
+  {
+    $this->service = $service;
+  }
+  /**
+   * @return string
+   */
+  public function getService()
+  {
+    return $this->service;
+  }
+  /**
+   * @param GoogleCloudRecommenderV1SustainabilityProjection
+   */
+  public function setSustainabilityProjection(GoogleCloudRecommenderV1SustainabilityProjection $sustainabilityProjection)
+  {
+    $this->sustainabilityProjection = $sustainabilityProjection;
+  }
+  /**
+   * @return GoogleCloudRecommenderV1SustainabilityProjection
+   */
+  public function getSustainabilityProjection()
+  {
+    return $this->sustainabilityProjection;
   }
 }
 

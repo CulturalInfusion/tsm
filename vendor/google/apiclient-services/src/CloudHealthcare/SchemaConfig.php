@@ -19,21 +19,55 @@ namespace Google\Service\CloudHealthcare;
 
 class SchemaConfig extends \Google\Model
 {
+  protected $lastUpdatedPartitionConfigType = TimePartitioning::class;
+  protected $lastUpdatedPartitionConfigDataType = '';
+  /**
+   * @var string
+   */
   public $recursiveStructureDepth;
+  /**
+   * @var string
+   */
   public $schemaType;
 
+  /**
+   * @param TimePartitioning
+   */
+  public function setLastUpdatedPartitionConfig(TimePartitioning $lastUpdatedPartitionConfig)
+  {
+    $this->lastUpdatedPartitionConfig = $lastUpdatedPartitionConfig;
+  }
+  /**
+   * @return TimePartitioning
+   */
+  public function getLastUpdatedPartitionConfig()
+  {
+    return $this->lastUpdatedPartitionConfig;
+  }
+  /**
+   * @param string
+   */
   public function setRecursiveStructureDepth($recursiveStructureDepth)
   {
     $this->recursiveStructureDepth = $recursiveStructureDepth;
   }
+  /**
+   * @return string
+   */
   public function getRecursiveStructureDepth()
   {
     return $this->recursiveStructureDepth;
   }
+  /**
+   * @param string
+   */
   public function setSchemaType($schemaType)
   {
     $this->schemaType = $schemaType;
   }
+  /**
+   * @return string
+   */
   public function getSchemaType()
   {
     return $this->schemaType;

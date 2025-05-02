@@ -21,11 +21,39 @@ class Environment extends \Google\Model
 {
   protected $configType = EnvironmentConfig::class;
   protected $configDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var bool
+   */
+  public $satisfiesPzi;
+  /**
+   * @var bool
+   */
+  public $satisfiesPzs;
+  /**
+   * @var string
+   */
   public $state;
+  protected $storageConfigType = StorageConfig::class;
+  protected $storageConfigDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
+  /**
+   * @var string
+   */
   public $uuid;
 
   /**
@@ -42,50 +70,128 @@ class Environment extends \Google\Model
   {
     return $this->config;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param bool
+   */
+  public function setSatisfiesPzi($satisfiesPzi)
+  {
+    $this->satisfiesPzi = $satisfiesPzi;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzi()
+  {
+    return $this->satisfiesPzi;
+  }
+  /**
+   * @param bool
+   */
+  public function setSatisfiesPzs($satisfiesPzs)
+  {
+    $this->satisfiesPzs = $satisfiesPzs;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzs()
+  {
+    return $this->satisfiesPzs;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param StorageConfig
+   */
+  public function setStorageConfig(StorageConfig $storageConfig)
+  {
+    $this->storageConfig = $storageConfig;
+  }
+  /**
+   * @return StorageConfig
+   */
+  public function getStorageConfig()
+  {
+    return $this->storageConfig;
+  }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;
   }
+  /**
+   * @param string
+   */
   public function setUuid($uuid)
   {
     $this->uuid = $uuid;
   }
+  /**
+   * @return string
+   */
   public function getUuid()
   {
     return $this->uuid;

@@ -19,17 +19,47 @@ namespace Google\Service\FirebaseRules;
 
 class Ruleset extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $attachmentPoint;
+  /**
+   * @var string
+   */
   public $createTime;
   protected $metadataType = Metadata::class;
   protected $metadataDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   protected $sourceType = Source::class;
   protected $sourceDataType = '';
 
+  /**
+   * @param string
+   */
+  public function setAttachmentPoint($attachmentPoint)
+  {
+    $this->attachmentPoint = $attachmentPoint;
+  }
+  /**
+   * @return string
+   */
+  public function getAttachmentPoint()
+  {
+    return $this->attachmentPoint;
+  }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
@@ -48,10 +78,16 @@ class Ruleset extends \Google\Model
   {
     return $this->metadata;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;

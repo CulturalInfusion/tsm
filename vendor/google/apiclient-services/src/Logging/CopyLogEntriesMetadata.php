@@ -19,35 +19,97 @@ namespace Google\Service\Logging;
 
 class CopyLogEntriesMetadata extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $cancellationRequested;
+  /**
+   * @var string
+   */
+  public $destination;
+  /**
+   * @var string
+   */
   public $endTime;
+  /**
+   * @var int
+   */
   public $progress;
   protected $requestType = CopyLogEntriesRequest::class;
   protected $requestDataType = '';
+  /**
+   * @var string
+   */
+  public $source;
+  /**
+   * @var string
+   */
   public $startTime;
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
+  public $verb;
+  /**
+   * @var string
+   */
   public $writerIdentity;
 
+  /**
+   * @param bool
+   */
   public function setCancellationRequested($cancellationRequested)
   {
     $this->cancellationRequested = $cancellationRequested;
   }
+  /**
+   * @return bool
+   */
   public function getCancellationRequested()
   {
     return $this->cancellationRequested;
   }
+  /**
+   * @param string
+   */
+  public function setDestination($destination)
+  {
+    $this->destination = $destination;
+  }
+  /**
+   * @return string
+   */
+  public function getDestination()
+  {
+    return $this->destination;
+  }
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
   }
+  /**
+   * @param int
+   */
   public function setProgress($progress)
   {
     $this->progress = $progress;
   }
+  /**
+   * @return int
+   */
   public function getProgress()
   {
     return $this->progress;
@@ -66,26 +128,72 @@ class CopyLogEntriesMetadata extends \Google\Model
   {
     return $this->request;
   }
+  /**
+   * @param string
+   */
+  public function setSource($source)
+  {
+    $this->source = $source;
+  }
+  /**
+   * @return string
+   */
+  public function getSource()
+  {
+    return $this->source;
+  }
+  /**
+   * @param string
+   */
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
+  public function setVerb($verb)
+  {
+    $this->verb = $verb;
+  }
+  /**
+   * @return string
+   */
+  public function getVerb()
+  {
+    return $this->verb;
+  }
+  /**
+   * @param string
+   */
   public function setWriterIdentity($writerIdentity)
   {
     $this->writerIdentity = $writerIdentity;
   }
+  /**
+   * @return string
+   */
   public function getWriterIdentity()
   {
     return $this->writerIdentity;

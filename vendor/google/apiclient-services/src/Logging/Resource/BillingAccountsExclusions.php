@@ -26,15 +26,15 @@ use Google\Service\Logging\LoggingEmpty;
  * Typical usage is:
  *  <code>
  *   $loggingService = new Google\Service\Logging(...);
- *   $exclusions = $loggingService->exclusions;
+ *   $exclusions = $loggingService->billingAccounts_exclusions;
  *  </code>
  */
 class BillingAccountsExclusions extends \Google\Service\Resource
 {
   /**
-   * Creates a new exclusion in a specified parent resource. Only log entries
-   * belonging to that resource can be excluded. You can have up to 10 exclusions
-   * in a resource. (exclusions.create)
+   * Creates a new exclusion in the _Default sink in a specified parent resource.
+   * Only log entries belonging to that resource can be excluded. You can have up
+   * to 10 exclusions in a resource. (exclusions.create)
    *
    * @param string $parent Required. The parent resource in which to create the
    * exclusion: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
@@ -43,6 +43,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
    * @param LogExclusion $postBody
    * @param array $optParams Optional parameters.
    * @return LogExclusion
+   * @throws \Google\Service\Exception
    */
   public function create($parent, LogExclusion $postBody, $optParams = [])
   {
@@ -51,7 +52,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
     return $this->call('create', [$params], LogExclusion::class);
   }
   /**
-   * Deletes an exclusion. (exclusions.delete)
+   * Deletes an exclusion in the _Default sink. (exclusions.delete)
    *
    * @param string $name Required. The resource name of an existing exclusion to
    * delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -61,6 +62,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
    * project/exclusions/my-exclusion"
    * @param array $optParams Optional parameters.
    * @return LoggingEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -69,7 +71,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
     return $this->call('delete', [$params], LoggingEmpty::class);
   }
   /**
-   * Gets the description of an exclusion. (exclusions.get)
+   * Gets the description of an exclusion in the _Default sink. (exclusions.get)
    *
    * @param string $name Required. The resource name of an existing exclusion:
    * "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -79,6 +81,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
    * project/exclusions/my-exclusion"
    * @param array $optParams Optional parameters.
    * @return LogExclusion
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -87,7 +90,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
     return $this->call('get', [$params], LogExclusion::class);
   }
   /**
-   * Lists all the exclusions in a parent resource.
+   * Lists all the exclusions on the _Default sink in a parent resource.
    * (exclusions.listBillingAccountsExclusions)
    *
    * @param string $parent Required. The parent resource whose exclusions are to
@@ -103,6 +106,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
    * the value of nextPageToken from the previous response. The values of other
    * method parameters should be identical to those in the previous call.
    * @return ListExclusionsResponse
+   * @throws \Google\Service\Exception
    */
   public function listBillingAccountsExclusions($parent, $optParams = [])
   {
@@ -111,7 +115,8 @@ class BillingAccountsExclusions extends \Google\Service\Resource
     return $this->call('list', [$params], ListExclusionsResponse::class);
   }
   /**
-   * Changes one or more properties of an existing exclusion. (exclusions.patch)
+   * Changes one or more properties of an existing exclusion in the _Default sink.
+   * (exclusions.patch)
    *
    * @param string $name Required. The resource name of the exclusion to update:
    * "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
@@ -129,6 +134,7 @@ class BillingAccountsExclusions extends \Google\Service\Resource
    * example, to change the filter and description of an exclusion, specify an
    * update_mask of "filter,description".
    * @return LogExclusion
+   * @throws \Google\Service\Exception
    */
   public function patch($name, LogExclusion $postBody, $optParams = [])
   {

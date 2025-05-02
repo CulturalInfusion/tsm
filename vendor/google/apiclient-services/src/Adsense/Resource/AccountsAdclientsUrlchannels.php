@@ -18,17 +18,33 @@
 namespace Google\Service\Adsense\Resource;
 
 use Google\Service\Adsense\ListUrlChannelsResponse;
+use Google\Service\Adsense\UrlChannel;
 
 /**
  * The "urlchannels" collection of methods.
  * Typical usage is:
  *  <code>
  *   $adsenseService = new Google\Service\Adsense(...);
- *   $urlchannels = $adsenseService->urlchannels;
+ *   $urlchannels = $adsenseService->accounts_adclients_urlchannels;
  *  </code>
  */
 class AccountsAdclientsUrlchannels extends \Google\Service\Resource
 {
+  /**
+   * Gets information about the selected url channel. (urlchannels.get)
+   *
+   * @param string $name Required. The name of the url channel to retrieve.
+   * Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
+   * @param array $optParams Optional parameters.
+   * @return UrlChannel
+   * @throws \Google\Service\Exception
+   */
+  public function get($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('get', [$params], UrlChannel::class);
+  }
   /**
    * Lists active url channels. (urlchannels.listAccountsAdclientsUrlchannels)
    *
@@ -45,6 +61,7 @@ class AccountsAdclientsUrlchannels extends \Google\Service\Resource
    * paginating, all other parameters provided to `ListUrlChannels` must match the
    * call that provided the page token.
    * @return ListUrlChannelsResponse
+   * @throws \Google\Service\Exception
    */
   public function listAccountsAdclientsUrlchannels($parent, $optParams = [])
   {

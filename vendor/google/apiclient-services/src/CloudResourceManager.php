@@ -42,6 +42,7 @@ class CloudResourceManager extends \Google\Service
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
 
+  public $effectiveTags;
   public $folders;
   public $liens;
   public $operations;
@@ -50,6 +51,8 @@ class CloudResourceManager extends \Google\Service
   public $tagBindings;
   public $tagKeys;
   public $tagValues;
+  public $tagValues_tagHolds;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the CloudResourceManager service.
@@ -62,11 +65,39 @@ class CloudResourceManager extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://cloudresourcemanager.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://cloudresourcemanager.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v3';
     $this->serviceName = 'cloudresourcemanager';
 
+    $this->effectiveTags = new CloudResourceManager\Resource\EffectiveTags(
+        $this,
+        $this->serviceName,
+        'effectiveTags',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v3/effectiveTags',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'parent' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->folders = new CloudResourceManager\Resource\Folders(
         $this,
         $this->serviceName,
@@ -576,6 +607,15 @@ class CloudResourceManager extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getNamespaced' => [
+              'path' => 'v3/tagKeys/namespaced',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'list' => [
               'path' => 'v3/tagKeys',
               'httpMethod' => 'GET',
@@ -688,6 +728,15 @@ class CloudResourceManager extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getNamespaced' => [
+              'path' => 'v3/tagValues/namespaced',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'list' => [
               'path' => 'v3/tagValues',
               'httpMethod' => 'GET',
@@ -741,6 +790,66 @@ class CloudResourceManager extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->tagValues_tagHolds = new CloudResourceManager\Resource\TagValuesTagHolds(
+        $this,
+        $this->serviceName,
+        'tagHolds',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v3/{+parent}/tagHolds',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v3/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v3/{+parent}/tagHolds',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],

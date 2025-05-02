@@ -19,21 +19,57 @@ namespace Google\Service\Document;
 
 class GoogleCloudDocumentaiV1RawDocument extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $content;
+  /**
+   * @var string
+   */
+  public $displayName;
+  /**
+   * @var string
+   */
   public $mimeType;
 
+  /**
+   * @param string
+   */
   public function setContent($content)
   {
     $this->content = $content;
   }
+  /**
+   * @return string
+   */
   public function getContent()
   {
     return $this->content;
   }
+  /**
+   * @param string
+   */
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+  /**
+   * @return string
+   */
+  public function getDisplayName()
+  {
+    return $this->displayName;
+  }
+  /**
+   * @param string
+   */
   public function setMimeType($mimeType)
   {
     $this->mimeType = $mimeType;
   }
+  /**
+   * @return string
+   */
   public function getMimeType()
   {
     return $this->mimeType;

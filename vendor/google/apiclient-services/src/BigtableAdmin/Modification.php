@@ -21,10 +21,20 @@ class Modification extends \Google\Model
 {
   protected $createType = ColumnFamily::class;
   protected $createDataType = '';
+  /**
+   * @var bool
+   */
   public $drop;
+  /**
+   * @var string
+   */
   public $id;
   protected $updateType = ColumnFamily::class;
   protected $updateDataType = '';
+  /**
+   * @var string
+   */
+  public $updateMask;
 
   /**
    * @param ColumnFamily
@@ -40,18 +50,30 @@ class Modification extends \Google\Model
   {
     return $this->create;
   }
+  /**
+   * @param bool
+   */
   public function setDrop($drop)
   {
     $this->drop = $drop;
   }
+  /**
+   * @return bool
+   */
   public function getDrop()
   {
     return $this->drop;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
@@ -69,6 +91,20 @@ class Modification extends \Google\Model
   public function getUpdate()
   {
     return $this->update;
+  }
+  /**
+   * @param string
+   */
+  public function setUpdateMask($updateMask)
+  {
+    $this->updateMask = $updateMask;
+  }
+  /**
+   * @return string
+   */
+  public function getUpdateMask()
+  {
+    return $this->updateMask;
   }
 }
 

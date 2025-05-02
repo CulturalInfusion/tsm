@@ -22,12 +22,30 @@ class MetricThreshold extends \Google\Collection
   protected $collection_key = 'denominatorAggregations';
   protected $aggregationsType = Aggregation::class;
   protected $aggregationsDataType = 'array';
+  /**
+   * @var string
+   */
   public $comparison;
   protected $denominatorAggregationsType = Aggregation::class;
   protected $denominatorAggregationsDataType = 'array';
+  /**
+   * @var string
+   */
   public $denominatorFilter;
+  /**
+   * @var string
+   */
   public $duration;
+  /**
+   * @var string
+   */
+  public $evaluationMissingData;
+  /**
+   * @var string
+   */
   public $filter;
+  protected $forecastOptionsType = ForecastOptions::class;
+  protected $forecastOptionsDataType = '';
   public $thresholdValue;
   protected $triggerType = Trigger::class;
   protected $triggerDataType = '';
@@ -46,10 +64,16 @@ class MetricThreshold extends \Google\Collection
   {
     return $this->aggregations;
   }
+  /**
+   * @param string
+   */
   public function setComparison($comparison)
   {
     $this->comparison = $comparison;
   }
+  /**
+   * @return string
+   */
   public function getComparison()
   {
     return $this->comparison;
@@ -68,29 +92,75 @@ class MetricThreshold extends \Google\Collection
   {
     return $this->denominatorAggregations;
   }
+  /**
+   * @param string
+   */
   public function setDenominatorFilter($denominatorFilter)
   {
     $this->denominatorFilter = $denominatorFilter;
   }
+  /**
+   * @return string
+   */
   public function getDenominatorFilter()
   {
     return $this->denominatorFilter;
   }
+  /**
+   * @param string
+   */
   public function setDuration($duration)
   {
     $this->duration = $duration;
   }
+  /**
+   * @return string
+   */
   public function getDuration()
   {
     return $this->duration;
   }
+  /**
+   * @param string
+   */
+  public function setEvaluationMissingData($evaluationMissingData)
+  {
+    $this->evaluationMissingData = $evaluationMissingData;
+  }
+  /**
+   * @return string
+   */
+  public function getEvaluationMissingData()
+  {
+    return $this->evaluationMissingData;
+  }
+  /**
+   * @param string
+   */
   public function setFilter($filter)
   {
     $this->filter = $filter;
   }
+  /**
+   * @return string
+   */
   public function getFilter()
   {
     return $this->filter;
+  }
+  /**
+   * @param ForecastOptions
+   */
+  public function setForecastOptions(ForecastOptions $forecastOptions)
+  {
+    $this->forecastOptions = $forecastOptions;
+  }
+  /**
+   * @return ForecastOptions
+   */
+  public function getForecastOptions()
+  {
+    return $this->forecastOptions;
   }
   public function setThresholdValue($thresholdValue)
   {

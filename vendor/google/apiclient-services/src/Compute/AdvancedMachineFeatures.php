@@ -19,24 +19,114 @@ namespace Google\Service\Compute;
 
 class AdvancedMachineFeatures extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $enableNestedVirtualization;
+  /**
+   * @var bool
+   */
+  public $enableUefiNetworking;
+  /**
+   * @var string
+   */
+  public $performanceMonitoringUnit;
+  /**
+   * @var int
+   */
   public $threadsPerCore;
+  /**
+   * @var string
+   */
+  public $turboMode;
+  /**
+   * @var int
+   */
+  public $visibleCoreCount;
 
+  /**
+   * @param bool
+   */
   public function setEnableNestedVirtualization($enableNestedVirtualization)
   {
     $this->enableNestedVirtualization = $enableNestedVirtualization;
   }
+  /**
+   * @return bool
+   */
   public function getEnableNestedVirtualization()
   {
     return $this->enableNestedVirtualization;
   }
+  /**
+   * @param bool
+   */
+  public function setEnableUefiNetworking($enableUefiNetworking)
+  {
+    $this->enableUefiNetworking = $enableUefiNetworking;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableUefiNetworking()
+  {
+    return $this->enableUefiNetworking;
+  }
+  /**
+   * @param string
+   */
+  public function setPerformanceMonitoringUnit($performanceMonitoringUnit)
+  {
+    $this->performanceMonitoringUnit = $performanceMonitoringUnit;
+  }
+  /**
+   * @return string
+   */
+  public function getPerformanceMonitoringUnit()
+  {
+    return $this->performanceMonitoringUnit;
+  }
+  /**
+   * @param int
+   */
   public function setThreadsPerCore($threadsPerCore)
   {
     $this->threadsPerCore = $threadsPerCore;
   }
+  /**
+   * @return int
+   */
   public function getThreadsPerCore()
   {
     return $this->threadsPerCore;
+  }
+  /**
+   * @param string
+   */
+  public function setTurboMode($turboMode)
+  {
+    $this->turboMode = $turboMode;
+  }
+  /**
+   * @return string
+   */
+  public function getTurboMode()
+  {
+    return $this->turboMode;
+  }
+  /**
+   * @param int
+   */
+  public function setVisibleCoreCount($visibleCoreCount)
+  {
+    $this->visibleCoreCount = $visibleCoreCount;
+  }
+  /**
+   * @return int
+   */
+  public function getVisibleCoreCount()
+  {
+    return $this->visibleCoreCount;
   }
 }
 

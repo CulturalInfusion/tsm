@@ -19,15 +19,60 @@ namespace Google\Service\Document;
 
 class GoogleCloudDocumentaiV1ReviewDocumentResponse extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $gcsDestination;
+  /**
+   * @var string
+   */
+  public $rejectionReason;
+  /**
+   * @var string
+   */
+  public $state;
 
+  /**
+   * @param string
+   */
   public function setGcsDestination($gcsDestination)
   {
     $this->gcsDestination = $gcsDestination;
   }
+  /**
+   * @return string
+   */
   public function getGcsDestination()
   {
     return $this->gcsDestination;
+  }
+  /**
+   * @param string
+   */
+  public function setRejectionReason($rejectionReason)
+  {
+    $this->rejectionReason = $rejectionReason;
+  }
+  /**
+   * @return string
+   */
+  public function getRejectionReason()
+  {
+    return $this->rejectionReason;
+  }
+  /**
+   * @param string
+   */
+  public function setState($state)
+  {
+    $this->state = $state;
+  }
+  /**
+   * @return string
+   */
+  public function getState()
+  {
+    return $this->state;
   }
 }
 

@@ -19,18 +19,37 @@ namespace Google\Service\OrgPolicyAPI;
 
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRule extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $allowAll;
   protected $conditionType = GoogleTypeExpr::class;
   protected $conditionDataType = '';
+  /**
+   * @var bool
+   */
   public $denyAll;
+  /**
+   * @var bool
+   */
   public $enforce;
+  /**
+   * @var array[]
+   */
+  public $parameters;
   protected $valuesType = GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues::class;
   protected $valuesDataType = '';
 
+  /**
+   * @param bool
+   */
   public function setAllowAll($allowAll)
   {
     $this->allowAll = $allowAll;
   }
+  /**
+   * @return bool
+   */
   public function getAllowAll()
   {
     return $this->allowAll;
@@ -49,21 +68,47 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule extends \Google\Model
   {
     return $this->condition;
   }
+  /**
+   * @param bool
+   */
   public function setDenyAll($denyAll)
   {
     $this->denyAll = $denyAll;
   }
+  /**
+   * @return bool
+   */
   public function getDenyAll()
   {
     return $this->denyAll;
   }
+  /**
+   * @param bool
+   */
   public function setEnforce($enforce)
   {
     $this->enforce = $enforce;
   }
+  /**
+   * @return bool
+   */
   public function getEnforce()
   {
     return $this->enforce;
+  }
+  /**
+   * @param array[]
+   */
+  public function setParameters($parameters)
+  {
+    $this->parameters = $parameters;
+  }
+  /**
+   * @return array[]
+   */
+  public function getParameters()
+  {
+    return $this->parameters;
   }
   /**
    * @param GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues

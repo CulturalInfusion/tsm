@@ -20,23 +20,23 @@ namespace Google\Service\DoubleClickBidManager;
 class ListQueriesResponse extends \Google\Collection
 {
   protected $collection_key = 'queries';
-  public $kind;
+  /**
+   * @var string
+   */
   public $nextPageToken;
   protected $queriesType = Query::class;
   protected $queriesDataType = 'array';
 
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
-  }
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;

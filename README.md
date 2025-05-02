@@ -3,7 +3,6 @@
 ## Installation
 
 MySQL must be upper than 5.7.8 (or support JSON).
-
 ## Usage
 
 - To dynamically get `max_allowance` of each level you should add it in the description of the level like this:

@@ -33,7 +33,7 @@ use Google\Service\Dataproc\WorkflowTemplate;
  * Typical usage is:
  *  <code>
  *   $dataprocService = new Google\Service\Dataproc(...);
- *   $workflowTemplates = $dataprocService->workflowTemplates;
+ *   $workflowTemplates = $dataprocService->projects_regions_workflowTemplates;
  *  </code>
  */
 class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
@@ -43,13 +43,14 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    *
    * @param string $parent Required. The resource name of the region or location,
    * as described in https://cloud.google.com/apis/design/resource_names. For
-   * projects.regions.workflowTemplates,create, the resource name of the region
+   * projects.regions.workflowTemplates.create, the resource name of the region
    * has the following format: projects/{project_id}/regions/{region} For
    * projects.locations.workflowTemplates.create, the resource name of the
    * location has the following format: projects/{project_id}/locations/{location}
    * @param WorkflowTemplate $postBody
    * @param array $optParams Optional parameters.
    * @return WorkflowTemplate
+   * @throws \Google\Service\Exception
    */
   public function create($parent, WorkflowTemplate $postBody, $optParams = [])
   {
@@ -75,6 +76,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * If specified, will only delete the template if the current server version
    * matches specified version.
    * @return DataprocEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -100,6 +102,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * retrieve. Only previously instantiated versions can be retrieved.If
    * unspecified, retrieves the current version.
    * @return WorkflowTemplate
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -113,11 +116,13 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * (workflowTemplates.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See Resource names
+   * (https://cloud.google.com/apis/design/resource_names) for the appropriate
+   * value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -148,6 +153,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * @param InstantiateWorkflowTemplateRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function instantiate($name, InstantiateWorkflowTemplateRequest $postBody, $optParams = [])
   {
@@ -187,6 +193,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
    * (-). The maximum length is 40 characters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function instantiateInline($parent, WorkflowTemplate $postBody, $optParams = [])
   {
@@ -211,6 +218,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * @opt_param string pageToken Optional. The page token, returned by a previous
    * call, to request the next page of results.
    * @return ListWorkflowTemplatesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsRegionsWorkflowTemplates($parent, $optParams = [])
   {
@@ -224,11 +232,13 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * errors. (workflowTemplates.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See Resource names
+   * (https://cloud.google.com/apis/design/resource_names) for the appropriate
+   * value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -245,11 +255,13 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * (workflowTemplates.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See Resource names
+   * (https://cloud.google.com/apis/design/resource_names) for the appropriate
+   * value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {
@@ -272,6 +284,7 @@ class ProjectsRegionsWorkflowTemplates extends \Google\Service\Resource
    * @param WorkflowTemplate $postBody
    * @param array $optParams Optional parameters.
    * @return WorkflowTemplate
+   * @throws \Google\Service\Exception
    */
   public function update($name, WorkflowTemplate $postBody, $optParams = [])
   {

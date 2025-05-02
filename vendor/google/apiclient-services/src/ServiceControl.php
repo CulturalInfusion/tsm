@@ -35,7 +35,7 @@ use Google\Client;
  */
 class ServiceControl extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Manage your Google Service Control data. */
@@ -43,6 +43,7 @@ class ServiceControl extends \Google\Service
       "https://www.googleapis.com/auth/servicecontrol";
 
   public $services;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ServiceControl service.
@@ -55,6 +56,7 @@ class ServiceControl extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://servicecontrol.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://servicecontrol.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v2';

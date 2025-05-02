@@ -20,18 +20,49 @@ namespace Google\Service\ShoppingContent;
 class RepricingRuleReport extends \Google\Collection
 {
   protected $collection_key = 'inapplicableProducts';
+  /**
+   * @var RepricingRuleReportBuyboxWinningRuleStats
+   */
+  public $buyboxWinningRuleStats;
   protected $buyboxWinningRuleStatsType = RepricingRuleReportBuyboxWinningRuleStats::class;
   protected $buyboxWinningRuleStatsDataType = '';
+  /**
+   * @var Date
+   */
+  public $date;
   protected $dateType = Date::class;
   protected $dateDataType = '';
+  /**
+   * @var string[]
+   */
   public $impactedProducts;
+  /**
+   * @var InapplicabilityDetails[]
+   */
+  public $inapplicabilityDetails;
   protected $inapplicabilityDetailsType = InapplicabilityDetails::class;
   protected $inapplicabilityDetailsDataType = 'array';
+  /**
+   * @var string[]
+   */
   public $inapplicableProducts;
+  /**
+   * @var int
+   */
   public $orderItemCount;
+  /**
+   * @var string
+   */
   public $ruleId;
+  /**
+   * @var PriceAmount
+   */
+  public $totalGmv;
   protected $totalGmvType = PriceAmount::class;
   protected $totalGmvDataType = '';
+  /**
+   * @var string
+   */
   public $type;
 
   /**
@@ -62,10 +93,16 @@ class RepricingRuleReport extends \Google\Collection
   {
     return $this->date;
   }
+  /**
+   * @param string[]
+   */
   public function setImpactedProducts($impactedProducts)
   {
     $this->impactedProducts = $impactedProducts;
   }
+  /**
+   * @return string[]
+   */
   public function getImpactedProducts()
   {
     return $this->impactedProducts;
@@ -84,26 +121,44 @@ class RepricingRuleReport extends \Google\Collection
   {
     return $this->inapplicabilityDetails;
   }
+  /**
+   * @param string[]
+   */
   public function setInapplicableProducts($inapplicableProducts)
   {
     $this->inapplicableProducts = $inapplicableProducts;
   }
+  /**
+   * @return string[]
+   */
   public function getInapplicableProducts()
   {
     return $this->inapplicableProducts;
   }
+  /**
+   * @param int
+   */
   public function setOrderItemCount($orderItemCount)
   {
     $this->orderItemCount = $orderItemCount;
   }
+  /**
+   * @return int
+   */
   public function getOrderItemCount()
   {
     return $this->orderItemCount;
   }
+  /**
+   * @param string
+   */
   public function setRuleId($ruleId)
   {
     $this->ruleId = $ruleId;
   }
+  /**
+   * @return string
+   */
   public function getRuleId()
   {
     return $this->ruleId;
@@ -122,10 +177,16 @@ class RepricingRuleReport extends \Google\Collection
   {
     return $this->totalGmv;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

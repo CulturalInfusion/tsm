@@ -19,45 +19,100 @@ namespace Google\Service\TrafficDirectorService;
 
 class StringMatcher extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $contains;
+  protected $customType = TypedExtensionConfig::class;
+  protected $customDataType = '';
+  /**
+   * @var string
+   */
   public $exact;
+  /**
+   * @var bool
+   */
   public $ignoreCase;
+  /**
+   * @var string
+   */
   public $prefix;
-  public $regex;
   protected $safeRegexType = RegexMatcher::class;
   protected $safeRegexDataType = '';
+  /**
+   * @var string
+   */
   public $suffix;
 
+  /**
+   * @param string
+   */
+  public function setContains($contains)
+  {
+    $this->contains = $contains;
+  }
+  /**
+   * @return string
+   */
+  public function getContains()
+  {
+    return $this->contains;
+  }
+  /**
+   * @param TypedExtensionConfig
+   */
+  public function setCustom(TypedExtensionConfig $custom)
+  {
+    $this->custom = $custom;
+  }
+  /**
+   * @return TypedExtensionConfig
+   */
+  public function getCustom()
+  {
+    return $this->custom;
+  }
+  /**
+   * @param string
+   */
   public function setExact($exact)
   {
     $this->exact = $exact;
   }
+  /**
+   * @return string
+   */
   public function getExact()
   {
     return $this->exact;
   }
+  /**
+   * @param bool
+   */
   public function setIgnoreCase($ignoreCase)
   {
     $this->ignoreCase = $ignoreCase;
   }
+  /**
+   * @return bool
+   */
   public function getIgnoreCase()
   {
     return $this->ignoreCase;
   }
+  /**
+   * @param string
+   */
   public function setPrefix($prefix)
   {
     $this->prefix = $prefix;
   }
+  /**
+   * @return string
+   */
   public function getPrefix()
   {
     return $this->prefix;
-  }
-  public function setRegex($regex)
-  {
-    $this->regex = $regex;
-  }
-  public function getRegex()
-  {
-    return $this->regex;
   }
   /**
    * @param RegexMatcher
@@ -73,10 +128,16 @@ class StringMatcher extends \Google\Model
   {
     return $this->safeRegex;
   }
+  /**
+   * @param string
+   */
   public function setSuffix($suffix)
   {
     $this->suffix = $suffix;
   }
+  /**
+   * @return string
+   */
   public function getSuffix()
   {
     return $this->suffix;

@@ -19,21 +19,57 @@ namespace Google\Service\NetworkManagement;
 
 class ForwardInfo extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $ipAddress;
+  /**
+   * @var string
+   */
   public $resourceUri;
+  /**
+   * @var string
+   */
   public $target;
 
+  /**
+   * @param string
+   */
+  public function setIpAddress($ipAddress)
+  {
+    $this->ipAddress = $ipAddress;
+  }
+  /**
+   * @return string
+   */
+  public function getIpAddress()
+  {
+    return $this->ipAddress;
+  }
+  /**
+   * @param string
+   */
   public function setResourceUri($resourceUri)
   {
     $this->resourceUri = $resourceUri;
   }
+  /**
+   * @return string
+   */
   public function getResourceUri()
   {
     return $this->resourceUri;
   }
+  /**
+   * @param string
+   */
   public function setTarget($target)
   {
     $this->target = $target;
   }
+  /**
+   * @return string
+   */
   public function getTarget()
   {
     return $this->target;

@@ -19,24 +19,60 @@ namespace Google\Service\Compute;
 
 class UrlRewrite extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $hostRewrite;
+  /**
+   * @var string
+   */
   public $pathPrefixRewrite;
+  /**
+   * @var string
+   */
+  public $pathTemplateRewrite;
 
+  /**
+   * @param string
+   */
   public function setHostRewrite($hostRewrite)
   {
     $this->hostRewrite = $hostRewrite;
   }
+  /**
+   * @return string
+   */
   public function getHostRewrite()
   {
     return $this->hostRewrite;
   }
+  /**
+   * @param string
+   */
   public function setPathPrefixRewrite($pathPrefixRewrite)
   {
     $this->pathPrefixRewrite = $pathPrefixRewrite;
   }
+  /**
+   * @return string
+   */
   public function getPathPrefixRewrite()
   {
     return $this->pathPrefixRewrite;
+  }
+  /**
+   * @param string
+   */
+  public function setPathTemplateRewrite($pathTemplateRewrite)
+  {
+    $this->pathTemplateRewrite = $pathTemplateRewrite;
+  }
+  /**
+   * @return string
+   */
+  public function getPathTemplateRewrite()
+  {
+    return $this->pathTemplateRewrite;
   }
 }
 

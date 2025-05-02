@@ -18,31 +18,17 @@
 namespace Google\Service\BigtableAdmin\Resource;
 
 use Google\Service\BigtableAdmin\ListLocationsResponse;
-use Google\Service\BigtableAdmin\Location;
 
 /**
  * The "locations" collection of methods.
  * Typical usage is:
  *  <code>
  *   $bigtableadminService = new Google\Service\BigtableAdmin(...);
- *   $locations = $bigtableadminService->locations;
+ *   $locations = $bigtableadminService->projects_locations;
  *  </code>
  */
 class ProjectsLocations extends \Google\Service\Resource
 {
-  /**
-   * Gets information about a location. (locations.get)
-   *
-   * @param string $name Resource name for the location.
-   * @param array $optParams Optional parameters.
-   * @return Location
-   */
-  public function get($name, $optParams = [])
-  {
-    $params = ['name' => $name];
-    $params = array_merge($params, $optParams);
-    return $this->call('get', [$params], Location::class);
-  }
   /**
    * Lists information about the supported locations for this service.
    * (locations.listProjectsLocations)
@@ -52,13 +38,14 @@ class ProjectsLocations extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter A filter to narrow down results to a preferred
-   * subset. The filtering language accepts strings like "displayName=tokyo", and
-   * is documented in more detail in [AIP-160](https://google.aip.dev/160).
+   * subset. The filtering language accepts strings like `"displayName=tokyo"`,
+   * and is documented in more detail in [AIP-160](https://google.aip.dev/160).
    * @opt_param int pageSize The maximum number of results to return. If not set,
    * the service selects a default.
    * @opt_param string pageToken A page token received from the `next_page_token`
    * field in the response. Send that page token to receive the subsequent page.
    * @return ListLocationsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocations($name, $optParams = [])
   {

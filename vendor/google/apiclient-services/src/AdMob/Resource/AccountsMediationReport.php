@@ -25,7 +25,7 @@ use Google\Service\AdMob\GenerateMediationReportResponse;
  * Typical usage is:
  *  <code>
  *   $admobService = new Google\Service\AdMob(...);
- *   $mediationReport = $admobService->mediationReport;
+ *   $mediationReport = $admobService->accounts_mediationReport;
  *  </code>
  */
 class AccountsMediationReport extends \Google\Service\Resource
@@ -40,6 +40,7 @@ class AccountsMediationReport extends \Google\Service\Resource
    * @param GenerateMediationReportRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GenerateMediationReportResponse
+   * @throws \Google\Service\Exception
    */
   public function generate($parent, GenerateMediationReportRequest $postBody, $optParams = [])
   {

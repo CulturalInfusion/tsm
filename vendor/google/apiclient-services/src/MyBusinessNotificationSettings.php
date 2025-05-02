@@ -24,7 +24,8 @@ use Google\Client;
  *
  * <p>
  * The My Business Notification Settings API enables managing notification
- * settings for business accounts.</p>
+ * settings for business accounts. Note - If you have a quota of 0 after
+ * enabling the API, please request for GBP API access.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -38,6 +39,7 @@ class MyBusinessNotificationSettings extends \Google\Service
 
 
   public $accounts;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the
@@ -51,6 +53,7 @@ class MyBusinessNotificationSettings extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://mybusinessnotifications.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://mybusinessnotifications.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

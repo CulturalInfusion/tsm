@@ -30,6 +30,10 @@ use Google\Service\CloudKMS\MacSignResponse;
 use Google\Service\CloudKMS\MacVerifyRequest;
 use Google\Service\CloudKMS\MacVerifyResponse;
 use Google\Service\CloudKMS\PublicKey;
+use Google\Service\CloudKMS\RawDecryptRequest;
+use Google\Service\CloudKMS\RawDecryptResponse;
+use Google\Service\CloudKMS\RawEncryptRequest;
+use Google\Service\CloudKMS\RawEncryptResponse;
 use Google\Service\CloudKMS\RestoreCryptoKeyVersionRequest;
 
 /**
@@ -37,7 +41,7 @@ use Google\Service\CloudKMS\RestoreCryptoKeyVersionRequest;
  * Typical usage is:
  *  <code>
  *   $cloudkmsService = new Google\Service\CloudKMS(...);
- *   $cryptoKeyVersions = $cloudkmsService->cryptoKeyVersions;
+ *   $cryptoKeyVersions = $cloudkmsService->projects_locations_keyRings_cryptoKeys_cryptoKeyVersions;
  *  </code>
  */
 class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Service\Resource
@@ -52,6 +56,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param AsymmetricDecryptRequest $postBody
    * @param array $optParams Optional parameters.
    * @return AsymmetricDecryptResponse
+   * @throws \Google\Service\Exception
    */
   public function asymmetricDecrypt($name, AsymmetricDecryptRequest $postBody, $optParams = [])
   {
@@ -69,6 +74,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param AsymmetricSignRequest $postBody
    * @param array $optParams Optional parameters.
    * @return AsymmetricSignResponse
+   * @throws \Google\Service\Exception
    */
   public function asymmetricSign($name, AsymmetricSignRequest $postBody, $optParams = [])
   {
@@ -86,6 +92,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param CryptoKeyVersion $postBody
    * @param array $optParams Optional parameters.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function create($parent, CryptoKeyVersion $postBody, $optParams = [])
   {
@@ -95,17 +102,19 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
   }
   /**
    * Schedule a CryptoKeyVersion for destruction. Upon calling this method,
-   * CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will
-   * be set to a time 24 hours in the future, at which point the state will be
-   * changed to DESTROYED, and the key material will be irrevocably destroyed.
-   * Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to
-   * reverse the process. (cryptoKeyVersions.destroy)
+   * CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time
+   * will be set to the time destroy_scheduled_duration in the future. At that
+   * time, the state will automatically change to DESTROYED, and the key material
+   * will be irrevocably destroyed. Before the destroy_time is reached,
+   * RestoreCryptoKeyVersion may be called to reverse the process.
+   * (cryptoKeyVersions.destroy)
    *
    * @param string $name Required. The resource name of the CryptoKeyVersion to
    * destroy.
    * @param DestroyCryptoKeyVersionRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function destroy($name, DestroyCryptoKeyVersionRequest $postBody, $optParams = [])
   {
@@ -119,6 +128,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param string $name Required. The name of the CryptoKeyVersion to get.
    * @param array $optParams Optional parameters.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -134,7 +144,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param string $name Required. The name of the CryptoKeyVersion public key to
    * get.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string publicKeyFormat Optional. The PublicKey format specified by
+   * the user. This field is required for PQC algorithms. If specified, the public
+   * key will be exported through the public_key field in the requested format.
+   * Otherwise, the pem field will be populated for non-PQC algorithms, and an
+   * error will be returned for PQC algorithms.
    * @return PublicKey
+   * @throws \Google\Service\Exception
    */
   public function getPublicKey($name, $optParams = [])
   {
@@ -143,15 +160,19 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
     return $this->call('getPublicKey', [$params], PublicKey::class);
   }
   /**
-   * Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped
-   * key material provided in the request. The version ID will be assigned the
-   * next sequential id within the CryptoKey. (cryptoKeyVersions.import)
+   * Import wrapped key material into a CryptoKeyVersion. All requests must
+   * specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the
+   * request, key material will be reimported into that version. Otherwise, a new
+   * version will be created, and will be assigned the next sequential id within
+   * the CryptoKey. (cryptoKeyVersions.import)
    *
    * @param string $parent Required. The name of the CryptoKey to be imported
-   * into.
+   * into. The create permission is only required on this key when creating a new
+   * CryptoKeyVersion.
    * @param ImportCryptoKeyVersionRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function import($parent, ImportCryptoKeyVersionRequest $postBody, $optParams = [])
   {
@@ -183,6 +204,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * earlier via ListCryptoKeyVersionsResponse.next_page_token.
    * @opt_param string view The fields to include in the response.
    * @return ListCryptoKeyVersionsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions($parent, $optParams = [])
   {
@@ -200,6 +222,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param MacSignRequest $postBody
    * @param array $optParams Optional parameters.
    * @return MacSignResponse
+   * @throws \Google\Service\Exception
    */
   public function macSign($name, MacSignRequest $postBody, $optParams = [])
   {
@@ -217,6 +240,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param MacVerifyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return MacVerifyResponse
+   * @throws \Google\Service\Exception
    */
   public function macVerify($name, MacVerifyRequest $postBody, $optParams = [])
   {
@@ -238,12 +262,49 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @opt_param string updateMask Required. List of fields to be updated in this
    * request.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function patch($name, CryptoKeyVersion $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('patch', [$params], CryptoKeyVersion::class);
+  }
+  /**
+   * Decrypts data that was originally encrypted using a raw cryptographic
+   * mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+   * (cryptoKeyVersions.rawDecrypt)
+   *
+   * @param string $name Required. The resource name of the CryptoKeyVersion to
+   * use for decryption.
+   * @param RawDecryptRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return RawDecryptResponse
+   * @throws \Google\Service\Exception
+   */
+  public function rawDecrypt($name, RawDecryptRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('rawDecrypt', [$params], RawDecryptResponse::class);
+  }
+  /**
+   * Encrypts data using portable cryptographic primitives. Most users should
+   * choose Encrypt and Decrypt rather than their raw counterparts. The
+   * CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. (cryptoKeyVersions.rawEncrypt)
+   *
+   * @param string $name Required. The resource name of the CryptoKeyVersion to
+   * use for encryption.
+   * @param RawEncryptRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return RawEncryptResponse
+   * @throws \Google\Service\Exception
+   */
+  public function rawEncrypt($name, RawEncryptRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('rawEncrypt', [$params], RawEncryptResponse::class);
   }
   /**
    * Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration
@@ -255,6 +316,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions extends \Google\Servi
    * @param RestoreCryptoKeyVersionRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CryptoKeyVersion
+   * @throws \Google\Service\Exception
    */
   public function restore($name, RestoreCryptoKeyVersionRequest $postBody, $optParams = [])
   {

@@ -19,13 +19,31 @@ namespace Google\Service\ShoppingContent;
 
 class RepricingRuleEligibleOfferMatcher extends \Google\Model
 {
+  /**
+   * @var RepricingRuleEligibleOfferMatcherStringMatcher
+   */
+  public $brandMatcher;
   protected $brandMatcherType = RepricingRuleEligibleOfferMatcherStringMatcher::class;
   protected $brandMatcherDataType = '';
+  /**
+   * @var RepricingRuleEligibleOfferMatcherStringMatcher
+   */
+  public $itemGroupIdMatcher;
   protected $itemGroupIdMatcherType = RepricingRuleEligibleOfferMatcherStringMatcher::class;
   protected $itemGroupIdMatcherDataType = '';
+  /**
+   * @var string
+   */
   public $matcherOption;
+  /**
+   * @var RepricingRuleEligibleOfferMatcherStringMatcher
+   */
+  public $offerIdMatcher;
   protected $offerIdMatcherType = RepricingRuleEligibleOfferMatcherStringMatcher::class;
   protected $offerIdMatcherDataType = '';
+  /**
+   * @var bool
+   */
   public $skipWhenOnPromotion;
 
   /**
@@ -56,10 +74,16 @@ class RepricingRuleEligibleOfferMatcher extends \Google\Model
   {
     return $this->itemGroupIdMatcher;
   }
+  /**
+   * @param string
+   */
   public function setMatcherOption($matcherOption)
   {
     $this->matcherOption = $matcherOption;
   }
+  /**
+   * @return string
+   */
   public function getMatcherOption()
   {
     return $this->matcherOption;
@@ -78,10 +102,16 @@ class RepricingRuleEligibleOfferMatcher extends \Google\Model
   {
     return $this->offerIdMatcher;
   }
+  /**
+   * @param bool
+   */
   public function setSkipWhenOnPromotion($skipWhenOnPromotion)
   {
     $this->skipWhenOnPromotion = $skipWhenOnPromotion;
   }
+  /**
+   * @return bool
+   */
   public function getSkipWhenOnPromotion()
   {
     return $this->skipWhenOnPromotion;

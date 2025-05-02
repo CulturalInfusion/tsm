@@ -19,6 +19,9 @@ namespace Google\Service\TrafficDirectorService;
 
 class ValueMatcher extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $boolMatch;
   protected $doubleMatchType = DoubleMatcher::class;
   protected $doubleMatchDataType = '';
@@ -26,14 +29,25 @@ class ValueMatcher extends \Google\Model
   protected $listMatchDataType = '';
   protected $nullMatchType = NullMatch::class;
   protected $nullMatchDataType = '';
+  protected $orMatchType = OrMatcher::class;
+  protected $orMatchDataType = '';
+  /**
+   * @var bool
+   */
   public $presentMatch;
   protected $stringMatchType = StringMatcher::class;
   protected $stringMatchDataType = '';
 
+  /**
+   * @param bool
+   */
   public function setBoolMatch($boolMatch)
   {
     $this->boolMatch = $boolMatch;
   }
+  /**
+   * @return bool
+   */
   public function getBoolMatch()
   {
     return $this->boolMatch;
@@ -80,10 +94,30 @@ class ValueMatcher extends \Google\Model
   {
     return $this->nullMatch;
   }
+  /**
+   * @param OrMatcher
+   */
+  public function setOrMatch(OrMatcher $orMatch)
+  {
+    $this->orMatch = $orMatch;
+  }
+  /**
+   * @return OrMatcher
+   */
+  public function getOrMatch()
+  {
+    return $this->orMatch;
+  }
+  /**
+   * @param bool
+   */
   public function setPresentMatch($presentMatch)
   {
     $this->presentMatch = $presentMatch;
   }
+  /**
+   * @return bool
+   */
   public function getPresentMatch()
   {
     return $this->presentMatch;

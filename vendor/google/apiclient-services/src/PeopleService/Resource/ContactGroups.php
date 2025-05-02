@@ -50,6 +50,7 @@ class ContactGroups extends \Google\Service\Resource
    * @opt_param string resourceNames Required. The resource names of the contact
    * groups to get. There is a maximum of 200 resource names.
    * @return BatchGetContactGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function batchGet($optParams = [])
   {
@@ -60,12 +61,14 @@ class ContactGroups extends \Google\Service\Resource
   /**
    * Create a new contact group owned by the authenticated user. Created contact
    * group names must be unique to the users contact groups. Attempting to create
-   * a group with a duplicate name will return a HTTP 409 error.
-   * (contactGroups.create)
+   * a group with a duplicate name will return a HTTP 409 error. Mutate requests
+   * for the same user should be sent sequentially to avoid increased latency and
+   * failures. (contactGroups.create)
    *
    * @param CreateContactGroupRequest $postBody
    * @param array $optParams Optional parameters.
    * @return ContactGroup
+   * @throws \Google\Service\Exception
    */
   public function create(CreateContactGroupRequest $postBody, $optParams = [])
   {
@@ -75,7 +78,9 @@ class ContactGroups extends \Google\Service\Resource
   }
   /**
    * Delete an existing contact group owned by the authenticated user by
-   * specifying a contact group resource name. (contactGroups.delete)
+   * specifying a contact group resource name. Mutate requests for the same user
+   * should be sent sequentially to avoid increased latency and failures.
+   * (contactGroups.delete)
    *
    * @param string $resourceName Required. The resource name of the contact group
    * to delete.
@@ -84,6 +89,7 @@ class ContactGroups extends \Google\Service\Resource
    * @opt_param bool deleteContacts Optional. Set to true to also delete the
    * contacts in the specified group.
    * @return PeopleEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($resourceName, $optParams = [])
   {
@@ -106,6 +112,7 @@ class ContactGroups extends \Google\Service\Resource
    * @opt_param int maxMembers Optional. Specifies the maximum number of members
    * to return. Defaults to 0 if not set, which will return zero members.
    * @return ContactGroup
+   * @throws \Google\Service\Exception
    */
   public function get($resourceName, $optParams = [])
   {
@@ -134,6 +141,7 @@ class ContactGroups extends \Google\Service\Resource
    * call to `contactgroups.list`. Only resources changed since the sync token was
    * created will be returned.
    * @return ListContactGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function listContactGroups($optParams = [])
   {
@@ -145,7 +153,8 @@ class ContactGroups extends \Google\Service\Resource
    * Update the name of an existing contact group owned by the authenticated user.
    * Updated contact group names must be unique to the users contact groups.
    * Attempting to create a group with a duplicate name will return a HTTP 409
-   * error. (contactGroups.update)
+   * error. Mutate requests for the same user should be sent sequentially to avoid
+   * increased latency and failures. (contactGroups.update)
    *
    * @param string $resourceName The resource name for the contact group, assigned
    * by the server. An ASCII string, in the form of
@@ -153,6 +162,7 @@ class ContactGroups extends \Google\Service\Resource
    * @param UpdateContactGroupRequest $postBody
    * @param array $optParams Optional parameters.
    * @return ContactGroup
+   * @throws \Google\Service\Exception
    */
   public function update($resourceName, UpdateContactGroupRequest $postBody, $optParams = [])
   {

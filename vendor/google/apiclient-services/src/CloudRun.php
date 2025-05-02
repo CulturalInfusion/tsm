@@ -20,12 +20,13 @@ namespace Google\Service;
 use Google\Client;
 
 /**
- * Service definition for CloudRun (v1).
+ * Service definition for CloudRun (v2).
  *
  * <p>
  * Deploy and manage user provided container images that scale automatically
- * based on incoming requests. The Cloud Run Admin API follows the Knative
- * Serving API specification.</p>
+ * based on incoming requests. The Cloud Run Admin API v1 follows the Knative
+ * Serving API specification, while v2 is aligned with Google Cloud AIP-based
+ * API standards, as described in https://google.aip.dev/.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -40,20 +41,17 @@ class CloudRun extends \Google\Service
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
-  public $namespaces_authorizeddomains;
-  public $namespaces_configurations;
-  public $namespaces_domainmappings;
-  public $namespaces_revisions;
-  public $namespaces_routes;
-  public $namespaces_services;
-  public $projects_authorizeddomains;
   public $projects_locations;
-  public $projects_locations_authorizeddomains;
-  public $projects_locations_configurations;
-  public $projects_locations_domainmappings;
-  public $projects_locations_revisions;
-  public $projects_locations_routes;
+  public $projects_locations_builds;
+  public $projects_locations_jobs;
+  public $projects_locations_jobs_executions;
+  public $projects_locations_jobs_executions_tasks;
+  public $projects_locations_operations;
   public $projects_locations_services;
+  public $projects_locations_services_revisions;
+  public $projects_locations_workerPools;
+  public $projects_locations_workerPools_revisions;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the CloudRun service.
@@ -66,485 +64,377 @@ class CloudRun extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://run.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://run.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v1';
+    $this->version = 'v2';
     $this->serviceName = 'run';
 
-    $this->namespaces_authorizeddomains = new CloudRun\Resource\NamespacesAuthorizeddomains(
-        $this,
-        $this->serviceName,
-        'authorizeddomains',
-        [
-          'methods' => [
-            'list' => [
-              'path' => 'apis/domains.cloudrun.com/v1/{+parent}/authorizeddomains',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->namespaces_configurations = new CloudRun\Resource\NamespacesConfigurations(
-        $this,
-        $this->serviceName,
-        'configurations',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'apis/serving.knative.dev/v1/{+parent}/configurations',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->namespaces_domainmappings = new CloudRun\Resource\NamespacesDomainmappings(
-        $this,
-        $this->serviceName,
-        'domainmappings',
-        [
-          'methods' => [
-            'create' => [
-              'path' => 'apis/domains.cloudrun.com/v1/{+parent}/domainmappings',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'apis/domains.cloudrun.com/v1/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'apiVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'kind' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'propagationPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'apis/domains.cloudrun.com/v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'apis/domains.cloudrun.com/v1/{+parent}/domainmappings',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->namespaces_revisions = new CloudRun\Resource\NamespacesRevisions(
-        $this,
-        $this->serviceName,
-        'revisions',
-        [
-          'methods' => [
-            'delete' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'apiVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'kind' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'propagationPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'apis/serving.knative.dev/v1/{+parent}/revisions',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->namespaces_routes = new CloudRun\Resource\NamespacesRoutes(
-        $this,
-        $this->serviceName,
-        'routes',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'apis/serving.knative.dev/v1/{+parent}/routes',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->namespaces_services = new CloudRun\Resource\NamespacesServices(
-        $this,
-        $this->serviceName,
-        'services',
-        [
-          'methods' => [
-            'create' => [
-              'path' => 'apis/serving.knative.dev/v1/{+parent}/services',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'apiVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'kind' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'propagationPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'apis/serving.knative.dev/v1/{+parent}/services',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],'replaceService' => [
-              'path' => 'apis/serving.knative.dev/v1/{+name}',
-              'httpMethod' => 'PUT',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_authorizeddomains = new CloudRun\Resource\ProjectsAuthorizeddomains(
-        $this,
-        $this->serviceName,
-        'authorizeddomains',
-        [
-          'methods' => [
-            'list' => [
-              'path' => 'v1/{+parent}/authorizeddomains',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->projects_locations = new CloudRun\Resource\ProjectsLocations(
         $this,
         $this->serviceName,
         'locations',
         [
           'methods' => [
-            'list' => [
-              'path' => 'v1/{+name}/locations',
+            'exportImage' => [
+              'path' => 'v2/{+name}:exportImage',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'exportImageMetadata' => [
+              'path' => 'v2/{+name}:exportImageMetadata',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'exportMetadata' => [
+              'path' => 'v2/{+name}:exportMetadata',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'exportProjectMetadata' => [
+              'path' => 'v2/{+name}:exportProjectMetadata',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_builds = new CloudRun\Resource\ProjectsLocationsBuilds(
+        $this,
+        $this->serviceName,
+        'builds',
+        [
+          'methods' => [
+            'submit' => [
+              'path' => 'v2/{+parent}/builds:submit',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_jobs = new CloudRun\Resource\ProjectsLocationsJobs(
+        $this,
+        $this->serviceName,
+        'jobs',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/jobs',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'jobId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'options.requestedPolicyVersion' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/jobs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'run' => [
+              'path' => 'v2/{+name}:run',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_jobs_executions = new CloudRun\Resource\ProjectsLocationsJobsExecutions(
+        $this,
+        $this->serviceName,
+        'executions',
+        [
+          'methods' => [
+            'cancel' => [
+              'path' => 'v2/{+name}:cancel',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'exportStatus' => [
+              'path' => 'v2/{+name}/{+operationId}:exportStatus',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'operationId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/executions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_jobs_executions_tasks = new CloudRun\Resource\ProjectsLocationsJobsExecutionsTasks(
+        $this,
+        $this->serviceName,
+        'tasks',
+        [
+          'methods' => [
+            'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/tasks',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_operations = new CloudRun\Resource\ProjectsLocationsOperations(
+        $this,
+        $this->serviceName,
+        'operations',
+        [
+          'methods' => [
+            'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+name}/operations',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -565,18 +455,88 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'wait' => [
+              'path' => 'v2/{+name}:wait',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],
           ]
         ]
     );
-    $this->projects_locations_authorizeddomains = new CloudRun\Resource\ProjectsLocationsAuthorizeddomains(
+    $this->projects_locations_services = new CloudRun\Resource\ProjectsLocationsServices(
         $this,
         $this->serviceName,
-        'authorizeddomains',
+        'services',
         [
           'methods' => [
-            'list' => [
-              'path' => 'v1/{+parent}/authorizeddomains',
+            'create' => [
+              'path' => 'v2/{+parent}/services',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'serviceId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'options.requestedPolicyVersion' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/services',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -592,175 +552,65 @@ class CloudRun extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_locations_configurations = new CloudRun\Resource\ProjectsLocationsConfigurations(
-        $this,
-        $this->serviceName,
-        'configurations',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'GET',
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
-              ],
-            ],'list' => [
-              'path' => 'v1/{+parent}/configurations',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
+                'allowMissing' => [
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
-                'labelSelector' => [
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
+                'validateOnly' => [
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
               ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_locations_domainmappings = new CloudRun\Resource\ProjectsLocationsDomainmappings(
-        $this,
-        $this->serviceName,
-        'domainmappings',
-        [
-          'methods' => [
-            'create' => [
-              'path' => 'v1/{+parent}/domainmappings',
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
               'httpMethod' => 'POST',
               'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'apiVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'dryRun' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'kind' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'propagationPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'get' => [
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
+                'resource' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
               ],
-            ],'list' => [
-              'path' => 'v1/{+parent}/domainmappings',
-              'httpMethod' => 'GET',
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
               'parameters' => [
-                'parent' => [
+                'resource' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ],
               ],
             ],
           ]
         ]
     );
-    $this->projects_locations_revisions = new CloudRun\Resource\ProjectsLocationsRevisions(
+    $this->projects_locations_services_revisions = new CloudRun\Resource\ProjectsLocationsServicesRevisions(
         $this,
         $this->serviceName,
         'revisions',
         [
           'methods' => [
             'delete' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -768,25 +618,32 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'apiVersion' => [
+                'etag' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'dryRun' => [
+                'validateOnly' => [
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'boolean',
                 ],
-                'kind' => [
-                  'location' => 'query',
+              ],
+            ],'exportStatus' => [
+              'path' => 'v2/{+name}/{+operationId}:exportStatus',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
                   'type' => 'string',
+                  'required' => true,
                 ],
-                'propagationPolicy' => [
-                  'location' => 'query',
+                'operationId' => [
+                  'location' => 'path',
                   'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],'get' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -796,7 +653,7 @@ class CloudRun extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+parent}/revisions',
+              'path' => 'v2/{+parent}/revisions',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -804,31 +661,15 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
+                'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
                 ],
-                'resourceVersion' => [
+                'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'watch' => [
+                'showDeleted' => [
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
@@ -837,72 +678,14 @@ class CloudRun extends \Google\Service
           ]
         ]
     );
-    $this->projects_locations_routes = new CloudRun\Resource\ProjectsLocationsRoutes(
+    $this->projects_locations_workerPools = new CloudRun\Resource\ProjectsLocationsWorkerPools(
         $this,
         $this->serviceName,
-        'routes',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => 'v1/{+parent}/routes',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'resourceVersion' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'watch' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_locations_services = new CloudRun\Resource\ProjectsLocationsServices(
-        $this,
-        $this->serviceName,
-        'services',
+        'workerPools',
         [
           'methods' => [
             'create' => [
-              'path' => 'v1/{+parent}/services',
+              'path' => 'v2/{+parent}/workerPools',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
@@ -910,13 +693,17 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'dryRun' => [
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'workerPoolId' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
               ],
             ],'delete' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -924,25 +711,17 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'apiVersion' => [
+                'etag' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'dryRun' => [
+                'validateOnly' => [
                   'location' => 'query',
-                  'type' => 'string',
-                ],
-                'kind' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'propagationPolicy' => [
-                  'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'boolean',
                 ],
               ],
             ],'get' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -952,7 +731,7 @@ class CloudRun extends \Google\Service
                 ],
               ],
             ],'getIamPolicy' => [
-              'path' => 'v1/{+resource}:getIamPolicy',
+              'path' => 'v2/{+resource}:getIamPolicy',
               'httpMethod' => 'GET',
               'parameters' => [
                 'resource' => [
@@ -966,7 +745,7 @@ class CloudRun extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+parent}/services',
+              'path' => 'v2/{+parent}/workerPools',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -974,51 +753,47 @@ class CloudRun extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'continue' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'fieldSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'includeUninitialized' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'labelSelector' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'limit' => [
+                'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
                 ],
-                'resourceVersion' => [
+                'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'watch' => [
+                'showDeleted' => [
                   'location' => 'query',
                   'type' => 'boolean',
                 ],
               ],
-            ],'replaceService' => [
-              'path' => 'v1/{+name}',
-              'httpMethod' => 'PUT',
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
-                'dryRun' => [
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'forceNewRevision' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'setIamPolicy' => [
-              'path' => 'v1/{+resource}:setIamPolicy',
+              'path' => 'v2/{+resource}:setIamPolicy',
               'httpMethod' => 'POST',
               'parameters' => [
                 'resource' => [
@@ -1028,13 +803,73 @@ class CloudRun extends \Google\Service
                 ],
               ],
             ],'testIamPermissions' => [
-              'path' => 'v1/{+resource}:testIamPermissions',
+              'path' => 'v2/{+resource}:testIamPermissions',
               'httpMethod' => 'POST',
               'parameters' => [
                 'resource' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_workerPools_revisions = new CloudRun\Resource\ProjectsLocationsWorkerPoolsRevisions(
+        $this,
+        $this->serviceName,
+        'revisions',
+        [
+          'methods' => [
+            'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'validateOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/revisions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
               ],
             ],

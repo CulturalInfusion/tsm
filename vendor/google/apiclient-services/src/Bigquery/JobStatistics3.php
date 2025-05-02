@@ -17,53 +17,115 @@
 
 namespace Google\Service\Bigquery;
 
-class JobStatistics3 extends \Google\Model
+class JobStatistics3 extends \Google\Collection
 {
+  protected $collection_key = 'timeline';
+  /**
+   * @var string
+   */
   public $badRecords;
+  /**
+   * @var string
+   */
   public $inputFileBytes;
+  /**
+   * @var string
+   */
   public $inputFiles;
+  /**
+   * @var string
+   */
   public $outputBytes;
+  /**
+   * @var string
+   */
   public $outputRows;
+  protected $timelineType = QueryTimelineSample::class;
+  protected $timelineDataType = 'array';
 
+  /**
+   * @param string
+   */
   public function setBadRecords($badRecords)
   {
     $this->badRecords = $badRecords;
   }
+  /**
+   * @return string
+   */
   public function getBadRecords()
   {
     return $this->badRecords;
   }
+  /**
+   * @param string
+   */
   public function setInputFileBytes($inputFileBytes)
   {
     $this->inputFileBytes = $inputFileBytes;
   }
+  /**
+   * @return string
+   */
   public function getInputFileBytes()
   {
     return $this->inputFileBytes;
   }
+  /**
+   * @param string
+   */
   public function setInputFiles($inputFiles)
   {
     $this->inputFiles = $inputFiles;
   }
+  /**
+   * @return string
+   */
   public function getInputFiles()
   {
     return $this->inputFiles;
   }
+  /**
+   * @param string
+   */
   public function setOutputBytes($outputBytes)
   {
     $this->outputBytes = $outputBytes;
   }
+  /**
+   * @return string
+   */
   public function getOutputBytes()
   {
     return $this->outputBytes;
   }
+  /**
+   * @param string
+   */
   public function setOutputRows($outputRows)
   {
     $this->outputRows = $outputRows;
   }
+  /**
+   * @return string
+   */
   public function getOutputRows()
   {
     return $this->outputRows;
+  }
+  /**
+   * @param QueryTimelineSample[]
+   */
+  public function setTimeline($timeline)
+  {
+    $this->timeline = $timeline;
+  }
+  /**
+   * @return QueryTimelineSample[]
+   */
+  public function getTimeline()
+  {
+    return $this->timeline;
   }
 }
 

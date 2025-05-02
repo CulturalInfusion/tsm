@@ -17,8 +17,8 @@
 
 namespace Google\Service\GoogleAnalyticsAdmin\Resource;
 
-use Google\Service\GoogleAnalyticsAdmin\GoogleAnalyticsAdminV1alphaFirebaseLink;
-use Google\Service\GoogleAnalyticsAdmin\GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse;
+use Google\Service\GoogleAnalyticsAdmin\GoogleAnalyticsAdminV1betaFirebaseLink;
+use Google\Service\GoogleAnalyticsAdmin\GoogleAnalyticsAdminV1betaListFirebaseLinksResponse;
 use Google\Service\GoogleAnalyticsAdmin\GoogleProtobufEmpty;
 
 /**
@@ -26,7 +26,7 @@ use Google\Service\GoogleAnalyticsAdmin\GoogleProtobufEmpty;
  * Typical usage is:
  *  <code>
  *   $analyticsadminService = new Google\Service\GoogleAnalyticsAdmin(...);
- *   $firebaseLinks = $analyticsadminService->firebaseLinks;
+ *   $firebaseLinks = $analyticsadminService->properties_firebaseLinks;
  *  </code>
  */
 class PropertiesFirebaseLinks extends \Google\Service\Resource
@@ -36,25 +36,27 @@ class PropertiesFirebaseLinks extends \Google\Service\Resource
    * (firebaseLinks.create)
    *
    * @param string $parent Required. Format: properties/{property_id} Example:
-   * properties/1234
-   * @param GoogleAnalyticsAdminV1alphaFirebaseLink $postBody
+   * `properties/1234`
+   * @param GoogleAnalyticsAdminV1betaFirebaseLink $postBody
    * @param array $optParams Optional parameters.
-   * @return GoogleAnalyticsAdminV1alphaFirebaseLink
+   * @return GoogleAnalyticsAdminV1betaFirebaseLink
+   * @throws \Google\Service\Exception
    */
-  public function create($parent, GoogleAnalyticsAdminV1alphaFirebaseLink $postBody, $optParams = [])
+  public function create($parent, GoogleAnalyticsAdminV1betaFirebaseLink $postBody, $optParams = [])
   {
     $params = ['parent' => $parent, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('create', [$params], GoogleAnalyticsAdminV1alphaFirebaseLink::class);
+    return $this->call('create', [$params], GoogleAnalyticsAdminV1betaFirebaseLink::class);
   }
   /**
    * Deletes a FirebaseLink on a property (firebaseLinks.delete)
    *
    * @param string $name Required. Format:
    * properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-   * properties/1234/firebaseLinks/5678
+   * `properties/1234/firebaseLinks/5678`
    * @param array $optParams Optional parameters.
    * @return GoogleProtobufEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -67,7 +69,7 @@ class PropertiesFirebaseLinks extends \Google\Service\Resource
    * FirebaseLink. (firebaseLinks.listPropertiesFirebaseLinks)
    *
    * @param string $parent Required. Format: properties/{property_id} Example:
-   * properties/1234
+   * `properties/1234`
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The maximum number of resources to return. The
@@ -76,15 +78,16 @@ class PropertiesFirebaseLinks extends \Google\Service\Resource
    * 200; (higher values will be coerced to the maximum)
    * @opt_param string pageToken A page token, received from a previous
    * `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When
-   * paginating, all other parameters provided to `ListProperties` must match the
-   * call that provided the page token.
-   * @return GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
+   * paginating, all other parameters provided to `ListFirebaseLinks` must match
+   * the call that provided the page token.
+   * @return GoogleAnalyticsAdminV1betaListFirebaseLinksResponse
+   * @throws \Google\Service\Exception
    */
   public function listPropertiesFirebaseLinks($parent, $optParams = [])
   {
     $params = ['parent' => $parent];
     $params = array_merge($params, $optParams);
-    return $this->call('list', [$params], GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse::class);
+    return $this->call('list', [$params], GoogleAnalyticsAdminV1betaListFirebaseLinksResponse::class);
   }
 }
 

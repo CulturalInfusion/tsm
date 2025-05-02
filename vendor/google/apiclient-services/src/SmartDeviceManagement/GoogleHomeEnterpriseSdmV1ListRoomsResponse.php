@@ -20,18 +20,9 @@ namespace Google\Service\SmartDeviceManagement;
 class GoogleHomeEnterpriseSdmV1ListRoomsResponse extends \Google\Collection
 {
   protected $collection_key = 'rooms';
-  public $nextPageToken;
   protected $roomsType = GoogleHomeEnterpriseSdmV1Room::class;
   protected $roomsDataType = 'array';
 
-  public function setNextPageToken($nextPageToken)
-  {
-    $this->nextPageToken = $nextPageToken;
-  }
-  public function getNextPageToken()
-  {
-    return $this->nextPageToken;
-  }
   /**
    * @param GoogleHomeEnterpriseSdmV1Room[]
    */

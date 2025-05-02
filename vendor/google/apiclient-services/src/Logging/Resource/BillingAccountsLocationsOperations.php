@@ -20,13 +20,14 @@ namespace Google\Service\Logging\Resource;
 use Google\Service\Logging\CancelOperationRequest;
 use Google\Service\Logging\ListOperationsResponse;
 use Google\Service\Logging\LoggingEmpty;
+use Google\Service\Logging\Operation;
 
 /**
  * The "operations" collection of methods.
  * Typical usage is:
  *  <code>
  *   $loggingService = new Google\Service\Logging(...);
- *   $operations = $loggingService->operations;
+ *   $operations = $loggingService->billingAccounts_locations_operations;
  *  </code>
  */
 class BillingAccountsLocationsOperations extends \Google\Service\Resource
@@ -46,6 +47,7 @@ class BillingAccountsLocationsOperations extends \Google\Service\Resource
    * @param CancelOperationRequest $postBody
    * @param array $optParams Optional parameters.
    * @return LoggingEmpty
+   * @throws \Google\Service\Exception
    */
   public function cancel($name, CancelOperationRequest $postBody, $optParams = [])
   {
@@ -54,14 +56,24 @@ class BillingAccountsLocationsOperations extends \Google\Service\Resource
     return $this->call('cancel', [$params], LoggingEmpty::class);
   }
   /**
+   * Gets the latest state of a long-running operation. Clients can use this
+   * method to poll the operation result at intervals as recommended by the API
+   * service. (operations.get)
+   *
+   * @param string $name The name of the operation resource.
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function get($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('get', [$params], Operation::class);
+  }
+  /**
    * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name
-   * binding allows API services to override the binding to use different resource
-   * name schemes, such as users/operations. To override the binding, API services
-   * can add a binding such as "/v1/{name=users}/operations" to their service
-   * configuration. For backwards compatibility, the default name includes the
-   * operations collection id, however overriding users must ensure the name
-   * binding is the parent resource, without the operations collection id.
+   * server doesn't support this method, it returns UNIMPLEMENTED.
    * (operations.listBillingAccountsLocationsOperations)
    *
    * @param string $name The name of the operation's parent resource.
@@ -71,6 +83,7 @@ class BillingAccountsLocationsOperations extends \Google\Service\Resource
    * @opt_param int pageSize The standard list page size.
    * @opt_param string pageToken The standard list page token.
    * @return ListOperationsResponse
+   * @throws \Google\Service\Exception
    */
   public function listBillingAccountsLocationsOperations($name, $optParams = [])
   {

@@ -19,25 +19,77 @@ namespace Google\Service\CloudAsset;
 
 class GoogleIdentityAccesscontextmanagerV1EgressFrom extends \Google\Collection
 {
-  protected $collection_key = 'identities';
+  protected $collection_key = 'sources';
+  /**
+   * @var string[]
+   */
   public $identities;
+  /**
+   * @var string
+   */
   public $identityType;
+  /**
+   * @var string
+   */
+  public $sourceRestriction;
+  protected $sourcesType = GoogleIdentityAccesscontextmanagerV1EgressSource::class;
+  protected $sourcesDataType = 'array';
 
+  /**
+   * @param string[]
+   */
   public function setIdentities($identities)
   {
     $this->identities = $identities;
   }
+  /**
+   * @return string[]
+   */
   public function getIdentities()
   {
     return $this->identities;
   }
+  /**
+   * @param string
+   */
   public function setIdentityType($identityType)
   {
     $this->identityType = $identityType;
   }
+  /**
+   * @return string
+   */
   public function getIdentityType()
   {
     return $this->identityType;
+  }
+  /**
+   * @param string
+   */
+  public function setSourceRestriction($sourceRestriction)
+  {
+    $this->sourceRestriction = $sourceRestriction;
+  }
+  /**
+   * @return string
+   */
+  public function getSourceRestriction()
+  {
+    return $this->sourceRestriction;
+  }
+  /**
+   * @param GoogleIdentityAccesscontextmanagerV1EgressSource[]
+   */
+  public function setSources($sources)
+  {
+    $this->sources = $sources;
+  }
+  /**
+   * @return GoogleIdentityAccesscontextmanagerV1EgressSource[]
+   */
+  public function getSources()
+  {
+    return $this->sources;
   }
 }
 

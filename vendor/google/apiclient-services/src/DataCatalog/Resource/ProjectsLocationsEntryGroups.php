@@ -31,7 +31,7 @@ use Google\Service\DataCatalog\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $datacatalogService = new Google\Service\DataCatalog(...);
- *   $entryGroups = $datacatalogService->entryGroups;
+ *   $entryGroups = $datacatalogService->projects_locations_entryGroups;
  *  </code>
  */
 class ProjectsLocationsEntryGroups extends \Google\Service\Resource
@@ -65,6 +65,7 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * and must start with a letter or underscore. The maximum size is 64 bytes when
    * encoded in UTF-8.
    * @return GoogleCloudDatacatalogV1EntryGroup
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudDatacatalogV1EntryGroup $postBody, $optParams = [])
   {
@@ -75,8 +76,8 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
   /**
    * Deletes an entry group. You must enable the Data Catalog API in the project
    * identified by the `name` parameter. For more information, see [Data Catalog
-   * resource project](https://cloud.google.com/data-catalog/docs/concepts
-   * /resource-project). (entryGroups.delete)
+   * resource project](https://cloud.google.com/data-
+   * catalog/docs/concepts/resource-project). (entryGroups.delete)
    *
    * @param string $name Required. The name of the entry group to delete.
    * @param array $optParams Optional parameters.
@@ -84,6 +85,7 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * @opt_param bool force Optional. If true, deletes all entries in the entry
    * group.
    * @return DatacatalogEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -100,6 +102,7 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * @opt_param string readMask The fields to return. If empty or omitted, all
    * fields are returned.
    * @return GoogleCloudDatacatalogV1EntryGroup
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -119,11 +122,13 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * groups. (entryGroups.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -144,6 +149,7 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * @opt_param string pageToken Optional. Pagination token that specifies the
    * next page to return. If empty, returns the first page.
    * @return GoogleCloudDatacatalogV1ListEntryGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsEntryGroups($parent, $optParams = [])
   {
@@ -157,9 +163,9 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * [Data Catalog resource project](https://cloud.google.com/data-
    * catalog/docs/concepts/resource-project). (entryGroups.patch)
    *
-   * @param string $name The resource name of the entry group in URL format. Note:
-   * The entry group itself and its child resources might not be stored in the
-   * location specified in its name.
+   * @param string $name Identifier. The resource name of the entry group in URL
+   * format. Note: The entry group itself and its child resources might not be
+   * stored in the location specified in its name.
    * @param GoogleCloudDatacatalogV1EntryGroup $postBody
    * @param array $optParams Optional parameters.
    *
@@ -168,6 +174,7 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * overwritten. If such fields are non-required and omitted in the request body,
    * their values are emptied.
    * @return GoogleCloudDatacatalogV1EntryGroup
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudDatacatalogV1EntryGroup $postBody, $optParams = [])
   {
@@ -187,11 +194,13 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * (entryGroups.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -209,11 +218,13 @@ class ProjectsLocationsEntryGroups extends \Google\Service\Resource
    * (entryGroups.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

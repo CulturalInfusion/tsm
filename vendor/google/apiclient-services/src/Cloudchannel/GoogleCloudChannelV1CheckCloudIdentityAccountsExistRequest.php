@@ -19,15 +19,42 @@ namespace Google\Service\Cloudchannel;
 
 class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $domain;
+  /**
+   * @var string
+   */
+  public $primaryAdminEmail;
 
+  /**
+   * @param string
+   */
   public function setDomain($domain)
   {
     $this->domain = $domain;
   }
+  /**
+   * @return string
+   */
   public function getDomain()
   {
     return $this->domain;
+  }
+  /**
+   * @param string
+   */
+  public function setPrimaryAdminEmail($primaryAdminEmail)
+  {
+    $this->primaryAdminEmail = $primaryAdminEmail;
+  }
+  /**
+   * @return string
+   */
+  public function getPrimaryAdminEmail()
+  {
+    return $this->primaryAdminEmail;
   }
 }
 

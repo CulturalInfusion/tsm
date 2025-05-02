@@ -19,32 +19,77 @@ namespace Google\Service\DatabaseMigrationService;
 
 class CloudSqlConnectionProfile extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $additionalPublicIp;
+  /**
+   * @var string
+   */
   public $cloudSqlId;
+  /**
+   * @var string
+   */
   public $privateIp;
+  /**
+   * @var string
+   */
   public $publicIp;
   protected $settingsType = CloudSqlSettings::class;
   protected $settingsDataType = '';
 
+  /**
+   * @param string
+   */
+  public function setAdditionalPublicIp($additionalPublicIp)
+  {
+    $this->additionalPublicIp = $additionalPublicIp;
+  }
+  /**
+   * @return string
+   */
+  public function getAdditionalPublicIp()
+  {
+    return $this->additionalPublicIp;
+  }
+  /**
+   * @param string
+   */
   public function setCloudSqlId($cloudSqlId)
   {
     $this->cloudSqlId = $cloudSqlId;
   }
+  /**
+   * @return string
+   */
   public function getCloudSqlId()
   {
     return $this->cloudSqlId;
   }
+  /**
+   * @param string
+   */
   public function setPrivateIp($privateIp)
   {
     $this->privateIp = $privateIp;
   }
+  /**
+   * @return string
+   */
   public function getPrivateIp()
   {
     return $this->privateIp;
   }
+  /**
+   * @param string
+   */
   public function setPublicIp($publicIp)
   {
     $this->publicIp = $publicIp;
   }
+  /**
+   * @return string
+   */
   public function getPublicIp()
   {
     return $this->publicIp;

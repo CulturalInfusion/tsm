@@ -19,16 +19,39 @@ namespace Google\Service\TrafficDirectorService;
 
 class PerXdsConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $clientStatus;
   protected $clusterConfigType = ClustersConfigDump::class;
   protected $clusterConfigDataType = '';
+  protected $endpointConfigType = EndpointsConfigDump::class;
+  protected $endpointConfigDataType = '';
   protected $listenerConfigType = ListenersConfigDump::class;
   protected $listenerConfigDataType = '';
   protected $routeConfigType = RoutesConfigDump::class;
   protected $routeConfigDataType = '';
   protected $scopedRouteConfigType = ScopedRoutesConfigDump::class;
   protected $scopedRouteConfigDataType = '';
+  /**
+   * @var string
+   */
   public $status;
 
+  /**
+   * @param string
+   */
+  public function setClientStatus($clientStatus)
+  {
+    $this->clientStatus = $clientStatus;
+  }
+  /**
+   * @return string
+   */
+  public function getClientStatus()
+  {
+    return $this->clientStatus;
+  }
   /**
    * @param ClustersConfigDump
    */
@@ -42,6 +65,20 @@ class PerXdsConfig extends \Google\Model
   public function getClusterConfig()
   {
     return $this->clusterConfig;
+  }
+  /**
+   * @param EndpointsConfigDump
+   */
+  public function setEndpointConfig(EndpointsConfigDump $endpointConfig)
+  {
+    $this->endpointConfig = $endpointConfig;
+  }
+  /**
+   * @return EndpointsConfigDump
+   */
+  public function getEndpointConfig()
+  {
+    return $this->endpointConfig;
   }
   /**
    * @param ListenersConfigDump
@@ -85,10 +122,16 @@ class PerXdsConfig extends \Google\Model
   {
     return $this->scopedRouteConfig;
   }
+  /**
+   * @param string
+   */
   public function setStatus($status)
   {
     $this->status = $status;
   }
+  /**
+   * @return string
+   */
   public function getStatus()
   {
     return $this->status;

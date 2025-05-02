@@ -19,35 +19,58 @@ namespace Google\Service\DoubleClickBidManager;
 
 class ReportMetadata extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $googleCloudStoragePath;
-  public $reportDataEndTimeMs;
-  public $reportDataStartTimeMs;
+  protected $reportDataEndDateType = Date::class;
+  protected $reportDataEndDateDataType = '';
+  protected $reportDataStartDateType = Date::class;
+  protected $reportDataStartDateDataType = '';
   protected $statusType = ReportStatus::class;
   protected $statusDataType = '';
 
+  /**
+   * @param string
+   */
   public function setGoogleCloudStoragePath($googleCloudStoragePath)
   {
     $this->googleCloudStoragePath = $googleCloudStoragePath;
   }
+  /**
+   * @return string
+   */
   public function getGoogleCloudStoragePath()
   {
     return $this->googleCloudStoragePath;
   }
-  public function setReportDataEndTimeMs($reportDataEndTimeMs)
+  /**
+   * @param Date
+   */
+  public function setReportDataEndDate(Date $reportDataEndDate)
   {
-    $this->reportDataEndTimeMs = $reportDataEndTimeMs;
+    $this->reportDataEndDate = $reportDataEndDate;
   }
-  public function getReportDataEndTimeMs()
+  /**
+   * @return Date
+   */
+  public function getReportDataEndDate()
   {
-    return $this->reportDataEndTimeMs;
+    return $this->reportDataEndDate;
   }
-  public function setReportDataStartTimeMs($reportDataStartTimeMs)
+  /**
+   * @param Date
+   */
+  public function setReportDataStartDate(Date $reportDataStartDate)
   {
-    $this->reportDataStartTimeMs = $reportDataStartTimeMs;
+    $this->reportDataStartDate = $reportDataStartDate;
   }
-  public function getReportDataStartTimeMs()
+  /**
+   * @return Date
+   */
+  public function getReportDataStartDate()
   {
-    return $this->reportDataStartTimeMs;
+    return $this->reportDataStartDate;
   }
   /**
    * @param ReportStatus

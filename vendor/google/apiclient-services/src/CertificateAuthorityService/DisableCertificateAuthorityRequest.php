@@ -19,12 +19,39 @@ namespace Google\Service\CertificateAuthorityService;
 
 class DisableCertificateAuthorityRequest extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $ignoreDependentResources;
+  /**
+   * @var string
+   */
   public $requestId;
 
+  /**
+   * @param bool
+   */
+  public function setIgnoreDependentResources($ignoreDependentResources)
+  {
+    $this->ignoreDependentResources = $ignoreDependentResources;
+  }
+  /**
+   * @return bool
+   */
+  public function getIgnoreDependentResources()
+  {
+    return $this->ignoreDependentResources;
+  }
+  /**
+   * @param string
+   */
   public function setRequestId($requestId)
   {
     $this->requestId = $requestId;
   }
+  /**
+   * @return string
+   */
   public function getRequestId()
   {
     return $this->requestId;

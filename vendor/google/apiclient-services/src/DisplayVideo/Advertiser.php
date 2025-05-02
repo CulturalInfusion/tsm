@@ -21,22 +21,45 @@ class Advertiser extends \Google\Model
 {
   protected $adServerConfigType = AdvertiserAdServerConfig::class;
   protected $adServerConfigDataType = '';
+  /**
+   * @var string
+   */
   public $advertiserId;
+  protected $billingConfigType = AdvertiserBillingConfig::class;
+  protected $billingConfigDataType = '';
   protected $creativeConfigType = AdvertiserCreativeConfig::class;
   protected $creativeConfigDataType = '';
   protected $dataAccessConfigType = AdvertiserDataAccessConfig::class;
   protected $dataAccessConfigDataType = '';
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $entityStatus;
   protected $generalConfigType = AdvertiserGeneralConfig::class;
   protected $generalConfigDataType = '';
   protected $integrationDetailsType = IntegrationDetails::class;
   protected $integrationDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $partnerId;
+  /**
+   * @var bool
+   */
   public $prismaEnabled;
   protected $servingConfigType = AdvertiserTargetingConfig::class;
   protected $servingConfigDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
 
   /**
@@ -53,13 +76,33 @@ class Advertiser extends \Google\Model
   {
     return $this->adServerConfig;
   }
+  /**
+   * @param string
+   */
   public function setAdvertiserId($advertiserId)
   {
     $this->advertiserId = $advertiserId;
   }
+  /**
+   * @return string
+   */
   public function getAdvertiserId()
   {
     return $this->advertiserId;
+  }
+  /**
+   * @param AdvertiserBillingConfig
+   */
+  public function setBillingConfig(AdvertiserBillingConfig $billingConfig)
+  {
+    $this->billingConfig = $billingConfig;
+  }
+  /**
+   * @return AdvertiserBillingConfig
+   */
+  public function getBillingConfig()
+  {
+    return $this->billingConfig;
   }
   /**
    * @param AdvertiserCreativeConfig
@@ -89,18 +132,30 @@ class Advertiser extends \Google\Model
   {
     return $this->dataAccessConfig;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEntityStatus($entityStatus)
   {
     $this->entityStatus = $entityStatus;
   }
+  /**
+   * @return string
+   */
   public function getEntityStatus()
   {
     return $this->entityStatus;
@@ -133,26 +188,44 @@ class Advertiser extends \Google\Model
   {
     return $this->integrationDetails;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPartnerId($partnerId)
   {
     $this->partnerId = $partnerId;
   }
+  /**
+   * @return string
+   */
   public function getPartnerId()
   {
     return $this->partnerId;
   }
+  /**
+   * @param bool
+   */
   public function setPrismaEnabled($prismaEnabled)
   {
     $this->prismaEnabled = $prismaEnabled;
   }
+  /**
+   * @return bool
+   */
   public function getPrismaEnabled()
   {
     return $this->prismaEnabled;
@@ -171,10 +244,16 @@ class Advertiser extends \Google\Model
   {
     return $this->servingConfig;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

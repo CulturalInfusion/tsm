@@ -27,7 +27,7 @@ use Google\Client;
  *
  * <p>
  * For more information about this service, see the API
- * <a href="https://developers.google.com/actions/smarthome/create-app#request-sync" target="_blank">Documentation</a>
+ * <a href="https://developers.home.google.com/cloud-to-cloud/get-started" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -40,6 +40,7 @@ class HomeGraphService extends \Google\Service
 
   public $agentUsers;
   public $devices;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the HomeGraphService service.
@@ -52,6 +53,7 @@ class HomeGraphService extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://homegraph.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://homegraph.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

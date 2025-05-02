@@ -23,10 +23,19 @@ class Video extends \Google\Model
   protected $ageGatingDataType = '';
   protected $contentDetailsType = VideoContentDetails::class;
   protected $contentDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $etag;
   protected $fileDetailsType = VideoFileDetails::class;
   protected $fileDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $kind;
   protected $liveStreamingDetailsType = VideoLiveStreamingDetails::class;
   protected $liveStreamingDetailsDataType = '';
@@ -34,6 +43,8 @@ class Video extends \Google\Model
   protected $localizationsDataType = 'map';
   protected $monetizationDetailsType = VideoMonetizationDetails::class;
   protected $monetizationDetailsDataType = '';
+  protected $paidProductPlacementDetailsType = VideoPaidProductPlacementDetails::class;
+  protected $paidProductPlacementDetailsDataType = '';
   protected $playerType = VideoPlayer::class;
   protected $playerDataType = '';
   protected $processingDetailsType = VideoProcessingDetails::class;
@@ -81,10 +92,16 @@ class Video extends \Google\Model
   {
     return $this->contentDetails;
   }
+  /**
+   * @param string
+   */
   public function setEtag($etag)
   {
     $this->etag = $etag;
   }
+  /**
+   * @return string
+   */
   public function getEtag()
   {
     return $this->etag;
@@ -103,18 +120,30 @@ class Video extends \Google\Model
   {
     return $this->fileDetails;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
@@ -160,6 +189,20 @@ class Video extends \Google\Model
   public function getMonetizationDetails()
   {
     return $this->monetizationDetails;
+  }
+  /**
+   * @param VideoPaidProductPlacementDetails
+   */
+  public function setPaidProductPlacementDetails(VideoPaidProductPlacementDetails $paidProductPlacementDetails)
+  {
+    $this->paidProductPlacementDetails = $paidProductPlacementDetails;
+  }
+  /**
+   * @return VideoPaidProductPlacementDetails
+   */
+  public function getPaidProductPlacementDetails()
+  {
+    return $this->paidProductPlacementDetails;
   }
   /**
    * @param VideoPlayer

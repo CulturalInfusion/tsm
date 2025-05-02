@@ -22,11 +22,19 @@ class Entity extends \Google\Collection
   protected $collection_key = 'mentions';
   protected $mentionsType = EntityMention::class;
   protected $mentionsDataType = 'array';
+  /**
+   * @var string[]
+   */
   public $metadata;
+  /**
+   * @var string
+   */
   public $name;
-  public $salience;
   protected $sentimentType = Sentiment::class;
   protected $sentimentDataType = '';
+  /**
+   * @var string
+   */
   public $type;
 
   /**
@@ -43,29 +51,33 @@ class Entity extends \Google\Collection
   {
     return $this->mentions;
   }
+  /**
+   * @param string[]
+   */
   public function setMetadata($metadata)
   {
     $this->metadata = $metadata;
   }
+  /**
+   * @return string[]
+   */
   public function getMetadata()
   {
     return $this->metadata;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
-  }
-  public function setSalience($salience)
-  {
-    $this->salience = $salience;
-  }
-  public function getSalience()
-  {
-    return $this->salience;
   }
   /**
    * @param Sentiment
@@ -81,10 +93,16 @@ class Entity extends \Google\Collection
   {
     return $this->sentiment;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

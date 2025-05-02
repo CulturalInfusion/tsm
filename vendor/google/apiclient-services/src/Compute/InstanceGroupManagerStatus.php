@@ -19,25 +19,59 @@ namespace Google\Service\Compute;
 
 class InstanceGroupManagerStatus extends \Google\Model
 {
+  protected $allInstancesConfigType = InstanceGroupManagerStatusAllInstancesConfig::class;
+  protected $allInstancesConfigDataType = '';
+  /**
+   * @var string
+   */
   public $autoscaler;
+  /**
+   * @var bool
+   */
   public $isStable;
   protected $statefulType = InstanceGroupManagerStatusStateful::class;
   protected $statefulDataType = '';
   protected $versionTargetType = InstanceGroupManagerStatusVersionTarget::class;
   protected $versionTargetDataType = '';
 
+  /**
+   * @param InstanceGroupManagerStatusAllInstancesConfig
+   */
+  public function setAllInstancesConfig(InstanceGroupManagerStatusAllInstancesConfig $allInstancesConfig)
+  {
+    $this->allInstancesConfig = $allInstancesConfig;
+  }
+  /**
+   * @return InstanceGroupManagerStatusAllInstancesConfig
+   */
+  public function getAllInstancesConfig()
+  {
+    return $this->allInstancesConfig;
+  }
+  /**
+   * @param string
+   */
   public function setAutoscaler($autoscaler)
   {
     $this->autoscaler = $autoscaler;
   }
+  /**
+   * @return string
+   */
   public function getAutoscaler()
   {
     return $this->autoscaler;
   }
+  /**
+   * @param bool
+   */
   public function setIsStable($isStable)
   {
     $this->isStable = $isStable;
   }
+  /**
+   * @return bool
+   */
   public function getIsStable()
   {
     return $this->isStable;

@@ -19,14 +19,41 @@ namespace Google\Service\ServiceControl;
 
 class CheckResponse extends \Google\Model
 {
+  /**
+   * @var array[]
+   */
+  public $dynamicMetadata;
+  /**
+   * @var string[]
+   */
   public $headers;
   protected $statusType = Status::class;
   protected $statusDataType = '';
 
+  /**
+   * @param array[]
+   */
+  public function setDynamicMetadata($dynamicMetadata)
+  {
+    $this->dynamicMetadata = $dynamicMetadata;
+  }
+  /**
+   * @return array[]
+   */
+  public function getDynamicMetadata()
+  {
+    return $this->dynamicMetadata;
+  }
+  /**
+   * @param string[]
+   */
   public function setHeaders($headers)
   {
     $this->headers = $headers;
   }
+  /**
+   * @return string[]
+   */
   public function getHeaders()
   {
     return $this->headers;

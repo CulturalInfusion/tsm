@@ -19,117 +19,313 @@ namespace Google\Service\TPU;
 
 class Node extends \Google\Collection
 {
-  protected $collection_key = 'symptoms';
+  protected $collection_key = 'tags';
+  protected $acceleratorConfigType = AcceleratorConfig::class;
+  protected $acceleratorConfigDataType = '';
+  /**
+   * @var string
+   */
   public $acceleratorType;
+  /**
+   * @var string
+   */
   public $apiVersion;
+  /**
+   * @var string
+   */
   public $cidrBlock;
+  /**
+   * @var string
+   */
   public $createTime;
+  protected $dataDisksType = AttachedDisk::class;
+  protected $dataDisksDataType = 'array';
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $health;
+  /**
+   * @var string
+   */
   public $healthDescription;
-  public $ipAddress;
+  /**
+   * @var string
+   */
+  public $id;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string[]
+   */
+  public $metadata;
+  /**
+   * @var bool
+   */
+  public $multisliceNode;
+  /**
+   * @var string
+   */
   public $name;
-  public $network;
+  protected $networkConfigType = NetworkConfig::class;
+  protected $networkConfigDataType = '';
+  protected $networkConfigsType = NetworkConfig::class;
+  protected $networkConfigsDataType = 'array';
   protected $networkEndpointsType = NetworkEndpoint::class;
   protected $networkEndpointsDataType = 'array';
-  public $port;
+  /**
+   * @var string
+   */
+  public $queuedResource;
+  /**
+   * @var string
+   */
+  public $runtimeVersion;
   protected $schedulingConfigType = SchedulingConfig::class;
   protected $schedulingConfigDataType = '';
-  public $serviceAccount;
+  protected $serviceAccountType = ServiceAccount::class;
+  protected $serviceAccountDataType = '';
+  protected $shieldedInstanceConfigType = ShieldedInstanceConfig::class;
+  protected $shieldedInstanceConfigDataType = '';
+  /**
+   * @var string
+   */
   public $state;
   protected $symptomsType = Symptom::class;
   protected $symptomsDataType = 'array';
-  public $tensorflowVersion;
-  public $useServiceNetworking;
+  /**
+   * @var string[]
+   */
+  public $tags;
 
+  /**
+   * @param AcceleratorConfig
+   */
+  public function setAcceleratorConfig(AcceleratorConfig $acceleratorConfig)
+  {
+    $this->acceleratorConfig = $acceleratorConfig;
+  }
+  /**
+   * @return AcceleratorConfig
+   */
+  public function getAcceleratorConfig()
+  {
+    return $this->acceleratorConfig;
+  }
+  /**
+   * @param string
+   */
   public function setAcceleratorType($acceleratorType)
   {
     $this->acceleratorType = $acceleratorType;
   }
+  /**
+   * @return string
+   */
   public function getAcceleratorType()
   {
     return $this->acceleratorType;
   }
+  /**
+   * @param string
+   */
   public function setApiVersion($apiVersion)
   {
     $this->apiVersion = $apiVersion;
   }
+  /**
+   * @return string
+   */
   public function getApiVersion()
   {
     return $this->apiVersion;
   }
+  /**
+   * @param string
+   */
   public function setCidrBlock($cidrBlock)
   {
     $this->cidrBlock = $cidrBlock;
   }
+  /**
+   * @return string
+   */
   public function getCidrBlock()
   {
     return $this->cidrBlock;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param AttachedDisk[]
+   */
+  public function setDataDisks($dataDisks)
+  {
+    $this->dataDisks = $dataDisks;
+  }
+  /**
+   * @return AttachedDisk[]
+   */
+  public function getDataDisks()
+  {
+    return $this->dataDisks;
+  }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setHealth($health)
   {
     $this->health = $health;
   }
+  /**
+   * @return string
+   */
   public function getHealth()
   {
     return $this->health;
   }
+  /**
+   * @param string
+   */
   public function setHealthDescription($healthDescription)
   {
     $this->healthDescription = $healthDescription;
   }
+  /**
+   * @return string
+   */
   public function getHealthDescription()
   {
     return $this->healthDescription;
   }
-  public function setIpAddress($ipAddress)
+  /**
+   * @param string
+   */
+  public function setId($id)
   {
-    $this->ipAddress = $ipAddress;
+    $this->id = $id;
   }
-  public function getIpAddress()
+  /**
+   * @return string
+   */
+  public function getId()
   {
-    return $this->ipAddress;
+    return $this->id;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string[]
+   */
+  public function setMetadata($metadata)
+  {
+    $this->metadata = $metadata;
+  }
+  /**
+   * @return string[]
+   */
+  public function getMetadata()
+  {
+    return $this->metadata;
+  }
+  /**
+   * @param bool
+   */
+  public function setMultisliceNode($multisliceNode)
+  {
+    $this->multisliceNode = $multisliceNode;
+  }
+  /**
+   * @return bool
+   */
+  public function getMultisliceNode()
+  {
+    return $this->multisliceNode;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
-  public function setNetwork($network)
+  /**
+   * @param NetworkConfig
+   */
+  public function setNetworkConfig(NetworkConfig $networkConfig)
   {
-    $this->network = $network;
+    $this->networkConfig = $networkConfig;
   }
-  public function getNetwork()
+  /**
+   * @return NetworkConfig
+   */
+  public function getNetworkConfig()
   {
-    return $this->network;
+    return $this->networkConfig;
+  }
+  /**
+   * @param NetworkConfig[]
+   */
+  public function setNetworkConfigs($networkConfigs)
+  {
+    $this->networkConfigs = $networkConfigs;
+  }
+  /**
+   * @return NetworkConfig[]
+   */
+  public function getNetworkConfigs()
+  {
+    return $this->networkConfigs;
   }
   /**
    * @param NetworkEndpoint[]
@@ -145,13 +341,33 @@ class Node extends \Google\Collection
   {
     return $this->networkEndpoints;
   }
-  public function setPort($port)
+  /**
+   * @param string
+   */
+  public function setQueuedResource($queuedResource)
   {
-    $this->port = $port;
+    $this->queuedResource = $queuedResource;
   }
-  public function getPort()
+  /**
+   * @return string
+   */
+  public function getQueuedResource()
   {
-    return $this->port;
+    return $this->queuedResource;
+  }
+  /**
+   * @param string
+   */
+  public function setRuntimeVersion($runtimeVersion)
+  {
+    $this->runtimeVersion = $runtimeVersion;
+  }
+  /**
+   * @return string
+   */
+  public function getRuntimeVersion()
+  {
+    return $this->runtimeVersion;
   }
   /**
    * @param SchedulingConfig
@@ -167,18 +383,44 @@ class Node extends \Google\Collection
   {
     return $this->schedulingConfig;
   }
-  public function setServiceAccount($serviceAccount)
+  /**
+   * @param ServiceAccount
+   */
+  public function setServiceAccount(ServiceAccount $serviceAccount)
   {
     $this->serviceAccount = $serviceAccount;
   }
+  /**
+   * @return ServiceAccount
+   */
   public function getServiceAccount()
   {
     return $this->serviceAccount;
   }
+  /**
+   * @param ShieldedInstanceConfig
+   */
+  public function setShieldedInstanceConfig(ShieldedInstanceConfig $shieldedInstanceConfig)
+  {
+    $this->shieldedInstanceConfig = $shieldedInstanceConfig;
+  }
+  /**
+   * @return ShieldedInstanceConfig
+   */
+  public function getShieldedInstanceConfig()
+  {
+    return $this->shieldedInstanceConfig;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
@@ -197,21 +439,19 @@ class Node extends \Google\Collection
   {
     return $this->symptoms;
   }
-  public function setTensorflowVersion($tensorflowVersion)
+  /**
+   * @param string[]
+   */
+  public function setTags($tags)
   {
-    $this->tensorflowVersion = $tensorflowVersion;
+    $this->tags = $tags;
   }
-  public function getTensorflowVersion()
+  /**
+   * @return string[]
+   */
+  public function getTags()
   {
-    return $this->tensorflowVersion;
-  }
-  public function setUseServiceNetworking($useServiceNetworking)
-  {
-    $this->useServiceNetworking = $useServiceNetworking;
-  }
-  public function getUseServiceNetworking()
-  {
-    return $this->useServiceNetworking;
+    return $this->tags;
   }
 }
 

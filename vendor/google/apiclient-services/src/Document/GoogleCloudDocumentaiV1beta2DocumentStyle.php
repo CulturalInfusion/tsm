@@ -23,12 +23,25 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle extends \Google\Model
   protected $backgroundColorDataType = '';
   protected $colorType = GoogleTypeColor::class;
   protected $colorDataType = '';
+  /**
+   * @var string
+   */
+  public $fontFamily;
   protected $fontSizeType = GoogleCloudDocumentaiV1beta2DocumentStyleFontSize::class;
   protected $fontSizeDataType = '';
+  /**
+   * @var string
+   */
   public $fontWeight;
   protected $textAnchorType = GoogleCloudDocumentaiV1beta2DocumentTextAnchor::class;
   protected $textAnchorDataType = '';
+  /**
+   * @var string
+   */
   public $textDecoration;
+  /**
+   * @var string
+   */
   public $textStyle;
 
   /**
@@ -60,6 +73,20 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle extends \Google\Model
     return $this->color;
   }
   /**
+   * @param string
+   */
+  public function setFontFamily($fontFamily)
+  {
+    $this->fontFamily = $fontFamily;
+  }
+  /**
+   * @return string
+   */
+  public function getFontFamily()
+  {
+    return $this->fontFamily;
+  }
+  /**
    * @param GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
    */
   public function setFontSize(GoogleCloudDocumentaiV1beta2DocumentStyleFontSize $fontSize)
@@ -73,10 +100,16 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle extends \Google\Model
   {
     return $this->fontSize;
   }
+  /**
+   * @param string
+   */
   public function setFontWeight($fontWeight)
   {
     $this->fontWeight = $fontWeight;
   }
+  /**
+   * @return string
+   */
   public function getFontWeight()
   {
     return $this->fontWeight;
@@ -95,18 +128,30 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle extends \Google\Model
   {
     return $this->textAnchor;
   }
+  /**
+   * @param string
+   */
   public function setTextDecoration($textDecoration)
   {
     $this->textDecoration = $textDecoration;
   }
+  /**
+   * @return string
+   */
   public function getTextDecoration()
   {
     return $this->textDecoration;
   }
+  /**
+   * @param string
+   */
   public function setTextStyle($textStyle)
   {
     $this->textStyle = $textStyle;
   }
+  /**
+   * @return string
+   */
   public function getTextStyle()
   {
     return $this->textStyle;

@@ -35,7 +35,7 @@ use Google\Service\ContainerAnalysis\VulnerabilityOccurrencesSummary;
  * Typical usage is:
  *  <code>
  *   $containeranalysisService = new Google\Service\ContainerAnalysis(...);
- *   $occurrences = $containeranalysisService->occurrences;
+ *   $occurrences = $containeranalysisService->projects_occurrences;
  *  </code>
  */
 class ProjectsOccurrences extends \Google\Service\Resource
@@ -48,6 +48,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * @param BatchCreateOccurrencesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return BatchCreateOccurrencesResponse
+   * @throws \Google\Service\Exception
    */
   public function batchCreate($parent, BatchCreateOccurrencesRequest $postBody, $optParams = [])
   {
@@ -63,6 +64,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * @param Occurrence $postBody
    * @param array $optParams Optional parameters.
    * @return Occurrence
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Occurrence $postBody, $optParams = [])
   {
@@ -79,6 +81,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
    * @param array $optParams Optional parameters.
    * @return ContaineranalysisEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -93,6 +96,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
    * @param array $optParams Optional parameters.
    * @return Occurrence
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -110,11 +114,13 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * (occurrences.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -131,6 +137,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
    * @param array $optParams Optional parameters.
    * @return Note
+   * @throws \Google\Service\Exception
    */
   public function getNotes($name, $optParams = [])
   {
@@ -148,6 +155,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    *
    * @opt_param string filter The filter expression.
    * @return VulnerabilityOccurrencesSummary
+   * @throws \Google\Service\Exception
    */
   public function getVulnerabilitySummary($parent, $optParams = [])
   {
@@ -170,6 +178,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * @opt_param string pageToken Token to provide to skip to a particular spot in
    * the list.
    * @return ListOccurrencesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsOccurrences($parent, $optParams = [])
   {
@@ -187,6 +196,7 @@ class ProjectsOccurrences extends \Google\Service\Resource
    *
    * @opt_param string updateMask The fields to update.
    * @return Occurrence
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Occurrence $postBody, $optParams = [])
   {
@@ -204,11 +214,13 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * (occurrences.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -225,11 +237,13 @@ class ProjectsOccurrences extends \Google\Service\Resource
    * (occurrences.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

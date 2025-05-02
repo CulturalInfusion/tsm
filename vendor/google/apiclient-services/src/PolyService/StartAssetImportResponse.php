@@ -20,24 +20,49 @@ namespace Google\Service\PolyService;
 class StartAssetImportResponse extends \Google\Collection
 {
   protected $collection_key = 'assetImportMessages';
+  /**
+   * @var string
+   */
   public $assetId;
+  /**
+   * @var string
+   */
   public $assetImportId;
+  /**
+   * @var AssetImportMessage[]
+   */
+  public $assetImportMessages;
   protected $assetImportMessagesType = AssetImportMessage::class;
   protected $assetImportMessagesDataType = 'array';
+  /**
+   * @var string
+   */
   public $publishUrl;
 
+  /**
+   * @param string
+   */
   public function setAssetId($assetId)
   {
     $this->assetId = $assetId;
   }
+  /**
+   * @return string
+   */
   public function getAssetId()
   {
     return $this->assetId;
   }
+  /**
+   * @param string
+   */
   public function setAssetImportId($assetImportId)
   {
     $this->assetImportId = $assetImportId;
   }
+  /**
+   * @return string
+   */
   public function getAssetImportId()
   {
     return $this->assetImportId;
@@ -56,10 +81,16 @@ class StartAssetImportResponse extends \Google\Collection
   {
     return $this->assetImportMessages;
   }
+  /**
+   * @param string
+   */
   public function setPublishUrl($publishUrl)
   {
     $this->publishUrl = $publishUrl;
   }
+  /**
+   * @return string
+   */
   public function getPublishUrl()
   {
     return $this->publishUrl;

@@ -20,21 +20,55 @@ namespace Google\Service\Compute;
 class SecuritySettings extends \Google\Collection
 {
   protected $collection_key = 'subjectAltNames';
+  protected $awsV4AuthenticationType = AWSV4Signature::class;
+  protected $awsV4AuthenticationDataType = '';
+  /**
+   * @var string
+   */
   public $clientTlsPolicy;
+  /**
+   * @var string[]
+   */
   public $subjectAltNames;
 
+  /**
+   * @param AWSV4Signature
+   */
+  public function setAwsV4Authentication(AWSV4Signature $awsV4Authentication)
+  {
+    $this->awsV4Authentication = $awsV4Authentication;
+  }
+  /**
+   * @return AWSV4Signature
+   */
+  public function getAwsV4Authentication()
+  {
+    return $this->awsV4Authentication;
+  }
+  /**
+   * @param string
+   */
   public function setClientTlsPolicy($clientTlsPolicy)
   {
     $this->clientTlsPolicy = $clientTlsPolicy;
   }
+  /**
+   * @return string
+   */
   public function getClientTlsPolicy()
   {
     return $this->clientTlsPolicy;
   }
+  /**
+   * @param string[]
+   */
   public function setSubjectAltNames($subjectAltNames)
   {
     $this->subjectAltNames = $subjectAltNames;
   }
+  /**
+   * @return string[]
+   */
   public function getSubjectAltNames()
   {
     return $this->subjectAltNames;

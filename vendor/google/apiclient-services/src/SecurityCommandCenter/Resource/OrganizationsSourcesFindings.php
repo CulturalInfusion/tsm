@@ -23,13 +23,14 @@ use Google\Service\SecurityCommandCenter\GroupFindingsResponse;
 use Google\Service\SecurityCommandCenter\ListFindingsResponse;
 use Google\Service\SecurityCommandCenter\SecurityMarks;
 use Google\Service\SecurityCommandCenter\SetFindingStateRequest;
+use Google\Service\SecurityCommandCenter\SetMuteRequest;
 
 /**
  * The "findings" collection of methods.
  * Typical usage is:
  *  <code>
  *   $securitycenterService = new Google\Service\SecurityCommandCenter(...);
- *   $findings = $securitycenterService->findings;
+ *   $findings = $securitycenterService->organizations_sources_findings;
  *  </code>
  */
 class OrganizationsSourcesFindings extends \Google\Service\Resource
@@ -39,7 +40,7 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * to succeed. (findings.create)
    *
    * @param string $parent Required. Resource name of the new finding's parent.
-   * Its format should be "organizations/[organization_id]/sources/[source_id]".
+   * Its format should be `organizations/[organization_id]/sources/[source_id]`.
    * @param Finding $postBody
    * @param array $optParams Optional parameters.
    *
@@ -47,6 +48,7 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * client within the parent scope. It must be alphanumeric and less than or
    * equal to 32 characters and greater than 0 characters in length.
    * @return Finding
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Finding $postBody, $optParams = [])
   {
@@ -62,15 +64,16 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * /v1/projects/{project_id}/sources/-/findings (findings.group)
    *
    * @param string $parent Required. Name of the source to groupBy. Its format is
-   * "organizations/[organization_id]/sources/[source_id]",
-   * folders/[folder_id]/sources/[source_id], or
-   * projects/[project_id]/sources/[source_id]. To groupBy across all sources
+   * `organizations/[organization_id]/sources/[source_id]`,
+   * `folders/[folder_id]/sources/[source_id]`, or
+   * `projects/[project_id]/sources/[source_id]`. To groupBy across all sources
    * provide a source_id of `-`. For example:
-   * organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
-   * projects/{project_id}/sources/-
+   * `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`,
+   * or `projects/{project_id}/sources/-`
    * @param GroupFindingsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GroupFindingsResponse
+   * @throws \Google\Service\Exception
    */
   public function group($parent, GroupFindingsRequest $postBody, $optParams = [])
   {
@@ -85,12 +88,12 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * (findings.listOrganizationsSourcesFindings)
    *
    * @param string $parent Required. Name of the source the findings belong to.
-   * Its format is "organizations/[organization_id]/sources/[source_id],
-   * folders/[folder_id]/sources/[source_id], or
-   * projects/[project_id]/sources/[source_id]". To list across all sources
+   * Its format is `organizations/[organization_id]/sources/[source_id]`,
+   * `folders/[folder_id]/sources/[source_id]`, or
+   * `projects/[project_id]/sources/[source_id]`. To list across all sources
    * provide a source_id of `-`. For example:
-   * organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-   * projects/{projects_id}/sources/-
+   * `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-`
+   * or `projects/{projects_id}/sources/-`
    * @param array $optParams Optional parameters.
    *
    * @opt_param string compareDuration When compare_duration is set, the
@@ -140,7 +143,8 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * `-source_properties.my_property : ""` * resource: * resource.name: `=`, `:` *
    * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` *
    * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` *
-   * resource.type: `=`, `:` * resource.folders.resource_folder: `=`, `:`
+   * resource.type: `=`, `:` * resource.folders.resource_folder: `=`, `:` *
+   * resource.display_name: `=`, `:`
    * @opt_param string orderBy Expression that defines what fields and order to
    * use for sorting. The string value should follow SQL syntax: comma separated
    * list of fields. For example: "name,resource_properties.a_property". The
@@ -161,6 +165,7 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * their values are those at that specific time. Absence of this field will
    * default to the API's version of NOW.
    * @return ListFindingsResponse
+   * @throws \Google\Service\Exception
    */
   public function listOrganizationsSourcesFindings($parent, $optParams = [])
   {
@@ -172,10 +177,11 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * Creates or updates a finding. The corresponding source must exist for a
    * finding creation to succeed. (findings.patch)
    *
-   * @param string $name The relative resource name of this finding. See:
-   * https://cloud.google.com/apis/design/resource_names#relative_resource_name
-   * Example:
-   * "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+   * @param string $name The [relative resource name](https://cloud.google.com/api
+   * s/design/resource_names#relative_resource_name) of the finding. Example:
+   * "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+   * "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+   * "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
    * @param Finding $postBody
    * @param array $optParams Optional parameters.
    *
@@ -185,6 +191,7 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    * and replacing source_properties. Individual source_properties can be
    * added/updated by using "source_properties." in the field mask.
    * @return Finding
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Finding $postBody, $optParams = [])
   {
@@ -193,15 +200,38 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
     return $this->call('patch', [$params], Finding::class);
   }
   /**
+   * Updates the mute state of a finding. (findings.setMute)
+   *
+   * @param string $name Required. The [relative resource name](https://cloud.goog
+   * le.com/apis/design/resource_names#relative_resource_name) of the finding.
+   * Example:
+   * `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+   * `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+   * `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
+   * @param SetMuteRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Finding
+   * @throws \Google\Service\Exception
+   */
+  public function setMute($name, SetMuteRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('setMute', [$params], Finding::class);
+  }
+  /**
    * Updates the state of a finding. (findings.setState)
    *
-   * @param string $name Required. The relative resource name of the finding. See:
-   * https://cloud.google.com/apis/design/resource_names#relative_resource_name
+   * @param string $name Required. The [relative resource name](https://cloud.goog
+   * le.com/apis/design/resource_names#relative_resource_name) of the finding.
    * Example:
-   * "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+   * `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+   * `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+   * `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
    * @param SetFindingStateRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Finding
+   * @throws \Google\Service\Exception
    */
   public function setState($name, SetFindingStateRequest $postBody, $optParams = [])
   {
@@ -222,12 +252,14 @@ class OrganizationsSourcesFindings extends \Google\Service\Resource
    *
    * @opt_param string startTime The time at which the updated SecurityMarks take
    * effect. If not set uses current server time. Updates will be applied to the
-   * SecurityMarks that are active immediately preceding this time.
+   * SecurityMarks that are active immediately preceding this time. Must be
+   * earlier or equal to the server time.
    * @opt_param string updateMask The FieldMask to use when updating the security
    * marks resource. The field mask must not contain duplicate fields. If empty or
    * set to "marks", all marks will be replaced. Individual marks can be updated
    * using "marks.".
    * @return SecurityMarks
+   * @throws \Google\Service\Exception
    */
   public function updateSecurityMarks($name, SecurityMarks $postBody, $optParams = [])
   {

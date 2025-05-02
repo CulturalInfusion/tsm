@@ -19,11 +19,39 @@ namespace Google\Service\SQLAdmin;
 
 class SqlInstancesStartExternalSyncRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $migrationType;
   protected $mysqlSyncConfigType = MySqlSyncConfig::class;
   protected $mysqlSyncConfigDataType = '';
+  /**
+   * @var bool
+   */
   public $skipVerification;
+  /**
+   * @var string
+   */
   public $syncMode;
+  /**
+   * @var string
+   */
+  public $syncParallelLevel;
 
+  /**
+   * @param string
+   */
+  public function setMigrationType($migrationType)
+  {
+    $this->migrationType = $migrationType;
+  }
+  /**
+   * @return string
+   */
+  public function getMigrationType()
+  {
+    return $this->migrationType;
+  }
   /**
    * @param MySqlSyncConfig
    */
@@ -38,21 +66,47 @@ class SqlInstancesStartExternalSyncRequest extends \Google\Model
   {
     return $this->mysqlSyncConfig;
   }
+  /**
+   * @param bool
+   */
   public function setSkipVerification($skipVerification)
   {
     $this->skipVerification = $skipVerification;
   }
+  /**
+   * @return bool
+   */
   public function getSkipVerification()
   {
     return $this->skipVerification;
   }
+  /**
+   * @param string
+   */
   public function setSyncMode($syncMode)
   {
     $this->syncMode = $syncMode;
   }
+  /**
+   * @return string
+   */
   public function getSyncMode()
   {
     return $this->syncMode;
+  }
+  /**
+   * @param string
+   */
+  public function setSyncParallelLevel($syncParallelLevel)
+  {
+    $this->syncParallelLevel = $syncParallelLevel;
+  }
+  /**
+   * @return string
+   */
+  public function getSyncParallelLevel()
+  {
+    return $this->syncParallelLevel;
   }
 }
 

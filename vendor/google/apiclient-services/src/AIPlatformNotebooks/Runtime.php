@@ -21,17 +21,40 @@ class Runtime extends \Google\Model
 {
   protected $accessConfigType = RuntimeAccessConfig::class;
   protected $accessConfigDataType = '';
+  public $accessConfig;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $healthState;
+  /**
+   * @var string[]
+   */
+  public $labels = [];
   protected $metricsType = RuntimeMetrics::class;
   protected $metricsDataType = '';
+  public $metrics;
+  /**
+   * @var string
+   */
   public $name;
   protected $softwareConfigType = RuntimeSoftwareConfig::class;
   protected $softwareConfigDataType = '';
+  public $softwareConfig;
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $updateTime;
   protected $virtualMachineType = VirtualMachine::class;
   protected $virtualMachineDataType = '';
+  public $virtualMachine;
 
   /**
    * @param RuntimeAccessConfig
@@ -47,21 +70,47 @@ class Runtime extends \Google\Model
   {
     return $this->accessConfig;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setHealthState($healthState)
   {
     $this->healthState = $healthState;
   }
+  /**
+   * @return string
+   */
   public function getHealthState()
   {
     return $this->healthState;
+  }
+  /**
+   * @param string[]
+   */
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  /**
+   * @return string[]
+   */
+  public function getLabels()
+  {
+    return $this->labels;
   }
   /**
    * @param RuntimeMetrics
@@ -77,10 +126,16 @@ class Runtime extends \Google\Model
   {
     return $this->metrics;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -99,18 +154,30 @@ class Runtime extends \Google\Model
   {
     return $this->softwareConfig;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

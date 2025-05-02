@@ -27,9 +27,14 @@ class GoogleCloudDialogflowCxV3beta1QueryInput extends \Google\Model
   protected $eventDataType = '';
   protected $intentType = GoogleCloudDialogflowCxV3beta1IntentInput::class;
   protected $intentDataType = '';
+  /**
+   * @var string
+   */
   public $languageCode;
   protected $textType = GoogleCloudDialogflowCxV3beta1TextInput::class;
   protected $textDataType = '';
+  protected $toolCallResultType = GoogleCloudDialogflowCxV3beta1ToolCallResult::class;
+  protected $toolCallResultDataType = '';
 
   /**
    * @param GoogleCloudDialogflowCxV3beta1AudioInput
@@ -87,10 +92,16 @@ class GoogleCloudDialogflowCxV3beta1QueryInput extends \Google\Model
   {
     return $this->intent;
   }
+  /**
+   * @param string
+   */
   public function setLanguageCode($languageCode)
   {
     $this->languageCode = $languageCode;
   }
+  /**
+   * @return string
+   */
   public function getLanguageCode()
   {
     return $this->languageCode;
@@ -108,6 +119,20 @@ class GoogleCloudDialogflowCxV3beta1QueryInput extends \Google\Model
   public function getText()
   {
     return $this->text;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3beta1ToolCallResult
+   */
+  public function setToolCallResult(GoogleCloudDialogflowCxV3beta1ToolCallResult $toolCallResult)
+  {
+    $this->toolCallResult = $toolCallResult;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3beta1ToolCallResult
+   */
+  public function getToolCallResult()
+  {
+    return $this->toolCallResult;
   }
 }
 

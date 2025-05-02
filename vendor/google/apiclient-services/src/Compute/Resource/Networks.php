@@ -55,6 +55,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function addPeering($project, $network, NetworksAddPeeringRequest $postBody, $optParams = [])
   {
@@ -80,6 +81,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $network, $optParams = [])
   {
@@ -88,13 +90,13 @@ class Networks extends \Google\Service\Resource
     return $this->call('delete', [$params], Operation::class);
   }
   /**
-   * Returns the specified network. Gets a list of available networks by making a
-   * list() request. (networks.get)
+   * Returns the specified network. (networks.get)
    *
    * @param string $project Project ID for this request.
    * @param string $network Name of the network to return.
    * @param array $optParams Optional parameters.
    * @return Network
+   * @throws \Google\Service\Exception
    */
   public function get($project, $network, $optParams = [])
   {
@@ -110,6 +112,7 @@ class Networks extends \Google\Service\Resource
    * @param string $network Name of the network for this request.
    * @param array $optParams Optional parameters.
    * @return NetworksGetEffectiveFirewallsResponse
+   * @throws \Google\Service\Exception
    */
   public function getEffectiveFirewalls($project, $network, $optParams = [])
   {
@@ -136,6 +139,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, Network $postBody, $optParams = [])
   {
@@ -151,21 +155,37 @@ class Networks extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter A filter expression that filters resources listed in
-   * the response. The expression must specify the field name, a comparison
-   * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either `=`,
-   * `!=`, `>`, or `<`. For example, if you are filtering Compute Engine
-   * instances, you can exclude instances named `example-instance` by specifying
-   * `name != example-instance`. You can also filter nested fields. For example,
-   * you could specify `scheduling.automaticRestart = false` to include instances
-   * only if they are not scheduled for automatic restarts. You can use filtering
-   * on nested fields to filter based on resource labels. To filter on multiple
-   * expressions, provide each separate expression within parentheses. For
-   * example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
-   * Skylake") ``` By default, each expression is an `AND` expression. However,
-   * you can include `AND` and `OR` expressions explicitly. For example: ```
-   * (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true) ```
+   * the response. Most Compute resources support two types of filter expressions:
+   * expressions that support regular expressions and expressions that follow API
+   * improvement proposal AIP-160. These two types of filter expressions cannot be
+   * mixed in one request. If you want to use AIP-160, your expression must
+   * specify the field name, an operator, and the value that you want to use for
+   * filtering. The value must be a string, a number, or a boolean. The operator
+   * must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you
+   * are filtering Compute Engine instances, you can exclude instances named
+   * `example-instance` by specifying `name != example-instance`. The `:*`
+   * comparison can be used to test whether a key has been defined. For example,
+   * to find all objects with `owner` label use: ``` labels.owner:* ``` You can
+   * also filter nested fields. For example, you could specify
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels. To filter on multiple expressions,
+   * provide each separate expression within parentheses. For example: ```
+   * (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+   * default, each expression is an `AND` expression. However, you can include
+   * `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+   * Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+   * (scheduling.automaticRestart = true) ``` If you want to use a regular
+   * expression, use the `eq` (equal) or `ne` (not equal) operator against a
+   * single un-parenthesized expression with or without quotes or against multiple
+   * parenthesized expressions. Examples: `fieldname eq unquoted literal`
+   * `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"`
+   * `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+   * interpreted as a regular expression using Google RE2 library syntax. The
+   * literal value must match the entire field. For example, to filter for
+   * instances that do not end with name "instance", you would use `name ne
+   * .*instance`. You cannot combine constraints on multiple fields using regular
+   * expressions.
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
    * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
@@ -184,8 +204,11 @@ class Networks extends \Google\Service\Resource
    * of results.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return NetworkList
+   * @throws \Google\Service\Exception
    */
   public function listNetworks($project, $optParams = [])
   {
@@ -203,21 +226,37 @@ class Networks extends \Google\Service\Resource
    *
    * @opt_param string direction The direction of the exchanged routes.
    * @opt_param string filter A filter expression that filters resources listed in
-   * the response. The expression must specify the field name, a comparison
-   * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either `=`,
-   * `!=`, `>`, or `<`. For example, if you are filtering Compute Engine
-   * instances, you can exclude instances named `example-instance` by specifying
-   * `name != example-instance`. You can also filter nested fields. For example,
-   * you could specify `scheduling.automaticRestart = false` to include instances
-   * only if they are not scheduled for automatic restarts. You can use filtering
-   * on nested fields to filter based on resource labels. To filter on multiple
-   * expressions, provide each separate expression within parentheses. For
-   * example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
-   * Skylake") ``` By default, each expression is an `AND` expression. However,
-   * you can include `AND` and `OR` expressions explicitly. For example: ```
-   * (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true) ```
+   * the response. Most Compute resources support two types of filter expressions:
+   * expressions that support regular expressions and expressions that follow API
+   * improvement proposal AIP-160. These two types of filter expressions cannot be
+   * mixed in one request. If you want to use AIP-160, your expression must
+   * specify the field name, an operator, and the value that you want to use for
+   * filtering. The value must be a string, a number, or a boolean. The operator
+   * must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you
+   * are filtering Compute Engine instances, you can exclude instances named
+   * `example-instance` by specifying `name != example-instance`. The `:*`
+   * comparison can be used to test whether a key has been defined. For example,
+   * to find all objects with `owner` label use: ``` labels.owner:* ``` You can
+   * also filter nested fields. For example, you could specify
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels. To filter on multiple expressions,
+   * provide each separate expression within parentheses. For example: ```
+   * (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+   * default, each expression is an `AND` expression. However, you can include
+   * `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+   * Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+   * (scheduling.automaticRestart = true) ``` If you want to use a regular
+   * expression, use the `eq` (equal) or `ne` (not equal) operator against a
+   * single un-parenthesized expression with or without quotes or against multiple
+   * parenthesized expressions. Examples: `fieldname eq unquoted literal`
+   * `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"`
+   * `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+   * interpreted as a regular expression using Google RE2 library syntax. The
+   * literal value must match the entire field. For example, to filter for
+   * instances that do not end with name "instance", you would use `name ne
+   * .*instance`. You cannot combine constraints on multiple fields using regular
+   * expressions.
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
    * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
@@ -240,8 +279,11 @@ class Networks extends \Google\Service\Resource
    * all subnet routes, static routes and dynamic routes in the region.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return ExchangedPeeringRoutesList
+   * @throws \Google\Service\Exception
    */
   public function listPeeringRoutes($project, $network, $optParams = [])
   {
@@ -250,8 +292,8 @@ class Networks extends \Google\Service\Resource
     return $this->call('listPeeringRoutes', [$params], ExchangedPeeringRoutesList::class);
   }
   /**
-   * Patches the specified network with the data included in the request. Only the
-   * following fields can be modified: routingConfig.routingMode. (networks.patch)
+   * Patches the specified network with the data included in the request. Only
+   * routingConfig can be modified. (networks.patch)
    *
    * @param string $project Project ID for this request.
    * @param string $network Name of the network to update.
@@ -269,6 +311,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($project, $network, Network $postBody, $optParams = [])
   {
@@ -295,6 +338,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function removePeering($project, $network, NetworksRemovePeeringRequest $postBody, $optParams = [])
   {
@@ -321,6 +365,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function switchToCustomMode($project, $network, $optParams = [])
   {
@@ -329,10 +374,9 @@ class Networks extends \Google\Service\Resource
     return $this->call('switchToCustomMode', [$params], Operation::class);
   }
   /**
-   * Updates the specified network peering with the data included in the request
-   * Only the following fields can be modified:
-   * NetworkPeering.export_custom_routes, and NetworkPeering.import_custom_routes
-   * (networks.updatePeering)
+   * Updates the specified network peering with the data included in the request.
+   * You can only modify the NetworkPeering.export_custom_routes field and the
+   * NetworkPeering.import_custom_routes field. (networks.updatePeering)
    *
    * @param string $project Project ID for this request.
    * @param string $network Name of the network resource which the updated peering
@@ -351,6 +395,7 @@ class Networks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function updatePeering($project, $network, NetworksUpdatePeeringRequest $postBody, $optParams = [])
   {

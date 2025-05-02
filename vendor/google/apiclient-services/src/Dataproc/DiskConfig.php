@@ -19,30 +19,111 @@ namespace Google\Service\Dataproc;
 
 class DiskConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $bootDiskProvisionedIops;
+  /**
+   * @var string
+   */
+  public $bootDiskProvisionedThroughput;
+  /**
+   * @var int
+   */
   public $bootDiskSizeGb;
+  /**
+   * @var string
+   */
   public $bootDiskType;
+  /**
+   * @var string
+   */
+  public $localSsdInterface;
+  /**
+   * @var int
+   */
   public $numLocalSsds;
 
+  /**
+   * @param string
+   */
+  public function setBootDiskProvisionedIops($bootDiskProvisionedIops)
+  {
+    $this->bootDiskProvisionedIops = $bootDiskProvisionedIops;
+  }
+  /**
+   * @return string
+   */
+  public function getBootDiskProvisionedIops()
+  {
+    return $this->bootDiskProvisionedIops;
+  }
+  /**
+   * @param string
+   */
+  public function setBootDiskProvisionedThroughput($bootDiskProvisionedThroughput)
+  {
+    $this->bootDiskProvisionedThroughput = $bootDiskProvisionedThroughput;
+  }
+  /**
+   * @return string
+   */
+  public function getBootDiskProvisionedThroughput()
+  {
+    return $this->bootDiskProvisionedThroughput;
+  }
+  /**
+   * @param int
+   */
   public function setBootDiskSizeGb($bootDiskSizeGb)
   {
     $this->bootDiskSizeGb = $bootDiskSizeGb;
   }
+  /**
+   * @return int
+   */
   public function getBootDiskSizeGb()
   {
     return $this->bootDiskSizeGb;
   }
+  /**
+   * @param string
+   */
   public function setBootDiskType($bootDiskType)
   {
     $this->bootDiskType = $bootDiskType;
   }
+  /**
+   * @return string
+   */
   public function getBootDiskType()
   {
     return $this->bootDiskType;
   }
+  /**
+   * @param string
+   */
+  public function setLocalSsdInterface($localSsdInterface)
+  {
+    $this->localSsdInterface = $localSsdInterface;
+  }
+  /**
+   * @return string
+   */
+  public function getLocalSsdInterface()
+  {
+    return $this->localSsdInterface;
+  }
+  /**
+   * @param int
+   */
   public function setNumLocalSsds($numLocalSsds)
   {
     $this->numLocalSsds = $numLocalSsds;
   }
+  /**
+   * @return int
+   */
   public function getNumLocalSsds()
   {
     return $this->numLocalSsds;

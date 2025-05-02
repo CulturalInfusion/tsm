@@ -19,39 +19,94 @@ namespace Google\Service\Directory;
 
 class UserEmail extends \Google\Model
 {
+  protected $internal_gapi_mappings = [
+        "publicKeyEncryptionCertificates" => "public_key_encryption_certificates",
+  ];
+  /**
+   * @var string
+   */
   public $address;
+  /**
+   * @var string
+   */
   public $customType;
+  /**
+   * @var bool
+   */
   public $primary;
+  protected $publicKeyEncryptionCertificatesType = UserEmailPublicKeyEncryptionCertificates::class;
+  protected $publicKeyEncryptionCertificatesDataType = '';
+  /**
+   * @var string
+   */
   public $type;
 
+  /**
+   * @param string
+   */
   public function setAddress($address)
   {
     $this->address = $address;
   }
+  /**
+   * @return string
+   */
   public function getAddress()
   {
     return $this->address;
   }
+  /**
+   * @param string
+   */
   public function setCustomType($customType)
   {
     $this->customType = $customType;
   }
+  /**
+   * @return string
+   */
   public function getCustomType()
   {
     return $this->customType;
   }
+  /**
+   * @param bool
+   */
   public function setPrimary($primary)
   {
     $this->primary = $primary;
   }
+  /**
+   * @return bool
+   */
   public function getPrimary()
   {
     return $this->primary;
   }
+  /**
+   * @param UserEmailPublicKeyEncryptionCertificates
+   */
+  public function setPublicKeyEncryptionCertificates(UserEmailPublicKeyEncryptionCertificates $publicKeyEncryptionCertificates)
+  {
+    $this->publicKeyEncryptionCertificates = $publicKeyEncryptionCertificates;
+  }
+  /**
+   * @return UserEmailPublicKeyEncryptionCertificates
+   */
+  public function getPublicKeyEncryptionCertificates()
+  {
+    return $this->publicKeyEncryptionCertificates;
+  }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

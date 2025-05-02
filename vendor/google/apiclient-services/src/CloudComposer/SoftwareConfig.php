@@ -19,51 +19,148 @@ namespace Google\Service\CloudComposer;
 
 class SoftwareConfig extends \Google\Model
 {
+  /**
+   * @var string[]
+   */
   public $airflowConfigOverrides;
+  protected $cloudDataLineageIntegrationType = CloudDataLineageIntegration::class;
+  protected $cloudDataLineageIntegrationDataType = '';
+  /**
+   * @var string[]
+   */
   public $envVariables;
+  /**
+   * @var string
+   */
   public $imageVersion;
+  /**
+   * @var string[]
+   */
   public $pypiPackages;
+  /**
+   * @var string
+   */
   public $pythonVersion;
+  /**
+   * @var int
+   */
+  public $schedulerCount;
+  /**
+   * @var string
+   */
+  public $webServerPluginsMode;
 
+  /**
+   * @param string[]
+   */
   public function setAirflowConfigOverrides($airflowConfigOverrides)
   {
     $this->airflowConfigOverrides = $airflowConfigOverrides;
   }
+  /**
+   * @return string[]
+   */
   public function getAirflowConfigOverrides()
   {
     return $this->airflowConfigOverrides;
   }
+  /**
+   * @param CloudDataLineageIntegration
+   */
+  public function setCloudDataLineageIntegration(CloudDataLineageIntegration $cloudDataLineageIntegration)
+  {
+    $this->cloudDataLineageIntegration = $cloudDataLineageIntegration;
+  }
+  /**
+   * @return CloudDataLineageIntegration
+   */
+  public function getCloudDataLineageIntegration()
+  {
+    return $this->cloudDataLineageIntegration;
+  }
+  /**
+   * @param string[]
+   */
   public function setEnvVariables($envVariables)
   {
     $this->envVariables = $envVariables;
   }
+  /**
+   * @return string[]
+   */
   public function getEnvVariables()
   {
     return $this->envVariables;
   }
+  /**
+   * @param string
+   */
   public function setImageVersion($imageVersion)
   {
     $this->imageVersion = $imageVersion;
   }
+  /**
+   * @return string
+   */
   public function getImageVersion()
   {
     return $this->imageVersion;
   }
+  /**
+   * @param string[]
+   */
   public function setPypiPackages($pypiPackages)
   {
     $this->pypiPackages = $pypiPackages;
   }
+  /**
+   * @return string[]
+   */
   public function getPypiPackages()
   {
     return $this->pypiPackages;
   }
+  /**
+   * @param string
+   */
   public function setPythonVersion($pythonVersion)
   {
     $this->pythonVersion = $pythonVersion;
   }
+  /**
+   * @return string
+   */
   public function getPythonVersion()
   {
     return $this->pythonVersion;
+  }
+  /**
+   * @param int
+   */
+  public function setSchedulerCount($schedulerCount)
+  {
+    $this->schedulerCount = $schedulerCount;
+  }
+  /**
+   * @return int
+   */
+  public function getSchedulerCount()
+  {
+    return $this->schedulerCount;
+  }
+  /**
+   * @param string
+   */
+  public function setWebServerPluginsMode($webServerPluginsMode)
+  {
+    $this->webServerPluginsMode = $webServerPluginsMode;
+  }
+  /**
+   * @return string
+   */
+  public function getWebServerPluginsMode()
+  {
+    return $this->webServerPluginsMode;
   }
 }
 

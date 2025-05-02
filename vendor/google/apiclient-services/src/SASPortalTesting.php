@@ -34,9 +34,12 @@ use Google\Client;
  */
 class SASPortalTesting extends \Google\Service
 {
-  /** See your primary Google Account email address. */
-  const USERINFO_EMAIL =
-      "https://www.googleapis.com/auth/userinfo.email";
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
+  const CLOUD_PLATFORM =
+      "https://www.googleapis.com/auth/cloud-platform";
+  /** Read, create, update, and delete your SAS Portal data.. */
+  const SASPORTAL =
+      "https://www.googleapis.com/auth/sasportal";
 
   public $customers;
   public $customers_deployments;
@@ -58,6 +61,7 @@ class SASPortalTesting extends \Google\Service
   public $nodes_nodes_devices;
   public $nodes_nodes_nodes;
   public $policies;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the SASPortalTesting service.
@@ -70,6 +74,7 @@ class SASPortalTesting extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://prod-tt-sasportal.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://prod-tt-sasportal.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1alpha1';
@@ -104,6 +109,18 @@ class SASPortalTesting extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'listGcpProjectDeployments' => [
+              'path' => 'v1alpha1/customers:listGcpProjectDeployments',
+              'httpMethod' => 'GET',
+              'parameters' => [],
+            ],'listLegacyOrganizations' => [
+              'path' => 'v1alpha1/customers:listLegacyOrganizations',
+              'httpMethod' => 'GET',
+              'parameters' => [],
+            ],'migrateOrganization' => [
+              'path' => 'v1alpha1/customers:migrateOrganization',
+              'httpMethod' => 'POST',
+              'parameters' => [],
             ],'patch' => [
               'path' => 'v1alpha1/{+name}',
               'httpMethod' => 'PATCH',
@@ -118,6 +135,14 @@ class SASPortalTesting extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'provisionDeployment' => [
+              'path' => 'v1alpha1/customers:provisionDeployment',
+              'httpMethod' => 'POST',
+              'parameters' => [],
+            ],'setupSasAnalytics' => [
+              'path' => 'v1alpha1/customers:setupSasAnalytics',
+              'httpMethod' => 'POST',
+              'parameters' => [],
             ],
           ]
         ]

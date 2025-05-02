@@ -31,7 +31,7 @@ use Google\Service\NetworkManagement\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $networkmanagementService = new Google\Service\NetworkManagement(...);
- *   $connectivityTests = $networkmanagementService->connectivityTests;
+ *   $connectivityTests = $networkmanagementService->projects_locations_global_connectivityTests;
  *  </code>
  */
 class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\Service\Resource
@@ -59,6 +59,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * be between 1-40 characters. * Must end with a number or a letter. * Must be
    * unique within the customer project
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, ConnectivityTest $postBody, $optParams = [])
   {
@@ -73,6 +74,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * `projects/{project_id}/locations/global/connectivityTests/{test_id}`
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -87,6 +89,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
    * @param array $optParams Optional parameters.
    * @return ConnectivityTest
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -100,19 +103,25 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * (connectivityTests.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -143,6 +152,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * @opt_param string pageToken Page token from an earlier query, as returned in
    * `next_page_token`.
    * @return ListConnectivityTestsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsNetworkmanagementGlobalConnectivityTests($parent, $optParams = [])
   {
@@ -161,9 +171,9 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * reachability result returns a value of UNKNOWN. If the endpoint
    * specifications in `ConnectivityTest` are incomplete, the reachability result
    * returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest`
-   * for for more details. (connectivityTests.patch)
+   * for more details. (connectivityTests.patch)
    *
-   * @param string $name Required. Unique name of the resource using the form:
+   * @param string $name Identifier. Unique name of the resource using the form:
    * `projects/{project_id}/locations/global/connectivityTests/{test_id}`
    * @param ConnectivityTest $postBody
    * @param array $optParams Optional parameters.
@@ -171,6 +181,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * @opt_param string updateMask Required. Mask of fields to update. At least one
    * path must be supplied in this field.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, ConnectivityTest $postBody, $optParams = [])
   {
@@ -194,6 +205,7 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * @param RerunConnectivityTestRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function rerun($name, RerunConnectivityTestRequest $postBody, $optParams = [])
   {
@@ -207,11 +219,13 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * `PERMISSION_DENIED` errors. (connectivityTests.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -228,11 +242,13 @@ class ProjectsLocationsNetworkmanagementGlobalConnectivityTests extends \Google\
    * (connectivityTests.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

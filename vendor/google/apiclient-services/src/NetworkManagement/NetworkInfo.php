@@ -19,30 +19,93 @@ namespace Google\Service\NetworkManagement;
 
 class NetworkInfo extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $matchedIpRange;
+  /**
+   * @var string
+   */
+  public $matchedSubnetUri;
+  /**
+   * @var string
+   */
+  public $region;
+  /**
+   * @var string
+   */
   public $uri;
 
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setMatchedIpRange($matchedIpRange)
   {
     $this->matchedIpRange = $matchedIpRange;
   }
+  /**
+   * @return string
+   */
   public function getMatchedIpRange()
   {
     return $this->matchedIpRange;
   }
+  /**
+   * @param string
+   */
+  public function setMatchedSubnetUri($matchedSubnetUri)
+  {
+    $this->matchedSubnetUri = $matchedSubnetUri;
+  }
+  /**
+   * @return string
+   */
+  public function getMatchedSubnetUri()
+  {
+    return $this->matchedSubnetUri;
+  }
+  /**
+   * @param string
+   */
+  public function setRegion($region)
+  {
+    $this->region = $region;
+  }
+  /**
+   * @return string
+   */
+  public function getRegion()
+  {
+    return $this->region;
+  }
+  /**
+   * @param string
+   */
   public function setUri($uri)
   {
     $this->uri = $uri;
   }
+  /**
+   * @return string
+   */
   public function getUri()
   {
     return $this->uri;

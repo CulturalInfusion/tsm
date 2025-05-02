@@ -19,12 +19,39 @@ namespace Google\Service\HangoutsChat;
 
 class GoogleAppsCardV1TextParagraph extends \Google\Model
 {
+  /**
+   * @var int
+   */
+  public $maxLines;
+  /**
+   * @var string
+   */
   public $text;
 
+  /**
+   * @param int
+   */
+  public function setMaxLines($maxLines)
+  {
+    $this->maxLines = $maxLines;
+  }
+  /**
+   * @return int
+   */
+  public function getMaxLines()
+  {
+    return $this->maxLines;
+  }
+  /**
+   * @param string
+   */
   public function setText($text)
   {
     $this->text = $text;
   }
+  /**
+   * @return string
+   */
   public function getText()
   {
     return $this->text;

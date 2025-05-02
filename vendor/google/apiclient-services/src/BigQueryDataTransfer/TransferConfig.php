@@ -19,69 +19,155 @@ namespace Google\Service\BigQueryDataTransfer;
 
 class TransferConfig extends \Google\Model
 {
+  /**
+   * @var int
+   */
   public $dataRefreshWindowDays;
+  /**
+   * @var string
+   */
   public $dataSourceId;
+  /**
+   * @var string
+   */
   public $datasetRegion;
+  /**
+   * @var string
+   */
   public $destinationDatasetId;
+  /**
+   * @var bool
+   */
   public $disabled;
+  /**
+   * @var string
+   */
   public $displayName;
   protected $emailPreferencesType = EmailPreferences::class;
   protected $emailPreferencesDataType = '';
+  protected $encryptionConfigurationType = EncryptionConfiguration::class;
+  protected $encryptionConfigurationDataType = '';
+  protected $errorType = Status::class;
+  protected $errorDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $nextRunTime;
+  /**
+   * @var string
+   */
   public $notificationPubsubTopic;
+  protected $ownerInfoType = UserInfo::class;
+  protected $ownerInfoDataType = '';
+  /**
+   * @var array[]
+   */
   public $params;
+  /**
+   * @var string
+   */
   public $schedule;
   protected $scheduleOptionsType = ScheduleOptions::class;
   protected $scheduleOptionsDataType = '';
+  protected $scheduleOptionsV2Type = ScheduleOptionsV2::class;
+  protected $scheduleOptionsV2DataType = '';
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $updateTime;
+  /**
+   * @var string
+   */
   public $userId;
 
+  /**
+   * @param int
+   */
   public function setDataRefreshWindowDays($dataRefreshWindowDays)
   {
     $this->dataRefreshWindowDays = $dataRefreshWindowDays;
   }
+  /**
+   * @return int
+   */
   public function getDataRefreshWindowDays()
   {
     return $this->dataRefreshWindowDays;
   }
+  /**
+   * @param string
+   */
   public function setDataSourceId($dataSourceId)
   {
     $this->dataSourceId = $dataSourceId;
   }
+  /**
+   * @return string
+   */
   public function getDataSourceId()
   {
     return $this->dataSourceId;
   }
+  /**
+   * @param string
+   */
   public function setDatasetRegion($datasetRegion)
   {
     $this->datasetRegion = $datasetRegion;
   }
+  /**
+   * @return string
+   */
   public function getDatasetRegion()
   {
     return $this->datasetRegion;
   }
+  /**
+   * @param string
+   */
   public function setDestinationDatasetId($destinationDatasetId)
   {
     $this->destinationDatasetId = $destinationDatasetId;
   }
+  /**
+   * @return string
+   */
   public function getDestinationDatasetId()
   {
     return $this->destinationDatasetId;
   }
+  /**
+   * @param bool
+   */
   public function setDisabled($disabled)
   {
     $this->disabled = $disabled;
   }
+  /**
+   * @return bool
+   */
   public function getDisabled()
   {
     return $this->disabled;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
@@ -100,42 +186,114 @@ class TransferConfig extends \Google\Model
   {
     return $this->emailPreferences;
   }
+  /**
+   * @param EncryptionConfiguration
+   */
+  public function setEncryptionConfiguration(EncryptionConfiguration $encryptionConfiguration)
+  {
+    $this->encryptionConfiguration = $encryptionConfiguration;
+  }
+  /**
+   * @return EncryptionConfiguration
+   */
+  public function getEncryptionConfiguration()
+  {
+    return $this->encryptionConfiguration;
+  }
+  /**
+   * @param Status
+   */
+  public function setError(Status $error)
+  {
+    $this->error = $error;
+  }
+  /**
+   * @return Status
+   */
+  public function getError()
+  {
+    return $this->error;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setNextRunTime($nextRunTime)
   {
     $this->nextRunTime = $nextRunTime;
   }
+  /**
+   * @return string
+   */
   public function getNextRunTime()
   {
     return $this->nextRunTime;
   }
+  /**
+   * @param string
+   */
   public function setNotificationPubsubTopic($notificationPubsubTopic)
   {
     $this->notificationPubsubTopic = $notificationPubsubTopic;
   }
+  /**
+   * @return string
+   */
   public function getNotificationPubsubTopic()
   {
     return $this->notificationPubsubTopic;
   }
+  /**
+   * @param UserInfo
+   */
+  public function setOwnerInfo(UserInfo $ownerInfo)
+  {
+    $this->ownerInfo = $ownerInfo;
+  }
+  /**
+   * @return UserInfo
+   */
+  public function getOwnerInfo()
+  {
+    return $this->ownerInfo;
+  }
+  /**
+   * @param array[]
+   */
   public function setParams($params)
   {
     $this->params = $params;
   }
+  /**
+   * @return array[]
+   */
   public function getParams()
   {
     return $this->params;
   }
+  /**
+   * @param string
+   */
   public function setSchedule($schedule)
   {
     $this->schedule = $schedule;
   }
+  /**
+   * @return string
+   */
   public function getSchedule()
   {
     return $this->schedule;
@@ -154,26 +312,58 @@ class TransferConfig extends \Google\Model
   {
     return $this->scheduleOptions;
   }
+  /**
+   * @param ScheduleOptionsV2
+   */
+  public function setScheduleOptionsV2(ScheduleOptionsV2 $scheduleOptionsV2)
+  {
+    $this->scheduleOptionsV2 = $scheduleOptionsV2;
+  }
+  /**
+   * @return ScheduleOptionsV2
+   */
+  public function getScheduleOptionsV2()
+  {
+    return $this->scheduleOptionsV2;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;
   }
+  /**
+   * @param string
+   */
   public function setUserId($userId)
   {
     $this->userId = $userId;
   }
+  /**
+   * @return string
+   */
   public function getUserId()
   {
     return $this->userId;

@@ -22,9 +22,25 @@ class User extends \Google\Collection
   protected $collection_key = 'assignedUserRoles';
   protected $assignedUserRolesType = AssignedUserRole::class;
   protected $assignedUserRolesDataType = 'array';
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $email;
+  /**
+   * @var string
+   */
+  public $lastLoginTime;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $userId;
 
   /**
@@ -41,34 +57,72 @@ class User extends \Google\Collection
   {
     return $this->assignedUserRoles;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEmail($email)
   {
     $this->email = $email;
   }
+  /**
+   * @return string
+   */
   public function getEmail()
   {
     return $this->email;
   }
+  /**
+   * @param string
+   */
+  public function setLastLoginTime($lastLoginTime)
+  {
+    $this->lastLoginTime = $lastLoginTime;
+  }
+  /**
+   * @return string
+   */
+  public function getLastLoginTime()
+  {
+    return $this->lastLoginTime;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setUserId($userId)
   {
     $this->userId = $userId;
   }
+  /**
+   * @return string
+   */
   public function getUserId()
   {
     return $this->userId;

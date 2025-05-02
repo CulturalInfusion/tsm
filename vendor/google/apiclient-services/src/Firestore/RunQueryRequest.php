@@ -19,13 +19,35 @@ namespace Google\Service\Firestore;
 
 class RunQueryRequest extends \Google\Model
 {
+  protected $explainOptionsType = ExplainOptions::class;
+  protected $explainOptionsDataType = '';
   protected $newTransactionType = TransactionOptions::class;
   protected $newTransactionDataType = '';
+  /**
+   * @var string
+   */
   public $readTime;
   protected $structuredQueryType = StructuredQuery::class;
   protected $structuredQueryDataType = '';
+  /**
+   * @var string
+   */
   public $transaction;
 
+  /**
+   * @param ExplainOptions
+   */
+  public function setExplainOptions(ExplainOptions $explainOptions)
+  {
+    $this->explainOptions = $explainOptions;
+  }
+  /**
+   * @return ExplainOptions
+   */
+  public function getExplainOptions()
+  {
+    return $this->explainOptions;
+  }
   /**
    * @param TransactionOptions
    */
@@ -40,10 +62,16 @@ class RunQueryRequest extends \Google\Model
   {
     return $this->newTransaction;
   }
+  /**
+   * @param string
+   */
   public function setReadTime($readTime)
   {
     $this->readTime = $readTime;
   }
+  /**
+   * @return string
+   */
   public function getReadTime()
   {
     return $this->readTime;
@@ -62,10 +90,16 @@ class RunQueryRequest extends \Google\Model
   {
     return $this->structuredQuery;
   }
+  /**
+   * @param string
+   */
   public function setTransaction($transaction)
   {
     $this->transaction = $transaction;
   }
+  /**
+   * @return string
+   */
   public function getTransaction()
   {
     return $this->transaction;

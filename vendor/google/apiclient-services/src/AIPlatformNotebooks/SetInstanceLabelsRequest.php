@@ -19,12 +19,21 @@ namespace Google\Service\AIPlatformNotebooks;
 
 class SetInstanceLabelsRequest extends \Google\Model
 {
-  public $labels;
+  /**
+   * @var string[]
+   */
+  public $labels = [];
 
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;

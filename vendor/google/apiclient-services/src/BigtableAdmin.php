@@ -55,10 +55,10 @@ class BigtableAdmin extends \Google\Service
   /** Administer your Cloud Bigtable tables. */
   const CLOUD_BIGTABLE_ADMIN_TABLE =
       "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
 
@@ -68,8 +68,11 @@ class BigtableAdmin extends \Google\Service
   public $projects_instances_appProfiles;
   public $projects_instances_clusters;
   public $projects_instances_clusters_backups;
+  public $projects_instances_clusters_hotTablets;
   public $projects_instances_tables;
+  public $projects_instances_tables_authorizedViews;
   public $projects_locations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the BigtableAdmin service.
@@ -82,6 +85,7 @@ class BigtableAdmin extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://bigtableadmin.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://bigtableadmin.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v2';
@@ -93,27 +97,7 @@ class BigtableAdmin extends \Google\Service
         'operations',
         [
           'methods' => [
-            'cancel' => [
-              'path' => 'v2/{+name}:cancel',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'delete' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
+            'get' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
@@ -443,7 +427,17 @@ class BigtableAdmin extends \Google\Service
         'backups',
         [
           'methods' => [
-            'create' => [
+            'copy' => [
+              'path' => 'v2/{+parent}/backups:copy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'create' => [
               'path' => 'v2/{+parent}/backups',
               'httpMethod' => 'POST',
               'parameters' => [
@@ -545,6 +539,42 @@ class BigtableAdmin extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_instances_clusters_hotTablets = new BigtableAdmin\Resource\ProjectsInstancesClustersHotTablets(
+        $this,
+        $this->serviceName,
+        'hotTablets',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/hotTablets',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'endTime' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'startTime' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],
@@ -663,6 +693,20 @@ class BigtableAdmin extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'restore' => [
               'path' => 'v2/{+parent}/tables:restore',
               'httpMethod' => 'POST',
@@ -671,6 +715,138 @@ class BigtableAdmin extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'undelete' => [
+              'path' => 'v2/{+name}:undelete',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_instances_tables_authorizedViews = new BigtableAdmin\Resource\ProjectsInstancesTablesAuthorizedViews(
+        $this,
+        $this->serviceName,
+        'authorizedViews',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/authorizedViews',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'authorizedViewId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'etag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'view' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/authorizedViews',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'view' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'ignoreWarnings' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'setIamPolicy' => [
@@ -703,17 +879,7 @@ class BigtableAdmin extends \Google\Service
         'locations',
         [
           'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
+            'list' => [
               'path' => 'v2/{+name}/locations',
               'httpMethod' => 'GET',
               'parameters' => [

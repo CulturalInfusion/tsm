@@ -22,12 +22,17 @@ class Service extends \Google\Collection
   protected $collection_key = 'types';
   protected $apisType = Api::class;
   protected $apisDataType = 'array';
+  protected $aspectsType = Aspect::class;
+  protected $aspectsDataType = 'array';
   protected $authenticationType = Authentication::class;
   protected $authenticationDataType = '';
   protected $backendType = Backend::class;
   protected $backendDataType = '';
   protected $billingType = Billing::class;
   protected $billingDataType = '';
+  /**
+   * @var string
+   */
   public $configVersion;
   protected $contextType = Context::class;
   protected $contextDataType = '';
@@ -43,6 +48,9 @@ class Service extends \Google\Collection
   protected $enumsDataType = 'array';
   protected $httpType = Http::class;
   protected $httpDataType = '';
+  /**
+   * @var string
+   */
   public $id;
   protected $loggingType = Logging::class;
   protected $loggingDataType = '';
@@ -54,8 +62,16 @@ class Service extends \Google\Collection
   protected $monitoredResourcesDataType = 'array';
   protected $monitoringType = Monitoring::class;
   protected $monitoringDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $producerProjectId;
+  protected $publishingType = Publishing::class;
+  protected $publishingDataType = '';
   protected $quotaType = Quota::class;
   protected $quotaDataType = '';
   protected $sourceInfoType = SourceInfo::class;
@@ -64,6 +80,9 @@ class Service extends \Google\Collection
   protected $systemParametersDataType = '';
   protected $systemTypesType = Type::class;
   protected $systemTypesDataType = 'array';
+  /**
+   * @var string
+   */
   public $title;
   protected $typesType = Type::class;
   protected $typesDataType = 'array';
@@ -83,6 +102,20 @@ class Service extends \Google\Collection
   public function getApis()
   {
     return $this->apis;
+  }
+  /**
+   * @param Aspect[]
+   */
+  public function setAspects($aspects)
+  {
+    $this->aspects = $aspects;
+  }
+  /**
+   * @return Aspect[]
+   */
+  public function getAspects()
+  {
+    return $this->aspects;
   }
   /**
    * @param Authentication
@@ -126,10 +159,16 @@ class Service extends \Google\Collection
   {
     return $this->billing;
   }
+  /**
+   * @param string
+   */
   public function setConfigVersion($configVersion)
   {
     $this->configVersion = $configVersion;
   }
+  /**
+   * @return string
+   */
   public function getConfigVersion()
   {
     return $this->configVersion;
@@ -232,10 +271,16 @@ class Service extends \Google\Collection
   {
     return $this->http;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
@@ -310,21 +355,47 @@ class Service extends \Google\Collection
   {
     return $this->monitoring;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setProducerProjectId($producerProjectId)
   {
     $this->producerProjectId = $producerProjectId;
   }
+  /**
+   * @return string
+   */
   public function getProducerProjectId()
   {
     return $this->producerProjectId;
+  }
+  /**
+   * @param Publishing
+   */
+  public function setPublishing(Publishing $publishing)
+  {
+    $this->publishing = $publishing;
+  }
+  /**
+   * @return Publishing
+   */
+  public function getPublishing()
+  {
+    return $this->publishing;
   }
   /**
    * @param Quota
@@ -382,10 +453,16 @@ class Service extends \Google\Collection
   {
     return $this->systemTypes;
   }
+  /**
+   * @param string
+   */
   public function setTitle($title)
   {
     $this->title = $title;
   }
+  /**
+   * @return string
+   */
   public function getTitle()
   {
     return $this->title;

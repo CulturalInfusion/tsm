@@ -19,24 +19,60 @@ namespace Google\Service\GKEHub;
 
 class ConfigManagementGatekeeperDeploymentState extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $gatekeeperAudit;
+  /**
+   * @var string
+   */
   public $gatekeeperControllerManagerState;
+  /**
+   * @var string
+   */
+  public $gatekeeperMutation;
 
+  /**
+   * @param string
+   */
   public function setGatekeeperAudit($gatekeeperAudit)
   {
     $this->gatekeeperAudit = $gatekeeperAudit;
   }
+  /**
+   * @return string
+   */
   public function getGatekeeperAudit()
   {
     return $this->gatekeeperAudit;
   }
+  /**
+   * @param string
+   */
   public function setGatekeeperControllerManagerState($gatekeeperControllerManagerState)
   {
     $this->gatekeeperControllerManagerState = $gatekeeperControllerManagerState;
   }
+  /**
+   * @return string
+   */
   public function getGatekeeperControllerManagerState()
   {
     return $this->gatekeeperControllerManagerState;
+  }
+  /**
+   * @param string
+   */
+  public function setGatekeeperMutation($gatekeeperMutation)
+  {
+    $this->gatekeeperMutation = $gatekeeperMutation;
+  }
+  /**
+   * @return string
+   */
+  public function getGatekeeperMutation()
+  {
+    return $this->gatekeeperMutation;
   }
 }
 

@@ -24,7 +24,7 @@ use Google\Client;
  *
  * <p>
  * Examines the call stack and variables of a running application without
- * stopping or slowing it down.</p>
+ * stopping or slowing it down. (Deprecated)</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -35,7 +35,7 @@ use Google\Client;
  */
 class CloudDebugger extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Use Stackdriver Debugger. */

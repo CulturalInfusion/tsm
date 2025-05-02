@@ -5,11 +5,11 @@
  *
  * @since             1.0.0
  * @package           TSM
- *
+ * 
  * @wordpress-plugin
  * Plugin Name:       Teacher's Students Management
  * Description:       Teacher's students management.
- * Version:           1.20.1
+ * Version:           2.0.0
  * Author:            Mohsen Sadeghzade
  * Author URI:        https://techiefor.fun/
  * License:           GPL-2.0+

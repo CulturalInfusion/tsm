@@ -17,14 +17,42 @@
 
 namespace Google\Service\Vision;
 
-class TextDetectionParams extends \Google\Model
+class TextDetectionParams extends \Google\Collection
 {
+  protected $collection_key = 'advancedOcrOptions';
+  /**
+   * @var string[]
+   */
+  public $advancedOcrOptions;
+  /**
+   * @var bool
+   */
   public $enableTextDetectionConfidenceScore;
 
+  /**
+   * @param string[]
+   */
+  public function setAdvancedOcrOptions($advancedOcrOptions)
+  {
+    $this->advancedOcrOptions = $advancedOcrOptions;
+  }
+  /**
+   * @return string[]
+   */
+  public function getAdvancedOcrOptions()
+  {
+    return $this->advancedOcrOptions;
+  }
+  /**
+   * @param bool
+   */
   public function setEnableTextDetectionConfidenceScore($enableTextDetectionConfidenceScore)
   {
     $this->enableTextDetectionConfidenceScore = $enableTextDetectionConfidenceScore;
   }
+  /**
+   * @return bool
+   */
   public function getEnableTextDetectionConfidenceScore()
   {
     return $this->enableTextDetectionConfidenceScore;

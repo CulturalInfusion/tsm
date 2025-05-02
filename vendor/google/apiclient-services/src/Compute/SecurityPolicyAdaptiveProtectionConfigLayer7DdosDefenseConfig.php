@@ -17,26 +17,61 @@
 
 namespace Google\Service\Compute;
 
-class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig extends \Google\Model
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig extends \Google\Collection
 {
+  protected $collection_key = 'thresholdConfigs';
+  /**
+   * @var bool
+   */
   public $enable;
+  /**
+   * @var string
+   */
   public $ruleVisibility;
+  protected $thresholdConfigsType = SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig::class;
+  protected $thresholdConfigsDataType = 'array';
 
+  /**
+   * @param bool
+   */
   public function setEnable($enable)
   {
     $this->enable = $enable;
   }
+  /**
+   * @return bool
+   */
   public function getEnable()
   {
     return $this->enable;
   }
+  /**
+   * @param string
+   */
   public function setRuleVisibility($ruleVisibility)
   {
     $this->ruleVisibility = $ruleVisibility;
   }
+  /**
+   * @return string
+   */
   public function getRuleVisibility()
   {
     return $this->ruleVisibility;
+  }
+  /**
+   * @param SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig[]
+   */
+  public function setThresholdConfigs($thresholdConfigs)
+  {
+    $this->thresholdConfigs = $thresholdConfigs;
+  }
+  /**
+   * @return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig[]
+   */
+  public function getThresholdConfigs()
+  {
+    return $this->thresholdConfigs;
   }
 }
 

@@ -21,11 +21,23 @@ class Step extends \Google\Model
 {
   protected $abortType = AbortInfo::class;
   protected $abortDataType = '';
+  protected $appEngineVersionType = AppEngineVersionInfo::class;
+  protected $appEngineVersionDataType = '';
+  /**
+   * @var bool
+   */
   public $causesDrop;
+  protected $cloudFunctionType = CloudFunctionInfo::class;
+  protected $cloudFunctionDataType = '';
+  protected $cloudRunRevisionType = CloudRunRevisionInfo::class;
+  protected $cloudRunRevisionDataType = '';
   protected $cloudSqlInstanceType = CloudSQLInstanceInfo::class;
   protected $cloudSqlInstanceDataType = '';
   protected $deliverType = DeliverInfo::class;
   protected $deliverDataType = '';
+  /**
+   * @var string
+   */
   public $description;
   protected $dropType = DropInfo::class;
   protected $dropDataType = '';
@@ -39,16 +51,40 @@ class Step extends \Google\Model
   protected $forwardingRuleDataType = '';
   protected $gkeMasterType = GKEMasterInfo::class;
   protected $gkeMasterDataType = '';
+  protected $googleServiceType = GoogleServiceInfo::class;
+  protected $googleServiceDataType = '';
   protected $instanceType = InstanceInfo::class;
   protected $instanceDataType = '';
   protected $loadBalancerType = LoadBalancerInfo::class;
   protected $loadBalancerDataType = '';
+  protected $loadBalancerBackendInfoType = LoadBalancerBackendInfo::class;
+  protected $loadBalancerBackendInfoDataType = '';
+  protected $natType = NatInfo::class;
+  protected $natDataType = '';
   protected $networkType = NetworkInfo::class;
   protected $networkDataType = '';
+  /**
+   * @var string
+   */
   public $projectId;
+  protected $proxyConnectionType = ProxyConnectionInfo::class;
+  protected $proxyConnectionDataType = '';
+  protected $redisClusterType = RedisClusterInfo::class;
+  protected $redisClusterDataType = '';
+  protected $redisInstanceType = RedisInstanceInfo::class;
+  protected $redisInstanceDataType = '';
   protected $routeType = RouteInfo::class;
   protected $routeDataType = '';
+  protected $serverlessNegType = ServerlessNegInfo::class;
+  protected $serverlessNegDataType = '';
+  /**
+   * @var string
+   */
   public $state;
+  protected $storageBucketType = StorageBucketInfo::class;
+  protected $storageBucketDataType = '';
+  protected $vpcConnectorType = VpcConnectorInfo::class;
+  protected $vpcConnectorDataType = '';
   protected $vpnGatewayType = VpnGatewayInfo::class;
   protected $vpnGatewayDataType = '';
   protected $vpnTunnelType = VpnTunnelInfo::class;
@@ -68,13 +104,61 @@ class Step extends \Google\Model
   {
     return $this->abort;
   }
+  /**
+   * @param AppEngineVersionInfo
+   */
+  public function setAppEngineVersion(AppEngineVersionInfo $appEngineVersion)
+  {
+    $this->appEngineVersion = $appEngineVersion;
+  }
+  /**
+   * @return AppEngineVersionInfo
+   */
+  public function getAppEngineVersion()
+  {
+    return $this->appEngineVersion;
+  }
+  /**
+   * @param bool
+   */
   public function setCausesDrop($causesDrop)
   {
     $this->causesDrop = $causesDrop;
   }
+  /**
+   * @return bool
+   */
   public function getCausesDrop()
   {
     return $this->causesDrop;
+  }
+  /**
+   * @param CloudFunctionInfo
+   */
+  public function setCloudFunction(CloudFunctionInfo $cloudFunction)
+  {
+    $this->cloudFunction = $cloudFunction;
+  }
+  /**
+   * @return CloudFunctionInfo
+   */
+  public function getCloudFunction()
+  {
+    return $this->cloudFunction;
+  }
+  /**
+   * @param CloudRunRevisionInfo
+   */
+  public function setCloudRunRevision(CloudRunRevisionInfo $cloudRunRevision)
+  {
+    $this->cloudRunRevision = $cloudRunRevision;
+  }
+  /**
+   * @return CloudRunRevisionInfo
+   */
+  public function getCloudRunRevision()
+  {
+    return $this->cloudRunRevision;
   }
   /**
    * @param CloudSQLInstanceInfo
@@ -104,10 +188,16 @@ class Step extends \Google\Model
   {
     return $this->deliver;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
@@ -197,6 +287,20 @@ class Step extends \Google\Model
     return $this->gkeMaster;
   }
   /**
+   * @param GoogleServiceInfo
+   */
+  public function setGoogleService(GoogleServiceInfo $googleService)
+  {
+    $this->googleService = $googleService;
+  }
+  /**
+   * @return GoogleServiceInfo
+   */
+  public function getGoogleService()
+  {
+    return $this->googleService;
+  }
+  /**
    * @param InstanceInfo
    */
   public function setInstance(InstanceInfo $instance)
@@ -225,6 +329,34 @@ class Step extends \Google\Model
     return $this->loadBalancer;
   }
   /**
+   * @param LoadBalancerBackendInfo
+   */
+  public function setLoadBalancerBackendInfo(LoadBalancerBackendInfo $loadBalancerBackendInfo)
+  {
+    $this->loadBalancerBackendInfo = $loadBalancerBackendInfo;
+  }
+  /**
+   * @return LoadBalancerBackendInfo
+   */
+  public function getLoadBalancerBackendInfo()
+  {
+    return $this->loadBalancerBackendInfo;
+  }
+  /**
+   * @param NatInfo
+   */
+  public function setNat(NatInfo $nat)
+  {
+    $this->nat = $nat;
+  }
+  /**
+   * @return NatInfo
+   */
+  public function getNat()
+  {
+    return $this->nat;
+  }
+  /**
    * @param NetworkInfo
    */
   public function setNetwork(NetworkInfo $network)
@@ -238,13 +370,61 @@ class Step extends \Google\Model
   {
     return $this->network;
   }
+  /**
+   * @param string
+   */
   public function setProjectId($projectId)
   {
     $this->projectId = $projectId;
   }
+  /**
+   * @return string
+   */
   public function getProjectId()
   {
     return $this->projectId;
+  }
+  /**
+   * @param ProxyConnectionInfo
+   */
+  public function setProxyConnection(ProxyConnectionInfo $proxyConnection)
+  {
+    $this->proxyConnection = $proxyConnection;
+  }
+  /**
+   * @return ProxyConnectionInfo
+   */
+  public function getProxyConnection()
+  {
+    return $this->proxyConnection;
+  }
+  /**
+   * @param RedisClusterInfo
+   */
+  public function setRedisCluster(RedisClusterInfo $redisCluster)
+  {
+    $this->redisCluster = $redisCluster;
+  }
+  /**
+   * @return RedisClusterInfo
+   */
+  public function getRedisCluster()
+  {
+    return $this->redisCluster;
+  }
+  /**
+   * @param RedisInstanceInfo
+   */
+  public function setRedisInstance(RedisInstanceInfo $redisInstance)
+  {
+    $this->redisInstance = $redisInstance;
+  }
+  /**
+   * @return RedisInstanceInfo
+   */
+  public function getRedisInstance()
+  {
+    return $this->redisInstance;
   }
   /**
    * @param RouteInfo
@@ -260,13 +440,61 @@ class Step extends \Google\Model
   {
     return $this->route;
   }
+  /**
+   * @param ServerlessNegInfo
+   */
+  public function setServerlessNeg(ServerlessNegInfo $serverlessNeg)
+  {
+    $this->serverlessNeg = $serverlessNeg;
+  }
+  /**
+   * @return ServerlessNegInfo
+   */
+  public function getServerlessNeg()
+  {
+    return $this->serverlessNeg;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
+  }
+  /**
+   * @param StorageBucketInfo
+   */
+  public function setStorageBucket(StorageBucketInfo $storageBucket)
+  {
+    $this->storageBucket = $storageBucket;
+  }
+  /**
+   * @return StorageBucketInfo
+   */
+  public function getStorageBucket()
+  {
+    return $this->storageBucket;
+  }
+  /**
+   * @param VpcConnectorInfo
+   */
+  public function setVpcConnector(VpcConnectorInfo $vpcConnector)
+  {
+    $this->vpcConnector = $vpcConnector;
+  }
+  /**
+   * @return VpcConnectorInfo
+   */
+  public function getVpcConnector()
+  {
+    return $this->vpcConnector;
   }
   /**
    * @param VpnGatewayInfo

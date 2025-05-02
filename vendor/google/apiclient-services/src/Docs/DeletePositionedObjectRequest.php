@@ -19,15 +19,42 @@ namespace Google\Service\Docs;
 
 class DeletePositionedObjectRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $objectId;
+  /**
+   * @var string
+   */
+  public $tabId;
 
+  /**
+   * @param string
+   */
   public function setObjectId($objectId)
   {
     $this->objectId = $objectId;
   }
+  /**
+   * @return string
+   */
   public function getObjectId()
   {
     return $this->objectId;
+  }
+  /**
+   * @param string
+   */
+  public function setTabId($tabId)
+  {
+    $this->tabId = $tabId;
+  }
+  /**
+   * @return string
+   */
+  public function getTabId()
+  {
+    return $this->tabId;
   }
 }
 

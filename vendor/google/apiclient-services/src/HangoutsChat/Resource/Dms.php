@@ -33,19 +33,27 @@ class Dms extends \Google\Service\Resource
    * Legacy path for creating message. Calling these will result in a BadRequest
    * response. (dms.messages)
    *
-   * @param string $parent Required. Space resource name, in the form "spaces".
-   * Example: spaces/AAAAMpdlehY
+   * @param string $parent Required. The resource name of the space in which to
+   * create a message. Format: spaces/{space}
    * @param Message $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string threadKey Opaque thread identifier string that can be
-   * specified to group messages into a single thread. If this is the first
-   * message with a given thread identifier, a new thread is created. Subsequent
-   * messages with the same thread identifier will be posted into the same thread.
-   * This relieves bots and webhooks from having to store the Hangouts Chat thread
-   * ID of a thread (created earlier by them) to post further updates to it. Has
-   * no effect if thread field, corresponding to an existing thread, is set in
-   * message.
+   * @opt_param string messageId Optional. A custom name for a Chat message
+   * assigned at creation. Must start with `client-` and contain only lowercase
+   * letters, numbers, and hyphens up to 63 characters in length. Specify this
+   * field to get, update, or delete the message with the specified value. For
+   * example usage, see [Name a created message](https://developers.google.com/cha
+   * t/api/guides/crudl/messages#name_a_created_message).
+   * @opt_param string messageReplyOption Optional. Specifies whether a message
+   * starts a thread or replies to one. Only supported in named spaces.
+   * @opt_param string requestId Optional. A unique request ID for this message.
+   * Specifying an existing request ID returns the message created with that ID
+   * instead of creating a new message.
+   * @opt_param string threadKey Optional. Deprecated: Use thread.thread_key
+   * instead. Opaque thread identifier. To start or add to a thread, create a
+   * message and specify a `threadKey` or the thread.name. For example usage, see
+   * [Start or reply to a message
+   * thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
    * @return Message
    */
   public function messages($parent, Message $postBody, $optParams = [])
@@ -58,19 +66,27 @@ class Dms extends \Google\Service\Resource
    * Legacy path for creating message. Calling these will result in a BadRequest
    * response. (dms.webhooks)
    *
-   * @param string $parent Required. Space resource name, in the form "spaces".
-   * Example: spaces/AAAAMpdlehY
+   * @param string $parent Required. The resource name of the space in which to
+   * create a message. Format: spaces/{space}
    * @param Message $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string threadKey Opaque thread identifier string that can be
-   * specified to group messages into a single thread. If this is the first
-   * message with a given thread identifier, a new thread is created. Subsequent
-   * messages with the same thread identifier will be posted into the same thread.
-   * This relieves bots and webhooks from having to store the Hangouts Chat thread
-   * ID of a thread (created earlier by them) to post further updates to it. Has
-   * no effect if thread field, corresponding to an existing thread, is set in
-   * message.
+   * @opt_param string messageId Optional. A custom name for a Chat message
+   * assigned at creation. Must start with `client-` and contain only lowercase
+   * letters, numbers, and hyphens up to 63 characters in length. Specify this
+   * field to get, update, or delete the message with the specified value. For
+   * example usage, see [Name a created message](https://developers.google.com/cha
+   * t/api/guides/crudl/messages#name_a_created_message).
+   * @opt_param string messageReplyOption Optional. Specifies whether a message
+   * starts a thread or replies to one. Only supported in named spaces.
+   * @opt_param string requestId Optional. A unique request ID for this message.
+   * Specifying an existing request ID returns the message created with that ID
+   * instead of creating a new message.
+   * @opt_param string threadKey Optional. Deprecated: Use thread.thread_key
+   * instead. Opaque thread identifier. To start or add to a thread, create a
+   * message and specify a `threadKey` or the thread.name. For example usage, see
+   * [Start or reply to a message
+   * thread](/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
    * @return Message
    */
   public function webhooks($parent, Message $postBody, $optParams = [])

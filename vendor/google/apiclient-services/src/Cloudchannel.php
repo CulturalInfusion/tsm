@@ -39,16 +39,27 @@ class Cloudchannel extends \Google\Service
   /** Manage users on your domain. */
   const APPS_ORDER =
       "https://www.googleapis.com/auth/apps.order";
+  /** View usage reports for your G Suite domain. */
+  const APPS_REPORTS_USAGE_READONLY =
+      "https://www.googleapis.com/auth/apps.reports.usage.readonly";
 
   public $accounts;
   public $accounts_channelPartnerLinks;
+  public $accounts_channelPartnerLinks_channelPartnerRepricingConfigs;
   public $accounts_channelPartnerLinks_customers;
   public $accounts_customers;
+  public $accounts_customers_customerRepricingConfigs;
   public $accounts_customers_entitlements;
   public $accounts_offers;
+  public $accounts_reportJobs;
+  public $accounts_reports;
+  public $accounts_skuGroups;
+  public $accounts_skuGroups_billableSkus;
+  public $integrators;
   public $operations;
   public $products;
   public $products_skus;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Cloudchannel service.
@@ -61,6 +72,7 @@ class Cloudchannel extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://cloudchannel.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://cloudchannel.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -90,6 +102,10 @@ class Cloudchannel extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'integrator' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -210,6 +226,78 @@ class Cloudchannel extends \Google\Service
           ]
         ]
     );
+    $this->accounts_channelPartnerLinks_channelPartnerRepricingConfigs = new Cloudchannel\Resource\AccountsChannelPartnerLinksChannelPartnerRepricingConfigs(
+        $this,
+        $this->serviceName,
+        'channelPartnerRepricingConfigs',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/channelPartnerRepricingConfigs',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/channelPartnerRepricingConfigs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->accounts_channelPartnerLinks_customers = new Cloudchannel\Resource\AccountsChannelPartnerLinksCustomers(
         $this,
         $this->serviceName,
@@ -246,6 +334,16 @@ class Cloudchannel extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'import' => [
+              'path' => 'v1/{+parent}/customers:import',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v1/{+parent}/customers',
               'httpMethod' => 'GET',
@@ -254,6 +352,10 @@ class Cloudchannel extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -318,6 +420,16 @@ class Cloudchannel extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'import' => [
+              'path' => 'v1/{+parent}/customers:import',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v1/{+parent}/customers',
               'httpMethod' => 'GET',
@@ -326,6 +438,10 @@ class Cloudchannel extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -345,11 +461,19 @@ class Cloudchannel extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'changeOfferPurchase.billingAccount' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'changeOfferPurchase.entitlement' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
                 'changeOfferPurchase.newSku' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'createEntitlementPurchase.billingAccount' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -428,6 +552,21 @@ class Cloudchannel extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'queryEligibleBillingAccounts' => [
+              'path' => 'v1/{+customer}:queryEligibleBillingAccounts',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'customer' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'skus' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
             ],'transferEntitlements' => [
               'path' => 'v1/{+parent}:transferEntitlements',
               'httpMethod' => 'POST',
@@ -443,6 +582,78 @@ class Cloudchannel extends \Google\Service
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->accounts_customers_customerRepricingConfigs = new Cloudchannel\Resource\AccountsCustomersCustomerRepricingConfigs(
+        $this,
+        $this->serviceName,
+        'customerRepricingConfigs',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/customerRepricingConfigs',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/customerRepricingConfigs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -546,6 +757,28 @@ class Cloudchannel extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'listEntitlementChanges' => [
+              'path' => 'v1/{+parent}:listEntitlementChanges',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'lookupOffer' => [
               'path' => 'v1/{+entitlement}:lookupOffer',
               'httpMethod' => 'GET',
@@ -610,6 +843,180 @@ class Cloudchannel extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+                'showFutureOffers' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->accounts_reportJobs = new Cloudchannel\Resource\AccountsReportJobs(
+        $this,
+        $this->serviceName,
+        'reportJobs',
+        [
+          'methods' => [
+            'fetchReportResults' => [
+              'path' => 'v1/{+reportJob}:fetchReportResults',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'reportJob' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->accounts_reports = new Cloudchannel\Resource\AccountsReports(
+        $this,
+        $this->serviceName,
+        'reports',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v1/{+parent}/reports',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'languageCode' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'run' => [
+              'path' => 'v1/{+name}:run',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->accounts_skuGroups = new Cloudchannel\Resource\AccountsSkuGroups(
+        $this,
+        $this->serviceName,
+        'skuGroups',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v1/{+parent}/skuGroups',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->accounts_skuGroups_billableSkus = new Cloudchannel\Resource\AccountsSkuGroupsBillableSkus(
+        $this,
+        $this->serviceName,
+        'billableSkus',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v1/{+parent}/billableSkus',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->integrators = new Cloudchannel\Resource\Integrators(
+        $this,
+        $this->serviceName,
+        'integrators',
+        [
+          'methods' => [
+            'listSubscribers' => [
+              'path' => 'v1/{+integrator}:listSubscribers',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'integrator' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'account' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'registerSubscriber' => [
+              'path' => 'v1/{+integrator}:registerSubscriber',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'integrator' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'unregisterSubscriber' => [
+              'path' => 'v1/{+integrator}:unregisterSubscriber',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'integrator' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],

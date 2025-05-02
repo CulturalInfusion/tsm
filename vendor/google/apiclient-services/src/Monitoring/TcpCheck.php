@@ -19,12 +19,37 @@ namespace Google\Service\Monitoring;
 
 class TcpCheck extends \Google\Model
 {
+  protected $pingConfigType = PingConfig::class;
+  protected $pingConfigDataType = '';
+  /**
+   * @var int
+   */
   public $port;
 
+  /**
+   * @param PingConfig
+   */
+  public function setPingConfig(PingConfig $pingConfig)
+  {
+    $this->pingConfig = $pingConfig;
+  }
+  /**
+   * @return PingConfig
+   */
+  public function getPingConfig()
+  {
+    return $this->pingConfig;
+  }
+  /**
+   * @param int
+   */
   public function setPort($port)
   {
     $this->port = $port;
   }
+  /**
+   * @return int
+   */
   public function getPort()
   {
     return $this->port;

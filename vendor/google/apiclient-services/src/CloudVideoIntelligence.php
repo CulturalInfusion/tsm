@@ -36,13 +36,14 @@ use Google\Client;
  */
 class CloudVideoIntelligence extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $operations_projects_locations_operations;
   public $projects_locations_operations;
   public $videos;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the CloudVideoIntelligence
@@ -56,6 +57,7 @@ class CloudVideoIntelligence extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://videointelligence.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://videointelligence.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

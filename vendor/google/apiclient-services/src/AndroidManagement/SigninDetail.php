@@ -19,42 +19,114 @@ namespace Google\Service\AndroidManagement;
 
 class SigninDetail extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $allowPersonalUsage;
+  /**
+   * @var string
+   */
+  public $defaultStatus;
+  /**
+   * @var string
+   */
   public $qrCode;
+  /**
+   * @var string
+   */
   public $signinEnrollmentToken;
+  /**
+   * @var string
+   */
   public $signinUrl;
+  /**
+   * @var string
+   */
+  public $tokenTag;
 
+  /**
+   * @param string
+   */
   public function setAllowPersonalUsage($allowPersonalUsage)
   {
     $this->allowPersonalUsage = $allowPersonalUsage;
   }
+  /**
+   * @return string
+   */
   public function getAllowPersonalUsage()
   {
     return $this->allowPersonalUsage;
   }
+  /**
+   * @param string
+   */
+  public function setDefaultStatus($defaultStatus)
+  {
+    $this->defaultStatus = $defaultStatus;
+  }
+  /**
+   * @return string
+   */
+  public function getDefaultStatus()
+  {
+    return $this->defaultStatus;
+  }
+  /**
+   * @param string
+   */
   public function setQrCode($qrCode)
   {
     $this->qrCode = $qrCode;
   }
+  /**
+   * @return string
+   */
   public function getQrCode()
   {
     return $this->qrCode;
   }
+  /**
+   * @param string
+   */
   public function setSigninEnrollmentToken($signinEnrollmentToken)
   {
     $this->signinEnrollmentToken = $signinEnrollmentToken;
   }
+  /**
+   * @return string
+   */
   public function getSigninEnrollmentToken()
   {
     return $this->signinEnrollmentToken;
   }
+  /**
+   * @param string
+   */
   public function setSigninUrl($signinUrl)
   {
     $this->signinUrl = $signinUrl;
   }
+  /**
+   * @return string
+   */
   public function getSigninUrl()
   {
     return $this->signinUrl;
+  }
+  /**
+   * @param string
+   */
+  public function setTokenTag($tokenTag)
+  {
+    $this->tokenTag = $tokenTag;
+  }
+  /**
+   * @return string
+   */
+  public function getTokenTag()
+  {
+    return $this->tokenTag;
   }
 }
 

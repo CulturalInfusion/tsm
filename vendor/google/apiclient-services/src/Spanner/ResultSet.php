@@ -22,6 +22,11 @@ class ResultSet extends \Google\Collection
   protected $collection_key = 'rows';
   protected $metadataType = ResultSetMetadata::class;
   protected $metadataDataType = '';
+  protected $precommitTokenType = MultiplexedSessionPrecommitToken::class;
+  protected $precommitTokenDataType = '';
+  /**
+   * @var array[]
+   */
   public $rows;
   protected $statsType = ResultSetStats::class;
   protected $statsDataType = '';
@@ -40,10 +45,30 @@ class ResultSet extends \Google\Collection
   {
     return $this->metadata;
   }
+  /**
+   * @param MultiplexedSessionPrecommitToken
+   */
+  public function setPrecommitToken(MultiplexedSessionPrecommitToken $precommitToken)
+  {
+    $this->precommitToken = $precommitToken;
+  }
+  /**
+   * @return MultiplexedSessionPrecommitToken
+   */
+  public function getPrecommitToken()
+  {
+    return $this->precommitToken;
+  }
+  /**
+   * @param array[]
+   */
   public function setRows($rows)
   {
     $this->rows = $rows;
   }
+  /**
+   * @return array[]
+   */
   public function getRows()
   {
     return $this->rows;

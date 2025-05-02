@@ -19,51 +19,78 @@ namespace Google\Service\CloudNaturalLanguage;
 
 class Features extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $classifyText;
+  /**
+   * @var bool
+   */
   public $extractDocumentSentiment;
+  /**
+   * @var bool
+   */
   public $extractEntities;
-  public $extractEntitySentiment;
-  public $extractSyntax;
+  /**
+   * @var bool
+   */
+  public $moderateText;
 
+  /**
+   * @param bool
+   */
   public function setClassifyText($classifyText)
   {
     $this->classifyText = $classifyText;
   }
+  /**
+   * @return bool
+   */
   public function getClassifyText()
   {
     return $this->classifyText;
   }
+  /**
+   * @param bool
+   */
   public function setExtractDocumentSentiment($extractDocumentSentiment)
   {
     $this->extractDocumentSentiment = $extractDocumentSentiment;
   }
+  /**
+   * @return bool
+   */
   public function getExtractDocumentSentiment()
   {
     return $this->extractDocumentSentiment;
   }
+  /**
+   * @param bool
+   */
   public function setExtractEntities($extractEntities)
   {
     $this->extractEntities = $extractEntities;
   }
+  /**
+   * @return bool
+   */
   public function getExtractEntities()
   {
     return $this->extractEntities;
   }
-  public function setExtractEntitySentiment($extractEntitySentiment)
+  /**
+   * @param bool
+   */
+  public function setModerateText($moderateText)
   {
-    $this->extractEntitySentiment = $extractEntitySentiment;
+    $this->moderateText = $moderateText;
   }
-  public function getExtractEntitySentiment()
+  /**
+   * @return bool
+   */
+  public function getModerateText()
   {
-    return $this->extractEntitySentiment;
-  }
-  public function setExtractSyntax($extractSyntax)
-  {
-    $this->extractSyntax = $extractSyntax;
-  }
-  public function getExtractSyntax()
-  {
-    return $this->extractSyntax;
+    return $this->moderateText;
   }
 }
 

@@ -34,13 +34,14 @@ use Google\Client;
  */
 class ServiceConsumerManagement extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $operations;
   public $services;
   public $services_tenancyUnits;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ServiceConsumerManagement
@@ -54,6 +55,7 @@ class ServiceConsumerManagement extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://serviceconsumermanagement.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://serviceconsumermanagement.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

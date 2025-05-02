@@ -27,6 +27,12 @@ class AddonsConfig extends \Google\Model
   protected $dnsCacheConfigDataType = '';
   protected $gcePersistentDiskCsiDriverConfigType = GcePersistentDiskCsiDriverConfig::class;
   protected $gcePersistentDiskCsiDriverConfigDataType = '';
+  protected $gcpFilestoreCsiDriverConfigType = GcpFilestoreCsiDriverConfig::class;
+  protected $gcpFilestoreCsiDriverConfigDataType = '';
+  protected $gcsFuseCsiDriverConfigType = GcsFuseCsiDriverConfig::class;
+  protected $gcsFuseCsiDriverConfigDataType = '';
+  protected $gkeBackupAgentConfigType = GkeBackupAgentConfig::class;
+  protected $gkeBackupAgentConfigDataType = '';
   protected $horizontalPodAutoscalingType = HorizontalPodAutoscaling::class;
   protected $horizontalPodAutoscalingDataType = '';
   protected $httpLoadBalancingType = HttpLoadBalancing::class;
@@ -35,6 +41,12 @@ class AddonsConfig extends \Google\Model
   protected $kubernetesDashboardDataType = '';
   protected $networkPolicyConfigType = NetworkPolicyConfig::class;
   protected $networkPolicyConfigDataType = '';
+  protected $parallelstoreCsiDriverConfigType = ParallelstoreCsiDriverConfig::class;
+  protected $parallelstoreCsiDriverConfigDataType = '';
+  protected $rayOperatorConfigType = RayOperatorConfig::class;
+  protected $rayOperatorConfigDataType = '';
+  protected $statefulHaConfigType = StatefulHAConfig::class;
+  protected $statefulHaConfigDataType = '';
 
   /**
    * @param CloudRunConfig
@@ -93,6 +105,48 @@ class AddonsConfig extends \Google\Model
     return $this->gcePersistentDiskCsiDriverConfig;
   }
   /**
+   * @param GcpFilestoreCsiDriverConfig
+   */
+  public function setGcpFilestoreCsiDriverConfig(GcpFilestoreCsiDriverConfig $gcpFilestoreCsiDriverConfig)
+  {
+    $this->gcpFilestoreCsiDriverConfig = $gcpFilestoreCsiDriverConfig;
+  }
+  /**
+   * @return GcpFilestoreCsiDriverConfig
+   */
+  public function getGcpFilestoreCsiDriverConfig()
+  {
+    return $this->gcpFilestoreCsiDriverConfig;
+  }
+  /**
+   * @param GcsFuseCsiDriverConfig
+   */
+  public function setGcsFuseCsiDriverConfig(GcsFuseCsiDriverConfig $gcsFuseCsiDriverConfig)
+  {
+    $this->gcsFuseCsiDriverConfig = $gcsFuseCsiDriverConfig;
+  }
+  /**
+   * @return GcsFuseCsiDriverConfig
+   */
+  public function getGcsFuseCsiDriverConfig()
+  {
+    return $this->gcsFuseCsiDriverConfig;
+  }
+  /**
+   * @param GkeBackupAgentConfig
+   */
+  public function setGkeBackupAgentConfig(GkeBackupAgentConfig $gkeBackupAgentConfig)
+  {
+    $this->gkeBackupAgentConfig = $gkeBackupAgentConfig;
+  }
+  /**
+   * @return GkeBackupAgentConfig
+   */
+  public function getGkeBackupAgentConfig()
+  {
+    return $this->gkeBackupAgentConfig;
+  }
+  /**
    * @param HorizontalPodAutoscaling
    */
   public function setHorizontalPodAutoscaling(HorizontalPodAutoscaling $horizontalPodAutoscaling)
@@ -147,6 +201,48 @@ class AddonsConfig extends \Google\Model
   public function getNetworkPolicyConfig()
   {
     return $this->networkPolicyConfig;
+  }
+  /**
+   * @param ParallelstoreCsiDriverConfig
+   */
+  public function setParallelstoreCsiDriverConfig(ParallelstoreCsiDriverConfig $parallelstoreCsiDriverConfig)
+  {
+    $this->parallelstoreCsiDriverConfig = $parallelstoreCsiDriverConfig;
+  }
+  /**
+   * @return ParallelstoreCsiDriverConfig
+   */
+  public function getParallelstoreCsiDriverConfig()
+  {
+    return $this->parallelstoreCsiDriverConfig;
+  }
+  /**
+   * @param RayOperatorConfig
+   */
+  public function setRayOperatorConfig(RayOperatorConfig $rayOperatorConfig)
+  {
+    $this->rayOperatorConfig = $rayOperatorConfig;
+  }
+  /**
+   * @return RayOperatorConfig
+   */
+  public function getRayOperatorConfig()
+  {
+    return $this->rayOperatorConfig;
+  }
+  /**
+   * @param StatefulHAConfig
+   */
+  public function setStatefulHaConfig(StatefulHAConfig $statefulHaConfig)
+  {
+    $this->statefulHaConfig = $statefulHaConfig;
+  }
+  /**
+   * @return StatefulHAConfig
+   */
+  public function getStatefulHaConfig()
+  {
+    return $this->statefulHaConfig;
   }
 }
 

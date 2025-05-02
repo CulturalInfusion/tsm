@@ -26,7 +26,7 @@ use Google\Service\Apigee\GoogleCloudApigeeV1ListDeveloperAppsResponse;
  * Typical usage is:
  *  <code>
  *   $apigeeService = new Google\Service\Apigee(...);
- *   $apps = $apigeeService->apps;
+ *   $apps = $apigeeService->organizations_developers_apps;
  *  </code>
  */
 class OrganizationsDevelopersApps extends \Google\Service\Resource
@@ -41,6 +41,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * @param GoogleCloudApigeeV1Attributes $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1Attributes
+   * @throws \Google\Service\Exception
    */
   public function attributes($name, GoogleCloudApigeeV1Attributes $postBody, $optParams = [])
   {
@@ -61,6 +62,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * @param GoogleCloudApigeeV1DeveloperApp $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1DeveloperApp
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudApigeeV1DeveloperApp $postBody, $optParams = [])
   {
@@ -79,6 +81,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * `organizations/{org}/developers/{developer_email}/apps/{app}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1DeveloperApp
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -90,20 +93,20 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * Manages access to a developer app by enabling you to: * Approve or revoke a
    * developer app * Generate a new consumer key and secret for a developer app To
    * approve or revoke a developer app, set the `action` query parameter to
-   * `approved` or `revoked`, respectively, and the `Content-Type` header to
+   * `approve` or `revoke`, respectively, and the `Content-Type` header to
    * `application/octet-stream`. If a developer app is revoked, none of its API
-   * keys are valid for API calls even though the keys are still `approved`. If
+   * keys are valid for API calls even though the keys are still approved. If
    * successful, the API call returns the following HTTP status code: `204 No
    * Content` To generate a new consumer key and secret for a developer app, pass
    * the new key/secret details. Rather than replace an existing key, this API
    * generates a new key. In this case, multiple key pairs may be associated with
-   * a single developer app. Each key pair has an independent status (`approved`
-   * or `revoked`) and expiration time. Any approved, non-expired key can be used
-   * in an API call. For example, if you're using API key rotation, you can
-   * generate new keys with expiration times that overlap keys that are going to
-   * expire. You might also generate a new consumer key/secret if the security of
-   * the original key/secret is compromised. The `keyExpiresIn` property defines
-   * the expiration time for the API key in milliseconds. If you don't set this
+   * a single developer app. Each key pair has an independent status (`approve` or
+   * `revoke`) and expiration time. Any approved, non-expired key can be used in
+   * an API call. For example, if you're using API key rotation, you can generate
+   * new keys with expiration times that overlap keys that are going to expire.
+   * You might also generate a new consumer key/secret if the security of the
+   * original key/secret is compromised. The `keyExpiresIn` property defines the
+   * expiration time for the API key in milliseconds. If you don't set this
    * property or set it to `-1`, the API key never expires. **Notes**: * When
    * generating a new key/secret, this API replaces the existing attributes,
    * notes, and callback URLs with those specified in the request. Include or
@@ -120,6 +123,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    *
    * @opt_param string action Action. Valid values are `approve` or `revoke`.
    * @return GoogleCloudApigeeV1DeveloperApp
+   * @throws \Google\Service\Exception
    */
   public function generateKeyPairOrUpdateDeveloperAppStatus($name, GoogleCloudApigeeV1DeveloperApp $postBody, $optParams = [])
   {
@@ -144,6 +148,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * have been approved for access by a developer app in the specified Apigee
    * organization.
    * @return GoogleCloudApigeeV1DeveloperApp
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -177,6 +182,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * apps 50-99 by entering the name of the 50th developer app. The developer app
    * name is case sensitive.
    * @return GoogleCloudApigeeV1ListDeveloperAppsResponse
+   * @throws \Google\Service\Exception
    */
   public function listOrganizationsDevelopersApps($parent, $optParams = [])
   {
@@ -202,6 +208,7 @@ class OrganizationsDevelopersApps extends \Google\Service\Resource
    * @param GoogleCloudApigeeV1DeveloperApp $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1DeveloperApp
+   * @throws \Google\Service\Exception
    */
   public function update($name, GoogleCloudApigeeV1DeveloperApp $postBody, $optParams = [])
   {

@@ -19,12 +19,37 @@ namespace Google\Service\Bigquery;
 
 class TableListTablesView extends \Google\Model
 {
+  protected $privacyPolicyType = PrivacyPolicy::class;
+  protected $privacyPolicyDataType = '';
+  /**
+   * @var bool
+   */
   public $useLegacySql;
 
+  /**
+   * @param PrivacyPolicy
+   */
+  public function setPrivacyPolicy(PrivacyPolicy $privacyPolicy)
+  {
+    $this->privacyPolicy = $privacyPolicy;
+  }
+  /**
+   * @return PrivacyPolicy
+   */
+  public function getPrivacyPolicy()
+  {
+    return $this->privacyPolicy;
+  }
+  /**
+   * @param bool
+   */
   public function setUseLegacySql($useLegacySql)
   {
     $this->useLegacySql = $useLegacySql;
   }
+  /**
+   * @return bool
+   */
   public function getUseLegacySql()
   {
     return $this->useLegacySql;

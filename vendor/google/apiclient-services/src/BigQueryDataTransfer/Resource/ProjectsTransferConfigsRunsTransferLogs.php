@@ -24,13 +24,13 @@ use Google\Service\BigQueryDataTransfer\ListTransferLogsResponse;
  * Typical usage is:
  *  <code>
  *   $bigquerydatatransferService = new Google\Service\BigQueryDataTransfer(...);
- *   $transferLogs = $bigquerydatatransferService->transferLogs;
+ *   $transferLogs = $bigquerydatatransferService->projects_transferConfigs_runs_transferLogs;
  *  </code>
  */
 class ProjectsTransferConfigsRunsTransferLogs extends \Google\Service\Resource
 {
   /**
-   * Returns user facing log messages for the data transfer run.
+   * Returns log messages for the transfer run.
    * (transferLogs.listProjectsTransferConfigsRunsTransferLogs)
    *
    * @param string $parent Required. Transfer run name in the form:
@@ -48,6 +48,7 @@ class ProjectsTransferConfigsRunsTransferLogs extends \Google\Service\Resource
    * results, `ListTransferLogsResponse` outputs a `next_page` token, which can be
    * used as the `page_token` value to request the next page of list results.
    * @return ListTransferLogsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsTransferConfigsRunsTransferLogs($parent, $optParams = [])
   {

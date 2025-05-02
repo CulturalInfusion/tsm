@@ -19,10 +19,45 @@ namespace Google\Service\GKEHub;
 
 class ConfigManagementConfigSync extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $enabled;
   protected $gitType = ConfigManagementGitConfig::class;
   protected $gitDataType = '';
+  /**
+   * @var string
+   */
+  public $metricsGcpServiceAccountEmail;
+  protected $ociType = ConfigManagementOciConfig::class;
+  protected $ociDataType = '';
+  /**
+   * @var bool
+   */
+  public $preventDrift;
+  /**
+   * @var string
+   */
   public $sourceFormat;
+  /**
+   * @var bool
+   */
+  public $stopSyncing;
 
+  /**
+   * @param bool
+   */
+  public function setEnabled($enabled)
+  {
+    $this->enabled = $enabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnabled()
+  {
+    return $this->enabled;
+  }
   /**
    * @param ConfigManagementGitConfig
    */
@@ -37,13 +72,75 @@ class ConfigManagementConfigSync extends \Google\Model
   {
     return $this->git;
   }
+  /**
+   * @param string
+   */
+  public function setMetricsGcpServiceAccountEmail($metricsGcpServiceAccountEmail)
+  {
+    $this->metricsGcpServiceAccountEmail = $metricsGcpServiceAccountEmail;
+  }
+  /**
+   * @return string
+   */
+  public function getMetricsGcpServiceAccountEmail()
+  {
+    return $this->metricsGcpServiceAccountEmail;
+  }
+  /**
+   * @param ConfigManagementOciConfig
+   */
+  public function setOci(ConfigManagementOciConfig $oci)
+  {
+    $this->oci = $oci;
+  }
+  /**
+   * @return ConfigManagementOciConfig
+   */
+  public function getOci()
+  {
+    return $this->oci;
+  }
+  /**
+   * @param bool
+   */
+  public function setPreventDrift($preventDrift)
+  {
+    $this->preventDrift = $preventDrift;
+  }
+  /**
+   * @return bool
+   */
+  public function getPreventDrift()
+  {
+    return $this->preventDrift;
+  }
+  /**
+   * @param string
+   */
   public function setSourceFormat($sourceFormat)
   {
     $this->sourceFormat = $sourceFormat;
   }
+  /**
+   * @return string
+   */
   public function getSourceFormat()
   {
     return $this->sourceFormat;
+  }
+  /**
+   * @param bool
+   */
+  public function setStopSyncing($stopSyncing)
+  {
+    $this->stopSyncing = $stopSyncing;
+  }
+  /**
+   * @return bool
+   */
+  public function getStopSyncing()
+  {
+    return $this->stopSyncing;
   }
 }
 

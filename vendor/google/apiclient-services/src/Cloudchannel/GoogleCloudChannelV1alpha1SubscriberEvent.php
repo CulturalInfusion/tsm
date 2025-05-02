@@ -19,11 +19,29 @@ namespace Google\Service\Cloudchannel;
 
 class GoogleCloudChannelV1alpha1SubscriberEvent extends \Google\Model
 {
+  protected $channelPartnerEventType = GoogleCloudChannelV1alpha1ChannelPartnerEvent::class;
+  protected $channelPartnerEventDataType = '';
   protected $customerEventType = GoogleCloudChannelV1alpha1CustomerEvent::class;
   protected $customerEventDataType = '';
   protected $entitlementEventType = GoogleCloudChannelV1alpha1EntitlementEvent::class;
   protected $entitlementEventDataType = '';
+  protected $opportunityEventType = GoogleCloudChannelV1alpha1OpportunityEvent::class;
+  protected $opportunityEventDataType = '';
 
+  /**
+   * @param GoogleCloudChannelV1alpha1ChannelPartnerEvent
+   */
+  public function setChannelPartnerEvent(GoogleCloudChannelV1alpha1ChannelPartnerEvent $channelPartnerEvent)
+  {
+    $this->channelPartnerEvent = $channelPartnerEvent;
+  }
+  /**
+   * @return GoogleCloudChannelV1alpha1ChannelPartnerEvent
+   */
+  public function getChannelPartnerEvent()
+  {
+    return $this->channelPartnerEvent;
+  }
   /**
    * @param GoogleCloudChannelV1alpha1CustomerEvent
    */
@@ -51,6 +69,20 @@ class GoogleCloudChannelV1alpha1SubscriberEvent extends \Google\Model
   public function getEntitlementEvent()
   {
     return $this->entitlementEvent;
+  }
+  /**
+   * @param GoogleCloudChannelV1alpha1OpportunityEvent
+   */
+  public function setOpportunityEvent(GoogleCloudChannelV1alpha1OpportunityEvent $opportunityEvent)
+  {
+    $this->opportunityEvent = $opportunityEvent;
+  }
+  /**
+   * @return GoogleCloudChannelV1alpha1OpportunityEvent
+   */
+  public function getOpportunityEvent()
+  {
+    return $this->opportunityEvent;
   }
 }
 

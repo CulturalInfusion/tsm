@@ -19,12 +19,39 @@ namespace Google\Service\Datastore;
 
 class RollbackRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $databaseId;
+  /**
+   * @var string
+   */
   public $transaction;
 
+  /**
+   * @param string
+   */
+  public function setDatabaseId($databaseId)
+  {
+    $this->databaseId = $databaseId;
+  }
+  /**
+   * @return string
+   */
+  public function getDatabaseId()
+  {
+    return $this->databaseId;
+  }
+  /**
+   * @param string
+   */
   public function setTransaction($transaction)
   {
     $this->transaction = $transaction;
   }
+  /**
+   * @return string
+   */
   public function getTransaction()
   {
     return $this->transaction;

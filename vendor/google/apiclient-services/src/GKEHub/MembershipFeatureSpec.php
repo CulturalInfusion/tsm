@@ -21,6 +21,16 @@ class MembershipFeatureSpec extends \Google\Model
 {
   protected $configmanagementType = ConfigManagementMembershipSpec::class;
   protected $configmanagementDataType = '';
+  protected $fleetobservabilityType = FleetObservabilityMembershipSpec::class;
+  protected $fleetobservabilityDataType = '';
+  protected $identityserviceType = IdentityServiceMembershipSpec::class;
+  protected $identityserviceDataType = '';
+  protected $meshType = ServiceMeshMembershipSpec::class;
+  protected $meshDataType = '';
+  protected $originType = Origin::class;
+  protected $originDataType = '';
+  protected $policycontrollerType = PolicyControllerMembershipSpec::class;
+  protected $policycontrollerDataType = '';
 
   /**
    * @param ConfigManagementMembershipSpec
@@ -35,6 +45,76 @@ class MembershipFeatureSpec extends \Google\Model
   public function getConfigmanagement()
   {
     return $this->configmanagement;
+  }
+  /**
+   * @param FleetObservabilityMembershipSpec
+   */
+  public function setFleetobservability(FleetObservabilityMembershipSpec $fleetobservability)
+  {
+    $this->fleetobservability = $fleetobservability;
+  }
+  /**
+   * @return FleetObservabilityMembershipSpec
+   */
+  public function getFleetobservability()
+  {
+    return $this->fleetobservability;
+  }
+  /**
+   * @param IdentityServiceMembershipSpec
+   */
+  public function setIdentityservice(IdentityServiceMembershipSpec $identityservice)
+  {
+    $this->identityservice = $identityservice;
+  }
+  /**
+   * @return IdentityServiceMembershipSpec
+   */
+  public function getIdentityservice()
+  {
+    return $this->identityservice;
+  }
+  /**
+   * @param ServiceMeshMembershipSpec
+   */
+  public function setMesh(ServiceMeshMembershipSpec $mesh)
+  {
+    $this->mesh = $mesh;
+  }
+  /**
+   * @return ServiceMeshMembershipSpec
+   */
+  public function getMesh()
+  {
+    return $this->mesh;
+  }
+  /**
+   * @param Origin
+   */
+  public function setOrigin(Origin $origin)
+  {
+    $this->origin = $origin;
+  }
+  /**
+   * @return Origin
+   */
+  public function getOrigin()
+  {
+    return $this->origin;
+  }
+  /**
+   * @param PolicyControllerMembershipSpec
+   */
+  public function setPolicycontroller(PolicyControllerMembershipSpec $policycontroller)
+  {
+    $this->policycontroller = $policycontroller;
+  }
+  /**
+   * @return PolicyControllerMembershipSpec
+   */
+  public function getPolicycontroller()
+  {
+    return $this->policycontroller;
   }
 }
 

@@ -34,7 +34,7 @@ use Google\Service\CloudTasks\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $cloudtasksService = new Google\Service\CloudTasks(...);
- *   $queues = $cloudtasksService->queues;
+ *   $queues = $cloudtasksService->projects_locations_queues;
  *  </code>
  */
 class ProjectsLocationsQueues extends \Google\Service\Resource
@@ -55,6 +55,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * @param Queue $postBody
    * @param array $optParams Optional parameters.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Queue $postBody, $optParams = [])
   {
@@ -64,10 +65,17 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
   }
   /**
    * Deletes a queue. This command will delete the queue even if it has tasks in
-   * it. Note: If you delete a queue, a queue with the same name can't be created
-   * for 7 days. WARNING: Using this method may have unintended side effects if
-   * you are using an App Engine `queue.yaml` or `queue.xml` file to manage your
-   * queues. Read [Overview of Queue Management and
+   * it. Note: If you delete a queue, you may be prevented from creating a new
+   * queue with the same name as the deleted queue for a tombstone window of up to
+   * 3 days. During this window, the CreateQueue operation may appear to recreate
+   * the queue, but this can be misleading. If you attempt to create a queue with
+   * the same name as one that is in the tombstone window, run GetQueue to confirm
+   * that the queue creation was successful. If GetQueue returns 200 response
+   * code, your queue was successfully created with the name of the previously
+   * deleted queue. Otherwise, your queue did not successfully recreate. WARNING:
+   * Using this method may have unintended side effects if you are using an App
+   * Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview
+   * of Queue Management and
    * queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this
    * method. (queues.delete)
    *
@@ -75,6 +83,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @param array $optParams Optional parameters.
    * @return CloudtasksEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -89,6 +98,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @param array $optParams Optional parameters.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -104,11 +114,13 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * (queues.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -141,6 +153,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * next_page_token returned from the previous call to ListQueues method. It is
    * an error to switch the value of the filter while iterating through pages.
    * @return ListQueuesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsQueues($parent, $optParams = [])
   {
@@ -155,8 +168,9 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * will be deleted regardless of whether it was dispatched or not. WARNING:
    * Using this method may have unintended side effects if you are using an App
    * Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview
-   * of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs
-   * /queue-yaml) before using this method. (queues.patch)
+   * of Queue Management and
+   * queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this
+   * method. (queues.patch)
    *
    * @param string $name Caller-specified and required in CreateQueue, after which
    * it becomes output only. The queue name. The queue name must have the
@@ -176,6 +190,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * @opt_param string updateMask A mask used to specify which fields of the queue
    * are being updated. If empty, then all fields will be updated.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Queue $postBody, $optParams = [])
   {
@@ -194,6 +209,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * @param PauseQueueRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function pause($name, PauseQueueRequest $postBody, $optParams = [])
   {
@@ -212,6 +228,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * @param PurgeQueueRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function purge($name, PurgeQueueRequest $postBody, $optParams = [])
   {
@@ -233,6 +250,7 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * @param ResumeQueueRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Queue
+   * @throws \Google\Service\Exception
    */
   public function resume($name, ResumeQueueRequest $postBody, $optParams = [])
   {
@@ -249,11 +267,13 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * parent: * `cloudtasks.queues.setIamPolicy` (queues.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -269,11 +289,13 @@ class ProjectsLocationsQueues extends \Google\Service\Resource
    * "fail open" without warning. (queues.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

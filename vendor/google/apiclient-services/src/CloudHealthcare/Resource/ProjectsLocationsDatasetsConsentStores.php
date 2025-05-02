@@ -36,7 +36,7 @@ use Google\Service\CloudHealthcare\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $healthcareService = new Google\Service\CloudHealthcare(...);
- *   $consentStores = $healthcareService->consentStores;
+ *   $consentStores = $healthcareService->projects_locations_datasets_consentStores;
  *  </code>
  */
 class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
@@ -52,6 +52,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * @param CheckDataAccessRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CheckDataAccessResponse
+   * @throws \Google\Service\Exception
    */
   public function checkDataAccess($consentStore, CheckDataAccessRequest $postBody, $optParams = [])
   {
@@ -73,6 +74,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * create. The string must match the following regex:
    * `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
    * @return ConsentStore
+   * @throws \Google\Service\Exception
    */
   public function create($parent, ConsentStore $postBody, $optParams = [])
   {
@@ -88,6 +90,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * delete.
    * @param array $optParams Optional parameters.
    * @return HealthcareEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -106,6 +109,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * @param EvaluateUserConsentsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return EvaluateUserConsentsResponse
+   * @throws \Google\Service\Exception
    */
   public function evaluateUserConsents($consentStore, EvaluateUserConsentsRequest $postBody, $optParams = [])
   {
@@ -119,6 +123,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * @param string $name Required. The resource name of the consent store to get.
    * @param array $optParams Optional parameters.
    * @return ConsentStore
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -131,19 +136,25 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * resource exists and does not have a policy set. (consentStores.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -167,6 +178,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * @opt_param string pageToken Optional. Token to retrieve the next page of
    * results, or empty to get the first page.
    * @return ListConsentStoresResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsDatasetsConsentStores($parent, $optParams = [])
   {
@@ -177,18 +189,20 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
   /**
    * Updates the specified consent store. (consentStores.patch)
    *
-   * @param string $name Resource name of the consent store, of the form `projects
-   * /{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{co
-   * nsent_store_id}`. Cannot be changed after creation.
+   * @param string $name Identifier. Resource name of the consent store, of the
+   * form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/con
+   * sentStores/{consent_store_id}`. Cannot be changed after creation.
    * @param ConsentStore $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Required. The update mask that applies to the
-   * resource. For the `FieldMask` definition, see https://developers.google.com
-   * /protocol-buffers/docs/reference/google.protobuf#fieldmask. Only the
-   * `labels`, `default_consent_ttl`, and `enable_consent_create_on_update` fields
-   * are allowed to be updated.
+   * resource. For the `FieldMask` definition, see
+   * https://developers.google.com/protocol-
+   * buffers/docs/reference/google.protobuf#fieldmask. Only the `labels`,
+   * `default_consent_ttl`, and `enable_consent_create_on_update` fields are
+   * allowed to be updated.
    * @return ConsentStore
+   * @throws \Google\Service\Exception
    */
   public function patch($name, ConsentStore $postBody, $optParams = [])
   {
@@ -226,6 +240,7 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * @param QueryAccessibleDataRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function queryAccessibleData($consentStore, QueryAccessibleDataRequest $postBody, $optParams = [])
   {
@@ -239,11 +254,13 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (consentStores.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -260,11 +277,13 @@ class ProjectsLocationsDatasetsConsentStores extends \Google\Service\Resource
    * (consentStores.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

@@ -20,33 +20,104 @@ namespace Google\Service\Bigquery;
 class QueryResponse extends \Google\Collection
 {
   protected $collection_key = 'rows';
+  /**
+   * @var bool
+   */
   public $cacheHit;
+  /**
+   * @var string
+   */
+  public $creationTime;
   protected $dmlStatsType = DmlStatistics::class;
   protected $dmlStatsDataType = '';
+  /**
+   * @var string
+   */
+  public $endTime;
   protected $errorsType = ErrorProto::class;
   protected $errorsDataType = 'array';
+  /**
+   * @var bool
+   */
   public $jobComplete;
+  protected $jobCreationReasonType = JobCreationReason::class;
+  protected $jobCreationReasonDataType = '';
   protected $jobReferenceType = JobReference::class;
   protected $jobReferenceDataType = '';
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
+  public $location;
+  /**
+   * @var string
+   */
   public $numDmlAffectedRows;
+  /**
+   * @var string
+   */
   public $pageToken;
+  /**
+   * @var string
+   */
+  public $queryId;
   protected $rowsType = TableRow::class;
   protected $rowsDataType = 'array';
   protected $schemaType = TableSchema::class;
   protected $schemaDataType = '';
-  protected $sessionInfoTemplateType = SessionInfo::class;
-  protected $sessionInfoTemplateDataType = '';
+  protected $sessionInfoType = SessionInfo::class;
+  protected $sessionInfoDataType = '';
+  /**
+   * @var string
+   */
+  public $startTime;
+  /**
+   * @var string
+   */
+  public $totalBytesBilled;
+  /**
+   * @var string
+   */
   public $totalBytesProcessed;
+  /**
+   * @var string
+   */
   public $totalRows;
+  /**
+   * @var string
+   */
+  public $totalSlotMs;
 
+  /**
+   * @param bool
+   */
   public function setCacheHit($cacheHit)
   {
     $this->cacheHit = $cacheHit;
   }
+  /**
+   * @return bool
+   */
   public function getCacheHit()
   {
     return $this->cacheHit;
+  }
+  /**
+   * @param string
+   */
+  public function setCreationTime($creationTime)
+  {
+    $this->creationTime = $creationTime;
+  }
+  /**
+   * @return string
+   */
+  public function getCreationTime()
+  {
+    return $this->creationTime;
   }
   /**
    * @param DmlStatistics
@@ -63,6 +134,20 @@ class QueryResponse extends \Google\Collection
     return $this->dmlStats;
   }
   /**
+   * @param string
+   */
+  public function setEndTime($endTime)
+  {
+    $this->endTime = $endTime;
+  }
+  /**
+   * @return string
+   */
+  public function getEndTime()
+  {
+    return $this->endTime;
+  }
+  /**
    * @param ErrorProto[]
    */
   public function setErrors($errors)
@@ -76,13 +161,33 @@ class QueryResponse extends \Google\Collection
   {
     return $this->errors;
   }
+  /**
+   * @param bool
+   */
   public function setJobComplete($jobComplete)
   {
     $this->jobComplete = $jobComplete;
   }
+  /**
+   * @return bool
+   */
   public function getJobComplete()
   {
     return $this->jobComplete;
+  }
+  /**
+   * @param JobCreationReason
+   */
+  public function setJobCreationReason(JobCreationReason $jobCreationReason)
+  {
+    $this->jobCreationReason = $jobCreationReason;
+  }
+  /**
+   * @return JobCreationReason
+   */
+  public function getJobCreationReason()
+  {
+    return $this->jobCreationReason;
   }
   /**
    * @param JobReference
@@ -98,29 +203,75 @@ class QueryResponse extends \Google\Collection
   {
     return $this->jobReference;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  /**
+   * @return string
+   */
+  public function getLocation()
+  {
+    return $this->location;
+  }
+  /**
+   * @param string
+   */
   public function setNumDmlAffectedRows($numDmlAffectedRows)
   {
     $this->numDmlAffectedRows = $numDmlAffectedRows;
   }
+  /**
+   * @return string
+   */
   public function getNumDmlAffectedRows()
   {
     return $this->numDmlAffectedRows;
   }
+  /**
+   * @param string
+   */
   public function setPageToken($pageToken)
   {
     $this->pageToken = $pageToken;
   }
+  /**
+   * @return string
+   */
   public function getPageToken()
   {
     return $this->pageToken;
+  }
+  /**
+   * @param string
+   */
+  public function setQueryId($queryId)
+  {
+    $this->queryId = $queryId;
+  }
+  /**
+   * @return string
+   */
+  public function getQueryId()
+  {
+    return $this->queryId;
   }
   /**
    * @param TableRow[]
@@ -153,32 +304,86 @@ class QueryResponse extends \Google\Collection
   /**
    * @param SessionInfo
    */
-  public function setSessionInfoTemplate(SessionInfo $sessionInfoTemplate)
+  public function setSessionInfo(SessionInfo $sessionInfo)
   {
-    $this->sessionInfoTemplate = $sessionInfoTemplate;
+    $this->sessionInfo = $sessionInfo;
   }
   /**
    * @return SessionInfo
    */
-  public function getSessionInfoTemplate()
+  public function getSessionInfo()
   {
-    return $this->sessionInfoTemplate;
+    return $this->sessionInfo;
   }
+  /**
+   * @param string
+   */
+  public function setStartTime($startTime)
+  {
+    $this->startTime = $startTime;
+  }
+  /**
+   * @return string
+   */
+  public function getStartTime()
+  {
+    return $this->startTime;
+  }
+  /**
+   * @param string
+   */
+  public function setTotalBytesBilled($totalBytesBilled)
+  {
+    $this->totalBytesBilled = $totalBytesBilled;
+  }
+  /**
+   * @return string
+   */
+  public function getTotalBytesBilled()
+  {
+    return $this->totalBytesBilled;
+  }
+  /**
+   * @param string
+   */
   public function setTotalBytesProcessed($totalBytesProcessed)
   {
     $this->totalBytesProcessed = $totalBytesProcessed;
   }
+  /**
+   * @return string
+   */
   public function getTotalBytesProcessed()
   {
     return $this->totalBytesProcessed;
   }
+  /**
+   * @param string
+   */
   public function setTotalRows($totalRows)
   {
     $this->totalRows = $totalRows;
   }
+  /**
+   * @return string
+   */
   public function getTotalRows()
   {
     return $this->totalRows;
+  }
+  /**
+   * @param string
+   */
+  public function setTotalSlotMs($totalSlotMs)
+  {
+    $this->totalSlotMs = $totalSlotMs;
+  }
+  /**
+   * @return string
+   */
+  public function getTotalSlotMs()
+  {
+    return $this->totalSlotMs;
   }
 }
 

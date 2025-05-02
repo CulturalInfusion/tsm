@@ -22,20 +22,49 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
   protected $collection_key = 'suspensionReasons';
   protected $associationInfoType = GoogleCloudChannelV1AssociationInfo::class;
   protected $associationInfoDataType = '';
+  /**
+   * @var string
+   */
+  public $billingAccount;
   protected $commitmentSettingsType = GoogleCloudChannelV1CommitmentSettings::class;
   protected $commitmentSettingsDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $offer;
   protected $parametersType = GoogleCloudChannelV1Parameter::class;
   protected $parametersDataType = 'array';
+  /**
+   * @var string
+   */
+  public $priceReferenceId;
   protected $provisionedServiceType = GoogleCloudChannelV1ProvisionedService::class;
   protected $provisionedServiceDataType = '';
+  /**
+   * @var string
+   */
   public $provisioningState;
+  /**
+   * @var string
+   */
   public $purchaseOrderId;
+  /**
+   * @var string[]
+   */
   public $suspensionReasons;
   protected $trialSettingsType = GoogleCloudChannelV1TrialSettings::class;
   protected $trialSettingsDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
 
   /**
@@ -53,6 +82,20 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
     return $this->associationInfo;
   }
   /**
+   * @param string
+   */
+  public function setBillingAccount($billingAccount)
+  {
+    $this->billingAccount = $billingAccount;
+  }
+  /**
+   * @return string
+   */
+  public function getBillingAccount()
+  {
+    return $this->billingAccount;
+  }
+  /**
    * @param GoogleCloudChannelV1CommitmentSettings
    */
   public function setCommitmentSettings(GoogleCloudChannelV1CommitmentSettings $commitmentSettings)
@@ -66,26 +109,44 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
   {
     return $this->commitmentSettings;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setOffer($offer)
   {
     $this->offer = $offer;
   }
+  /**
+   * @return string
+   */
   public function getOffer()
   {
     return $this->offer;
@@ -105,6 +166,20 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
     return $this->parameters;
   }
   /**
+   * @param string
+   */
+  public function setPriceReferenceId($priceReferenceId)
+  {
+    $this->priceReferenceId = $priceReferenceId;
+  }
+  /**
+   * @return string
+   */
+  public function getPriceReferenceId()
+  {
+    return $this->priceReferenceId;
+  }
+  /**
    * @param GoogleCloudChannelV1ProvisionedService
    */
   public function setProvisionedService(GoogleCloudChannelV1ProvisionedService $provisionedService)
@@ -118,26 +193,44 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
   {
     return $this->provisionedService;
   }
+  /**
+   * @param string
+   */
   public function setProvisioningState($provisioningState)
   {
     $this->provisioningState = $provisioningState;
   }
+  /**
+   * @return string
+   */
   public function getProvisioningState()
   {
     return $this->provisioningState;
   }
+  /**
+   * @param string
+   */
   public function setPurchaseOrderId($purchaseOrderId)
   {
     $this->purchaseOrderId = $purchaseOrderId;
   }
+  /**
+   * @return string
+   */
   public function getPurchaseOrderId()
   {
     return $this->purchaseOrderId;
   }
+  /**
+   * @param string[]
+   */
   public function setSuspensionReasons($suspensionReasons)
   {
     $this->suspensionReasons = $suspensionReasons;
   }
+  /**
+   * @return string[]
+   */
   public function getSuspensionReasons()
   {
     return $this->suspensionReasons;
@@ -156,10 +249,16 @@ class GoogleCloudChannelV1Entitlement extends \Google\Collection
   {
     return $this->trialSettings;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

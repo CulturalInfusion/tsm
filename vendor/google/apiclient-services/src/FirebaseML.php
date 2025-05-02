@@ -34,11 +34,12 @@ use Google\Client;
  */
 class FirebaseML extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $operations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the FirebaseML service.
@@ -51,6 +52,7 @@ class FirebaseML extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://firebaseml.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://firebaseml.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

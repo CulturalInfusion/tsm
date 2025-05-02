@@ -19,30 +19,57 @@ namespace Google\Service\ChromeUXReport;
 
 class Bin extends \Google\Model
 {
+  /**
+   * @var array
+   */
   public $density;
+  /**
+   * @var array
+   */
   public $end;
+  /**
+   * @var array
+   */
   public $start;
 
+  /**
+   * @param array
+   */
   public function setDensity($density)
   {
     $this->density = $density;
   }
+  /**
+   * @return array
+   */
   public function getDensity()
   {
     return $this->density;
   }
+  /**
+   * @param array
+   */
   public function setEnd($end)
   {
     $this->end = $end;
   }
+  /**
+   * @return array
+   */
   public function getEnd()
   {
     return $this->end;
   }
+  /**
+   * @param array
+   */
   public function setStart($start)
   {
     $this->start = $start;
   }
+  /**
+   * @return array
+   */
   public function getStart()
   {
     return $this->start;

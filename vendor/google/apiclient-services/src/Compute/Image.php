@@ -20,58 +20,165 @@ namespace Google\Service\Compute;
 class Image extends \Google\Collection
 {
   protected $collection_key = 'storageLocations';
+  /**
+   * @var string
+   */
+  public $architecture;
+  /**
+   * @var string
+   */
   public $archiveSizeBytes;
+  /**
+   * @var string
+   */
   public $creationTimestamp;
   protected $deprecatedType = DeprecationStatus::class;
   protected $deprecatedDataType = '';
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $diskSizeGb;
+  /**
+   * @var bool
+   */
+  public $enableConfidentialCompute;
+  /**
+   * @var string
+   */
   public $family;
   protected $guestOsFeaturesType = GuestOsFeature::class;
   protected $guestOsFeaturesDataType = 'array';
+  /**
+   * @var string
+   */
   public $id;
   protected $imageEncryptionKeyType = CustomerEncryptionKey::class;
   protected $imageEncryptionKeyDataType = '';
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $labelFingerprint;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string[]
+   */
   public $licenseCodes;
+  /**
+   * @var string[]
+   */
   public $licenses;
+  /**
+   * @var string
+   */
   public $name;
   protected $rawDiskType = ImageRawDisk::class;
   protected $rawDiskDataType = '';
+  /**
+   * @var bool
+   */
+  public $satisfiesPzi;
+  /**
+   * @var bool
+   */
   public $satisfiesPzs;
+  /**
+   * @var string
+   */
   public $selfLink;
   protected $shieldedInstanceInitialStateType = InitialStateConfig::class;
   protected $shieldedInstanceInitialStateDataType = '';
+  /**
+   * @var string
+   */
   public $sourceDisk;
   protected $sourceDiskEncryptionKeyType = CustomerEncryptionKey::class;
   protected $sourceDiskEncryptionKeyDataType = '';
+  /**
+   * @var string
+   */
   public $sourceDiskId;
+  /**
+   * @var string
+   */
   public $sourceImage;
   protected $sourceImageEncryptionKeyType = CustomerEncryptionKey::class;
   protected $sourceImageEncryptionKeyDataType = '';
+  /**
+   * @var string
+   */
   public $sourceImageId;
+  /**
+   * @var string
+   */
   public $sourceSnapshot;
   protected $sourceSnapshotEncryptionKeyType = CustomerEncryptionKey::class;
   protected $sourceSnapshotEncryptionKeyDataType = '';
+  /**
+   * @var string
+   */
   public $sourceSnapshotId;
+  /**
+   * @var string
+   */
   public $sourceType;
+  /**
+   * @var string
+   */
   public $status;
+  /**
+   * @var string[]
+   */
   public $storageLocations;
 
+  /**
+   * @param string
+   */
+  public function setArchitecture($architecture)
+  {
+    $this->architecture = $architecture;
+  }
+  /**
+   * @return string
+   */
+  public function getArchitecture()
+  {
+    return $this->architecture;
+  }
+  /**
+   * @param string
+   */
   public function setArchiveSizeBytes($archiveSizeBytes)
   {
     $this->archiveSizeBytes = $archiveSizeBytes;
   }
+  /**
+   * @return string
+   */
   public function getArchiveSizeBytes()
   {
     return $this->archiveSizeBytes;
   }
+  /**
+   * @param string
+   */
   public function setCreationTimestamp($creationTimestamp)
   {
     $this->creationTimestamp = $creationTimestamp;
   }
+  /**
+   * @return string
+   */
   public function getCreationTimestamp()
   {
     return $this->creationTimestamp;
@@ -90,26 +197,58 @@ class Image extends \Google\Collection
   {
     return $this->deprecated;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setDiskSizeGb($diskSizeGb)
   {
     $this->diskSizeGb = $diskSizeGb;
   }
+  /**
+   * @return string
+   */
   public function getDiskSizeGb()
   {
     return $this->diskSizeGb;
   }
+  /**
+   * @param bool
+   */
+  public function setEnableConfidentialCompute($enableConfidentialCompute)
+  {
+    $this->enableConfidentialCompute = $enableConfidentialCompute;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableConfidentialCompute()
+  {
+    return $this->enableConfidentialCompute;
+  }
+  /**
+   * @param string
+   */
   public function setFamily($family)
   {
     $this->family = $family;
   }
+  /**
+   * @return string
+   */
   public function getFamily()
   {
     return $this->family;
@@ -128,10 +267,16 @@ class Image extends \Google\Collection
   {
     return $this->guestOsFeatures;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
@@ -150,50 +295,86 @@ class Image extends \Google\Collection
   {
     return $this->imageEncryptionKey;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setLabelFingerprint($labelFingerprint)
   {
     $this->labelFingerprint = $labelFingerprint;
   }
+  /**
+   * @return string
+   */
   public function getLabelFingerprint()
   {
     return $this->labelFingerprint;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string[]
+   */
   public function setLicenseCodes($licenseCodes)
   {
     $this->licenseCodes = $licenseCodes;
   }
+  /**
+   * @return string[]
+   */
   public function getLicenseCodes()
   {
     return $this->licenseCodes;
   }
+  /**
+   * @param string[]
+   */
   public function setLicenses($licenses)
   {
     $this->licenses = $licenses;
   }
+  /**
+   * @return string[]
+   */
   public function getLicenses()
   {
     return $this->licenses;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -212,18 +393,44 @@ class Image extends \Google\Collection
   {
     return $this->rawDisk;
   }
+  /**
+   * @param bool
+   */
+  public function setSatisfiesPzi($satisfiesPzi)
+  {
+    $this->satisfiesPzi = $satisfiesPzi;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzi()
+  {
+    return $this->satisfiesPzi;
+  }
+  /**
+   * @param bool
+   */
   public function setSatisfiesPzs($satisfiesPzs)
   {
     $this->satisfiesPzs = $satisfiesPzs;
   }
+  /**
+   * @return bool
+   */
   public function getSatisfiesPzs()
   {
     return $this->satisfiesPzs;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
@@ -242,10 +449,16 @@ class Image extends \Google\Collection
   {
     return $this->shieldedInstanceInitialState;
   }
+  /**
+   * @param string
+   */
   public function setSourceDisk($sourceDisk)
   {
     $this->sourceDisk = $sourceDisk;
   }
+  /**
+   * @return string
+   */
   public function getSourceDisk()
   {
     return $this->sourceDisk;
@@ -264,18 +477,30 @@ class Image extends \Google\Collection
   {
     return $this->sourceDiskEncryptionKey;
   }
+  /**
+   * @param string
+   */
   public function setSourceDiskId($sourceDiskId)
   {
     $this->sourceDiskId = $sourceDiskId;
   }
+  /**
+   * @return string
+   */
   public function getSourceDiskId()
   {
     return $this->sourceDiskId;
   }
+  /**
+   * @param string
+   */
   public function setSourceImage($sourceImage)
   {
     $this->sourceImage = $sourceImage;
   }
+  /**
+   * @return string
+   */
   public function getSourceImage()
   {
     return $this->sourceImage;
@@ -294,18 +519,30 @@ class Image extends \Google\Collection
   {
     return $this->sourceImageEncryptionKey;
   }
+  /**
+   * @param string
+   */
   public function setSourceImageId($sourceImageId)
   {
     $this->sourceImageId = $sourceImageId;
   }
+  /**
+   * @return string
+   */
   public function getSourceImageId()
   {
     return $this->sourceImageId;
   }
+  /**
+   * @param string
+   */
   public function setSourceSnapshot($sourceSnapshot)
   {
     $this->sourceSnapshot = $sourceSnapshot;
   }
+  /**
+   * @return string
+   */
   public function getSourceSnapshot()
   {
     return $this->sourceSnapshot;
@@ -324,34 +561,58 @@ class Image extends \Google\Collection
   {
     return $this->sourceSnapshotEncryptionKey;
   }
+  /**
+   * @param string
+   */
   public function setSourceSnapshotId($sourceSnapshotId)
   {
     $this->sourceSnapshotId = $sourceSnapshotId;
   }
+  /**
+   * @return string
+   */
   public function getSourceSnapshotId()
   {
     return $this->sourceSnapshotId;
   }
+  /**
+   * @param string
+   */
   public function setSourceType($sourceType)
   {
     $this->sourceType = $sourceType;
   }
+  /**
+   * @return string
+   */
   public function getSourceType()
   {
     return $this->sourceType;
   }
+  /**
+   * @param string
+   */
   public function setStatus($status)
   {
     $this->status = $status;
   }
+  /**
+   * @return string
+   */
   public function getStatus()
   {
     return $this->status;
   }
+  /**
+   * @param string[]
+   */
   public function setStorageLocations($storageLocations)
   {
     $this->storageLocations = $storageLocations;
   }
+  /**
+   * @return string[]
+   */
   public function getStorageLocations()
   {
     return $this->storageLocations;

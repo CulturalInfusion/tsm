@@ -19,21 +19,75 @@ namespace Google\Service\Pubsub;
 
 class SchemaSettings extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $encoding;
+  /**
+   * @var string
+   */
+  public $firstRevisionId;
+  /**
+   * @var string
+   */
+  public $lastRevisionId;
+  /**
+   * @var string
+   */
   public $schema;
 
+  /**
+   * @param string
+   */
   public function setEncoding($encoding)
   {
     $this->encoding = $encoding;
   }
+  /**
+   * @return string
+   */
   public function getEncoding()
   {
     return $this->encoding;
   }
+  /**
+   * @param string
+   */
+  public function setFirstRevisionId($firstRevisionId)
+  {
+    $this->firstRevisionId = $firstRevisionId;
+  }
+  /**
+   * @return string
+   */
+  public function getFirstRevisionId()
+  {
+    return $this->firstRevisionId;
+  }
+  /**
+   * @param string
+   */
+  public function setLastRevisionId($lastRevisionId)
+  {
+    $this->lastRevisionId = $lastRevisionId;
+  }
+  /**
+   * @return string
+   */
+  public function getLastRevisionId()
+  {
+    return $this->lastRevisionId;
+  }
+  /**
+   * @param string
+   */
   public function setSchema($schema)
   {
     $this->schema = $schema;
   }
+  /**
+   * @return string
+   */
   public function getSchema()
   {
     return $this->schema;

@@ -34,13 +34,14 @@ use Google\Client;
  */
 class OnDemandScanning extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_locations_operations;
   public $projects_locations_scans;
   public $projects_locations_scans_vulnerabilities;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the OnDemandScanning service.
@@ -53,6 +54,7 @@ class OnDemandScanning extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://ondemandscanning.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://ondemandscanning.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

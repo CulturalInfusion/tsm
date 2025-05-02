@@ -17,62 +17,129 @@
 
 namespace Google\Service\ContainerAnalysis;
 
-class PackageOccurrence extends \Google\Model
+class PackageOccurrence extends \Google\Collection
 {
-  public $comment;
-  public $filename;
-  public $id;
-  public $licenseComments;
-  public $licenseConcluded;
-  public $sourceInfo;
+  protected $collection_key = 'location';
+  /**
+   * @var string
+   */
+  public $architecture;
+  /**
+   * @var string
+   */
+  public $cpeUri;
+  protected $licenseType = License::class;
+  protected $licenseDataType = '';
+  protected $locationType = Location::class;
+  protected $locationDataType = 'array';
+  /**
+   * @var string
+   */
+  public $name;
+  /**
+   * @var string
+   */
+  public $packageType;
+  protected $versionType = Version::class;
+  protected $versionDataType = '';
 
-  public function setComment($comment)
+  /**
+   * @param string
+   */
+  public function setArchitecture($architecture)
   {
-    $this->comment = $comment;
+    $this->architecture = $architecture;
   }
-  public function getComment()
+  /**
+   * @return string
+   */
+  public function getArchitecture()
   {
-    return $this->comment;
+    return $this->architecture;
   }
-  public function setFilename($filename)
+  /**
+   * @param string
+   */
+  public function setCpeUri($cpeUri)
   {
-    $this->filename = $filename;
+    $this->cpeUri = $cpeUri;
   }
-  public function getFilename()
+  /**
+   * @return string
+   */
+  public function getCpeUri()
   {
-    return $this->filename;
+    return $this->cpeUri;
   }
-  public function setId($id)
+  /**
+   * @param License
+   */
+  public function setLicense(License $license)
   {
-    $this->id = $id;
+    $this->license = $license;
   }
-  public function getId()
+  /**
+   * @return License
+   */
+  public function getLicense()
   {
-    return $this->id;
+    return $this->license;
   }
-  public function setLicenseComments($licenseComments)
+  /**
+   * @param Location[]
+   */
+  public function setLocation($location)
   {
-    $this->licenseComments = $licenseComments;
+    $this->location = $location;
   }
-  public function getLicenseComments()
+  /**
+   * @return Location[]
+   */
+  public function getLocation()
   {
-    return $this->licenseComments;
+    return $this->location;
   }
-  public function setLicenseConcluded($licenseConcluded)
+  /**
+   * @param string
+   */
+  public function setName($name)
   {
-    $this->licenseConcluded = $licenseConcluded;
+    $this->name = $name;
   }
-  public function getLicenseConcluded()
+  /**
+   * @return string
+   */
+  public function getName()
   {
-    return $this->licenseConcluded;
+    return $this->name;
   }
-  public function setSourceInfo($sourceInfo)
+  /**
+   * @param string
+   */
+  public function setPackageType($packageType)
   {
-    $this->sourceInfo = $sourceInfo;
+    $this->packageType = $packageType;
   }
-  public function getSourceInfo()
+  /**
+   * @return string
+   */
+  public function getPackageType()
   {
-    return $this->sourceInfo;
+    return $this->packageType;
+  }
+  /**
+   * @param Version
+   */
+  public function setVersion(Version $version)
+  {
+    $this->version = $version;
+  }
+  /**
+   * @return Version
+   */
+  public function getVersion()
+  {
+    return $this->version;
   }
 }
 

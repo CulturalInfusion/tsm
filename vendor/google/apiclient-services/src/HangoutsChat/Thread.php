@@ -19,15 +19,42 @@ namespace Google\Service\HangoutsChat;
 
 class Thread extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
+  public $threadKey;
 
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param string
+   */
+  public function setThreadKey($threadKey)
+  {
+    $this->threadKey = $threadKey;
+  }
+  /**
+   * @return string
+   */
+  public function getThreadKey()
+  {
+    return $this->threadKey;
   }
 }
 

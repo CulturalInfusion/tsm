@@ -19,39 +19,111 @@ namespace Google\Service\Spanner;
 
 class Session extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $approximateLastUseTime;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
+  public $creatorRole;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var bool
+   */
+  public $multiplexed;
+  /**
+   * @var string
+   */
   public $name;
 
+  /**
+   * @param string
+   */
   public function setApproximateLastUseTime($approximateLastUseTime)
   {
     $this->approximateLastUseTime = $approximateLastUseTime;
   }
+  /**
+   * @return string
+   */
   public function getApproximateLastUseTime()
   {
     return $this->approximateLastUseTime;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
+  public function setCreatorRole($creatorRole)
+  {
+    $this->creatorRole = $creatorRole;
+  }
+  /**
+   * @return string
+   */
+  public function getCreatorRole()
+  {
+    return $this->creatorRole;
+  }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param bool
+   */
+  public function setMultiplexed($multiplexed)
+  {
+    $this->multiplexed = $multiplexed;
+  }
+  /**
+   * @return bool
+   */
+  public function getMultiplexed()
+  {
+    return $this->multiplexed;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;

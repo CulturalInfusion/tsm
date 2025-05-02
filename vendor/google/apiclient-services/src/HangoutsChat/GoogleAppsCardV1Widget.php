@@ -21,6 +21,12 @@ class GoogleAppsCardV1Widget extends \Google\Model
 {
   protected $buttonListType = GoogleAppsCardV1ButtonList::class;
   protected $buttonListDataType = '';
+  protected $carouselType = GoogleAppsCardV1Carousel::class;
+  protected $carouselDataType = '';
+  protected $chipListType = GoogleAppsCardV1ChipList::class;
+  protected $chipListDataType = '';
+  protected $columnsType = GoogleAppsCardV1Columns::class;
+  protected $columnsDataType = '';
   protected $dateTimePickerType = GoogleAppsCardV1DateTimePicker::class;
   protected $dateTimePickerDataType = '';
   protected $decoratedTextType = GoogleAppsCardV1DecoratedText::class;
@@ -29,6 +35,9 @@ class GoogleAppsCardV1Widget extends \Google\Model
   protected $dividerDataType = '';
   protected $gridType = GoogleAppsCardV1Grid::class;
   protected $gridDataType = '';
+  /**
+   * @var string
+   */
   public $horizontalAlignment;
   protected $imageType = GoogleAppsCardV1Image::class;
   protected $imageDataType = '';
@@ -52,6 +61,48 @@ class GoogleAppsCardV1Widget extends \Google\Model
   public function getButtonList()
   {
     return $this->buttonList;
+  }
+  /**
+   * @param GoogleAppsCardV1Carousel
+   */
+  public function setCarousel(GoogleAppsCardV1Carousel $carousel)
+  {
+    $this->carousel = $carousel;
+  }
+  /**
+   * @return GoogleAppsCardV1Carousel
+   */
+  public function getCarousel()
+  {
+    return $this->carousel;
+  }
+  /**
+   * @param GoogleAppsCardV1ChipList
+   */
+  public function setChipList(GoogleAppsCardV1ChipList $chipList)
+  {
+    $this->chipList = $chipList;
+  }
+  /**
+   * @return GoogleAppsCardV1ChipList
+   */
+  public function getChipList()
+  {
+    return $this->chipList;
+  }
+  /**
+   * @param GoogleAppsCardV1Columns
+   */
+  public function setColumns(GoogleAppsCardV1Columns $columns)
+  {
+    $this->columns = $columns;
+  }
+  /**
+   * @return GoogleAppsCardV1Columns
+   */
+  public function getColumns()
+  {
+    return $this->columns;
   }
   /**
    * @param GoogleAppsCardV1DateTimePicker
@@ -109,10 +160,16 @@ class GoogleAppsCardV1Widget extends \Google\Model
   {
     return $this->grid;
   }
+  /**
+   * @param string
+   */
   public function setHorizontalAlignment($horizontalAlignment)
   {
     $this->horizontalAlignment = $horizontalAlignment;
   }
+  /**
+   * @return string
+   */
   public function getHorizontalAlignment()
   {
     return $this->horizontalAlignment;
