@@ -34,12 +34,13 @@ use Google\Client;
  */
 class Libraryagent extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $shelves;
   public $shelves_books;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Libraryagent service.
@@ -52,6 +53,7 @@ class Libraryagent extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://libraryagent.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://libraryagent.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

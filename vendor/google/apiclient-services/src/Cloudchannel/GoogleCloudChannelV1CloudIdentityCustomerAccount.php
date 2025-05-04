@@ -19,39 +19,111 @@ namespace Google\Service\Cloudchannel;
 
 class GoogleCloudChannelV1CloudIdentityCustomerAccount extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $channelPartnerCloudIdentityId;
+  /**
+   * @var string
+   */
   public $customerCloudIdentityId;
+  /**
+   * @var string
+   */
   public $customerName;
+  /**
+   * @var string
+   */
+  public $customerType;
+  /**
+   * @var bool
+   */
   public $existing;
+  /**
+   * @var bool
+   */
   public $owned;
 
+  /**
+   * @param string
+   */
+  public function setChannelPartnerCloudIdentityId($channelPartnerCloudIdentityId)
+  {
+    $this->channelPartnerCloudIdentityId = $channelPartnerCloudIdentityId;
+  }
+  /**
+   * @return string
+   */
+  public function getChannelPartnerCloudIdentityId()
+  {
+    return $this->channelPartnerCloudIdentityId;
+  }
+  /**
+   * @param string
+   */
   public function setCustomerCloudIdentityId($customerCloudIdentityId)
   {
     $this->customerCloudIdentityId = $customerCloudIdentityId;
   }
+  /**
+   * @return string
+   */
   public function getCustomerCloudIdentityId()
   {
     return $this->customerCloudIdentityId;
   }
+  /**
+   * @param string
+   */
   public function setCustomerName($customerName)
   {
     $this->customerName = $customerName;
   }
+  /**
+   * @return string
+   */
   public function getCustomerName()
   {
     return $this->customerName;
   }
+  /**
+   * @param string
+   */
+  public function setCustomerType($customerType)
+  {
+    $this->customerType = $customerType;
+  }
+  /**
+   * @return string
+   */
+  public function getCustomerType()
+  {
+    return $this->customerType;
+  }
+  /**
+   * @param bool
+   */
   public function setExisting($existing)
   {
     $this->existing = $existing;
   }
+  /**
+   * @return bool
+   */
   public function getExisting()
   {
     return $this->existing;
   }
+  /**
+   * @param bool
+   */
   public function setOwned($owned)
   {
     $this->owned = $owned;
   }
+  /**
+   * @return bool
+   */
   public function getOwned()
   {
     return $this->owned;

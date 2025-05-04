@@ -38,13 +38,11 @@ class SmartDeviceManagement extends \Google\Service
   /** See and/or control the devices that you selected. */
   const SDM_SERVICE =
       "https://www.googleapis.com/auth/sdm.service";
-  /** See and control the Nest thermostats that you select. */
-  const SDM_THERMOSTAT_SERVICE =
-      "https://www.googleapis.com/auth/sdm.thermostat.service";
 
   public $enterprises_devices;
   public $enterprises_structures;
   public $enterprises_structures_rooms;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the SmartDeviceManagement
@@ -58,6 +56,7 @@ class SmartDeviceManagement extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://smartdevicemanagement.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://smartdevicemanagement.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -102,14 +101,6 @@ class SmartDeviceManagement extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
               ],
             ],
           ]
@@ -144,14 +135,6 @@ class SmartDeviceManagement extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
               ],
             ],
           ]
@@ -181,14 +164,6 @@ class SmartDeviceManagement extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],

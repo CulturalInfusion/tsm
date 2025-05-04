@@ -19,35 +19,87 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowCxV3beta1FormParameter extends \Google\Model
 {
+  protected $advancedSettingsType = GoogleCloudDialogflowCxV3beta1AdvancedSettings::class;
+  protected $advancedSettingsDataType = '';
+  /**
+   * @var array
+   */
   public $defaultValue;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $entityType;
   protected $fillBehaviorType = GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior::class;
   protected $fillBehaviorDataType = '';
+  /**
+   * @var bool
+   */
   public $isList;
+  /**
+   * @var bool
+   */
   public $redact;
+  /**
+   * @var bool
+   */
   public $required;
 
+  /**
+   * @param GoogleCloudDialogflowCxV3beta1AdvancedSettings
+   */
+  public function setAdvancedSettings(GoogleCloudDialogflowCxV3beta1AdvancedSettings $advancedSettings)
+  {
+    $this->advancedSettings = $advancedSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3beta1AdvancedSettings
+   */
+  public function getAdvancedSettings()
+  {
+    return $this->advancedSettings;
+  }
+  /**
+   * @param array
+   */
   public function setDefaultValue($defaultValue)
   {
     $this->defaultValue = $defaultValue;
   }
+  /**
+   * @return array
+   */
   public function getDefaultValue()
   {
     return $this->defaultValue;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEntityType($entityType)
   {
     $this->entityType = $entityType;
   }
+  /**
+   * @return string
+   */
   public function getEntityType()
   {
     return $this->entityType;
@@ -66,26 +118,44 @@ class GoogleCloudDialogflowCxV3beta1FormParameter extends \Google\Model
   {
     return $this->fillBehavior;
   }
+  /**
+   * @param bool
+   */
   public function setIsList($isList)
   {
     $this->isList = $isList;
   }
+  /**
+   * @return bool
+   */
   public function getIsList()
   {
     return $this->isList;
   }
+  /**
+   * @param bool
+   */
   public function setRedact($redact)
   {
     $this->redact = $redact;
   }
+  /**
+   * @return bool
+   */
   public function getRedact()
   {
     return $this->redact;
   }
+  /**
+   * @param bool
+   */
   public function setRequired($required)
   {
     $this->required = $required;
   }
+  /**
+   * @return bool
+   */
   public function getRequired()
   {
     return $this->required;

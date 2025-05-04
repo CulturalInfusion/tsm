@@ -17,6 +17,8 @@
 
 namespace Google\Service\Digitalassetlinks\Resource;
 
+use Google\Service\Digitalassetlinks\BulkCheckRequest;
+use Google\Service\Digitalassetlinks\BulkCheckResponse;
 use Google\Service\Digitalassetlinks\CheckResponse;
 
 /**
@@ -29,6 +31,23 @@ use Google\Service\Digitalassetlinks\CheckResponse;
  */
 class Assetlinks extends \Google\Service\Resource
 {
+  /**
+   * Send a bundle of statement checks in a single RPC to minimize latency and
+   * service load. Statements need not be all for the same source and/or target.
+   * We recommend using this method when you need to check more than one statement
+   * in a short period of time. (assetlinks.bulkCheck)
+   *
+   * @param BulkCheckRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return BulkCheckResponse
+   * @throws \Google\Service\Exception
+   */
+  public function bulkCheck(BulkCheckRequest $postBody, $optParams = [])
+  {
+    $params = ['postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('bulkCheck', [$params], BulkCheckResponse::class);
+  }
   /**
    * Determines whether the specified (directional) relationship exists between
    * the specified source and target assets. The relation describes the intent of
@@ -46,8 +65,9 @@ class Assetlinks extends \Google\Service\Resource
    * `https://`), the API cannot verify its statements securely, and it is not
    * possible to ensure that the website's statements have not been altered by a
    * third party. For more information, see the [Digital Asset Links technical
-   * design specification](https://github.com/google/digitalassetlinks/blob/master
-   * /well-known/details.md). (assetlinks.check)
+   * design
+   * specification](https://github.com/google/digitalassetlinks/blob/master/well-
+   * known/details.md). (assetlinks.check)
    *
    * @param array $optParams Optional parameters.
    *
@@ -125,6 +145,7 @@ class Assetlinks extends \Google\Service\Resource
    * * `https://google.com/` (hostname does not match) *
    * `https://www.google.com:444/` (port does not match) REQUIRED
    * @return CheckResponse
+   * @throws \Google\Service\Exception
    */
   public function check($optParams = [])
   {

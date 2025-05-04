@@ -17,30 +17,68 @@
 
 namespace Google\Service\OnDemandScanning;
 
-class PackageIssue extends \Google\Model
+class PackageIssue extends \Google\Collection
 {
+  protected $collection_key = 'fileLocation';
+  /**
+   * @var string
+   */
   public $affectedCpeUri;
+  /**
+   * @var string
+   */
   public $affectedPackage;
   protected $affectedVersionType = Version::class;
   protected $affectedVersionDataType = '';
+  /**
+   * @var string
+   */
+  public $effectiveSeverity;
+  protected $fileLocationType = GrafeasV1FileLocation::class;
+  protected $fileLocationDataType = 'array';
+  /**
+   * @var bool
+   */
   public $fixAvailable;
+  /**
+   * @var string
+   */
   public $fixedCpeUri;
+  /**
+   * @var string
+   */
   public $fixedPackage;
   protected $fixedVersionType = Version::class;
   protected $fixedVersionDataType = '';
+  /**
+   * @var string
+   */
+  public $packageType;
 
+  /**
+   * @param string
+   */
   public function setAffectedCpeUri($affectedCpeUri)
   {
     $this->affectedCpeUri = $affectedCpeUri;
   }
+  /**
+   * @return string
+   */
   public function getAffectedCpeUri()
   {
     return $this->affectedCpeUri;
   }
+  /**
+   * @param string
+   */
   public function setAffectedPackage($affectedPackage)
   {
     $this->affectedPackage = $affectedPackage;
   }
+  /**
+   * @return string
+   */
   public function getAffectedPackage()
   {
     return $this->affectedPackage;
@@ -59,26 +97,72 @@ class PackageIssue extends \Google\Model
   {
     return $this->affectedVersion;
   }
+  /**
+   * @param string
+   */
+  public function setEffectiveSeverity($effectiveSeverity)
+  {
+    $this->effectiveSeverity = $effectiveSeverity;
+  }
+  /**
+   * @return string
+   */
+  public function getEffectiveSeverity()
+  {
+    return $this->effectiveSeverity;
+  }
+  /**
+   * @param GrafeasV1FileLocation[]
+   */
+  public function setFileLocation($fileLocation)
+  {
+    $this->fileLocation = $fileLocation;
+  }
+  /**
+   * @return GrafeasV1FileLocation[]
+   */
+  public function getFileLocation()
+  {
+    return $this->fileLocation;
+  }
+  /**
+   * @param bool
+   */
   public function setFixAvailable($fixAvailable)
   {
     $this->fixAvailable = $fixAvailable;
   }
+  /**
+   * @return bool
+   */
   public function getFixAvailable()
   {
     return $this->fixAvailable;
   }
+  /**
+   * @param string
+   */
   public function setFixedCpeUri($fixedCpeUri)
   {
     $this->fixedCpeUri = $fixedCpeUri;
   }
+  /**
+   * @return string
+   */
   public function getFixedCpeUri()
   {
     return $this->fixedCpeUri;
   }
+  /**
+   * @param string
+   */
   public function setFixedPackage($fixedPackage)
   {
     $this->fixedPackage = $fixedPackage;
   }
+  /**
+   * @return string
+   */
   public function getFixedPackage()
   {
     return $this->fixedPackage;
@@ -96,6 +180,20 @@ class PackageIssue extends \Google\Model
   public function getFixedVersion()
   {
     return $this->fixedVersion;
+  }
+  /**
+   * @param string
+   */
+  public function setPackageType($packageType)
+  {
+    $this->packageType = $packageType;
+  }
+  /**
+   * @return string
+   */
+  public function getPackageType()
+  {
+    return $this->packageType;
   }
 }
 

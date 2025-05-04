@@ -34,16 +34,16 @@ use Google\Client;
  */
 class WebRisk extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $hashes;
   public $projects_operations;
   public $projects_submissions;
-  public $projects_uris;
   public $threatLists;
   public $uris;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the WebRisk service.
@@ -56,6 +56,7 @@ class WebRisk extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://webrisk.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://webrisk.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -155,26 +156,6 @@ class WebRisk extends \Google\Service
           'methods' => [
             'create' => [
               'path' => 'v1/{+parent}/submissions',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'parent' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_uris = new WebRisk\Resource\ProjectsUris(
-        $this,
-        $this->serviceName,
-        'uris',
-        [
-          'methods' => [
-            'submit' => [
-              'path' => 'v1/{+parent}/uris:submit',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [

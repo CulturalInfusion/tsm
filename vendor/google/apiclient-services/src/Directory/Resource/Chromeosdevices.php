@@ -33,7 +33,9 @@ use Google\Service\Directory\ChromeOsMoveDevicesToOu;
 class Chromeosdevices extends \Google\Service\Resource
 {
   /**
-   * Takes an action that affects a Chrome OS Device. This includes
+   * Use [BatchChangeChromeOsDeviceStatus](/admin-
+   * sdk/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus)
+   * instead. Takes an action that affects a Chrome OS Device. This includes
    * deprovisioning, disabling, and re-enabling devices. *Warning:* *
    * Deprovisioning a device will stop device policy syncing and remove device-
    * level printers. After a device is deprovisioned, it must be wiped before it
@@ -55,6 +57,7 @@ class Chromeosdevices extends \Google\Service\Resource
    * sdk/directory/v1/reference/chromeosdevices/list) method.
    * @param ChromeOsDeviceAction $postBody
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
   public function action($customerId, $resourceId, ChromeOsDeviceAction $postBody, $optParams = [])
   {
@@ -78,6 +81,7 @@ class Chromeosdevices extends \Google\Service\Resource
    * @opt_param string projection Determines whether the response contains the
    * full list of properties or only a subset.
    * @return ChromeOsDevice
+   * @throws \Google\Service\Exception
    */
   public function get($customerId, $deviceId, $optParams = [])
   {
@@ -96,20 +100,25 @@ class Chromeosdevices extends \Google\Service\Resource
    * sdk/directory/v1/reference/users).
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int maxResults Maximum number of results to return.
+   * @opt_param bool includeChildOrgunits Return devices from all child orgunits,
+   * as well as the specified org unit. If this is set to true, 'orgUnitPath' must
+   * be provided.
+   * @opt_param int maxResults Maximum number of results to return. Value should
+   * not exceed 300.
    * @opt_param string orderBy Device property to use for sorting results.
-   * @opt_param string orgUnitPath The full path of the organizational unit or its
-   * unique ID.
+   * @opt_param string orgUnitPath The full path of the organizational unit (minus
+   * the leading `/`) or its unique ID.
    * @opt_param string pageToken The `pageToken` query parameter is used to
    * request the next page of query results. The follow-on request's `pageToken`
    * query parameter is the `nextPageToken` from your previous response.
-   * @opt_param string projection Restrict information returned to a set of
-   * selected fields.
+   * @opt_param string projection Determines whether the response contains the
+   * full list of properties or only a subset.
    * @opt_param string query Search string in the format given at
-   * http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
+   * https://developers.google.com/admin-sdk/directory/v1/list-query-operators
    * @opt_param string sortOrder Whether to return results in ascending or
    * descending order. Must be used with the `orderBy` parameter.
    * @return ChromeOsDevicesModel
+   * @throws \Google\Service\Exception
    */
   public function listChromeosdevices($customerId, $optParams = [])
   {
@@ -121,11 +130,12 @@ class Chromeosdevices extends \Google\Service\Resource
    * Moves or inserts multiple Chrome OS devices to an organizational unit. You
    * can move up to 50 devices at once. (chromeosdevices.moveDevicesToOu)
    *
-   * @param string $customerId Immutable ID of the Google Workspace account
+   * @param string $customerId Immutable. ID of the Google Workspace account
    * @param string $orgUnitPath Full path of the target organizational unit or its
    * ID
    * @param ChromeOsMoveDevicesToOu $postBody
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
   public function moveDevicesToOu($customerId, $orgUnitPath, ChromeOsMoveDevicesToOu $postBody, $optParams = [])
   {
@@ -150,9 +160,10 @@ class Chromeosdevices extends \Google\Service\Resource
    * @param ChromeOsDevice $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string projection Restrict information returned to a set of
-   * selected fields.
+   * @opt_param string projection Determines whether the response contains the
+   * full list of properties or only a subset.
    * @return ChromeOsDevice
+   * @throws \Google\Service\Exception
    */
   public function patch($customerId, $deviceId, ChromeOsDevice $postBody, $optParams = [])
   {
@@ -176,9 +187,10 @@ class Chromeosdevices extends \Google\Service\Resource
    * @param ChromeOsDevice $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string projection Restrict information returned to a set of
-   * selected fields.
+   * @opt_param string projection Determines whether the response contains the
+   * full list of properties or only a subset.
    * @return ChromeOsDevice
+   * @throws \Google\Service\Exception
    */
   public function update($customerId, $deviceId, ChromeOsDevice $postBody, $optParams = [])
   {

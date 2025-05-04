@@ -19,51 +19,74 @@ namespace Google\Service\DoubleClickBidManager;
 
 class QuerySchedule extends \Google\Model
 {
-  public $endTimeMs;
+  protected $endDateType = Date::class;
+  protected $endDateDataType = '';
+  /**
+   * @var string
+   */
   public $frequency;
-  public $nextRunMinuteOfDay;
+  /**
+   * @var string
+   */
   public $nextRunTimezoneCode;
-  public $startTimeMs;
+  protected $startDateType = Date::class;
+  protected $startDateDataType = '';
 
-  public function setEndTimeMs($endTimeMs)
+  /**
+   * @param Date
+   */
+  public function setEndDate(Date $endDate)
   {
-    $this->endTimeMs = $endTimeMs;
+    $this->endDate = $endDate;
   }
-  public function getEndTimeMs()
+  /**
+   * @return Date
+   */
+  public function getEndDate()
   {
-    return $this->endTimeMs;
+    return $this->endDate;
   }
+  /**
+   * @param string
+   */
   public function setFrequency($frequency)
   {
     $this->frequency = $frequency;
   }
+  /**
+   * @return string
+   */
   public function getFrequency()
   {
     return $this->frequency;
   }
-  public function setNextRunMinuteOfDay($nextRunMinuteOfDay)
-  {
-    $this->nextRunMinuteOfDay = $nextRunMinuteOfDay;
-  }
-  public function getNextRunMinuteOfDay()
-  {
-    return $this->nextRunMinuteOfDay;
-  }
+  /**
+   * @param string
+   */
   public function setNextRunTimezoneCode($nextRunTimezoneCode)
   {
     $this->nextRunTimezoneCode = $nextRunTimezoneCode;
   }
+  /**
+   * @return string
+   */
   public function getNextRunTimezoneCode()
   {
     return $this->nextRunTimezoneCode;
   }
-  public function setStartTimeMs($startTimeMs)
+  /**
+   * @param Date
+   */
+  public function setStartDate(Date $startDate)
   {
-    $this->startTimeMs = $startTimeMs;
+    $this->startDate = $startDate;
   }
-  public function getStartTimeMs()
+  /**
+   * @return Date
+   */
+  public function getStartDate()
   {
-    return $this->startTimeMs;
+    return $this->startDate;
   }
 }
 

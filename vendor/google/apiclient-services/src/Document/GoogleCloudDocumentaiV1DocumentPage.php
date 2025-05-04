@@ -22,6 +22,8 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
   protected $collection_key = 'visualElements';
   protected $blocksType = GoogleCloudDocumentaiV1DocumentPageBlock::class;
   protected $blocksDataType = 'array';
+  protected $detectedBarcodesType = GoogleCloudDocumentaiV1DocumentPageDetectedBarcode::class;
+  protected $detectedBarcodesDataType = 'array';
   protected $detectedLanguagesType = GoogleCloudDocumentaiV1DocumentPageDetectedLanguage::class;
   protected $detectedLanguagesDataType = 'array';
   protected $dimensionType = GoogleCloudDocumentaiV1DocumentPageDimension::class;
@@ -30,15 +32,22 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
   protected $formFieldsDataType = 'array';
   protected $imageType = GoogleCloudDocumentaiV1DocumentPageImage::class;
   protected $imageDataType = '';
+  protected $imageQualityScoresType = GoogleCloudDocumentaiV1DocumentPageImageQualityScores::class;
+  protected $imageQualityScoresDataType = '';
   protected $layoutType = GoogleCloudDocumentaiV1DocumentPageLayout::class;
   protected $layoutDataType = '';
   protected $linesType = GoogleCloudDocumentaiV1DocumentPageLine::class;
   protected $linesDataType = 'array';
+  /**
+   * @var int
+   */
   public $pageNumber;
   protected $paragraphsType = GoogleCloudDocumentaiV1DocumentPageParagraph::class;
   protected $paragraphsDataType = 'array';
   protected $provenanceType = GoogleCloudDocumentaiV1DocumentProvenance::class;
   protected $provenanceDataType = '';
+  protected $symbolsType = GoogleCloudDocumentaiV1DocumentPageSymbol::class;
+  protected $symbolsDataType = 'array';
   protected $tablesType = GoogleCloudDocumentaiV1DocumentPageTable::class;
   protected $tablesDataType = 'array';
   protected $tokensType = GoogleCloudDocumentaiV1DocumentPageToken::class;
@@ -61,6 +70,20 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
   public function getBlocks()
   {
     return $this->blocks;
+  }
+  /**
+   * @param GoogleCloudDocumentaiV1DocumentPageDetectedBarcode[]
+   */
+  public function setDetectedBarcodes($detectedBarcodes)
+  {
+    $this->detectedBarcodes = $detectedBarcodes;
+  }
+  /**
+   * @return GoogleCloudDocumentaiV1DocumentPageDetectedBarcode[]
+   */
+  public function getDetectedBarcodes()
+  {
+    return $this->detectedBarcodes;
   }
   /**
    * @param GoogleCloudDocumentaiV1DocumentPageDetectedLanguage[]
@@ -119,6 +142,20 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
     return $this->image;
   }
   /**
+   * @param GoogleCloudDocumentaiV1DocumentPageImageQualityScores
+   */
+  public function setImageQualityScores(GoogleCloudDocumentaiV1DocumentPageImageQualityScores $imageQualityScores)
+  {
+    $this->imageQualityScores = $imageQualityScores;
+  }
+  /**
+   * @return GoogleCloudDocumentaiV1DocumentPageImageQualityScores
+   */
+  public function getImageQualityScores()
+  {
+    return $this->imageQualityScores;
+  }
+  /**
    * @param GoogleCloudDocumentaiV1DocumentPageLayout
    */
   public function setLayout(GoogleCloudDocumentaiV1DocumentPageLayout $layout)
@@ -146,10 +183,16 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
   {
     return $this->lines;
   }
+  /**
+   * @param int
+   */
   public function setPageNumber($pageNumber)
   {
     $this->pageNumber = $pageNumber;
   }
+  /**
+   * @return int
+   */
   public function getPageNumber()
   {
     return $this->pageNumber;
@@ -181,6 +224,20 @@ class GoogleCloudDocumentaiV1DocumentPage extends \Google\Collection
   public function getProvenance()
   {
     return $this->provenance;
+  }
+  /**
+   * @param GoogleCloudDocumentaiV1DocumentPageSymbol[]
+   */
+  public function setSymbols($symbols)
+  {
+    $this->symbols = $symbols;
+  }
+  /**
+   * @return GoogleCloudDocumentaiV1DocumentPageSymbol[]
+   */
+  public function getSymbols()
+  {
+    return $this->symbols;
   }
   /**
    * @param GoogleCloudDocumentaiV1DocumentPageTable[]

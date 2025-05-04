@@ -19,30 +19,75 @@ namespace Google\Service\ServiceManagement;
 
 class JwtLocation extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $cookie;
+  /**
+   * @var string
+   */
   public $header;
+  /**
+   * @var string
+   */
   public $query;
+  /**
+   * @var string
+   */
   public $valuePrefix;
 
+  /**
+   * @param string
+   */
+  public function setCookie($cookie)
+  {
+    $this->cookie = $cookie;
+  }
+  /**
+   * @return string
+   */
+  public function getCookie()
+  {
+    return $this->cookie;
+  }
+  /**
+   * @param string
+   */
   public function setHeader($header)
   {
     $this->header = $header;
   }
+  /**
+   * @return string
+   */
   public function getHeader()
   {
     return $this->header;
   }
+  /**
+   * @param string
+   */
   public function setQuery($query)
   {
     $this->query = $query;
   }
+  /**
+   * @return string
+   */
   public function getQuery()
   {
     return $this->query;
   }
+  /**
+   * @param string
+   */
   public function setValuePrefix($valuePrefix)
   {
     $this->valuePrefix = $valuePrefix;
   }
+  /**
+   * @return string
+   */
   public function getValuePrefix()
   {
     return $this->valuePrefix;

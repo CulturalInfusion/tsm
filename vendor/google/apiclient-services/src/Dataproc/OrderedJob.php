@@ -20,13 +20,21 @@ namespace Google\Service\Dataproc;
 class OrderedJob extends \Google\Collection
 {
   protected $collection_key = 'prerequisiteStepIds';
+  protected $flinkJobType = FlinkJob::class;
+  protected $flinkJobDataType = '';
   protected $hadoopJobType = HadoopJob::class;
   protected $hadoopJobDataType = '';
   protected $hiveJobType = HiveJob::class;
   protected $hiveJobDataType = '';
+  /**
+   * @var string[]
+   */
   public $labels;
   protected $pigJobType = PigJob::class;
   protected $pigJobDataType = '';
+  /**
+   * @var string[]
+   */
   public $prerequisiteStepIds;
   protected $prestoJobType = PrestoJob::class;
   protected $prestoJobDataType = '';
@@ -40,8 +48,27 @@ class OrderedJob extends \Google\Collection
   protected $sparkRJobDataType = '';
   protected $sparkSqlJobType = SparkSqlJob::class;
   protected $sparkSqlJobDataType = '';
+  /**
+   * @var string
+   */
   public $stepId;
+  protected $trinoJobType = TrinoJob::class;
+  protected $trinoJobDataType = '';
 
+  /**
+   * @param FlinkJob
+   */
+  public function setFlinkJob(FlinkJob $flinkJob)
+  {
+    $this->flinkJob = $flinkJob;
+  }
+  /**
+   * @return FlinkJob
+   */
+  public function getFlinkJob()
+  {
+    return $this->flinkJob;
+  }
   /**
    * @param HadoopJob
    */
@@ -70,10 +97,16 @@ class OrderedJob extends \Google\Collection
   {
     return $this->hiveJob;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
@@ -92,10 +125,16 @@ class OrderedJob extends \Google\Collection
   {
     return $this->pigJob;
   }
+  /**
+   * @param string[]
+   */
   public function setPrerequisiteStepIds($prerequisiteStepIds)
   {
     $this->prerequisiteStepIds = $prerequisiteStepIds;
   }
+  /**
+   * @return string[]
+   */
   public function getPrerequisiteStepIds()
   {
     return $this->prerequisiteStepIds;
@@ -184,13 +223,33 @@ class OrderedJob extends \Google\Collection
   {
     return $this->sparkSqlJob;
   }
+  /**
+   * @param string
+   */
   public function setStepId($stepId)
   {
     $this->stepId = $stepId;
   }
+  /**
+   * @return string
+   */
   public function getStepId()
   {
     return $this->stepId;
+  }
+  /**
+   * @param TrinoJob
+   */
+  public function setTrinoJob(TrinoJob $trinoJob)
+  {
+    $this->trinoJob = $trinoJob;
+  }
+  /**
+   * @return TrinoJob
+   */
+  public function getTrinoJob()
+  {
+    return $this->trinoJob;
   }
 }
 

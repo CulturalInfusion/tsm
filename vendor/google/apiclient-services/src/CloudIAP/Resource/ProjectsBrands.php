@@ -25,7 +25,7 @@ use Google\Service\CloudIAP\ListBrandsResponse;
  * Typical usage is:
  *  <code>
  *   $iapService = new Google\Service\CloudIAP(...);
- *   $brands = $iapService->brands;
+ *   $brands = $iapService->projects_brands;
  *  </code>
  */
 class ProjectsBrands extends \Google\Service\Resource
@@ -33,17 +33,18 @@ class ProjectsBrands extends \Google\Service\Resource
   /**
    * Constructs a new OAuth brand for the project if one does not exist. The
    * created brand is "internal only", meaning that OAuth clients created under it
-   * only accept requests from users who belong to the same G Suite organization
-   * as the project. The brand is created in an un-reviewed status. NOTE: The
-   * "internal only" status can be manually changed in the Google Cloud console.
-   * Requires that a brand does not already exist for the project, and that the
-   * specified support email is owned by the caller. (brands.create)
+   * only accept requests from users who belong to the same Google Workspace
+   * organization as the project. The brand is created in an un-reviewed status.
+   * NOTE: The "internal only" status can be manually changed in the Google Cloud
+   * Console. Requires that a brand does not already exist for the project, and
+   * that the specified support email is owned by the caller. (brands.create)
    *
    * @param string $parent Required. GCP Project number/id under which the brand
    * is to be created. In the following format: projects/{project_number/id}.
    * @param Brand $postBody
    * @param array $optParams Optional parameters.
    * @return Brand
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Brand $postBody, $optParams = [])
   {
@@ -58,6 +59,7 @@ class ProjectsBrands extends \Google\Service\Resource
    * following format: projects/{project_number/id}/brands/{brand}.
    * @param array $optParams Optional parameters.
    * @return Brand
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -72,6 +74,7 @@ class ProjectsBrands extends \Google\Service\Resource
    * format: projects/{project_number/id}.
    * @param array $optParams Optional parameters.
    * @return ListBrandsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsBrands($parent, $optParams = [])
   {

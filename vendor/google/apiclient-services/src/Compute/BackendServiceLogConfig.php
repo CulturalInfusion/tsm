@@ -17,23 +17,78 @@
 
 namespace Google\Service\Compute;
 
-class BackendServiceLogConfig extends \Google\Model
+class BackendServiceLogConfig extends \Google\Collection
 {
+  protected $collection_key = 'optionalFields';
+  /**
+   * @var bool
+   */
   public $enable;
+  /**
+   * @var string[]
+   */
+  public $optionalFields;
+  /**
+   * @var string
+   */
+  public $optionalMode;
+  /**
+   * @var float
+   */
   public $sampleRate;
 
+  /**
+   * @param bool
+   */
   public function setEnable($enable)
   {
     $this->enable = $enable;
   }
+  /**
+   * @return bool
+   */
   public function getEnable()
   {
     return $this->enable;
   }
+  /**
+   * @param string[]
+   */
+  public function setOptionalFields($optionalFields)
+  {
+    $this->optionalFields = $optionalFields;
+  }
+  /**
+   * @return string[]
+   */
+  public function getOptionalFields()
+  {
+    return $this->optionalFields;
+  }
+  /**
+   * @param string
+   */
+  public function setOptionalMode($optionalMode)
+  {
+    $this->optionalMode = $optionalMode;
+  }
+  /**
+   * @return string
+   */
+  public function getOptionalMode()
+  {
+    return $this->optionalMode;
+  }
+  /**
+   * @param float
+   */
   public function setSampleRate($sampleRate)
   {
     $this->sampleRate = $sampleRate;
   }
+  /**
+   * @return float
+   */
   public function getSampleRate()
   {
     return $this->sampleRate;

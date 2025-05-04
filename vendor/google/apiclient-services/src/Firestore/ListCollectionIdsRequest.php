@@ -19,24 +19,60 @@ namespace Google\Service\Firestore;
 
 class ListCollectionIdsRequest extends \Google\Model
 {
+  /**
+   * @var int
+   */
   public $pageSize;
+  /**
+   * @var string
+   */
   public $pageToken;
+  /**
+   * @var string
+   */
+  public $readTime;
 
+  /**
+   * @param int
+   */
   public function setPageSize($pageSize)
   {
     $this->pageSize = $pageSize;
   }
+  /**
+   * @return int
+   */
   public function getPageSize()
   {
     return $this->pageSize;
   }
+  /**
+   * @param string
+   */
   public function setPageToken($pageToken)
   {
     $this->pageToken = $pageToken;
   }
+  /**
+   * @return string
+   */
   public function getPageToken()
   {
     return $this->pageToken;
+  }
+  /**
+   * @param string
+   */
+  public function setReadTime($readTime)
+  {
+    $this->readTime = $readTime;
+  }
+  /**
+   * @return string
+   */
+  public function getReadTime()
+  {
+    return $this->readTime;
   }
 }
 

@@ -19,15 +19,40 @@ namespace Google\Service\CloudHealthcare;
 
 class DateShiftConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $cryptoKey;
+  protected $kmsWrappedType = KmsWrappedCryptoKey::class;
+  protected $kmsWrappedDataType = '';
 
+  /**
+   * @param string
+   */
   public function setCryptoKey($cryptoKey)
   {
     $this->cryptoKey = $cryptoKey;
   }
+  /**
+   * @return string
+   */
   public function getCryptoKey()
   {
     return $this->cryptoKey;
+  }
+  /**
+   * @param KmsWrappedCryptoKey
+   */
+  public function setKmsWrapped(KmsWrappedCryptoKey $kmsWrapped)
+  {
+    $this->kmsWrapped = $kmsWrapped;
+  }
+  /**
+   * @return KmsWrappedCryptoKey
+   */
+  public function getKmsWrapped()
+  {
+    return $this->kmsWrapped;
   }
 }
 

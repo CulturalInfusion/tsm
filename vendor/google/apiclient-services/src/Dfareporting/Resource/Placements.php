@@ -43,6 +43,7 @@ class Placements extends \Google\Service\Resource
    * @opt_param string tagFormats Tag formats to generate for these placements.
    * *Note:* PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.
    * @return PlacementsGenerateTagsResponse
+   * @throws \Google\Service\Exception
    */
   public function generatetags($profileId, $optParams = [])
   {
@@ -57,6 +58,7 @@ class Placements extends \Google\Service\Resource
    * @param string $id Placement ID.
    * @param array $optParams Optional parameters.
    * @return Placement
+   * @throws \Google\Service\Exception
    */
   public function get($profileId, $id, $optParams = [])
   {
@@ -71,6 +73,7 @@ class Placements extends \Google\Service\Resource
    * @param Placement $postBody
    * @param array $optParams Optional parameters.
    * @return Placement
+   * @throws \Google\Service\Exception
    */
   public function insert($profileId, Placement $postBody, $optParams = [])
   {
@@ -85,10 +88,10 @@ class Placements extends \Google\Service\Resource
    * @param string $profileId User profile ID associated with this request.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string activeStatus Select only placements with these active
+   * statuses.
    * @opt_param string advertiserIds Select only placements that belong to these
    * advertisers.
-   * @opt_param bool archived Select only archived placements. Don't set this
-   * field to select both archived and non-archived placements.
    * @opt_param string campaignIds Select only placements that belong to these
    * campaigns.
    * @opt_param string compatibilities Select only placements that are associated
@@ -139,6 +142,7 @@ class Placements extends \Google\Service\Resource
    * @opt_param string sortField Field by which to sort the list.
    * @opt_param string sortOrder Order of sorted results.
    * @return PlacementsListResponse
+   * @throws \Google\Service\Exception
    */
   public function listPlacements($profileId, $optParams = [])
   {
@@ -151,10 +155,11 @@ class Placements extends \Google\Service\Resource
    * (placements.patch)
    *
    * @param string $profileId User profile ID associated with this request.
-   * @param string $id Placement ID.
+   * @param string $id Required. Placement ID.
    * @param Placement $postBody
    * @param array $optParams Optional parameters.
    * @return Placement
+   * @throws \Google\Service\Exception
    */
   public function patch($profileId, $id, Placement $postBody, $optParams = [])
   {
@@ -169,6 +174,7 @@ class Placements extends \Google\Service\Resource
    * @param Placement $postBody
    * @param array $optParams Optional parameters.
    * @return Placement
+   * @throws \Google\Service\Exception
    */
   public function update($profileId, Placement $postBody, $optParams = [])
   {

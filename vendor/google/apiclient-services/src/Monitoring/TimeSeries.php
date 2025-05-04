@@ -20,18 +20,45 @@ namespace Google\Service\Monitoring;
 class TimeSeries extends \Google\Collection
 {
   protected $collection_key = 'points';
+  /**
+   * @var string
+   */
+  public $description;
   protected $metadataType = MonitoredResourceMetadata::class;
   protected $metadataDataType = '';
   protected $metricType = Metric::class;
   protected $metricDataType = '';
+  /**
+   * @var string
+   */
   public $metricKind;
   protected $pointsType = Point::class;
   protected $pointsDataType = 'array';
   protected $resourceType = MonitoredResource::class;
   protected $resourceDataType = '';
+  /**
+   * @var string
+   */
   public $unit;
+  /**
+   * @var string
+   */
   public $valueType;
 
+  /**
+   * @param string
+   */
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+  /**
+   * @return string
+   */
+  public function getDescription()
+  {
+    return $this->description;
+  }
   /**
    * @param MonitoredResourceMetadata
    */
@@ -60,10 +87,16 @@ class TimeSeries extends \Google\Collection
   {
     return $this->metric;
   }
+  /**
+   * @param string
+   */
   public function setMetricKind($metricKind)
   {
     $this->metricKind = $metricKind;
   }
+  /**
+   * @return string
+   */
   public function getMetricKind()
   {
     return $this->metricKind;
@@ -96,18 +129,30 @@ class TimeSeries extends \Google\Collection
   {
     return $this->resource;
   }
+  /**
+   * @param string
+   */
   public function setUnit($unit)
   {
     $this->unit = $unit;
   }
+  /**
+   * @return string
+   */
   public function getUnit()
   {
     return $this->unit;
   }
+  /**
+   * @param string
+   */
   public function setValueType($valueType)
   {
     $this->valueType = $valueType;
   }
+  /**
+   * @return string
+   */
   public function getValueType()
   {
     return $this->valueType;

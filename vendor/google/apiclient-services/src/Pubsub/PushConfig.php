@@ -19,18 +19,48 @@ namespace Google\Service\Pubsub;
 
 class PushConfig extends \Google\Model
 {
+  /**
+   * @var string[]
+   */
   public $attributes;
+  protected $noWrapperType = NoWrapper::class;
+  protected $noWrapperDataType = '';
   protected $oidcTokenType = OidcToken::class;
   protected $oidcTokenDataType = '';
+  protected $pubsubWrapperType = PubsubWrapper::class;
+  protected $pubsubWrapperDataType = '';
+  /**
+   * @var string
+   */
   public $pushEndpoint;
 
+  /**
+   * @param string[]
+   */
   public function setAttributes($attributes)
   {
     $this->attributes = $attributes;
   }
+  /**
+   * @return string[]
+   */
   public function getAttributes()
   {
     return $this->attributes;
+  }
+  /**
+   * @param NoWrapper
+   */
+  public function setNoWrapper(NoWrapper $noWrapper)
+  {
+    $this->noWrapper = $noWrapper;
+  }
+  /**
+   * @return NoWrapper
+   */
+  public function getNoWrapper()
+  {
+    return $this->noWrapper;
   }
   /**
    * @param OidcToken
@@ -46,10 +76,30 @@ class PushConfig extends \Google\Model
   {
     return $this->oidcToken;
   }
+  /**
+   * @param PubsubWrapper
+   */
+  public function setPubsubWrapper(PubsubWrapper $pubsubWrapper)
+  {
+    $this->pubsubWrapper = $pubsubWrapper;
+  }
+  /**
+   * @return PubsubWrapper
+   */
+  public function getPubsubWrapper()
+  {
+    return $this->pubsubWrapper;
+  }
+  /**
+   * @param string
+   */
   public function setPushEndpoint($pushEndpoint)
   {
     $this->pushEndpoint = $pushEndpoint;
   }
+  /**
+   * @return string
+   */
   public function getPushEndpoint()
   {
     return $this->pushEndpoint;

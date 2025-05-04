@@ -20,18 +20,52 @@ namespace Google\Service\Spanner;
 class CreateDatabaseRequest extends \Google\Collection
 {
   protected $collection_key = 'extraStatements';
+  /**
+   * @var string
+   */
   public $createStatement;
+  /**
+   * @var string
+   */
+  public $databaseDialect;
   protected $encryptionConfigType = EncryptionConfig::class;
   protected $encryptionConfigDataType = '';
+  /**
+   * @var string[]
+   */
   public $extraStatements;
+  /**
+   * @var string
+   */
+  public $protoDescriptors;
 
+  /**
+   * @param string
+   */
   public function setCreateStatement($createStatement)
   {
     $this->createStatement = $createStatement;
   }
+  /**
+   * @return string
+   */
   public function getCreateStatement()
   {
     return $this->createStatement;
+  }
+  /**
+   * @param string
+   */
+  public function setDatabaseDialect($databaseDialect)
+  {
+    $this->databaseDialect = $databaseDialect;
+  }
+  /**
+   * @return string
+   */
+  public function getDatabaseDialect()
+  {
+    return $this->databaseDialect;
   }
   /**
    * @param EncryptionConfig
@@ -47,13 +81,33 @@ class CreateDatabaseRequest extends \Google\Collection
   {
     return $this->encryptionConfig;
   }
+  /**
+   * @param string[]
+   */
   public function setExtraStatements($extraStatements)
   {
     $this->extraStatements = $extraStatements;
   }
+  /**
+   * @return string[]
+   */
   public function getExtraStatements()
   {
     return $this->extraStatements;
+  }
+  /**
+   * @param string
+   */
+  public function setProtoDescriptors($protoDescriptors)
+  {
+    $this->protoDescriptors = $protoDescriptors;
+  }
+  /**
+   * @return string
+   */
+  public function getProtoDescriptors()
+  {
+    return $this->protoDescriptors;
   }
 }
 

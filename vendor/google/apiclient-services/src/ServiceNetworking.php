@@ -35,7 +35,7 @@ use Google\Client;
  */
 class ServiceNetworking extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** Manage your Google API service configuration. */
@@ -48,8 +48,10 @@ class ServiceNetworking extends \Google\Service
   public $services_dnsRecordSets;
   public $services_dnsZones;
   public $services_projects_global_networks;
+  public $services_projects_global_networks_dnsZones;
   public $services_projects_global_networks_peeredDnsDomains;
   public $services_roles;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ServiceNetworking service.
@@ -62,6 +64,7 @@ class ServiceNetworking extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://servicenetworking.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://servicenetworking.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -267,6 +270,50 @@ class ServiceNetworking extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'get' => [
+              'path' => 'v1/{+parent}/dnsRecordSets:get',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'consumerNetwork' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'domain' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'type' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'zone' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/dnsRecordSets:list',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'consumerNetwork' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'zone' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'remove' => [
               'path' => 'v1/{+parent}/dnsRecordSets:remove',
               'httpMethod' => 'POST',
@@ -336,10 +383,54 @@ class ServiceNetworking extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'includeUsedIpRanges' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'getVpcServiceControls' => [
+              'path' => 'v1/{+name}/vpcServiceControls',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
               ],
             ],'updateConsumerConfig' => [
               'path' => 'v1/{+parent}:updateConsumerConfig',
               'httpMethod' => 'PATCH',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->services_projects_global_networks_dnsZones = new ServiceNetworking\Resource\ServicesProjectsServicenetworkingGlobalNetworksDnsZones(
+        $this,
+        $this->serviceName,
+        'dnsZones',
+        [
+          'methods' => [
+            'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/dnsZones:list',
+              'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
                   'location' => 'path',

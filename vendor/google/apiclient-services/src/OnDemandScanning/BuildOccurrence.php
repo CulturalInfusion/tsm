@@ -19,12 +19,33 @@ namespace Google\Service\OnDemandScanning;
 
 class BuildOccurrence extends \Google\Model
 {
+  protected $inTotoSlsaProvenanceV1Type = InTotoSlsaProvenanceV1::class;
+  protected $inTotoSlsaProvenanceV1DataType = '';
   protected $intotoProvenanceType = InTotoProvenance::class;
   protected $intotoProvenanceDataType = '';
+  protected $intotoStatementType = InTotoStatement::class;
+  protected $intotoStatementDataType = '';
   protected $provenanceType = BuildProvenance::class;
   protected $provenanceDataType = '';
+  /**
+   * @var string
+   */
   public $provenanceBytes;
 
+  /**
+   * @param InTotoSlsaProvenanceV1
+   */
+  public function setInTotoSlsaProvenanceV1(InTotoSlsaProvenanceV1 $inTotoSlsaProvenanceV1)
+  {
+    $this->inTotoSlsaProvenanceV1 = $inTotoSlsaProvenanceV1;
+  }
+  /**
+   * @return InTotoSlsaProvenanceV1
+   */
+  public function getInTotoSlsaProvenanceV1()
+  {
+    return $this->inTotoSlsaProvenanceV1;
+  }
   /**
    * @param InTotoProvenance
    */
@@ -40,6 +61,20 @@ class BuildOccurrence extends \Google\Model
     return $this->intotoProvenance;
   }
   /**
+   * @param InTotoStatement
+   */
+  public function setIntotoStatement(InTotoStatement $intotoStatement)
+  {
+    $this->intotoStatement = $intotoStatement;
+  }
+  /**
+   * @return InTotoStatement
+   */
+  public function getIntotoStatement()
+  {
+    return $this->intotoStatement;
+  }
+  /**
    * @param BuildProvenance
    */
   public function setProvenance(BuildProvenance $provenance)
@@ -53,10 +88,16 @@ class BuildOccurrence extends \Google\Model
   {
     return $this->provenance;
   }
+  /**
+   * @param string
+   */
   public function setProvenanceBytes($provenanceBytes)
   {
     $this->provenanceBytes = $provenanceBytes;
   }
+  /**
+   * @return string
+   */
   public function getProvenanceBytes()
   {
     return $this->provenanceBytes;

@@ -21,13 +21,15 @@ use Google\Service\FirebaseManagement\IosApp;
 use Google\Service\FirebaseManagement\IosAppConfig;
 use Google\Service\FirebaseManagement\ListIosAppsResponse;
 use Google\Service\FirebaseManagement\Operation;
+use Google\Service\FirebaseManagement\RemoveIosAppRequest;
+use Google\Service\FirebaseManagement\UndeleteIosAppRequest;
 
 /**
  * The "iosApps" collection of methods.
  * Typical usage is:
  *  <code>
  *   $firebaseService = new Google\Service\FirebaseManagement(...);
- *   $iosApps = $firebaseService->iosApps;
+ *   $iosApps = $firebaseService->projects_iosApps;
  *  </code>
  */
 class ProjectsIosApps extends \Google\Service\Resource
@@ -46,6 +48,7 @@ class ProjectsIosApps extends \Google\Service\Resource
    * @param IosApp $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, IosApp $postBody, $optParams = [])
   {
@@ -64,6 +67,7 @@ class ProjectsIosApps extends \Google\Service\Resource
    * PROJECT_IDENTIFIER and APP_ID values.
    * @param array $optParams Optional parameters.
    * @return IosApp
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -83,6 +87,7 @@ class ProjectsIosApps extends \Google\Service\Resource
    * details about PROJECT_IDENTIFIER and APP_ID values.
    * @param array $optParams Optional parameters.
    * @return IosAppConfig
+   * @throws \Google\Service\Exception
    */
   public function getConfig($name, $optParams = [])
   {
@@ -109,7 +114,11 @@ class ProjectsIosApps extends \Google\Service\Resource
    * limit.
    * @opt_param string pageToken Token returned from a previous call to
    * `ListIosApps` indicating where in the set of Apps to resume listing.
+   * @opt_param bool showDeleted Controls whether Apps in the DELETED state should
+   * be returned in the response. If not specified, only `ACTIVE` Apps will be
+   * returned.
    * @return ListIosAppsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsIosApps($parent, $optParams = [])
   {
@@ -134,15 +143,58 @@ class ProjectsIosApps extends \Google\Service\Resource
    * @param IosApp $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask Specifies which fields to update. Note that the
-   * fields `name`, `appId`, `projectId`, and `bundleId` are all immutable.
+   * @opt_param string updateMask Specifies which fields of the IosApp to update.
+   * Note that the following fields are immutable: `name`, `app_id`, `project_id`,
+   * and `bundle_id`. To update `state`, use any of the following endpoints:
+   * RemoveIosApp or UndeleteIosApp.
    * @return IosApp
+   * @throws \Google\Service\Exception
    */
   public function patch($name, IosApp $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('patch', [$params], IosApp::class);
+  }
+  /**
+   * Removes the specified IosApp from the FirebaseProject. (iosApps.remove)
+   *
+   * @param string $name Required. The resource name of the IosApp, in the format:
+   * projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique
+   * identifier, the Unique Resource from Sub-Collection access pattern may be
+   * used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+   * [name](../projects.iosApps#IosApp.FIELDS.name) field for details about
+   * PROJECT_IDENTIFIER and APP_ID values.
+   * @param RemoveIosAppRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function remove($name, RemoveIosAppRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('remove', [$params], Operation::class);
+  }
+  /**
+   * Restores the specified IosApp to the FirebaseProject. (iosApps.undelete)
+   *
+   * @param string $name Required. The resource name of the IosApp, in the format:
+   * projects/ PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique
+   * identifier, the Unique Resource from Sub-Collection access pattern may be
+   * used here, in the format: projects/-/iosApps/APP_ID Refer to the IosApp
+   * [name](../projects.iosApps#IosApp.FIELDS.name) field for details about
+   * PROJECT_IDENTIFIER and APP_ID values.
+   * @param UndeleteIosAppRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function undelete($name, UndeleteIosAppRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('undelete', [$params], Operation::class);
   }
 }
 

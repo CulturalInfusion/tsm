@@ -33,24 +33,26 @@ use Google\Service\Verifiedaccess\VerifyChallengeResponseResult;
 class Challenge extends \Google\Service\Resource
 {
   /**
-   * CreateChallenge API (challenge.create)
+   * Generates a new challenge. (challenge.generate)
    *
    * @param VerifiedaccessEmpty $postBody
    * @param array $optParams Optional parameters.
    * @return ChallengeModel
+   * @throws \Google\Service\Exception
    */
-  public function create(VerifiedaccessEmpty $postBody, $optParams = [])
+  public function generate(VerifiedaccessEmpty $postBody, $optParams = [])
   {
     $params = ['postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('create', [$params], ChallengeModel::class);
+    return $this->call('generate', [$params], ChallengeModel::class);
   }
   /**
-   * VerifyChallengeResponse API (challenge.verify)
+   * Verifies the challenge response. (challenge.verify)
    *
    * @param VerifyChallengeResponseRequest $postBody
    * @param array $optParams Optional parameters.
    * @return VerifyChallengeResponseResult
+   * @throws \Google\Service\Exception
    */
   public function verify(VerifyChallengeResponseRequest $postBody, $optParams = [])
   {

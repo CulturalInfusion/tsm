@@ -19,12 +19,37 @@ namespace Google\Service\CloudFunctions;
 
 class GenerateUploadUrlResponse extends \Google\Model
 {
+  protected $storageSourceType = StorageSource::class;
+  protected $storageSourceDataType = '';
+  /**
+   * @var string
+   */
   public $uploadUrl;
 
+  /**
+   * @param StorageSource
+   */
+  public function setStorageSource(StorageSource $storageSource)
+  {
+    $this->storageSource = $storageSource;
+  }
+  /**
+   * @return StorageSource
+   */
+  public function getStorageSource()
+  {
+    return $this->storageSource;
+  }
+  /**
+   * @param string
+   */
   public function setUploadUrl($uploadUrl)
   {
     $this->uploadUrl = $uploadUrl;
   }
+  /**
+   * @return string
+   */
   public function getUploadUrl()
   {
     return $this->uploadUrl;

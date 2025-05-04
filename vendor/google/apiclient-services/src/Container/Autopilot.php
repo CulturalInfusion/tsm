@@ -19,15 +19,40 @@ namespace Google\Service\Container;
 
 class Autopilot extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $enabled;
+  protected $workloadPolicyConfigType = WorkloadPolicyConfig::class;
+  protected $workloadPolicyConfigDataType = '';
 
+  /**
+   * @param bool
+   */
   public function setEnabled($enabled)
   {
     $this->enabled = $enabled;
   }
+  /**
+   * @return bool
+   */
   public function getEnabled()
   {
     return $this->enabled;
+  }
+  /**
+   * @param WorkloadPolicyConfig
+   */
+  public function setWorkloadPolicyConfig(WorkloadPolicyConfig $workloadPolicyConfig)
+  {
+    $this->workloadPolicyConfig = $workloadPolicyConfig;
+  }
+  /**
+   * @return WorkloadPolicyConfig
+   */
+  public function getWorkloadPolicyConfig()
+  {
+    return $this->workloadPolicyConfig;
   }
 }
 

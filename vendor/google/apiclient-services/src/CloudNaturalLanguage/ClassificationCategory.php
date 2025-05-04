@@ -19,24 +19,60 @@ namespace Google\Service\CloudNaturalLanguage;
 
 class ClassificationCategory extends \Google\Model
 {
+  /**
+   * @var float
+   */
   public $confidence;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var float
+   */
+  public $severity;
 
+  /**
+   * @param float
+   */
   public function setConfidence($confidence)
   {
     $this->confidence = $confidence;
   }
+  /**
+   * @return float
+   */
   public function getConfidence()
   {
     return $this->confidence;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param float
+   */
+  public function setSeverity($severity)
+  {
+    $this->severity = $severity;
+  }
+  /**
+   * @return float
+   */
+  public function getSeverity()
+  {
+    return $this->severity;
   }
 }
 

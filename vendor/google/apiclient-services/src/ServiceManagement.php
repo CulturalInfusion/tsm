@@ -36,10 +36,10 @@ use Google\Client;
  */
 class ServiceManagement extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
   /** Manage your Google API service configuration. */
@@ -54,6 +54,7 @@ class ServiceManagement extends \Google\Service
   public $services_configs;
   public $services_consumers;
   public $services_rollouts;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ServiceManagement service.
@@ -66,6 +67,7 @@ class ServiceManagement extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://servicemanagement.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://servicemanagement.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

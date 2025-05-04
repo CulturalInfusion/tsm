@@ -35,7 +35,7 @@ use Google\Client;
  */
 class FirebaseRules extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and administer all your Firebase data and settings. */
@@ -48,6 +48,7 @@ class FirebaseRules extends \Google\Service
   public $projects;
   public $projects_releases;
   public $projects_rulesets;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the FirebaseRules service.
@@ -60,6 +61,7 @@ class FirebaseRules extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://firebaserules.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://firebaserules.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

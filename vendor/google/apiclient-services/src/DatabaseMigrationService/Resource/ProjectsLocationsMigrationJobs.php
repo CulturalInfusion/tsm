@@ -17,7 +17,9 @@
 
 namespace Google\Service\DatabaseMigrationService\Resource;
 
+use Google\Service\DatabaseMigrationService\DemoteDestinationRequest;
 use Google\Service\DatabaseMigrationService\GenerateSshScriptRequest;
+use Google\Service\DatabaseMigrationService\GenerateTcpProxyScriptRequest;
 use Google\Service\DatabaseMigrationService\ListMigrationJobsResponse;
 use Google\Service\DatabaseMigrationService\MigrationJob;
 use Google\Service\DatabaseMigrationService\Operation;
@@ -29,6 +31,7 @@ use Google\Service\DatabaseMigrationService\SetIamPolicyRequest;
 use Google\Service\DatabaseMigrationService\SshScript;
 use Google\Service\DatabaseMigrationService\StartMigrationJobRequest;
 use Google\Service\DatabaseMigrationService\StopMigrationJobRequest;
+use Google\Service\DatabaseMigrationService\TcpProxyScript;
 use Google\Service\DatabaseMigrationService\TestIamPermissionsRequest;
 use Google\Service\DatabaseMigrationService\TestIamPermissionsResponse;
 use Google\Service\DatabaseMigrationService\VerifyMigrationJobRequest;
@@ -38,7 +41,7 @@ use Google\Service\DatabaseMigrationService\VerifyMigrationJobRequest;
  * Typical usage is:
  *  <code>
  *   $datamigrationService = new Google\Service\DatabaseMigrationService(...);
- *   $migrationJobs = $datamigrationService->migrationJobs;
+ *   $migrationJobs = $datamigrationService->projects_locations_migrationJobs;
  *  </code>
  */
 class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
@@ -47,18 +50,19 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * Creates a new migration job in a given project and location.
    * (migrationJobs.create)
    *
-   * @param string $parent Required. The parent, which owns this collection of
+   * @param string $parent Required. The parent which owns this collection of
    * migration jobs.
    * @param MigrationJob $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string migrationJobId Required. The ID of the instance to create.
-   * @opt_param string requestId A unique id used to identify the request. If the
-   * server receives two requests with the same id, then the second request will
-   * be ignored. It is recommended to always set this value to a UUID. The id must
-   * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
-   * (-). The maximum length is 40 characters.
+   * @opt_param string requestId Optional. A unique ID used to identify the
+   * request. If the server receives two requests with the same ID, then the
+   * second request is ignored. It is recommended to always set this value to a
+   * UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores
+   * (_), and hyphens (-). The maximum length is 40 characters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, MigrationJob $postBody, $optParams = [])
   {
@@ -75,18 +79,56 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @opt_param bool force The destination CloudSQL connection profile is always
    * deleted with the migration job. In case of force delete, the destination
    * CloudSQL replica database is also deleted.
-   * @opt_param string requestId A unique id used to identify the request. If the
-   * server receives two requests with the same id, then the second request will
-   * be ignored. It is recommended to always set this value to a UUID. The id must
+   * @opt_param string requestId A unique ID used to identify the request. If the
+   * server receives two requests with the same ID, then the second request is
+   * ignored. It is recommended to always set this value to a UUID. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
    * (-). The maximum length is 40 characters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('delete', [$params], Operation::class);
+  }
+  /**
+   * Demotes the destination database to become a read replica of the source. This
+   * is applicable for the following migrations: 1. MySQL to Cloud SQL for MySQL
+   * 2. PostgreSQL to Cloud SQL for PostgreSQL 3. PostgreSQL to AlloyDB for
+   * PostgreSQL. (migrationJobs.demoteDestination)
+   *
+   * @param string $name Name of the migration job resource to demote its
+   * destination.
+   * @param DemoteDestinationRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function demoteDestination($name, DemoteDestinationRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('demoteDestination', [$params], Operation::class);
+  }
+  /**
+   * Retrieves objects from the source database that can be selected for data
+   * migration. This is applicable for the following migrations: 1. PostgreSQL to
+   * Cloud SQL for PostgreSQL 2. PostgreSQL to AlloyDB for PostgreSQL.
+   * (migrationJobs.fetchSourceObjects)
+   *
+   * @param string $name Required. The resource name for the migration job for
+   * which source objects should be returned.
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function fetchSourceObjects($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('fetchSourceObjects', [$params], Operation::class);
   }
   /**
    * Generate a SSH configuration script to configure the reverse SSH
@@ -97,6 +139,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param GenerateSshScriptRequest $postBody
    * @param array $optParams Optional parameters.
    * @return SshScript
+   * @throws \Google\Service\Exception
    */
   public function generateSshScript($migrationJob, GenerateSshScriptRequest $postBody, $optParams = [])
   {
@@ -105,11 +148,29 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
     return $this->call('generateSshScript', [$params], SshScript::class);
   }
   /**
+   * Generate a TCP Proxy configuration script to configure a cloud-hosted VM
+   * running a TCP Proxy. (migrationJobs.generateTcpProxyScript)
+   *
+   * @param string $migrationJob Name of the migration job resource to generate
+   * the TCP Proxy script.
+   * @param GenerateTcpProxyScriptRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return TcpProxyScript
+   * @throws \Google\Service\Exception
+   */
+  public function generateTcpProxyScript($migrationJob, GenerateTcpProxyScriptRequest $postBody, $optParams = [])
+  {
+    $params = ['migrationJob' => $migrationJob, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('generateTcpProxyScript', [$params], TcpProxyScript::class);
+  }
+  /**
    * Gets details of a single migration job. (migrationJobs.get)
    *
    * @param string $name Required. Name of the migration job resource to get.
    * @param array $optParams Optional parameters.
    * @return MigrationJob
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -122,19 +183,25 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * resource exists and does not have a policy set. (migrationJobs.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -146,7 +213,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * Lists migration jobs in a given project and location.
    * (migrationJobs.listProjectsLocationsMigrationJobs)
    *
-   * @param string $parent Required. The parent, which owns this collection of
+   * @param string $parent Required. The parent which owns this collection of
    * migrationJobs.
    * @param array $optParams Optional parameters.
    *
@@ -164,13 +231,14 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @opt_param int pageSize The maximum number of migration jobs to return. The
    * service may return fewer than this value. If unspecified, at most 50
    * migration jobs will be returned. The maximum value is 1000; values above 1000
-   * will be coerced to 1000.
+   * are coerced to 1000.
    * @opt_param string pageToken The nextPageToken value received in the previous
    * call to migrationJobs.list, used in the subsequent request to retrieve the
    * next page of results. On first call this should be left blank. When
    * paginating, all other parameters provided to migrationJobs.list must match
    * the call that provided the page token.
    * @return ListMigrationJobsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsMigrationJobs($parent, $optParams = [])
   {
@@ -182,18 +250,20 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * Updates the parameters of a single migration job. (migrationJobs.patch)
    *
    * @param string $name The name (URI) of this migration job resource, in the
-   * form of: projects/{project}/locations/{location}/instances/{instance}.
+   * form of:
+   * projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
    * @param MigrationJob $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string requestId A unique id used to identify the request. If the
-   * server receives two requests with the same id, then the second request will
-   * be ignored. It is recommended to always set this value to a UUID. The id must
+   * @opt_param string requestId A unique ID used to identify the request. If the
+   * server receives two requests with the same ID, then the second request is
+   * ignored. It is recommended to always set this value to a UUID. The ID must
    * contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
    * (-). The maximum length is 40 characters.
    * @opt_param string updateMask Required. Field mask is used to specify the
-   * fields to be overwritten in the migration job resource by the update.
+   * fields to be overwritten by the update in the conversion workspace resource.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, MigrationJob $postBody, $optParams = [])
   {
@@ -210,6 +280,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param PromoteMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function promote($name, PromoteMigrationJobRequest $postBody, $optParams = [])
   {
@@ -226,6 +297,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param RestartMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function restart($name, RestartMigrationJobRequest $postBody, $optParams = [])
   {
@@ -241,6 +313,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param ResumeMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function resume($name, ResumeMigrationJobRequest $postBody, $optParams = [])
   {
@@ -254,11 +327,13 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (migrationJobs.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -273,6 +348,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param StartMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function start($name, StartMigrationJobRequest $postBody, $optParams = [])
   {
@@ -287,6 +363,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param StopMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function stop($name, StopMigrationJobRequest $postBody, $optParams = [])
   {
@@ -303,11 +380,13 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * (migrationJobs.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {
@@ -323,6 +402,7 @@ class ProjectsLocationsMigrationJobs extends \Google\Service\Resource
    * @param VerifyMigrationJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function verify($name, VerifyMigrationJobRequest $postBody, $optParams = [])
   {

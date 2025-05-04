@@ -22,19 +22,69 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription extends \Google\Coll
   protected $collection_key = 'promotions';
   protected $cancellationDetailsType = GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails::class;
   protected $cancellationDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $cycleEndTime;
+  /**
+   * @var bool
+   */
   public $endUserEntitled;
+  /**
+   * @var string
+   */
   public $freeTrialEndTime;
+  protected $lineItemsType = GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem::class;
+  protected $lineItemsDataType = 'array';
+  protected $migrationDetailsType = GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails::class;
+  protected $migrationDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $partnerUserToken;
+  /**
+   * @var string
+   */
   public $processingState;
+  /**
+   * @var string[]
+   */
   public $products;
+  protected $promotionSpecsType = GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec::class;
+  protected $promotionSpecsDataType = 'array';
+  /**
+   * @var string[]
+   */
   public $promotions;
+  /**
+   * @var string
+   */
+  public $purchaseTime;
+  /**
+   * @var string
+   */
   public $redirectUri;
+  /**
+   * @var string
+   */
+  public $renewalTime;
   protected $serviceLocationType = GoogleCloudPaymentsResellerSubscriptionV1Location::class;
   protected $serviceLocationDataType = '';
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $updateTime;
   protected $upgradeDowngradeDetailsType = GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails::class;
   protected $upgradeDowngradeDetailsDataType = '';
@@ -53,85 +103,215 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription extends \Google\Coll
   {
     return $this->cancellationDetails;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setCycleEndTime($cycleEndTime)
   {
     $this->cycleEndTime = $cycleEndTime;
   }
+  /**
+   * @return string
+   */
   public function getCycleEndTime()
   {
     return $this->cycleEndTime;
   }
+  /**
+   * @param bool
+   */
   public function setEndUserEntitled($endUserEntitled)
   {
     $this->endUserEntitled = $endUserEntitled;
   }
+  /**
+   * @return bool
+   */
   public function getEndUserEntitled()
   {
     return $this->endUserEntitled;
   }
+  /**
+   * @param string
+   */
   public function setFreeTrialEndTime($freeTrialEndTime)
   {
     $this->freeTrialEndTime = $freeTrialEndTime;
   }
+  /**
+   * @return string
+   */
   public function getFreeTrialEndTime()
   {
     return $this->freeTrialEndTime;
   }
+  /**
+   * @param GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem[]
+   */
+  public function setLineItems($lineItems)
+  {
+    $this->lineItems = $lineItems;
+  }
+  /**
+   * @return GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem[]
+   */
+  public function getLineItems()
+  {
+    return $this->lineItems;
+  }
+  /**
+   * @param GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+   */
+  public function setMigrationDetails(GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails $migrationDetails)
+  {
+    $this->migrationDetails = $migrationDetails;
+  }
+  /**
+   * @return GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails
+   */
+  public function getMigrationDetails()
+  {
+    return $this->migrationDetails;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPartnerUserToken($partnerUserToken)
   {
     $this->partnerUserToken = $partnerUserToken;
   }
+  /**
+   * @return string
+   */
   public function getPartnerUserToken()
   {
     return $this->partnerUserToken;
   }
+  /**
+   * @param string
+   */
   public function setProcessingState($processingState)
   {
     $this->processingState = $processingState;
   }
+  /**
+   * @return string
+   */
   public function getProcessingState()
   {
     return $this->processingState;
   }
+  /**
+   * @param string[]
+   */
   public function setProducts($products)
   {
     $this->products = $products;
   }
+  /**
+   * @return string[]
+   */
   public function getProducts()
   {
     return $this->products;
   }
+  /**
+   * @param GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec[]
+   */
+  public function setPromotionSpecs($promotionSpecs)
+  {
+    $this->promotionSpecs = $promotionSpecs;
+  }
+  /**
+   * @return GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec[]
+   */
+  public function getPromotionSpecs()
+  {
+    return $this->promotionSpecs;
+  }
+  /**
+   * @param string[]
+   */
   public function setPromotions($promotions)
   {
     $this->promotions = $promotions;
   }
+  /**
+   * @return string[]
+   */
   public function getPromotions()
   {
     return $this->promotions;
   }
+  /**
+   * @param string
+   */
+  public function setPurchaseTime($purchaseTime)
+  {
+    $this->purchaseTime = $purchaseTime;
+  }
+  /**
+   * @return string
+   */
+  public function getPurchaseTime()
+  {
+    return $this->purchaseTime;
+  }
+  /**
+   * @param string
+   */
   public function setRedirectUri($redirectUri)
   {
     $this->redirectUri = $redirectUri;
   }
+  /**
+   * @return string
+   */
   public function getRedirectUri()
   {
     return $this->redirectUri;
+  }
+  /**
+   * @param string
+   */
+  public function setRenewalTime($renewalTime)
+  {
+    $this->renewalTime = $renewalTime;
+  }
+  /**
+   * @return string
+   */
+  public function getRenewalTime()
+  {
+    return $this->renewalTime;
   }
   /**
    * @param GoogleCloudPaymentsResellerSubscriptionV1Location
@@ -147,18 +327,30 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription extends \Google\Coll
   {
     return $this->serviceLocation;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

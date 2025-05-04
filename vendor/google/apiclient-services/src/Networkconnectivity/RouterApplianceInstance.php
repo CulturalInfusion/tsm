@@ -19,30 +19,39 @@ namespace Google\Service\Networkconnectivity;
 
 class RouterApplianceInstance extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $ipAddress;
-  public $networkInterface;
+  /**
+   * @var string
+   */
   public $virtualMachine;
 
+  /**
+   * @param string
+   */
   public function setIpAddress($ipAddress)
   {
     $this->ipAddress = $ipAddress;
   }
+  /**
+   * @return string
+   */
   public function getIpAddress()
   {
     return $this->ipAddress;
   }
-  public function setNetworkInterface($networkInterface)
-  {
-    $this->networkInterface = $networkInterface;
-  }
-  public function getNetworkInterface()
-  {
-    return $this->networkInterface;
-  }
+  /**
+   * @param string
+   */
   public function setVirtualMachine($virtualMachine)
   {
     $this->virtualMachine = $virtualMachine;
   }
+  /**
+   * @return string
+   */
   public function getVirtualMachine()
   {
     return $this->virtualMachine;

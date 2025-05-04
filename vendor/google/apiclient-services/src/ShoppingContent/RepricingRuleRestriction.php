@@ -19,8 +19,15 @@ namespace Google\Service\ShoppingContent;
 
 class RepricingRuleRestriction extends \Google\Model
 {
+  /**
+   * @var RepricingRuleRestrictionBoundary
+   */
+  public $floor;
   protected $floorType = RepricingRuleRestrictionBoundary::class;
   protected $floorDataType = '';
+  /**
+   * @var bool
+   */
   public $useAutoPricingMinPrice;
 
   /**
@@ -37,10 +44,16 @@ class RepricingRuleRestriction extends \Google\Model
   {
     return $this->floor;
   }
+  /**
+   * @param bool
+   */
   public function setUseAutoPricingMinPrice($useAutoPricingMinPrice)
   {
     $this->useAutoPricingMinPrice = $useAutoPricingMinPrice;
   }
+  /**
+   * @return bool
+   */
   public function getUseAutoPricingMinPrice()
   {
     return $this->useAutoPricingMinPrice;

@@ -17,6 +17,7 @@
 
 namespace Google\Service\Classroom\Resource;
 
+use Google\Service\Classroom\AddOnContext;
 use Google\Service\Classroom\Announcement;
 use Google\Service\Classroom\ClassroomEmpty;
 use Google\Service\Classroom\ListAnnouncementsResponse;
@@ -27,7 +28,7 @@ use Google\Service\Classroom\ModifyAnnouncementAssigneesRequest;
  * Typical usage is:
  *  <code>
  *   $classroomService = new Google\Service\Classroom(...);
- *   $announcements = $classroomService->announcements;
+ *   $announcements = $classroomService->courses_announcements;
  *  </code>
  */
 class CoursesAnnouncements extends \Google\Service\Resource
@@ -46,6 +47,7 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * @param Announcement $postBody
    * @param array $optParams Optional parameters.
    * @return Announcement
+   * @throws \Google\Service\Exception
    */
   public function create($courseId, Announcement $postBody, $optParams = [])
   {
@@ -71,6 +73,7 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * is a Classroom-assigned identifier.
    * @param array $optParams Optional parameters.
    * @return ClassroomEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($courseId, $id, $optParams = [])
   {
@@ -90,12 +93,50 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * @param string $id Identifier of the announcement.
    * @param array $optParams Optional parameters.
    * @return Announcement
+   * @throws \Google\Service\Exception
    */
   public function get($courseId, $id, $optParams = [])
   {
     $params = ['courseId' => $courseId, 'id' => $id];
     $params = array_merge($params, $optParams);
     return $this->call('get', [$params], Announcement::class);
+  }
+  /**
+   * Gets metadata for Classroom add-ons in the context of a specific post. To
+   * maintain the integrity of its own data and permissions model, an add-on
+   * should call this to validate query parameters and the requesting user's role
+   * whenever the add-on is opened in an
+   * [iframe](https://developers.google.com/classroom/add-ons/get-
+   * started/iframes/iframes-overview). This method returns the following error
+   * codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the
+   * request is malformed. * `NOT_FOUND` if one of the identified resources does
+   * not exist. (announcements.getAddOnContext)
+   *
+   * @param string $courseId Required. Identifier of the course.
+   * @param string $itemId Identifier of the `Announcement`, `CourseWork`, or
+   * `CourseWorkMaterial` under which the attachment is attached. This field is
+   * required, but is not marked as such while we are migrating from post_id.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string addOnToken Optional. Token that authorizes the request. The
+   * token is passed as a query parameter when the user is redirected from
+   * Classroom to the add-on's URL. The authorization token is required when
+   * neither of the following is true: * The add-on has attachments on the post. *
+   * The developer project issuing the request is the same project that created
+   * the post.
+   * @opt_param string attachmentId Optional. The identifier of the attachment.
+   * This field is required for all requests except when the user is in the
+   * [Attachment Discovery iframe](https://developers.google.com/classroom/add-
+   * ons/get-started/iframes/attachment-discovery-iframe).
+   * @opt_param string postId Optional. Deprecated, use `item_id` instead.
+   * @return AddOnContext
+   * @throws \Google\Service\Exception
+   */
+  public function getAddOnContext($courseId, $itemId, $optParams = [])
+  {
+    $params = ['courseId' => $courseId, 'itemId' => $itemId];
+    $params = array_merge($params, $optParams);
+    return $this->call('getAddOnContext', [$params], AddOnContext::class);
   }
   /**
    * Returns a list of announcements that the requester is permitted to view.
@@ -126,6 +167,7 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * list request must be otherwise identical to the one that resulted in this
    * token.
    * @return ListAnnouncementsResponse
+   * @throws \Google\Service\Exception
    */
   public function listCoursesAnnouncements($courseId, $optParams = [])
   {
@@ -148,6 +190,7 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * @param ModifyAnnouncementAssigneesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Announcement
+   * @throws \Google\Service\Exception
    */
   public function modifyAssignees($courseId, $id, ModifyAnnouncementAssigneesRequest $postBody, $optParams = [])
   {
@@ -178,6 +221,7 @@ class CoursesAnnouncements extends \Google\Service\Resource
    * `INVALID_ARGUMENT` error is returned. The following fields may be specified
    * by teachers: * `text` * `state` * `scheduled_time`
    * @return Announcement
+   * @throws \Google\Service\Exception
    */
   public function patch($courseId, $id, Announcement $postBody, $optParams = [])
   {

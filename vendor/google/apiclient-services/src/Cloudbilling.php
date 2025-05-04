@@ -28,7 +28,7 @@ use Google\Client;
  *
  * <p>
  * For more information about this service, see the API
- * <a href="https://cloud.google.com/billing/" target="_blank">Documentation</a>
+ * <a href="https://cloud.google.com/billing/docs/apis" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -41,15 +41,18 @@ class Cloudbilling extends \Google\Service
   /** View your Google Cloud Platform billing accounts. */
   const CLOUD_BILLING_READONLY =
       "https://www.googleapis.com/auth/cloud-billing.readonly";
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $billingAccounts;
   public $billingAccounts_projects;
+  public $billingAccounts_subAccounts;
+  public $organizations_billingAccounts;
   public $projects;
   public $services;
   public $services_skus;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Cloudbilling service.
@@ -62,6 +65,7 @@ class Cloudbilling extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://cloudbilling.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://cloudbilling.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -76,7 +80,12 @@ class Cloudbilling extends \Google\Service
             'create' => [
               'path' => 'v1/billingAccounts',
               'httpMethod' => 'POST',
-              'parameters' => [],
+              'parameters' => [
+                'parent' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'get' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
@@ -116,6 +125,20 @@ class Cloudbilling extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+                'parent' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'move' => [
+              'path' => 'v1/{+name}:move',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],'patch' => [
@@ -178,6 +201,105 @@ class Cloudbilling extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->billingAccounts_subAccounts = new Cloudbilling\Resource\BillingAccountsSubAccounts(
+        $this,
+        $this->serviceName,
+        'subAccounts',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/subAccounts',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/subAccounts',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->organizations_billingAccounts = new Cloudbilling\Resource\OrganizationsBillingAccounts(
+        $this,
+        $this->serviceName,
+        'billingAccounts',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/billingAccounts',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/billingAccounts',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'move' => [
+              'path' => 'v1/{+destinationParent}/{+name}:move',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'destinationParent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],

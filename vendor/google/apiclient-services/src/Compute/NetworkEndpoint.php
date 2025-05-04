@@ -19,48 +19,129 @@ namespace Google\Service\Compute;
 
 class NetworkEndpoint extends \Google\Model
 {
+  /**
+   * @var string[]
+   */
   public $annotations;
+  /**
+   * @var int
+   */
+  public $clientDestinationPort;
+  /**
+   * @var string
+   */
   public $fqdn;
+  /**
+   * @var string
+   */
   public $instance;
+  /**
+   * @var string
+   */
   public $ipAddress;
+  /**
+   * @var string
+   */
+  public $ipv6Address;
+  /**
+   * @var int
+   */
   public $port;
 
+  /**
+   * @param string[]
+   */
   public function setAnnotations($annotations)
   {
     $this->annotations = $annotations;
   }
+  /**
+   * @return string[]
+   */
   public function getAnnotations()
   {
     return $this->annotations;
   }
+  /**
+   * @param int
+   */
+  public function setClientDestinationPort($clientDestinationPort)
+  {
+    $this->clientDestinationPort = $clientDestinationPort;
+  }
+  /**
+   * @return int
+   */
+  public function getClientDestinationPort()
+  {
+    return $this->clientDestinationPort;
+  }
+  /**
+   * @param string
+   */
   public function setFqdn($fqdn)
   {
     $this->fqdn = $fqdn;
   }
+  /**
+   * @return string
+   */
   public function getFqdn()
   {
     return $this->fqdn;
   }
+  /**
+   * @param string
+   */
   public function setInstance($instance)
   {
     $this->instance = $instance;
   }
+  /**
+   * @return string
+   */
   public function getInstance()
   {
     return $this->instance;
   }
+  /**
+   * @param string
+   */
   public function setIpAddress($ipAddress)
   {
     $this->ipAddress = $ipAddress;
   }
+  /**
+   * @return string
+   */
   public function getIpAddress()
   {
     return $this->ipAddress;
   }
+  /**
+   * @param string
+   */
+  public function setIpv6Address($ipv6Address)
+  {
+    $this->ipv6Address = $ipv6Address;
+  }
+  /**
+   * @return string
+   */
+  public function getIpv6Address()
+  {
+    return $this->ipv6Address;
+  }
+  /**
+   * @param int
+   */
   public function setPort($port)
   {
     $this->port = $port;
   }
+  /**
+   * @return int
+   */
   public function getPort()
   {
     return $this->port;

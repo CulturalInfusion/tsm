@@ -25,14 +25,14 @@ use Google\Service\Monitoring\MonitoredResourceDescriptor;
  * Typical usage is:
  *  <code>
  *   $monitoringService = new Google\Service\Monitoring(...);
- *   $monitoredResourceDescriptors = $monitoringService->monitoredResourceDescriptors;
+ *   $monitoredResourceDescriptors = $monitoringService->projects_monitoredResourceDescriptors;
  *  </code>
  */
 class ProjectsMonitoredResourceDescriptors extends \Google\Service\Resource
 {
   /**
-   * Gets a single monitored resource descriptor. This method does not require a
-   * Workspace. (monitoredResourceDescriptors.get)
+   * Gets a single monitored resource descriptor.
+   * (monitoredResourceDescriptors.get)
    *
    * @param string $name Required. The monitored resource descriptor to get. The
    * format is:
@@ -40,6 +40,7 @@ class ProjectsMonitoredResourceDescriptors extends \Google\Service\Resource
    * The [RESOURCE_TYPE] is a predefined type, such as cloudsql_database.
    * @param array $optParams Optional parameters.
    * @return MonitoredResourceDescriptor
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -48,8 +49,7 @@ class ProjectsMonitoredResourceDescriptors extends \Google\Service\Resource
     return $this->call('get', [$params], MonitoredResourceDescriptor::class);
   }
   /**
-   * Lists monitored resource descriptors that match a filter. This method does
-   * not require a Workspace.
+   * Lists monitored resource descriptors that match a filter.
    * (monitoredResourceDescriptors.listProjectsMonitoredResourceDescriptors)
    *
    * @param string $name Required. The project
@@ -70,6 +70,7 @@ class ProjectsMonitoredResourceDescriptors extends \Google\Service\Resource
    * this field causes the method to return additional results from the previous
    * method call.
    * @return ListMonitoredResourceDescriptorsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsMonitoredResourceDescriptors($name, $optParams = [])
   {

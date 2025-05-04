@@ -24,7 +24,7 @@ use Google\Service\CustomSearchAPI\Search;
  * Typical usage is:
  *  <code>
  *   $customsearchService = new Google\Service\CustomSearchAPI(...);
- *   $siterestrict = $customsearchService->siterestrict;
+ *   $siterestrict = $customsearchService->cse_siterestrict;
  *  </code>
  */
 class CseSiterestrict extends \Google\Service\Resource
@@ -38,19 +38,19 @@ class CseSiterestrict extends \Google\Service\Resource
    *
    * @opt_param string c2coff Enables or disables [Simplified and Traditional
    * Chinese Search](https://developers.google.com/custom-
-   * search/docs/xml_results#chineseSearch). The default value for this parameter
-   * is 0 (zero), meaning that the feature is enabled. Supported values are: *
-   * `1`: Disabled * `0`: Enabled (default)
+   * search/docs/json_api_reference#chineseSearch). The default value for this
+   * parameter is 0 (zero), meaning that the feature is enabled. Supported values
+   * are: * `1`: Disabled * `0`: Enabled (default)
    * @opt_param string cr Restricts search results to documents originating in a
    * particular country. You may use [Boolean
    * operators](https://developers.google.com/custom-
-   * search/docs/xml_results_appendices#booleanOperators) in the cr parameter's
-   * value. Google Search determines the country of a document by analyzing: * the
-   * top-level domain (TLD) of the document's URL * the geographic location of the
-   * Web server's IP address See the [Country Parameter
+   * search/docs/json_api_reference#booleanOperators) in the cr parameter's value.
+   * Google Search determines the country of a document by analyzing: * the top-
+   * level domain (TLD) of the document's URL * the geographic location of the Web
+   * server's IP address See the [Country Parameter
    * Values](https://developers.google.com/custom-
-   * search/docs/xml_results_appendices#countryCollections) page for a list of
-   * valid values for this parameter.
+   * search/docs/json_api_reference#countryCollections) page for a list of valid
+   * values for this parameter.
    * @opt_param string cx The Programmable Search Engine ID to use for this
    * request.
    * @opt_param string dateRestrict Restricts results to URLs based on date.
@@ -59,6 +59,8 @@ class CseSiterestrict extends \Google\Service\Resource
    * number of past weeks. * `m[number]`: requests results from the specified
    * number of past months. * `y[number]`: requests results from the specified
    * number of past years.
+   * @opt_param bool enableAlternateSearchHandler Optional. Enables routing of
+   * Programmable Search Engine requests to an alternate search handler.
    * @opt_param string exactTerms Identifies a phrase that all documents in the
    * search results must contain.
    * @opt_param string excludeTerms Identifies a word or phrase that should not
@@ -68,7 +70,7 @@ class CseSiterestrict extends \Google\Service\Resource
    * Console [Help Center](https://support.google.com/webmasters/answer/35287).
    * @opt_param string filter Controls turning on or off the duplicate content
    * filter. * See [Automatic Filtering](https://developers.google.com/custom-
-   * search/docs/xml_results#automaticFiltering) for more information about
+   * search/docs/json_api_reference#automaticFiltering) for more information about
    * Google's search results filters. Note that host crowding filtering applies
    * only to multi-site searches. * By default, Google applies filtering to all
    * search results to improve the quality of those results. Acceptable values
@@ -78,9 +80,9 @@ class CseSiterestrict extends \Google\Service\Resource
    * two-letter country code. The `gl` parameter boosts search results whose
    * country of origin matches the parameter value. See the [Country
    * Codes](https://developers.google.com/custom-
-   * search/docs/xml_results_appendices#countryCodes) page for a list of valid
-   * values. * Specifying a `gl` parameter value should lead to more relevant
-   * results. This is particularly true for international customers and, even more
+   * search/docs/json_api_reference#countryCodes) page for a list of valid values.
+   * * Specifying a `gl` parameter value should lead to more relevant results.
+   * This is particularly true for international customers and, even more
    * specifically, for customers in English- speaking countries other than the
    * United States.
    * @opt_param string googlehost **Deprecated**. Use the `gl` parameter for a
@@ -91,14 +93,15 @@ class CseSiterestrict extends \Google\Service\Resource
    * `lowRange...highRange` to the query.
    * @opt_param string hl Sets the user interface language. * Explicitly setting
    * this parameter improves the performance and the quality of your search
-   * results. * See the [Interface Languages](https://developers.google.com
-   * /custom-search/docs/xml_results#wsInterfaceLanguages) section of
+   * results. * See the [Interface
+   * Languages](https://developers.google.com/custom-
+   * search/docs/json_api_reference#wsInterfaceLanguages) section of
    * [Internationalizing Queries and Results
    * Presentation](https://developers.google.com/custom-
-   * search/docs/xml_results#wsInternationalizing) for more information, and
-   * (Supported Interface Languages)[https://developers.google.com/custom-
-   * search/docs/xml_results_appendices#interfaceLanguages] for a list of
-   * supported languages.
+   * search/docs/json_api_reference#wsInternationalizing) for more information,
+   * and [Supported Interface Languages](https://developers.google.com/custom-
+   * search/docs/json_api_reference#interfaceLanguages) for a list of supported
+   * languages.
    * @opt_param string hq Appends the specified query terms to the query, as if
    * they were combined with a logical AND operator.
    * @opt_param string imgColorType Returns black and white, grayscale,
@@ -138,8 +141,7 @@ class CseSiterestrict extends \Google\Service\Resource
    * document, where each document in the search results must contain at least one
    * of the additional search terms.
    * @opt_param string q Query
-   * @opt_param string relatedSite Specifies that all search results should be
-   * pages that are related to the specified URL.
+   * @opt_param string relatedSite Deprecated.
    * @opt_param string rights Filters based on licensing. Supported values
    * include: `cc_publicdomain`, `cc_attribute`, `cc_sharealike`,
    * `cc_noncommercial`, `cc_nonderived` and combinations of these. See [typical
@@ -155,18 +157,23 @@ class CseSiterestrict extends \Google\Service\Resource
    * @opt_param string siteSearchFilter Controls whether to include or exclude
    * results from the site named in the `siteSearch` parameter. Acceptable values
    * are: * `"e"`: exclude * `"i"`: include
+   * @opt_param int snippetLength Optional. Maximum length of snippet text, in
+   * characters, to be returned with results. Note: this feature is limited to
+   * specific engines. * Valid values are integers between 161 and 1000,
+   * inclusive.
    * @opt_param string sort The sort expression to apply to the results. The sort
    * parameter specifies that the results be sorted according to the specified
    * expression i.e. sort by date. [Example:
-   * sort=date](https://developers.google.com/custom-search/docs/structured_search
-   * #sort-by-attribute).
+   * sort=date](https://developers.google.com/custom-
+   * search/docs/structured_search#sort-by-attribute).
    * @opt_param string start The index of the first result to return. The default
-   * number of results per page is 10, so `=11` would start at the top of the
-   * second page of results. **Note**: The JSON API will never return more than
-   * 100 results, even if more than 100 documents match the query, so setting the
-   * sum of `start + num` to a number greater than 100 will produce an error. Also
-   * note that the maximum value for `num` is 10.
+   * number of results per page is 10, so `&start=11` would start at the top of
+   * the second page of results. **Note**: The JSON API will never return more
+   * than 100 results, even if more than 100 documents match the query, so setting
+   * the sum of `start + num` to a number greater than 100 will produce an error.
+   * Also note that the maximum value for `num` is 10.
    * @return Search
+   * @throws \Google\Service\Exception
    */
   public function listCseSiterestrict($optParams = [])
   {

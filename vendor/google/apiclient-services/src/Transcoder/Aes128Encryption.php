@@ -19,16 +19,6 @@ namespace Google\Service\Transcoder;
 
 class Aes128Encryption extends \Google\Model
 {
-  public $keyUri;
-
-  public function setKeyUri($keyUri)
-  {
-    $this->keyUri = $keyUri;
-  }
-  public function getKeyUri()
-  {
-    return $this->keyUri;
-  }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.

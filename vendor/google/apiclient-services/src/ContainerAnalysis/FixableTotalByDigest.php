@@ -19,46 +19,75 @@ namespace Google\Service\ContainerAnalysis;
 
 class FixableTotalByDigest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $fixableCount;
-  protected $resourceType = ContaineranalysisResource::class;
-  protected $resourceDataType = '';
+  /**
+   * @var string
+   */
+  public $resourceUri;
+  /**
+   * @var string
+   */
   public $severity;
+  /**
+   * @var string
+   */
   public $totalCount;
 
+  /**
+   * @param string
+   */
   public function setFixableCount($fixableCount)
   {
     $this->fixableCount = $fixableCount;
   }
+  /**
+   * @return string
+   */
   public function getFixableCount()
   {
     return $this->fixableCount;
   }
   /**
-   * @param ContaineranalysisResource
+   * @param string
    */
-  public function setResource(ContaineranalysisResource $resource)
+  public function setResourceUri($resourceUri)
   {
-    $this->resource = $resource;
+    $this->resourceUri = $resourceUri;
   }
   /**
-   * @return ContaineranalysisResource
+   * @return string
    */
-  public function getResource()
+  public function getResourceUri()
   {
-    return $this->resource;
+    return $this->resourceUri;
   }
+  /**
+   * @param string
+   */
   public function setSeverity($severity)
   {
     $this->severity = $severity;
   }
+  /**
+   * @return string
+   */
   public function getSeverity()
   {
     return $this->severity;
   }
+  /**
+   * @param string
+   */
   public function setTotalCount($totalCount)
   {
     $this->totalCount = $totalCount;
   }
+  /**
+   * @return string
+   */
   public function getTotalCount()
   {
     return $this->totalCount;

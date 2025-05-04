@@ -19,24 +19,24 @@ namespace Google\Service\DisplayVideo;
 
 class ParentalStatusAssignedTargetingOptionDetails extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $parentalStatus;
-  public $targetingOptionId;
 
+  /**
+   * @param string
+   */
   public function setParentalStatus($parentalStatus)
   {
     $this->parentalStatus = $parentalStatus;
   }
+  /**
+   * @return string
+   */
   public function getParentalStatus()
   {
     return $this->parentalStatus;
-  }
-  public function setTargetingOptionId($targetingOptionId)
-  {
-    $this->targetingOptionId = $targetingOptionId;
-  }
-  public function getTargetingOptionId()
-  {
-    return $this->targetingOptionId;
   }
 }
 

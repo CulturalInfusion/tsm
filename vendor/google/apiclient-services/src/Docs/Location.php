@@ -19,24 +19,60 @@ namespace Google\Service\Docs;
 
 class Location extends \Google\Model
 {
+  /**
+   * @var int
+   */
   public $index;
+  /**
+   * @var string
+   */
   public $segmentId;
+  /**
+   * @var string
+   */
+  public $tabId;
 
+  /**
+   * @param int
+   */
   public function setIndex($index)
   {
     $this->index = $index;
   }
+  /**
+   * @return int
+   */
   public function getIndex()
   {
     return $this->index;
   }
+  /**
+   * @param string
+   */
   public function setSegmentId($segmentId)
   {
     $this->segmentId = $segmentId;
   }
+  /**
+   * @return string
+   */
   public function getSegmentId()
   {
     return $this->segmentId;
+  }
+  /**
+   * @param string
+   */
+  public function setTabId($tabId)
+  {
+    $this->tabId = $tabId;
+  }
+  /**
+   * @return string
+   */
+  public function getTabId()
+  {
+    return $this->tabId;
   }
 }
 

@@ -40,6 +40,7 @@ class Datafeeds extends \Google\Service\Resource
    * @param DatafeedsCustomBatchRequest $postBody
    * @param array $optParams Optional parameters.
    * @return DatafeedsCustomBatchResponse
+   * @throws \Google\Service\Exception
    */
   public function custombatch(DatafeedsCustomBatchRequest $postBody, $optParams = [])
   {
@@ -55,6 +56,7 @@ class Datafeeds extends \Google\Service\Resource
    * This account cannot be a multi-client account.
    * @param string $datafeedId The ID of the datafeed.
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
   public function delete($merchantId, $datafeedId, $optParams = [])
   {
@@ -64,14 +66,17 @@ class Datafeeds extends \Google\Service\Resource
   }
   /**
    * Invokes a fetch for the datafeed in your Merchant Center account. If you need
-   * to call this method more than once per day, we recommend you use the Products
-   * service to update your product data. (datafeeds.fetchnow)
+   * to call this method more than once per day, we recommend you use the
+   * [Products service](https://developers.google.com/shopping-
+   * content/reference/rest/v2.1/products) to update your product data.
+   * (datafeeds.fetchnow)
    *
    * @param string $merchantId The ID of the account that manages the datafeed.
    * This account cannot be a multi-client account.
    * @param string $datafeedId The ID of the datafeed to be fetched.
    * @param array $optParams Optional parameters.
    * @return DatafeedsFetchNowResponse
+   * @throws \Google\Service\Exception
    */
   public function fetchnow($merchantId, $datafeedId, $optParams = [])
   {
@@ -88,6 +93,7 @@ class Datafeeds extends \Google\Service\Resource
    * @param string $datafeedId The ID of the datafeed.
    * @param array $optParams Optional parameters.
    * @return Datafeed
+   * @throws \Google\Service\Exception
    */
   public function get($merchantId, $datafeedId, $optParams = [])
   {
@@ -104,6 +110,7 @@ class Datafeeds extends \Google\Service\Resource
    * @param Datafeed $postBody
    * @param array $optParams Optional parameters.
    * @return Datafeed
+   * @throws \Google\Service\Exception
    */
   public function insert($merchantId, Datafeed $postBody, $optParams = [])
   {
@@ -123,6 +130,7 @@ class Datafeeds extends \Google\Service\Resource
    * response, used for paging.
    * @opt_param string pageToken The token returned by the previous request.
    * @return DatafeedsListResponse
+   * @throws \Google\Service\Exception
    */
   public function listDatafeeds($merchantId, $optParams = [])
   {
@@ -140,6 +148,7 @@ class Datafeeds extends \Google\Service\Resource
    * @param Datafeed $postBody
    * @param array $optParams Optional parameters.
    * @return Datafeed
+   * @throws \Google\Service\Exception
    */
   public function update($merchantId, $datafeedId, Datafeed $postBody, $optParams = [])
   {

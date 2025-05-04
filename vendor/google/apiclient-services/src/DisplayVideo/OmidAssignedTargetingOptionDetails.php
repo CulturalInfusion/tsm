@@ -19,24 +19,24 @@ namespace Google\Service\DisplayVideo;
 
 class OmidAssignedTargetingOptionDetails extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $omid;
-  public $targetingOptionId;
 
+  /**
+   * @param string
+   */
   public function setOmid($omid)
   {
     $this->omid = $omid;
   }
+  /**
+   * @return string
+   */
   public function getOmid()
   {
     return $this->omid;
-  }
-  public function setTargetingOptionId($targetingOptionId)
-  {
-    $this->targetingOptionId = $targetingOptionId;
-  }
-  public function getTargetingOptionId()
-  {
-    return $this->targetingOptionId;
   }
 }
 

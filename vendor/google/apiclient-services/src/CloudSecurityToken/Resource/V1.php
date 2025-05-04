@@ -19,8 +19,6 @@ namespace Google\Service\CloudSecurityToken\Resource;
 
 use Google\Service\CloudSecurityToken\GoogleIdentityStsV1ExchangeTokenRequest;
 use Google\Service\CloudSecurityToken\GoogleIdentityStsV1ExchangeTokenResponse;
-use Google\Service\CloudSecurityToken\GoogleIdentityStsV1IntrospectTokenRequest;
-use Google\Service\CloudSecurityToken\GoogleIdentityStsV1IntrospectTokenResponse;
 
 /**
  * The "v1" collection of methods.
@@ -33,31 +31,18 @@ use Google\Service\CloudSecurityToken\GoogleIdentityStsV1IntrospectTokenResponse
 class V1 extends \Google\Service\Resource
 {
   /**
-   * Gets information about a Google OAuth 2.0 access token issued by the Google
-   * Cloud [Security Token Service
-   * API](https://cloud.google.com/iam/docs/reference/sts/rest). (v1.introspect)
-   *
-   * @param GoogleIdentityStsV1IntrospectTokenRequest $postBody
-   * @param array $optParams Optional parameters.
-   * @return GoogleIdentityStsV1IntrospectTokenResponse
-   */
-  public function introspect(GoogleIdentityStsV1IntrospectTokenRequest $postBody, $optParams = [])
-  {
-    $params = ['postBody' => $postBody];
-    $params = array_merge($params, $optParams);
-    return $this->call('introspect', [$params], GoogleIdentityStsV1IntrospectTokenResponse::class);
-  }
-  /**
    * Exchanges a credential for a Google OAuth 2.0 access token. The token asserts
-   * an external identity within a workload identity pool, or it applies a
-   * Credential Access Boundary to a Google access token. When you call this
-   * method, do not send the `Authorization` HTTP header in the request. This
-   * method does not require the `Authorization` header, and using the header can
-   * cause the request to fail. (v1.token)
+   * an external identity within an identity pool, or it applies a Credential
+   * Access Boundary to a Google access token. Note that workforce pools do not
+   * support Credential Access Boundaries. When you call this method, do not send
+   * the `Authorization` HTTP header in the request. This method does not require
+   * the `Authorization` header, and using the header can cause the request to
+   * fail. (v1.token)
    *
    * @param GoogleIdentityStsV1ExchangeTokenRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleIdentityStsV1ExchangeTokenResponse
+   * @throws \Google\Service\Exception
    */
   public function token(GoogleIdentityStsV1ExchangeTokenRequest $postBody, $optParams = [])
   {

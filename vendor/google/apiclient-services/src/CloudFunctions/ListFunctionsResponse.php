@@ -20,37 +20,55 @@ namespace Google\Service\CloudFunctions;
 class ListFunctionsResponse extends \Google\Collection
 {
   protected $collection_key = 'unreachable';
-  protected $functionsType = CloudFunction::class;
+  protected $functionsType = CloudfunctionsFunction::class;
   protected $functionsDataType = 'array';
+  /**
+   * @var string
+   */
   public $nextPageToken;
+  /**
+   * @var string[]
+   */
   public $unreachable;
 
   /**
-   * @param CloudFunction[]
+   * @param CloudfunctionsFunction[]
    */
   public function setFunctions($functions)
   {
     $this->functions = $functions;
   }
   /**
-   * @return CloudFunction[]
+   * @return CloudfunctionsFunction[]
    */
   public function getFunctions()
   {
     return $this->functions;
   }
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;
   }
+  /**
+   * @param string[]
+   */
   public function setUnreachable($unreachable)
   {
     $this->unreachable = $unreachable;
   }
+  /**
+   * @return string[]
+   */
   public function getUnreachable()
   {
     return $this->unreachable;

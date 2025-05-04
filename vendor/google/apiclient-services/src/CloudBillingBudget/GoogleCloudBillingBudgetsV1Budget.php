@@ -24,11 +24,24 @@ class GoogleCloudBillingBudgetsV1Budget extends \Google\Collection
   protected $amountDataType = '';
   protected $budgetFilterType = GoogleCloudBillingBudgetsV1Filter::class;
   protected $budgetFilterDataType = '';
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $etag;
+  /**
+   * @var string
+   */
   public $name;
   protected $notificationsRuleType = GoogleCloudBillingBudgetsV1NotificationsRule::class;
   protected $notificationsRuleDataType = '';
+  /**
+   * @var string
+   */
+  public $ownershipScope;
   protected $thresholdRulesType = GoogleCloudBillingBudgetsV1ThresholdRule::class;
   protected $thresholdRulesDataType = 'array';
 
@@ -60,26 +73,44 @@ class GoogleCloudBillingBudgetsV1Budget extends \Google\Collection
   {
     return $this->budgetFilter;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setEtag($etag)
   {
     $this->etag = $etag;
   }
+  /**
+   * @return string
+   */
   public function getEtag()
   {
     return $this->etag;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -97,6 +128,20 @@ class GoogleCloudBillingBudgetsV1Budget extends \Google\Collection
   public function getNotificationsRule()
   {
     return $this->notificationsRule;
+  }
+  /**
+   * @param string
+   */
+  public function setOwnershipScope($ownershipScope)
+  {
+    $this->ownershipScope = $ownershipScope;
+  }
+  /**
+   * @return string
+   */
+  public function getOwnershipScope()
+  {
+    return $this->ownershipScope;
   }
   /**
    * @param GoogleCloudBillingBudgetsV1ThresholdRule[]

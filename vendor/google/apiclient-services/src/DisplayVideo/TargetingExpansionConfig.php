@@ -19,24 +19,60 @@ namespace Google\Service\DisplayVideo;
 
 class TargetingExpansionConfig extends \Google\Model
 {
-  public $excludeFirstPartyAudience;
-  public $targetingExpansionLevel;
+  /**
+   * @var string
+   */
+  public $audienceExpansionLevel;
+  /**
+   * @var bool
+   */
+  public $audienceExpansionSeedListExcluded;
+  /**
+   * @var bool
+   */
+  public $enableOptimizedTargeting;
 
-  public function setExcludeFirstPartyAudience($excludeFirstPartyAudience)
+  /**
+   * @param string
+   */
+  public function setAudienceExpansionLevel($audienceExpansionLevel)
   {
-    $this->excludeFirstPartyAudience = $excludeFirstPartyAudience;
+    $this->audienceExpansionLevel = $audienceExpansionLevel;
   }
-  public function getExcludeFirstPartyAudience()
+  /**
+   * @return string
+   */
+  public function getAudienceExpansionLevel()
   {
-    return $this->excludeFirstPartyAudience;
+    return $this->audienceExpansionLevel;
   }
-  public function setTargetingExpansionLevel($targetingExpansionLevel)
+  /**
+   * @param bool
+   */
+  public function setAudienceExpansionSeedListExcluded($audienceExpansionSeedListExcluded)
   {
-    $this->targetingExpansionLevel = $targetingExpansionLevel;
+    $this->audienceExpansionSeedListExcluded = $audienceExpansionSeedListExcluded;
   }
-  public function getTargetingExpansionLevel()
+  /**
+   * @return bool
+   */
+  public function getAudienceExpansionSeedListExcluded()
   {
-    return $this->targetingExpansionLevel;
+    return $this->audienceExpansionSeedListExcluded;
+  }
+  /**
+   * @param bool
+   */
+  public function setEnableOptimizedTargeting($enableOptimizedTargeting)
+  {
+    $this->enableOptimizedTargeting = $enableOptimizedTargeting;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableOptimizedTargeting()
+  {
+    return $this->enableOptimizedTargeting;
   }
 }
 

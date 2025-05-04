@@ -17,21 +17,21 @@
 
 namespace Google\Service\Firebaseappcheck\Resource;
 
-use Google\Service\Firebaseappcheck\GoogleFirebaseAppcheckV1betaAppAttestConfig;
-use Google\Service\Firebaseappcheck\GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse;
+use Google\Service\Firebaseappcheck\GoogleFirebaseAppcheckV1AppAttestConfig;
+use Google\Service\Firebaseappcheck\GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse;
 
 /**
  * The "appAttestConfig" collection of methods.
  * Typical usage is:
  *  <code>
  *   $firebaseappcheckService = new Google\Service\Firebaseappcheck(...);
- *   $appAttestConfig = $firebaseappcheckService->appAttestConfig;
+ *   $appAttestConfig = $firebaseappcheckService->projects_apps_appAttestConfig;
  *  </code>
  */
 class ProjectsAppsAppAttestConfig extends \Google\Service\Resource
 {
   /**
-   * Gets the AppAttestConfigs for the specified list of apps atomically.
+   * Atomically gets the AppAttestConfigs for the specified list of apps.
    * (appAttestConfig.batchGet)
    *
    * @param string $parent Required. The parent project name shared by all
@@ -44,13 +44,14 @@ class ProjectsAppsAppAttestConfig extends \Google\Service\Resource
    * AppAttestConfigs to retrieve, in the format ```
    * projects/{project_number}/apps/{app_id}/appAttestConfig ``` A maximum of 100
    * objects can be retrieved in a batch.
-   * @return GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
+   * @return GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse
+   * @throws \Google\Service\Exception
    */
   public function batchGet($parent, $optParams = [])
   {
     $params = ['parent' => $parent];
     $params = array_merge($params, $optParams);
-    return $this->call('batchGet', [$params], GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse::class);
+    return $this->call('batchGet', [$params], GoogleFirebaseAppcheckV1BatchGetAppAttestConfigsResponse::class);
   }
   /**
    * Gets the AppAttestConfig for the specified app. (appAttestConfig.get)
@@ -59,13 +60,14 @@ class ProjectsAppsAppAttestConfig extends \Google\Service\Resource
    * AppAttestConfig, in the format: ```
    * projects/{project_number}/apps/{app_id}/appAttestConfig ```
    * @param array $optParams Optional parameters.
-   * @return GoogleFirebaseAppcheckV1betaAppAttestConfig
+   * @return GoogleFirebaseAppcheckV1AppAttestConfig
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
-    return $this->call('get', [$params], GoogleFirebaseAppcheckV1betaAppAttestConfig::class);
+    return $this->call('get', [$params], GoogleFirebaseAppcheckV1AppAttestConfig::class);
   }
   /**
    * Updates the AppAttestConfig for the specified app. While this configuration
@@ -75,18 +77,19 @@ class ProjectsAppsAppAttestConfig extends \Google\Service\Resource
    * @param string $name Required. The relative resource name of the App Attest
    * configuration object, in the format: ```
    * projects/{project_number}/apps/{app_id}/appAttestConfig ```
-   * @param GoogleFirebaseAppcheckV1betaAppAttestConfig $postBody
+   * @param GoogleFirebaseAppcheckV1AppAttestConfig $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Required. A comma-separated list of names of
-   * fields in the AppAttestConfig Gets to update. Example: `token_ttl`.
-   * @return GoogleFirebaseAppcheckV1betaAppAttestConfig
+   * fields in the AppAttestConfig to update. Example: `token_ttl`.
+   * @return GoogleFirebaseAppcheckV1AppAttestConfig
+   * @throws \Google\Service\Exception
    */
-  public function patch($name, GoogleFirebaseAppcheckV1betaAppAttestConfig $postBody, $optParams = [])
+  public function patch($name, GoogleFirebaseAppcheckV1AppAttestConfig $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('patch', [$params], GoogleFirebaseAppcheckV1betaAppAttestConfig::class);
+    return $this->call('patch', [$params], GoogleFirebaseAppcheckV1AppAttestConfig::class);
   }
 }
 

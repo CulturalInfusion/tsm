@@ -19,76 +19,234 @@ namespace Google\Service\Networkconnectivity;
 
 class Hub extends \Google\Collection
 {
-  protected $collection_key = 'spokes';
+  protected $collection_key = 'routingVpcs';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var bool
+   */
+  public $exportPsc;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $name;
-  public $spokes;
+  /**
+   * @var string
+   */
+  public $policyMode;
+  /**
+   * @var string
+   */
+  public $presetTopology;
+  /**
+   * @var string[]
+   */
+  public $routeTables;
+  protected $routingVpcsType = RoutingVPC::class;
+  protected $routingVpcsDataType = 'array';
+  protected $spokeSummaryType = SpokeSummary::class;
+  protected $spokeSummaryDataType = '';
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $uniqueId;
+  /**
+   * @var string
+   */
   public $updateTime;
 
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param bool
+   */
+  public function setExportPsc($exportPsc)
+  {
+    $this->exportPsc = $exportPsc;
+  }
+  /**
+   * @return bool
+   */
+  public function getExportPsc()
+  {
+    return $this->exportPsc;
+  }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
-  public function setSpokes($spokes)
+  /**
+   * @param string
+   */
+  public function setPolicyMode($policyMode)
   {
-    $this->spokes = $spokes;
+    $this->policyMode = $policyMode;
   }
-  public function getSpokes()
+  /**
+   * @return string
+   */
+  public function getPolicyMode()
   {
-    return $this->spokes;
+    return $this->policyMode;
   }
+  /**
+   * @param string
+   */
+  public function setPresetTopology($presetTopology)
+  {
+    $this->presetTopology = $presetTopology;
+  }
+  /**
+   * @return string
+   */
+  public function getPresetTopology()
+  {
+    return $this->presetTopology;
+  }
+  /**
+   * @param string[]
+   */
+  public function setRouteTables($routeTables)
+  {
+    $this->routeTables = $routeTables;
+  }
+  /**
+   * @return string[]
+   */
+  public function getRouteTables()
+  {
+    return $this->routeTables;
+  }
+  /**
+   * @param RoutingVPC[]
+   */
+  public function setRoutingVpcs($routingVpcs)
+  {
+    $this->routingVpcs = $routingVpcs;
+  }
+  /**
+   * @return RoutingVPC[]
+   */
+  public function getRoutingVpcs()
+  {
+    return $this->routingVpcs;
+  }
+  /**
+   * @param SpokeSummary
+   */
+  public function setSpokeSummary(SpokeSummary $spokeSummary)
+  {
+    $this->spokeSummary = $spokeSummary;
+  }
+  /**
+   * @return SpokeSummary
+   */
+  public function getSpokeSummary()
+  {
+    return $this->spokeSummary;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setUniqueId($uniqueId)
   {
     $this->uniqueId = $uniqueId;
   }
+  /**
+   * @return string
+   */
   public function getUniqueId()
   {
     return $this->uniqueId;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

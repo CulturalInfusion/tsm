@@ -20,53 +20,114 @@ namespace Google\Service\DataCatalog;
 class GoogleCloudDatacatalogV1Taxonomy extends \Google\Collection
 {
   protected $collection_key = 'activatedPolicyTypes';
+  /**
+   * @var string[]
+   */
   public $activatedPolicyTypes;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var int
+   */
   public $policyTagCount;
+  protected $serviceType = GoogleCloudDatacatalogV1TaxonomyService::class;
+  protected $serviceDataType = '';
   protected $taxonomyTimestampsType = GoogleCloudDatacatalogV1SystemTimestamps::class;
   protected $taxonomyTimestampsDataType = '';
 
+  /**
+   * @param string[]
+   */
   public function setActivatedPolicyTypes($activatedPolicyTypes)
   {
     $this->activatedPolicyTypes = $activatedPolicyTypes;
   }
+  /**
+   * @return string[]
+   */
   public function getActivatedPolicyTypes()
   {
     return $this->activatedPolicyTypes;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param int
+   */
   public function setPolicyTagCount($policyTagCount)
   {
     $this->policyTagCount = $policyTagCount;
   }
+  /**
+   * @return int
+   */
   public function getPolicyTagCount()
   {
     return $this->policyTagCount;
+  }
+  /**
+   * @param GoogleCloudDatacatalogV1TaxonomyService
+   */
+  public function setService(GoogleCloudDatacatalogV1TaxonomyService $service)
+  {
+    $this->service = $service;
+  }
+  /**
+   * @return GoogleCloudDatacatalogV1TaxonomyService
+   */
+  public function getService()
+  {
+    return $this->service;
   }
   /**
    * @param GoogleCloudDatacatalogV1SystemTimestamps

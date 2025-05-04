@@ -19,24 +19,33 @@ namespace Google\Service\DisplayVideo;
 
 class DeviceTypeAssignedTargetingOptionDetails extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $deviceType;
-  public $targetingOptionId;
+  public $youtubeAndPartnersBidMultiplier;
 
+  /**
+   * @param string
+   */
   public function setDeviceType($deviceType)
   {
     $this->deviceType = $deviceType;
   }
+  /**
+   * @return string
+   */
   public function getDeviceType()
   {
     return $this->deviceType;
   }
-  public function setTargetingOptionId($targetingOptionId)
+  public function setYoutubeAndPartnersBidMultiplier($youtubeAndPartnersBidMultiplier)
   {
-    $this->targetingOptionId = $targetingOptionId;
+    $this->youtubeAndPartnersBidMultiplier = $youtubeAndPartnersBidMultiplier;
   }
-  public function getTargetingOptionId()
+  public function getYoutubeAndPartnersBidMultiplier()
   {
-    return $this->targetingOptionId;
+    return $this->youtubeAndPartnersBidMultiplier;
   }
 }
 

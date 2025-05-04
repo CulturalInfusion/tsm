@@ -17,13 +17,16 @@
 
 namespace Google\Service\Compute\Resource;
 
+use Google\Service\Compute\BulkInsertDiskResource;
 use Google\Service\Compute\Disk;
 use Google\Service\Compute\DiskList;
+use Google\Service\Compute\DisksStopGroupAsyncReplicationResource;
 use Google\Service\Compute\Operation;
 use Google\Service\Compute\Policy;
 use Google\Service\Compute\RegionDisksAddResourcePoliciesRequest;
 use Google\Service\Compute\RegionDisksRemoveResourcePoliciesRequest;
 use Google\Service\Compute\RegionDisksResizeRequest;
+use Google\Service\Compute\RegionDisksStartAsyncReplicationRequest;
 use Google\Service\Compute\RegionSetLabelsRequest;
 use Google\Service\Compute\RegionSetPolicyRequest;
 use Google\Service\Compute\Snapshot;
@@ -62,6 +65,7 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function addResourcePolicies($project, $region, $disk, RegionDisksAddResourcePoliciesRequest $postBody, $optParams = [])
   {
@@ -70,7 +74,37 @@ class RegionDisks extends \Google\Service\Resource
     return $this->call('addResourcePolicies', [$params], Operation::class);
   }
   /**
-   * Creates a snapshot of this regional disk. (regionDisks.createSnapshot)
+   * Bulk create a set of disks. (regionDisks.bulkInsert)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param BulkInsertDiskResource $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. For
+   * example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments. The request ID must be a
+   * valid UUID with the exception that zero UUID is not supported (
+   * 00000000-0000-0000-0000-000000000000).
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function bulkInsert($project, $region, BulkInsertDiskResource $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'region' => $region, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('bulkInsert', [$params], Operation::class);
+  }
+  /**
+   * Creates a snapshot of a specified persistent disk. For regular snapshot
+   * creation, consider using snapshots.insert instead, as that method supports
+   * more features, such as creating snapshots in a project different from the
+   * source disk project. (regionDisks.createSnapshot)
    *
    * @param string $project Project ID for this request.
    * @param string $region Name of the region for this request.
@@ -89,6 +123,7 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function createSnapshot($project, $region, $disk, Snapshot $postBody, $optParams = [])
   {
@@ -118,6 +153,7 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $region, $disk, $optParams = [])
   {
@@ -133,6 +169,7 @@ class RegionDisks extends \Google\Service\Resource
    * @param string $disk Name of the regional persistent disk to return.
    * @param array $optParams Optional parameters.
    * @return Disk
+   * @throws \Google\Service\Exception
    */
   public function get($project, $region, $disk, $optParams = [])
   {
@@ -151,6 +188,7 @@ class RegionDisks extends \Google\Service\Resource
    *
    * @opt_param int optionsRequestedPolicyVersion Requested IAM Policy version.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($project, $region, $resource, $optParams = [])
   {
@@ -180,6 +218,7 @@ class RegionDisks extends \Google\Service\Resource
    * @opt_param string sourceImage Source image to restore onto a disk. This field
    * is optional.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, $region, Disk $postBody, $optParams = [])
   {
@@ -196,21 +235,37 @@ class RegionDisks extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter A filter expression that filters resources listed in
-   * the response. The expression must specify the field name, a comparison
-   * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either `=`,
-   * `!=`, `>`, or `<`. For example, if you are filtering Compute Engine
-   * instances, you can exclude instances named `example-instance` by specifying
-   * `name != example-instance`. You can also filter nested fields. For example,
-   * you could specify `scheduling.automaticRestart = false` to include instances
-   * only if they are not scheduled for automatic restarts. You can use filtering
-   * on nested fields to filter based on resource labels. To filter on multiple
-   * expressions, provide each separate expression within parentheses. For
-   * example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel
-   * Skylake") ``` By default, each expression is an `AND` expression. However,
-   * you can include `AND` and `OR` expressions explicitly. For example: ```
-   * (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true) ```
+   * the response. Most Compute resources support two types of filter expressions:
+   * expressions that support regular expressions and expressions that follow API
+   * improvement proposal AIP-160. These two types of filter expressions cannot be
+   * mixed in one request. If you want to use AIP-160, your expression must
+   * specify the field name, an operator, and the value that you want to use for
+   * filtering. The value must be a string, a number, or a boolean. The operator
+   * must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you
+   * are filtering Compute Engine instances, you can exclude instances named
+   * `example-instance` by specifying `name != example-instance`. The `:*`
+   * comparison can be used to test whether a key has been defined. For example,
+   * to find all objects with `owner` label use: ``` labels.owner:* ``` You can
+   * also filter nested fields. For example, you could specify
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels. To filter on multiple expressions,
+   * provide each separate expression within parentheses. For example: ```
+   * (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+   * default, each expression is an `AND` expression. However, you can include
+   * `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+   * Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+   * (scheduling.automaticRestart = true) ``` If you want to use a regular
+   * expression, use the `eq` (equal) or `ne` (not equal) operator against a
+   * single un-parenthesized expression with or without quotes or against multiple
+   * parenthesized expressions. Examples: `fieldname eq unquoted literal`
+   * `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"`
+   * `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
+   * interpreted as a regular expression using Google RE2 library syntax. The
+   * literal value must match the entire field. For example, to filter for
+   * instances that do not end with name "instance", you would use `name ne
+   * .*instance`. You cannot combine constraints on multiple fields using regular
+   * expressions.
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
    * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
@@ -229,8 +284,11 @@ class RegionDisks extends \Google\Service\Resource
    * of results.
    * @opt_param bool returnPartialSuccess Opt-in for partial success behavior
    * which provides partial results in case of failure. The default value is
-   * false.
+   * false. For example, when partial success behavior is enabled, aggregatedList
+   * for a single zone scope either returns all resources in the zone or no
+   * resources, with an error code.
    * @return DiskList
+   * @throws \Google\Service\Exception
    */
   public function listRegionDisks($project, $region, $optParams = [])
   {
@@ -259,6 +317,7 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function removeResourcePolicies($project, $region, $disk, RegionDisksRemoveResourcePoliciesRequest $postBody, $optParams = [])
   {
@@ -286,6 +345,7 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function resize($project, $region, $disk, RegionDisksResizeRequest $postBody, $optParams = [])
   {
@@ -303,6 +363,7 @@ class RegionDisks extends \Google\Service\Resource
    * @param RegionSetPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($project, $region, $resource, RegionSetPolicyRequest $postBody, $optParams = [])
   {
@@ -330,12 +391,100 @@ class RegionDisks extends \Google\Service\Resource
    * valid UUID with the exception that zero UUID is not supported (
    * 00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function setLabels($project, $region, $resource, RegionSetLabelsRequest $postBody, $optParams = [])
   {
     $params = ['project' => $project, 'region' => $region, 'resource' => $resource, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('setLabels', [$params], Operation::class);
+  }
+  /**
+   * Starts asynchronous replication. Must be invoked on the primary disk.
+   * (regionDisks.startAsyncReplication)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param string $disk The name of the persistent disk.
+   * @param RegionDisksStartAsyncReplicationRequest $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. For
+   * example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments. The request ID must be a
+   * valid UUID with the exception that zero UUID is not supported (
+   * 00000000-0000-0000-0000-000000000000).
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function startAsyncReplication($project, $region, $disk, RegionDisksStartAsyncReplicationRequest $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'region' => $region, 'disk' => $disk, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('startAsyncReplication', [$params], Operation::class);
+  }
+  /**
+   * Stops asynchronous replication. Can be invoked either on the primary or on
+   * the secondary disk. (regionDisks.stopAsyncReplication)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param string $disk The name of the persistent disk.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. For
+   * example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments. The request ID must be a
+   * valid UUID with the exception that zero UUID is not supported (
+   * 00000000-0000-0000-0000-000000000000).
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function stopAsyncReplication($project, $region, $disk, $optParams = [])
+  {
+    $params = ['project' => $project, 'region' => $region, 'disk' => $disk];
+    $params = array_merge($params, $optParams);
+    return $this->call('stopAsyncReplication', [$params], Operation::class);
+  }
+  /**
+   * Stops asynchronous replication for a consistency group of disks. Can be
+   * invoked either in the primary or secondary scope.
+   * (regionDisks.stopGroupAsyncReplication)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request. This must be
+   * the region of the primary or secondary disks in the consistency group.
+   * @param DisksStopGroupAsyncReplicationResource $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. For
+   * example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments. The request ID must be a
+   * valid UUID with the exception that zero UUID is not supported (
+   * 00000000-0000-0000-0000-000000000000).
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function stopGroupAsyncReplication($project, $region, DisksStopGroupAsyncReplicationResource $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'region' => $region, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('stopGroupAsyncReplication', [$params], Operation::class);
   }
   /**
    * Returns permissions that a caller has on the specified resource.
@@ -347,12 +496,46 @@ class RegionDisks extends \Google\Service\Resource
    * @param TestPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($project, $region, $resource, TestPermissionsRequest $postBody, $optParams = [])
   {
     $params = ['project' => $project, 'region' => $region, 'resource' => $resource, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('testIamPermissions', [$params], TestPermissionsResponse::class);
+  }
+  /**
+   * Update the specified disk with the data included in the request. Update is
+   * performed only on selected fields included as part of update-mask. Only the
+   * following fields can be modified: user_license. (regionDisks.update)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $region The name of the region for this request.
+   * @param string $disk The disk name for this request.
+   * @param Disk $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string paths
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. For
+   * example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request. This prevents clients
+   * from accidentally creating duplicate commitments. The request ID must be a
+   * valid UUID with the exception that zero UUID is not supported (
+   * 00000000-0000-0000-0000-000000000000).
+   * @opt_param string updateMask update_mask indicates fields to be updated as
+   * part of this request.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function update($project, $region, $disk, Disk $postBody, $optParams = [])
+  {
+    $params = ['project' => $project, 'region' => $region, 'disk' => $disk, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('update', [$params], Operation::class);
   }
 }
 

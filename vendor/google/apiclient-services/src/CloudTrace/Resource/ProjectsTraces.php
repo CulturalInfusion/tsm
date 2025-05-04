@@ -25,20 +25,21 @@ use Google\Service\CloudTrace\CloudtraceEmpty;
  * Typical usage is:
  *  <code>
  *   $cloudtraceService = new Google\Service\CloudTrace(...);
- *   $traces = $cloudtraceService->traces;
+ *   $traces = $cloudtraceService->projects_traces;
  *  </code>
  */
 class ProjectsTraces extends \Google\Service\Resource
 {
   /**
-   * Sends new spans to new or existing traces. You cannot update existing spans.
-   * (traces.batchWrite)
+   * Batch writes new spans to new or existing traces. You cannot update existing
+   * spans. (traces.batchWrite)
    *
    * @param string $name Required. The name of the project where the spans belong.
    * The format is `projects/[PROJECT_ID]`.
    * @param BatchWriteSpansRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CloudtraceEmpty
+   * @throws \Google\Service\Exception
    */
   public function batchWrite($name, BatchWriteSpansRequest $postBody, $optParams = [])
   {

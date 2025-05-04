@@ -20,21 +20,43 @@ namespace Google\Service\Compute;
 class HttpRouteRuleMatch extends \Google\Collection
 {
   protected $collection_key = 'queryParameterMatches';
+  /**
+   * @var string
+   */
   public $fullPathMatch;
   protected $headerMatchesType = HttpHeaderMatch::class;
   protected $headerMatchesDataType = 'array';
+  /**
+   * @var bool
+   */
   public $ignoreCase;
   protected $metadataFiltersType = MetadataFilter::class;
   protected $metadataFiltersDataType = 'array';
+  /**
+   * @var string
+   */
+  public $pathTemplateMatch;
+  /**
+   * @var string
+   */
   public $prefixMatch;
   protected $queryParameterMatchesType = HttpQueryParameterMatch::class;
   protected $queryParameterMatchesDataType = 'array';
+  /**
+   * @var string
+   */
   public $regexMatch;
 
+  /**
+   * @param string
+   */
   public function setFullPathMatch($fullPathMatch)
   {
     $this->fullPathMatch = $fullPathMatch;
   }
+  /**
+   * @return string
+   */
   public function getFullPathMatch()
   {
     return $this->fullPathMatch;
@@ -53,10 +75,16 @@ class HttpRouteRuleMatch extends \Google\Collection
   {
     return $this->headerMatches;
   }
+  /**
+   * @param bool
+   */
   public function setIgnoreCase($ignoreCase)
   {
     $this->ignoreCase = $ignoreCase;
   }
+  /**
+   * @return bool
+   */
   public function getIgnoreCase()
   {
     return $this->ignoreCase;
@@ -75,10 +103,30 @@ class HttpRouteRuleMatch extends \Google\Collection
   {
     return $this->metadataFilters;
   }
+  /**
+   * @param string
+   */
+  public function setPathTemplateMatch($pathTemplateMatch)
+  {
+    $this->pathTemplateMatch = $pathTemplateMatch;
+  }
+  /**
+   * @return string
+   */
+  public function getPathTemplateMatch()
+  {
+    return $this->pathTemplateMatch;
+  }
+  /**
+   * @param string
+   */
   public function setPrefixMatch($prefixMatch)
   {
     $this->prefixMatch = $prefixMatch;
   }
+  /**
+   * @return string
+   */
   public function getPrefixMatch()
   {
     return $this->prefixMatch;
@@ -97,10 +145,16 @@ class HttpRouteRuleMatch extends \Google\Collection
   {
     return $this->queryParameterMatches;
   }
+  /**
+   * @param string
+   */
   public function setRegexMatch($regexMatch)
   {
     $this->regexMatch = $regexMatch;
   }
+  /**
+   * @return string
+   */
   public function getRegexMatch()
   {
     return $this->regexMatch;

@@ -20,19 +20,65 @@ namespace Google\Service\CloudRetail;
 class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey extends \Google\Collection
 {
   protected $collection_key = 'restrictedValues';
+  /**
+   * @var bool
+   */
+  public $caseInsensitive;
+  /**
+   * @var string[]
+   */
   public $contains;
   protected $intervalsType = GoogleCloudRetailV2Interval::class;
   protected $intervalsDataType = 'array';
+  /**
+   * @var string
+   */
   public $key;
+  /**
+   * @var string
+   */
   public $orderBy;
+  /**
+   * @var string[]
+   */
   public $prefixes;
+  /**
+   * @var string
+   */
   public $query;
+  /**
+   * @var string[]
+   */
   public $restrictedValues;
+  /**
+   * @var bool
+   */
+  public $returnMinMax;
 
+  /**
+   * @param bool
+   */
+  public function setCaseInsensitive($caseInsensitive)
+  {
+    $this->caseInsensitive = $caseInsensitive;
+  }
+  /**
+   * @return bool
+   */
+  public function getCaseInsensitive()
+  {
+    return $this->caseInsensitive;
+  }
+  /**
+   * @param string[]
+   */
   public function setContains($contains)
   {
     $this->contains = $contains;
   }
+  /**
+   * @return string[]
+   */
   public function getContains()
   {
     return $this->contains;
@@ -51,45 +97,89 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey extends \Google\Collecti
   {
     return $this->intervals;
   }
+  /**
+   * @param string
+   */
   public function setKey($key)
   {
     $this->key = $key;
   }
+  /**
+   * @return string
+   */
   public function getKey()
   {
     return $this->key;
   }
+  /**
+   * @param string
+   */
   public function setOrderBy($orderBy)
   {
     $this->orderBy = $orderBy;
   }
+  /**
+   * @return string
+   */
   public function getOrderBy()
   {
     return $this->orderBy;
   }
+  /**
+   * @param string[]
+   */
   public function setPrefixes($prefixes)
   {
     $this->prefixes = $prefixes;
   }
+  /**
+   * @return string[]
+   */
   public function getPrefixes()
   {
     return $this->prefixes;
   }
+  /**
+   * @param string
+   */
   public function setQuery($query)
   {
     $this->query = $query;
   }
+  /**
+   * @return string
+   */
   public function getQuery()
   {
     return $this->query;
   }
+  /**
+   * @param string[]
+   */
   public function setRestrictedValues($restrictedValues)
   {
     $this->restrictedValues = $restrictedValues;
   }
+  /**
+   * @return string[]
+   */
   public function getRestrictedValues()
   {
     return $this->restrictedValues;
+  }
+  /**
+   * @param bool
+   */
+  public function setReturnMinMax($returnMinMax)
+  {
+    $this->returnMinMax = $returnMinMax;
+  }
+  /**
+   * @return bool
+   */
+  public function getReturnMinMax()
+  {
+    return $this->returnMinMax;
   }
 }
 

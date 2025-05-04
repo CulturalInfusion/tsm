@@ -25,7 +25,7 @@ use Google\Service\RealTimeBidding\ListEndpointsResponse;
  * Typical usage is:
  *  <code>
  *   $realtimebiddingService = new Google\Service\RealTimeBidding(...);
- *   $endpoints = $realtimebiddingService->endpoints;
+ *   $endpoints = $realtimebiddingService->bidders_endpoints;
  *  </code>
  */
 class BiddersEndpoints extends \Google\Service\Resource
@@ -37,6 +37,7 @@ class BiddersEndpoints extends \Google\Service\Resource
    * `bidders/{bidderAccountId}/endpoints/{endpointId}`
    * @param array $optParams Optional parameters.
    * @return Endpoint
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -58,12 +59,33 @@ class BiddersEndpoints extends \Google\Service\Resource
    * should return. This value is received from a previous `ListEndpoints` call in
    * ListEndpointsResponse.nextPageToken.
    * @return ListEndpointsResponse
+   * @throws \Google\Service\Exception
    */
   public function listBiddersEndpoints($parent, $optParams = [])
   {
     $params = ['parent' => $parent];
     $params = array_merge($params, $optParams);
     return $this->call('list', [$params], ListEndpointsResponse::class);
+  }
+  /**
+   * Updates a bidder's endpoint. (endpoints.patch)
+   *
+   * @param string $name Output only. Name of the endpoint resource that must
+   * follow the pattern `bidders/{bidderAccountId}/endpoints/{endpointId}`, where
+   * {bidderAccountId} is the account ID of the bidder who operates this endpoint,
+   * and {endpointId} is a unique ID assigned by the server.
+   * @param Endpoint $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string updateMask Field mask to use for partial in-place updates.
+   * @return Endpoint
+   * @throws \Google\Service\Exception
+   */
+  public function patch($name, Endpoint $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('patch', [$params], Endpoint::class);
   }
 }
 

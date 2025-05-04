@@ -19,12 +19,39 @@ namespace Google\Service\Compute;
 
 class BulkInsertInstanceResourcePerInstanceProperties extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $hostname;
+  /**
+   * @var string
+   */
   public $name;
 
+  /**
+   * @param string
+   */
+  public function setHostname($hostname)
+  {
+    $this->hostname = $hostname;
+  }
+  /**
+   * @return string
+   */
+  public function getHostname()
+  {
+    return $this->hostname;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;

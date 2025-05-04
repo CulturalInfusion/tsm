@@ -19,21 +19,57 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $enableConsentBasedRedaction;
+  /**
+   * @var bool
+   */
   public $enableInteractionLogging;
+  /**
+   * @var bool
+   */
   public $enableStackdriverLogging;
 
+  /**
+   * @param bool
+   */
+  public function setEnableConsentBasedRedaction($enableConsentBasedRedaction)
+  {
+    $this->enableConsentBasedRedaction = $enableConsentBasedRedaction;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableConsentBasedRedaction()
+  {
+    return $this->enableConsentBasedRedaction;
+  }
+  /**
+   * @param bool
+   */
   public function setEnableInteractionLogging($enableInteractionLogging)
   {
     $this->enableInteractionLogging = $enableInteractionLogging;
   }
+  /**
+   * @return bool
+   */
   public function getEnableInteractionLogging()
   {
     return $this->enableInteractionLogging;
   }
+  /**
+   * @param bool
+   */
   public function setEnableStackdriverLogging($enableStackdriverLogging)
   {
     $this->enableStackdriverLogging = $enableStackdriverLogging;
   }
+  /**
+   * @return bool
+   */
   public function getEnableStackdriverLogging()
   {
     return $this->enableStackdriverLogging;

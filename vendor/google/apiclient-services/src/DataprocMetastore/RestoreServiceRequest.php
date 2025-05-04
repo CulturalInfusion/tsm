@@ -19,30 +19,75 @@ namespace Google\Service\DataprocMetastore;
 
 class RestoreServiceRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $backup;
+  /**
+   * @var string
+   */
+  public $backupLocation;
+  /**
+   * @var string
+   */
   public $requestId;
+  /**
+   * @var string
+   */
   public $restoreType;
 
+  /**
+   * @param string
+   */
   public function setBackup($backup)
   {
     $this->backup = $backup;
   }
+  /**
+   * @return string
+   */
   public function getBackup()
   {
     return $this->backup;
   }
+  /**
+   * @param string
+   */
+  public function setBackupLocation($backupLocation)
+  {
+    $this->backupLocation = $backupLocation;
+  }
+  /**
+   * @return string
+   */
+  public function getBackupLocation()
+  {
+    return $this->backupLocation;
+  }
+  /**
+   * @param string
+   */
   public function setRequestId($requestId)
   {
     $this->requestId = $requestId;
   }
+  /**
+   * @return string
+   */
   public function getRequestId()
   {
     return $this->requestId;
   }
+  /**
+   * @param string
+   */
   public function setRestoreType($restoreType)
   {
     $this->restoreType = $restoreType;
   }
+  /**
+   * @return string
+   */
   public function getRestoreType()
   {
     return $this->restoreType;

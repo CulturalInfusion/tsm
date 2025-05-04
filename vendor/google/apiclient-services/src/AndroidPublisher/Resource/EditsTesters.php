@@ -24,19 +24,21 @@ use Google\Service\AndroidPublisher\Testers;
  * Typical usage is:
  *  <code>
  *   $androidpublisherService = new Google\Service\AndroidPublisher(...);
- *   $testers = $androidpublisherService->testers;
+ *   $testers = $androidpublisherService->edits_testers;
  *  </code>
  */
 class EditsTesters extends \Google\Service\Resource
 {
   /**
-   * Gets testers. (testers.get)
+   * Gets testers. Note: Testers resource does not support email lists.
+   * (testers.get)
    *
    * @param string $packageName Package name of the app.
    * @param string $editId Identifier of the edit.
    * @param string $track The track to read from.
    * @param array $optParams Optional parameters.
    * @return Testers
+   * @throws \Google\Service\Exception
    */
   public function get($packageName, $editId, $track, $optParams = [])
   {
@@ -45,7 +47,8 @@ class EditsTesters extends \Google\Service\Resource
     return $this->call('get', [$params], Testers::class);
   }
   /**
-   * Patches testers. (testers.patch)
+   * Patches testers. Note: Testers resource does not support email lists.
+   * (testers.patch)
    *
    * @param string $packageName Package name of the app.
    * @param string $editId Identifier of the edit.
@@ -53,6 +56,7 @@ class EditsTesters extends \Google\Service\Resource
    * @param Testers $postBody
    * @param array $optParams Optional parameters.
    * @return Testers
+   * @throws \Google\Service\Exception
    */
   public function patch($packageName, $editId, $track, Testers $postBody, $optParams = [])
   {
@@ -61,7 +65,8 @@ class EditsTesters extends \Google\Service\Resource
     return $this->call('patch', [$params], Testers::class);
   }
   /**
-   * Updates testers. (testers.update)
+   * Updates testers. Note: Testers resource does not support email lists.
+   * (testers.update)
    *
    * @param string $packageName Package name of the app.
    * @param string $editId Identifier of the edit.
@@ -69,6 +74,7 @@ class EditsTesters extends \Google\Service\Resource
    * @param Testers $postBody
    * @param array $optParams Optional parameters.
    * @return Testers
+   * @throws \Google\Service\Exception
    */
   public function update($packageName, $editId, $track, Testers $postBody, $optParams = [])
   {

@@ -17,8 +17,44 @@
 
 namespace Google\Service\BigtableAdmin;
 
-class MultiClusterRoutingUseAny extends \Google\Model
+class MultiClusterRoutingUseAny extends \Google\Collection
 {
+  protected $collection_key = 'clusterIds';
+  /**
+   * @var string[]
+   */
+  public $clusterIds;
+  protected $rowAffinityType = RowAffinity::class;
+  protected $rowAffinityDataType = '';
+
+  /**
+   * @param string[]
+   */
+  public function setClusterIds($clusterIds)
+  {
+    $this->clusterIds = $clusterIds;
+  }
+  /**
+   * @return string[]
+   */
+  public function getClusterIds()
+  {
+    return $this->clusterIds;
+  }
+  /**
+   * @param RowAffinity
+   */
+  public function setRowAffinity(RowAffinity $rowAffinity)
+  {
+    $this->rowAffinity = $rowAffinity;
+  }
+  /**
+   * @return RowAffinity
+   */
+  public function getRowAffinity()
+  {
+    return $this->rowAffinity;
+  }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.

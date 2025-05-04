@@ -40,8 +40,8 @@ class GamesConfiguration extends \Google\Service
       "https://www.googleapis.com/auth/androidpublisher";
 
   public $achievementConfigurations;
-  public $imageConfigurations;
   public $leaderboardConfigurations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the GamesConfiguration service.
@@ -54,6 +54,7 @@ class GamesConfiguration extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://gamesconfiguration.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://gamesconfiguration.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1configuration';
@@ -118,31 +119,6 @@ class GamesConfiguration extends \Google\Service
               'httpMethod' => 'PUT',
               'parameters' => [
                 'achievementId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->imageConfigurations = new GamesConfiguration\Resource\ImageConfigurations(
-        $this,
-        $this->serviceName,
-        'imageConfigurations',
-        [
-          'methods' => [
-            'upload' => [
-              'path' => 'games/v1configuration/images/{resourceId}/imageType/{imageType}',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'resourceId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'imageType' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

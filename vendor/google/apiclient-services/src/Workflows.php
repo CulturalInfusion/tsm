@@ -42,6 +42,7 @@ class Workflows extends \Google\Service
   public $projects_locations;
   public $projects_locations_operations;
   public $projects_locations_workflows;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Workflows service.
@@ -54,6 +55,7 @@ class Workflows extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://workflows.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://workflows.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -192,6 +194,10 @@ class Workflows extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'revisionId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],'list' => [
               'path' => 'v1/{+parent}/workflows',
@@ -209,6 +215,24 @@ class Workflows extends \Google\Service
                 'orderBy' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'listRevisions' => [
+              'path' => 'v1/{+name}:listRevisions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
                 'pageSize' => [
                   'location' => 'query',

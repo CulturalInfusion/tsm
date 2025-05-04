@@ -19,21 +19,57 @@ namespace Google\Service\Compute;
 
 class ServiceAttachmentConsumerProjectLimit extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $connectionLimit;
+  /**
+   * @var string
+   */
+  public $networkUrl;
+  /**
+   * @var string
+   */
   public $projectIdOrNum;
 
+  /**
+   * @param string
+   */
   public function setConnectionLimit($connectionLimit)
   {
     $this->connectionLimit = $connectionLimit;
   }
+  /**
+   * @return string
+   */
   public function getConnectionLimit()
   {
     return $this->connectionLimit;
   }
+  /**
+   * @param string
+   */
+  public function setNetworkUrl($networkUrl)
+  {
+    $this->networkUrl = $networkUrl;
+  }
+  /**
+   * @return string
+   */
+  public function getNetworkUrl()
+  {
+    return $this->networkUrl;
+  }
+  /**
+   * @param string
+   */
   public function setProjectIdOrNum($projectIdOrNum)
   {
     $this->projectIdOrNum = $projectIdOrNum;
   }
+  /**
+   * @return string
+   */
   public function getProjectIdOrNum()
   {
     return $this->projectIdOrNum;

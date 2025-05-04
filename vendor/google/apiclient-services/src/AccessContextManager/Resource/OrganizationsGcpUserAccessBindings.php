@@ -26,14 +26,14 @@ use Google\Service\AccessContextManager\Operation;
  * Typical usage is:
  *  <code>
  *   $accesscontextmanagerService = new Google\Service\AccessContextManager(...);
- *   $gcpUserAccessBindings = $accesscontextmanagerService->gcpUserAccessBindings;
+ *   $gcpUserAccessBindings = $accesscontextmanagerService->organizations_gcpUserAccessBindings;
  *  </code>
  */
 class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
 {
   /**
    * Creates a GcpUserAccessBinding. If the client specifies a name, the server
-   * will ignore it. Fails if a resource already exists with the same group_key.
+   * ignores it. Fails if a resource already exists with the same group_key.
    * Completion of this long-running operation does not necessarily signify that
    * the new binding is deployed onto all affected users, which may take more
    * time. (gcpUserAccessBindings.create)
@@ -42,6 +42,7 @@ class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
    * @param GcpUserAccessBinding $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GcpUserAccessBinding $postBody, $optParams = [])
   {
@@ -58,6 +59,7 @@ class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
    * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -73,6 +75,7 @@ class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
    * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
    * @param array $optParams Optional parameters.
    * @return GcpUserAccessBinding
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -94,6 +97,7 @@ class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
    * To enumerate all items, use the next_page_token from your previous list
    * operation.
    * @return ListGcpUserAccessBindingsResponse
+   * @throws \Google\Service\Exception
    */
   public function listOrganizationsGcpUserAccessBindings($parent, $optParams = [])
   {
@@ -115,10 +119,23 @@ class OrganizationsGcpUserAccessBindings extends \Google\Service\Resource
    * @param GcpUserAccessBinding $postBody
    * @param array $optParams Optional parameters.
    *
+   * @opt_param bool append Optional. This field controls whether or not certain
+   * repeated settings in the update request overwrite or append to existing
+   * settings on the binding. If true, then append. Otherwise overwrite. So far,
+   * only scoped_access_settings with reauth_settings supports appending. Global
+   * access_levels, access_levels in scoped_access_settings,
+   * dry_run_access_levels, reauth_settings, and session_settings are not
+   * compatible with append functionality, and the request will return an error if
+   * append=true when these settings are in the update_mask. The request will also
+   * return an error if append=true when "scoped_access_settings" is not set in
+   * the update_mask.
    * @opt_param string updateMask Required. Only the fields specified in this mask
    * are updated. Because name and group_key cannot be changed, update_mask is
-   * required and must always be: update_mask { paths: "access_levels" }
+   * required and may only contain the following fields: `access_levels`,
+   * `dry_run_access_levels`, `reauth_settings` `session_settings`,
+   * `scoped_access_settings`. update_mask { paths: "access_levels" }
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GcpUserAccessBinding $postBody, $optParams = [])
   {

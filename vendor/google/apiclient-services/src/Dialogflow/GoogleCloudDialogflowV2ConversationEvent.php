@@ -19,17 +19,31 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowV2ConversationEvent extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $conversation;
   protected $errorStatusType = GoogleRpcStatus::class;
   protected $errorStatusDataType = '';
   protected $newMessagePayloadType = GoogleCloudDialogflowV2Message::class;
   protected $newMessagePayloadDataType = '';
+  protected $newRecognitionResultPayloadType = GoogleCloudDialogflowV2StreamingRecognitionResult::class;
+  protected $newRecognitionResultPayloadDataType = '';
+  /**
+   * @var string
+   */
   public $type;
 
+  /**
+   * @param string
+   */
   public function setConversation($conversation)
   {
     $this->conversation = $conversation;
   }
+  /**
+   * @return string
+   */
   public function getConversation()
   {
     return $this->conversation;
@@ -62,10 +76,30 @@ class GoogleCloudDialogflowV2ConversationEvent extends \Google\Model
   {
     return $this->newMessagePayload;
   }
+  /**
+   * @param GoogleCloudDialogflowV2StreamingRecognitionResult
+   */
+  public function setNewRecognitionResultPayload(GoogleCloudDialogflowV2StreamingRecognitionResult $newRecognitionResultPayload)
+  {
+    $this->newRecognitionResultPayload = $newRecognitionResultPayload;
+  }
+  /**
+   * @return GoogleCloudDialogflowV2StreamingRecognitionResult
+   */
+  public function getNewRecognitionResultPayload()
+  {
+    return $this->newRecognitionResultPayload;
+  }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

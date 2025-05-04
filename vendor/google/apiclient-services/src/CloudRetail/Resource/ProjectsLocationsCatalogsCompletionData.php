@@ -25,17 +25,18 @@ use Google\Service\CloudRetail\GoogleLongrunningOperation;
  * Typical usage is:
  *  <code>
  *   $retailService = new Google\Service\CloudRetail(...);
- *   $completionData = $retailService->completionData;
+ *   $completionData = $retailService->projects_locations_catalogs_completionData;
  *  </code>
  */
 class ProjectsLocationsCatalogsCompletionData extends \Google\Service\Resource
 {
   /**
-   * Bulk import of processed completion dataset. Request processing may be
-   * synchronous. Partial updating is not supported. This feature is only
-   * available for users who have Retail Search enabled. Please submit a form
-   * [here](https://cloud.google.com/contact) to contact cloud sales if you are
-   * interested in using Retail Search. (completionData.import)
+   * Bulk import of processed completion dataset. Request processing is
+   * asynchronous. Partial updating is not supported. The operation is
+   * successfully finished only after the imported suggestions are indexed
+   * successfully and ready for serving. The process takes hours. This feature is
+   * only available for users who have Retail Search enabled. Enable Retail Search
+   * on Cloud Console before using this feature. (completionData.import)
    *
    * @param string $parent Required. The catalog which the suggestions dataset
    * belongs to. Format:
@@ -43,6 +44,7 @@ class ProjectsLocationsCatalogsCompletionData extends \Google\Service\Resource
    * @param GoogleCloudRetailV2ImportCompletionDataRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function import($parent, GoogleCloudRetailV2ImportCompletionDataRequest $postBody, $optParams = [])
   {

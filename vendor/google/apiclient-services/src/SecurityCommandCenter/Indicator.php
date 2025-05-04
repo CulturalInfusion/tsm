@@ -19,25 +19,77 @@ namespace Google\Service\SecurityCommandCenter;
 
 class Indicator extends \Google\Collection
 {
-  protected $collection_key = 'ipAddresses';
+  protected $collection_key = 'uris';
+  /**
+   * @var string[]
+   */
   public $domains;
+  /**
+   * @var string[]
+   */
   public $ipAddresses;
+  protected $signaturesType = ProcessSignature::class;
+  protected $signaturesDataType = 'array';
+  /**
+   * @var string[]
+   */
+  public $uris;
 
+  /**
+   * @param string[]
+   */
   public function setDomains($domains)
   {
     $this->domains = $domains;
   }
+  /**
+   * @return string[]
+   */
   public function getDomains()
   {
     return $this->domains;
   }
+  /**
+   * @param string[]
+   */
   public function setIpAddresses($ipAddresses)
   {
     $this->ipAddresses = $ipAddresses;
   }
+  /**
+   * @return string[]
+   */
   public function getIpAddresses()
   {
     return $this->ipAddresses;
+  }
+  /**
+   * @param ProcessSignature[]
+   */
+  public function setSignatures($signatures)
+  {
+    $this->signatures = $signatures;
+  }
+  /**
+   * @return ProcessSignature[]
+   */
+  public function getSignatures()
+  {
+    return $this->signatures;
+  }
+  /**
+   * @param string[]
+   */
+  public function setUris($uris)
+  {
+    $this->uris = $uris;
+  }
+  /**
+   * @return string[]
+   */
+  public function getUris()
+  {
+    return $this->uris;
   }
 }
 

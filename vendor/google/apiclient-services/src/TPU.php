@@ -20,7 +20,7 @@ namespace Google\Service;
 use Google\Client;
 
 /**
- * Service definition for TPU (v1).
+ * Service definition for TPU (v2).
  *
  * <p>
  * TPU API provides customers with access to Google TPU technology.</p>
@@ -34,7 +34,7 @@ use Google\Client;
  */
 class TPU extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -42,7 +42,9 @@ class TPU extends \Google\Service
   public $projects_locations_acceleratorTypes;
   public $projects_locations_nodes;
   public $projects_locations_operations;
-  public $projects_locations_tensorflowVersions;
+  public $projects_locations_queuedResources;
+  public $projects_locations_runtimeVersions;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the TPU service.
@@ -55,9 +57,10 @@ class TPU extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://tpu.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://tpu.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v1';
+    $this->version = 'v2';
     $this->serviceName = 'tpu';
 
     $this->projects_locations = new TPU\Resource\ProjectsLocations(
@@ -66,8 +69,18 @@ class TPU extends \Google\Service
         'locations',
         [
           'methods' => [
-            'get' => [
-              'path' => 'v1/{+name}',
+            'generateServiceIdentity' => [
+              'path' => 'v2/{+parent}:generateServiceIdentity',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -77,7 +90,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+name}/locations',
+              'path' => 'v2/{+name}/locations',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -109,7 +122,7 @@ class TPU extends \Google\Service
         [
           'methods' => [
             'get' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -119,7 +132,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+parent}/acceleratorTypes',
+              'path' => 'v2/{+parent}/acceleratorTypes',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -155,7 +168,7 @@ class TPU extends \Google\Service
         [
           'methods' => [
             'create' => [
-              'path' => 'v1/{+parent}/nodes',
+              'path' => 'v2/{+parent}/nodes',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
@@ -169,7 +182,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'delete' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -179,7 +192,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'get' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -188,8 +201,18 @@ class TPU extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getGuestAttributes' => [
+              'path' => 'v2/{+name}:getGuestAttributes',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
-              'path' => 'v1/{+parent}/nodes',
+              'path' => 'v2/{+parent}/nodes',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -206,18 +229,22 @@ class TPU extends \Google\Service
                   'type' => 'string',
                 ],
               ],
-            ],'reimage' => [
-              'path' => 'v1/{+name}:reimage',
-              'httpMethod' => 'POST',
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],'start' => [
-              'path' => 'v1/{+name}:start',
+              'path' => 'v2/{+name}:start',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [
@@ -227,7 +254,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'stop' => [
-              'path' => 'v1/{+name}:stop',
+              'path' => 'v2/{+name}:stop',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [
@@ -247,7 +274,7 @@ class TPU extends \Google\Service
         [
           'methods' => [
             'cancel' => [
-              'path' => 'v1/{+name}:cancel',
+              'path' => 'v2/{+name}:cancel',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [
@@ -257,7 +284,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'delete' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -267,7 +294,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'get' => [
-              'path' => 'v1/{+name}',
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -277,7 +304,7 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+name}/operations',
+              'path' => 'v2/{+name}/operations',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -302,14 +329,50 @@ class TPU extends \Google\Service
           ]
         ]
     );
-    $this->projects_locations_tensorflowVersions = new TPU\Resource\ProjectsLocationsTensorflowVersions(
+    $this->projects_locations_queuedResources = new TPU\Resource\ProjectsLocationsQueuedResources(
         $this,
         $this->serviceName,
-        'tensorflowVersions',
+        'queuedResources',
         [
           'methods' => [
-            'get' => [
-              'path' => 'v1/{+name}',
+            'create' => [
+              'path' => 'v2/{+parent}/queuedResources',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'queuedResourceId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'requestId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'force' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'requestId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -319,7 +382,55 @@ class TPU extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1/{+parent}/tensorflowVersions',
+              'path' => 'v2/{+parent}/queuedResources',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'reset' => [
+              'path' => 'v2/{+name}:reset',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_runtimeVersions = new TPU\Resource\ProjectsLocationsRuntimeVersions(
+        $this,
+        $this->serviceName,
+        'runtimeVersions',
+        [
+          'methods' => [
+            'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/runtimeVersions',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [

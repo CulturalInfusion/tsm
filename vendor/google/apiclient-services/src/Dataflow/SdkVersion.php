@@ -17,32 +17,76 @@
 
 namespace Google\Service\Dataflow;
 
-class SdkVersion extends \Google\Model
+class SdkVersion extends \Google\Collection
 {
+  protected $collection_key = 'bugs';
+  protected $bugsType = SdkBug::class;
+  protected $bugsDataType = 'array';
+  /**
+   * @var string
+   */
   public $sdkSupportStatus;
+  /**
+   * @var string
+   */
   public $version;
+  /**
+   * @var string
+   */
   public $versionDisplayName;
 
+  /**
+   * @param SdkBug[]
+   */
+  public function setBugs($bugs)
+  {
+    $this->bugs = $bugs;
+  }
+  /**
+   * @return SdkBug[]
+   */
+  public function getBugs()
+  {
+    return $this->bugs;
+  }
+  /**
+   * @param string
+   */
   public function setSdkSupportStatus($sdkSupportStatus)
   {
     $this->sdkSupportStatus = $sdkSupportStatus;
   }
+  /**
+   * @return string
+   */
   public function getSdkSupportStatus()
   {
     return $this->sdkSupportStatus;
   }
+  /**
+   * @param string
+   */
   public function setVersion($version)
   {
     $this->version = $version;
   }
+  /**
+   * @return string
+   */
   public function getVersion()
   {
     return $this->version;
   }
+  /**
+   * @param string
+   */
   public function setVersionDisplayName($versionDisplayName)
   {
     $this->versionDisplayName = $versionDisplayName;
   }
+  /**
+   * @return string
+   */
   public function getVersionDisplayName()
   {
     return $this->versionDisplayName;

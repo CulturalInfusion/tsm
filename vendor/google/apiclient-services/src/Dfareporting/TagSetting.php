@@ -19,39 +19,93 @@ namespace Google\Service\Dfareporting;
 
 class TagSetting extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $additionalKeyValues;
+  /**
+   * @var bool
+   */
   public $includeClickThroughUrls;
+  /**
+   * @var bool
+   */
   public $includeClickTracking;
+  /**
+   * @var bool
+   */
+  public $includeUnescapedlpurlMacro;
+  /**
+   * @var string
+   */
   public $keywordOption;
 
+  /**
+   * @param string
+   */
   public function setAdditionalKeyValues($additionalKeyValues)
   {
     $this->additionalKeyValues = $additionalKeyValues;
   }
+  /**
+   * @return string
+   */
   public function getAdditionalKeyValues()
   {
     return $this->additionalKeyValues;
   }
+  /**
+   * @param bool
+   */
   public function setIncludeClickThroughUrls($includeClickThroughUrls)
   {
     $this->includeClickThroughUrls = $includeClickThroughUrls;
   }
+  /**
+   * @return bool
+   */
   public function getIncludeClickThroughUrls()
   {
     return $this->includeClickThroughUrls;
   }
+  /**
+   * @param bool
+   */
   public function setIncludeClickTracking($includeClickTracking)
   {
     $this->includeClickTracking = $includeClickTracking;
   }
+  /**
+   * @return bool
+   */
   public function getIncludeClickTracking()
   {
     return $this->includeClickTracking;
   }
+  /**
+   * @param bool
+   */
+  public function setIncludeUnescapedlpurlMacro($includeUnescapedlpurlMacro)
+  {
+    $this->includeUnescapedlpurlMacro = $includeUnescapedlpurlMacro;
+  }
+  /**
+   * @return bool
+   */
+  public function getIncludeUnescapedlpurlMacro()
+  {
+    return $this->includeUnescapedlpurlMacro;
+  }
+  /**
+   * @param string
+   */
   public function setKeywordOption($keywordOption)
   {
     $this->keywordOption = $keywordOption;
   }
+  /**
+   * @return string
+   */
   public function getKeywordOption()
   {
     return $this->keywordOption;

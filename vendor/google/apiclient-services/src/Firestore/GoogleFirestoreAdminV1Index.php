@@ -20,12 +20,61 @@ namespace Google\Service\Firestore;
 class GoogleFirestoreAdminV1Index extends \Google\Collection
 {
   protected $collection_key = 'fields';
+  /**
+   * @var string
+   */
+  public $apiScope;
+  /**
+   * @var string
+   */
+  public $density;
   protected $fieldsType = GoogleFirestoreAdminV1IndexField::class;
   protected $fieldsDataType = 'array';
+  /**
+   * @var bool
+   */
+  public $multikey;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $queryScope;
+  /**
+   * @var string
+   */
   public $state;
 
+  /**
+   * @param string
+   */
+  public function setApiScope($apiScope)
+  {
+    $this->apiScope = $apiScope;
+  }
+  /**
+   * @return string
+   */
+  public function getApiScope()
+  {
+    return $this->apiScope;
+  }
+  /**
+   * @param string
+   */
+  public function setDensity($density)
+  {
+    $this->density = $density;
+  }
+  /**
+   * @return string
+   */
+  public function getDensity()
+  {
+    return $this->density;
+  }
   /**
    * @param GoogleFirestoreAdminV1IndexField[]
    */
@@ -40,26 +89,58 @@ class GoogleFirestoreAdminV1Index extends \Google\Collection
   {
     return $this->fields;
   }
+  /**
+   * @param bool
+   */
+  public function setMultikey($multikey)
+  {
+    $this->multikey = $multikey;
+  }
+  /**
+   * @return bool
+   */
+  public function getMultikey()
+  {
+    return $this->multikey;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setQueryScope($queryScope)
   {
     $this->queryScope = $queryScope;
   }
+  /**
+   * @return string
+   */
   public function getQueryScope()
   {
     return $this->queryScope;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;

@@ -20,23 +20,43 @@ namespace Google\Service\DLP;
 class GooglePrivacyDlpV2InspectConfig extends \Google\Collection
 {
   protected $collection_key = 'ruleSet';
+  /**
+   * @var string[]
+   */
   public $contentOptions;
   protected $customInfoTypesType = GooglePrivacyDlpV2CustomInfoType::class;
   protected $customInfoTypesDataType = 'array';
+  /**
+   * @var bool
+   */
   public $excludeInfoTypes;
+  /**
+   * @var bool
+   */
   public $includeQuote;
   protected $infoTypesType = GooglePrivacyDlpV2InfoType::class;
   protected $infoTypesDataType = 'array';
   protected $limitsType = GooglePrivacyDlpV2FindingLimits::class;
   protected $limitsDataType = '';
+  /**
+   * @var string
+   */
   public $minLikelihood;
+  protected $minLikelihoodPerInfoTypeType = GooglePrivacyDlpV2InfoTypeLikelihood::class;
+  protected $minLikelihoodPerInfoTypeDataType = 'array';
   protected $ruleSetType = GooglePrivacyDlpV2InspectionRuleSet::class;
   protected $ruleSetDataType = 'array';
 
+  /**
+   * @param string[]
+   */
   public function setContentOptions($contentOptions)
   {
     $this->contentOptions = $contentOptions;
   }
+  /**
+   * @return string[]
+   */
   public function getContentOptions()
   {
     return $this->contentOptions;
@@ -55,18 +75,30 @@ class GooglePrivacyDlpV2InspectConfig extends \Google\Collection
   {
     return $this->customInfoTypes;
   }
+  /**
+   * @param bool
+   */
   public function setExcludeInfoTypes($excludeInfoTypes)
   {
     $this->excludeInfoTypes = $excludeInfoTypes;
   }
+  /**
+   * @return bool
+   */
   public function getExcludeInfoTypes()
   {
     return $this->excludeInfoTypes;
   }
+  /**
+   * @param bool
+   */
   public function setIncludeQuote($includeQuote)
   {
     $this->includeQuote = $includeQuote;
   }
+  /**
+   * @return bool
+   */
   public function getIncludeQuote()
   {
     return $this->includeQuote;
@@ -99,13 +131,33 @@ class GooglePrivacyDlpV2InspectConfig extends \Google\Collection
   {
     return $this->limits;
   }
+  /**
+   * @param string
+   */
   public function setMinLikelihood($minLikelihood)
   {
     $this->minLikelihood = $minLikelihood;
   }
+  /**
+   * @return string
+   */
   public function getMinLikelihood()
   {
     return $this->minLikelihood;
+  }
+  /**
+   * @param GooglePrivacyDlpV2InfoTypeLikelihood[]
+   */
+  public function setMinLikelihoodPerInfoType($minLikelihoodPerInfoType)
+  {
+    $this->minLikelihoodPerInfoType = $minLikelihoodPerInfoType;
+  }
+  /**
+   * @return GooglePrivacyDlpV2InfoTypeLikelihood[]
+   */
+  public function getMinLikelihoodPerInfoType()
+  {
+    return $this->minLikelihoodPerInfoType;
   }
   /**
    * @param GooglePrivacyDlpV2InspectionRuleSet[]

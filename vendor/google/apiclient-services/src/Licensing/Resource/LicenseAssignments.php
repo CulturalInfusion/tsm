@@ -46,6 +46,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * changes. If the `userId` is suspended, the license status changes.
    * @param array $optParams Optional parameters.
    * @return LicensingEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($productId, $skuId, $userId, $optParams = [])
   {
@@ -67,6 +68,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * changes. If the `userId` is suspended, the license status changes.
    * @param array $optParams Optional parameters.
    * @return LicenseAssignment
+   * @throws \Google\Service\Exception
    */
   public function get($productId, $skuId, $userId, $optParams = [])
   {
@@ -84,6 +86,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * @param LicenseAssignmentInsert $postBody
    * @param array $optParams Optional parameters.
    * @return LicenseAssignment
+   * @throws \Google\Service\Exception
    */
   public function insert($productId, $skuId, LicenseAssignmentInsert $postBody, $optParams = [])
   {
@@ -97,9 +100,9 @@ class LicenseAssignments extends \Google\Service\Resource
    *
    * @param string $productId A product's unique identifier. For more information
    * about products in this version of the API, see Products and SKUs.
-   * @param string $customerId Customer's `customerId`. A previous version of this
-   * API accepted the primary domain name as a value for this field. If the
-   * customer is suspended, the server returns an error.
+   * @param string $customerId The customer's unique ID as defined in the Admin
+   * console, such as `C00000000`. If the customer is suspended, the server
+   * returns an error.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string maxResults The `maxResults` query string determines how
@@ -110,6 +113,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * determines how many entries are returned on each page. This is an optional
    * query string. If not specified, the server returns the first page.
    * @return LicenseAssignmentList
+   * @throws \Google\Service\Exception
    */
   public function listForProduct($productId, $customerId, $optParams = [])
   {
@@ -125,9 +129,9 @@ class LicenseAssignments extends \Google\Service\Resource
    * about products in this version of the API, see Products and SKUs.
    * @param string $skuId A product SKU's unique identifier. For more information
    * about available SKUs in this version of the API, see Products and SKUs.
-   * @param string $customerId Customer's `customerId`. A previous version of this
-   * API accepted the primary domain name as a value for this field. If the
-   * customer is suspended, the server returns an error.
+   * @param string $customerId The customer's unique ID as defined in the Admin
+   * console, such as `C00000000`. If the customer is suspended, the server
+   * returns an error.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string maxResults The `maxResults` query string determines how
@@ -138,6 +142,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * determines how many entries are returned on each page. This is an optional
    * query string. If not specified, the server returns the first page.
    * @return LicenseAssignmentList
+   * @throws \Google\Service\Exception
    */
   public function listForProductAndSku($productId, $skuId, $customerId, $optParams = [])
   {
@@ -161,6 +166,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * @param LicenseAssignment $postBody
    * @param array $optParams Optional parameters.
    * @return LicenseAssignment
+   * @throws \Google\Service\Exception
    */
   public function patch($productId, $skuId, $userId, LicenseAssignment $postBody, $optParams = [])
   {
@@ -184,6 +190,7 @@ class LicenseAssignments extends \Google\Service\Resource
    * @param LicenseAssignment $postBody
    * @param array $optParams Optional parameters.
    * @return LicenseAssignment
+   * @throws \Google\Service\Exception
    */
   public function update($productId, $skuId, $userId, LicenseAssignment $postBody, $optParams = [])
   {

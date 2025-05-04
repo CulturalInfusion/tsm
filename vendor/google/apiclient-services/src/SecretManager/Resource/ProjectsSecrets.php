@@ -32,7 +32,7 @@ use Google\Service\SecretManager\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $secretmanagerService = new Google\Service\SecretManager(...);
- *   $secrets = $secretmanagerService->secrets;
+ *   $secrets = $secretmanagerService->projects_secrets;
  *  </code>
  */
 class ProjectsSecrets extends \Google\Service\Resource
@@ -42,10 +42,12 @@ class ProjectsSecrets extends \Google\Service\Resource
    * existing Secret. (secrets.addVersion)
    *
    * @param string $parent Required. The resource name of the Secret to associate
-   * with the SecretVersion in the format `projects/secrets`.
+   * with the SecretVersion in the format `projects/secrets` or
+   * `projects/locations/secrets`.
    * @param AddSecretVersionRequest $postBody
    * @param array $optParams Optional parameters.
    * @return SecretVersion
+   * @throws \Google\Service\Exception
    */
   public function addVersion($parent, AddSecretVersionRequest $postBody, $optParams = [])
   {
@@ -57,7 +59,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    * Creates a new Secret containing no SecretVersions. (secrets.create)
    *
    * @param string $parent Required. The resource name of the project to associate
-   * with the Secret, in the format `projects`.
+   * with the Secret, in the format `projects` or `projects/locations`.
    * @param Secret $postBody
    * @param array $optParams Optional parameters.
    *
@@ -66,6 +68,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    * contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
    * underscore (`_`) characters.
    * @return Secret
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Secret $postBody, $optParams = [])
   {
@@ -84,6 +87,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    * it matches the etag of the currently stored secret object. If the etag is
    * omitted, the request succeeds.
    * @return SecretmanagerEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -95,9 +99,10 @@ class ProjectsSecrets extends \Google\Service\Resource
    * Gets metadata for a given Secret. (secrets.get)
    *
    * @param string $name Required. The resource name of the Secret, in the format
-   * `projects/secrets`.
+   * `projects/secrets` or `projects/locations/secrets`.
    * @param array $optParams Optional parameters.
    * @return Secret
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -110,19 +115,25 @@ class ProjectsSecrets extends \Google\Service\Resource
    * secret exists and does not have a policy set. (secrets.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -134,7 +145,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    * Lists Secrets. (secrets.listProjectsSecrets)
    *
    * @param string $parent Required. The resource name of the project associated
-   * with the Secrets, in the format `projects`.
+   * with the Secrets, in the format `projects` or `projects/locations`
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter Optional. Filter string, adhering to the rules in
@@ -148,6 +159,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    * @opt_param string pageToken Optional. Pagination token, returned earlier via
    * ListSecretsResponse.next_page_token.
    * @return ListSecretsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsSecrets($parent, $optParams = [])
   {
@@ -165,6 +177,7 @@ class ProjectsSecrets extends \Google\Service\Resource
    *
    * @opt_param string updateMask Required. Specifies the fields to be updated.
    * @return Secret
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Secret $postBody, $optParams = [])
   {
@@ -178,11 +191,13 @@ class ProjectsSecrets extends \Google\Service\Resource
    * set on the associated Secret. (secrets.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -198,11 +213,13 @@ class ProjectsSecrets extends \Google\Service\Resource
    * This operation may "fail open" without warning. (secrets.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

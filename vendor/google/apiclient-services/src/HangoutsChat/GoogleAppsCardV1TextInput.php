@@ -21,14 +21,35 @@ class GoogleAppsCardV1TextInput extends \Google\Model
 {
   protected $autoCompleteActionType = GoogleAppsCardV1Action::class;
   protected $autoCompleteActionDataType = '';
+  /**
+   * @var string
+   */
   public $hintText;
   protected $initialSuggestionsType = GoogleAppsCardV1Suggestions::class;
   protected $initialSuggestionsDataType = '';
+  /**
+   * @var string
+   */
   public $label;
+  /**
+   * @var string
+   */
   public $name;
   protected $onChangeActionType = GoogleAppsCardV1Action::class;
   protected $onChangeActionDataType = '';
+  /**
+   * @var string
+   */
+  public $placeholderText;
+  /**
+   * @var string
+   */
   public $type;
+  protected $validationType = GoogleAppsCardV1Validation::class;
+  protected $validationDataType = '';
+  /**
+   * @var string
+   */
   public $value;
 
   /**
@@ -45,10 +66,16 @@ class GoogleAppsCardV1TextInput extends \Google\Model
   {
     return $this->autoCompleteAction;
   }
+  /**
+   * @param string
+   */
   public function setHintText($hintText)
   {
     $this->hintText = $hintText;
   }
+  /**
+   * @return string
+   */
   public function getHintText()
   {
     return $this->hintText;
@@ -67,18 +94,30 @@ class GoogleAppsCardV1TextInput extends \Google\Model
   {
     return $this->initialSuggestions;
   }
+  /**
+   * @param string
+   */
   public function setLabel($label)
   {
     $this->label = $label;
   }
+  /**
+   * @return string
+   */
   public function getLabel()
   {
     return $this->label;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -97,18 +136,58 @@ class GoogleAppsCardV1TextInput extends \Google\Model
   {
     return $this->onChangeAction;
   }
+  /**
+   * @param string
+   */
+  public function setPlaceholderText($placeholderText)
+  {
+    $this->placeholderText = $placeholderText;
+  }
+  /**
+   * @return string
+   */
+  public function getPlaceholderText()
+  {
+    return $this->placeholderText;
+  }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;
   }
+  /**
+   * @param GoogleAppsCardV1Validation
+   */
+  public function setValidation(GoogleAppsCardV1Validation $validation)
+  {
+    $this->validation = $validation;
+  }
+  /**
+   * @return GoogleAppsCardV1Validation
+   */
+  public function getValidation()
+  {
+    return $this->validation;
+  }
+  /**
+   * @param string
+   */
   public function setValue($value)
   {
     $this->value = $value;
   }
+  /**
+   * @return string
+   */
   public function getValue()
   {
     return $this->value;

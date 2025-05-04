@@ -34,7 +34,7 @@ use Google\Client;
  */
 class ToolResults extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -49,6 +49,7 @@ class ToolResults extends \Google\Service
   public $projects_histories_executions_steps_perfSampleSeries_samples;
   public $projects_histories_executions_steps_testCases;
   public $projects_histories_executions_steps_thumbnails;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ToolResults service.
@@ -61,6 +62,7 @@ class ToolResults extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://toolresults.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://toolresults.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1beta3';

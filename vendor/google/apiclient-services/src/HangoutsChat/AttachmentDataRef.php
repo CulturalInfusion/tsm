@@ -19,12 +19,39 @@ namespace Google\Service\HangoutsChat;
 
 class AttachmentDataRef extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $attachmentUploadToken;
+  /**
+   * @var string
+   */
   public $resourceName;
 
+  /**
+   * @param string
+   */
+  public function setAttachmentUploadToken($attachmentUploadToken)
+  {
+    $this->attachmentUploadToken = $attachmentUploadToken;
+  }
+  /**
+   * @return string
+   */
+  public function getAttachmentUploadToken()
+  {
+    return $this->attachmentUploadToken;
+  }
+  /**
+   * @param string
+   */
   public function setResourceName($resourceName)
   {
     $this->resourceName = $resourceName;
   }
+  /**
+   * @return string
+   */
   public function getResourceName()
   {
     return $this->resourceName;

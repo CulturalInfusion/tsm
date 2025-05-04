@@ -31,7 +31,7 @@ use Google\Service\DataCatalog\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $datacatalogService = new Google\Service\DataCatalog(...);
- *   $policyTags = $datacatalogService->policyTags;
+ *   $policyTags = $datacatalogService->projects_locations_taxonomies_policyTags;
  *  </code>
  */
 class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
@@ -44,6 +44,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * @param GoogleCloudDatacatalogV1PolicyTag $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDatacatalogV1PolicyTag
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudDatacatalogV1PolicyTag $postBody, $optParams = [])
   {
@@ -61,6 +62,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * Note: All of its descendant policy tags are also deleted.
    * @param array $optParams Optional parameters.
    * @return DatacatalogEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -74,6 +76,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * @param string $name Required. Resource name of the policy tag.
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDatacatalogV1PolicyTag
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -85,11 +88,13 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * Gets the IAM policy for a policy tag or a taxonomy. (policyTags.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -111,6 +116,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * not set, returns the first page. The token is returned in the response to a
    * previous list request.
    * @return GoogleCloudDatacatalogV1ListPolicyTagsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsTaxonomiesPolicyTags($parent, $optParams = [])
   {
@@ -122,7 +128,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * Updates a policy tag, including its display name, description, and parent
    * policy tag. (policyTags.patch)
    *
-   * @param string $name Output only. Resource name of this policy tag in the URL
+   * @param string $name Identifier. Resource name of this policy tag in the URL
    * format. The policy tag manager generates unique taxonomy IDs and policy tag
    * IDs.
    * @param GoogleCloudDatacatalogV1PolicyTag $postBody
@@ -134,6 +140,7 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * (https://developers.google.com/protocol-
    * buffers/docs/reference/google.protobuf#fieldmask).
    * @return GoogleCloudDatacatalogV1PolicyTag
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudDatacatalogV1PolicyTag $postBody, $optParams = [])
   {
@@ -145,11 +152,13 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * Sets the IAM policy for a policy tag or a taxonomy. (policyTags.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -162,11 +171,13 @@ class ProjectsLocationsTaxonomiesPolicyTags extends \Google\Service\Resource
    * (policyTags.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

@@ -19,30 +19,57 @@ namespace Google\Service\AIPlatformNotebooks;
 
 class VmImage extends \Google\Model
 {
-  public $imageFamily;
-  public $imageName;
+  /**
+   * @var string
+   */
+  public $family;
+  /**
+   * @var string
+   */
+  public $name;
+  /**
+   * @var string
+   */
   public $project;
 
-  public function setImageFamily($imageFamily)
+  /**
+   * @param string
+   */
+  public function setFamily($family)
   {
-    $this->imageFamily = $imageFamily;
+    $this->family = $family;
   }
-  public function getImageFamily()
+  /**
+   * @return string
+   */
+  public function getFamily()
   {
-    return $this->imageFamily;
+    return $this->family;
   }
-  public function setImageName($imageName)
+  /**
+   * @param string
+   */
+  public function setName($name)
   {
-    $this->imageName = $imageName;
+    $this->name = $name;
   }
-  public function getImageName()
+  /**
+   * @return string
+   */
+  public function getName()
   {
-    return $this->imageName;
+    return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setProject($project)
   {
     $this->project = $project;
   }
+  /**
+   * @return string
+   */
   public function getProject()
   {
     return $this->project;

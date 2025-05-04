@@ -19,21 +19,68 @@ namespace Google\Service\HangoutsChat;
 
 class Annotation extends \Google\Model
 {
+  protected $customEmojiMetadataType = CustomEmojiMetadata::class;
+  protected $customEmojiMetadataDataType = '';
+  /**
+   * @var int
+   */
   public $length;
+  protected $richLinkMetadataType = RichLinkMetadata::class;
+  protected $richLinkMetadataDataType = '';
   protected $slashCommandType = SlashCommandMetadata::class;
   protected $slashCommandDataType = '';
+  /**
+   * @var int
+   */
   public $startIndex;
+  /**
+   * @var string
+   */
   public $type;
   protected $userMentionType = UserMentionMetadata::class;
   protected $userMentionDataType = '';
 
+  /**
+   * @param CustomEmojiMetadata
+   */
+  public function setCustomEmojiMetadata(CustomEmojiMetadata $customEmojiMetadata)
+  {
+    $this->customEmojiMetadata = $customEmojiMetadata;
+  }
+  /**
+   * @return CustomEmojiMetadata
+   */
+  public function getCustomEmojiMetadata()
+  {
+    return $this->customEmojiMetadata;
+  }
+  /**
+   * @param int
+   */
   public function setLength($length)
   {
     $this->length = $length;
   }
+  /**
+   * @return int
+   */
   public function getLength()
   {
     return $this->length;
+  }
+  /**
+   * @param RichLinkMetadata
+   */
+  public function setRichLinkMetadata(RichLinkMetadata $richLinkMetadata)
+  {
+    $this->richLinkMetadata = $richLinkMetadata;
+  }
+  /**
+   * @return RichLinkMetadata
+   */
+  public function getRichLinkMetadata()
+  {
+    return $this->richLinkMetadata;
   }
   /**
    * @param SlashCommandMetadata
@@ -49,18 +96,30 @@ class Annotation extends \Google\Model
   {
     return $this->slashCommand;
   }
+  /**
+   * @param int
+   */
   public function setStartIndex($startIndex)
   {
     $this->startIndex = $startIndex;
   }
+  /**
+   * @return int
+   */
   public function getStartIndex()
   {
     return $this->startIndex;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

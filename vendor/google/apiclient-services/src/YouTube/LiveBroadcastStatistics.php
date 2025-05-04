@@ -19,15 +19,24 @@ namespace Google\Service\YouTube;
 
 class LiveBroadcastStatistics extends \Google\Model
 {
-  public $totalChatCount;
+  /**
+   * @var string
+   */
+  public $concurrentViewers;
 
-  public function setTotalChatCount($totalChatCount)
+  /**
+   * @param string
+   */
+  public function setConcurrentViewers($concurrentViewers)
   {
-    $this->totalChatCount = $totalChatCount;
+    $this->concurrentViewers = $concurrentViewers;
   }
-  public function getTotalChatCount()
+  /**
+   * @return string
+   */
+  public function getConcurrentViewers()
   {
-    return $this->totalChatCount;
+    return $this->concurrentViewers;
   }
 }
 

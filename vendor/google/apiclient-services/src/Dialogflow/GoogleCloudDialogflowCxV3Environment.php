@@ -20,41 +20,95 @@ namespace Google\Service\Dialogflow;
 class GoogleCloudDialogflowCxV3Environment extends \Google\Collection
 {
   protected $collection_key = 'versionConfigs';
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $name;
+  protected $testCasesConfigType = GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig::class;
+  protected $testCasesConfigDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
   protected $versionConfigsType = GoogleCloudDialogflowCxV3EnvironmentVersionConfig::class;
   protected $versionConfigsDataType = 'array';
+  protected $webhookConfigType = GoogleCloudDialogflowCxV3EnvironmentWebhookConfig::class;
+  protected $webhookConfigDataType = '';
 
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+   */
+  public function setTestCasesConfig(GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig $testCasesConfig)
+  {
+    $this->testCasesConfig = $testCasesConfig;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+   */
+  public function getTestCasesConfig()
+  {
+    return $this->testCasesConfig;
+  }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;
@@ -72,6 +126,20 @@ class GoogleCloudDialogflowCxV3Environment extends \Google\Collection
   public function getVersionConfigs()
   {
     return $this->versionConfigs;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+   */
+  public function setWebhookConfig(GoogleCloudDialogflowCxV3EnvironmentWebhookConfig $webhookConfig)
+  {
+    $this->webhookConfig = $webhookConfig;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+   */
+  public function getWebhookConfig()
+  {
+    return $this->webhookConfig;
   }
 }
 

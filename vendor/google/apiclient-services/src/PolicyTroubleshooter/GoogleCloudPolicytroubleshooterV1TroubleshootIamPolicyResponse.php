@@ -20,17 +20,42 @@ namespace Google\Service\PolicyTroubleshooter;
 class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse extends \Google\Collection
 {
   protected $collection_key = 'explainedPolicies';
+  /**
+   * @var string
+   */
   public $access;
+  protected $errorsType = GoogleRpcStatus::class;
+  protected $errorsDataType = 'array';
   protected $explainedPoliciesType = GoogleCloudPolicytroubleshooterV1ExplainedPolicy::class;
   protected $explainedPoliciesDataType = 'array';
 
+  /**
+   * @param string
+   */
   public function setAccess($access)
   {
     $this->access = $access;
   }
+  /**
+   * @return string
+   */
   public function getAccess()
   {
     return $this->access;
+  }
+  /**
+   * @param GoogleRpcStatus[]
+   */
+  public function setErrors($errors)
+  {
+    $this->errors = $errors;
+  }
+  /**
+   * @return GoogleRpcStatus[]
+   */
+  public function getErrors()
+  {
+    return $this->errors;
   }
   /**
    * @param GoogleCloudPolicytroubleshooterV1ExplainedPolicy[]

@@ -26,6 +26,14 @@ class LookupResponse extends \Google\Collection
   protected $foundDataType = 'array';
   protected $missingType = EntityResult::class;
   protected $missingDataType = 'array';
+  /**
+   * @var string
+   */
+  public $readTime;
+  /**
+   * @var string
+   */
+  public $transaction;
 
   /**
    * @param Key[]
@@ -68,6 +76,34 @@ class LookupResponse extends \Google\Collection
   public function getMissing()
   {
     return $this->missing;
+  }
+  /**
+   * @param string
+   */
+  public function setReadTime($readTime)
+  {
+    $this->readTime = $readTime;
+  }
+  /**
+   * @return string
+   */
+  public function getReadTime()
+  {
+    return $this->readTime;
+  }
+  /**
+   * @param string
+   */
+  public function setTransaction($transaction)
+  {
+    $this->transaction = $transaction;
+  }
+  /**
+   * @return string
+   */
+  public function getTransaction()
+  {
+    return $this->transaction;
   }
 }
 

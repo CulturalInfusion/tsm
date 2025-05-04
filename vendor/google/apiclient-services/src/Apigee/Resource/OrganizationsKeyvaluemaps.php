@@ -24,7 +24,7 @@ use Google\Service\Apigee\GoogleCloudApigeeV1KeyValueMap;
  * Typical usage is:
  *  <code>
  *   $apigeeService = new Google\Service\Apigee(...);
- *   $keyvaluemaps = $apigeeService->keyvaluemaps;
+ *   $keyvaluemaps = $apigeeService->organizations_keyvaluemaps;
  *  </code>
  */
 class OrganizationsKeyvaluemaps extends \Google\Service\Resource
@@ -32,12 +32,13 @@ class OrganizationsKeyvaluemaps extends \Google\Service\Resource
   /**
    * Creates a key value map in an organization. (keyvaluemaps.create)
    *
-   * @param string $parent Required. The name of the organization in which to
-   * create the key value map file. Must be of the form
-   * `organizations/{organization}`.
+   * @param string $parent Required. Name of the organization in which to create
+   * the key value map file. Use the following structure in your request:
+   * `organizations/{org}`
    * @param GoogleCloudApigeeV1KeyValueMap $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1KeyValueMap
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudApigeeV1KeyValueMap $postBody, $optParams = [])
   {
@@ -46,12 +47,13 @@ class OrganizationsKeyvaluemaps extends \Google\Service\Resource
     return $this->call('create', [$params], GoogleCloudApigeeV1KeyValueMap::class);
   }
   /**
-   * Delete a key value map in an organization. (keyvaluemaps.delete)
+   * Deletes a key value map from an organization. (keyvaluemaps.delete)
    *
-   * @param string $name Required. The name of the key value map. Must be of the
-   * form `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+   * @param string $name Required. Name of the key value map. Use the following
+   * structure in your request: `organizations/{org}/keyvaluemaps/{keyvaluemap}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudApigeeV1KeyValueMap
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {

@@ -17,15 +17,66 @@
 
 namespace Google\Service\GKEHub;
 
-class ConfigManagementConfigSyncState extends \Google\Model
+class ConfigManagementConfigSyncState extends \Google\Collection
 {
+  protected $collection_key = 'errors';
+  /**
+   * @var string
+   */
+  public $clusterLevelStopSyncingState;
+  /**
+   * @var int
+   */
+  public $crCount;
   protected $deploymentStateType = ConfigManagementConfigSyncDeploymentState::class;
   protected $deploymentStateDataType = '';
+  protected $errorsType = ConfigManagementConfigSyncError::class;
+  protected $errorsDataType = 'array';
+  /**
+   * @var string
+   */
+  public $reposyncCrd;
+  /**
+   * @var string
+   */
+  public $rootsyncCrd;
+  /**
+   * @var string
+   */
+  public $state;
   protected $syncStateType = ConfigManagementSyncState::class;
   protected $syncStateDataType = '';
   protected $versionType = ConfigManagementConfigSyncVersion::class;
   protected $versionDataType = '';
 
+  /**
+   * @param string
+   */
+  public function setClusterLevelStopSyncingState($clusterLevelStopSyncingState)
+  {
+    $this->clusterLevelStopSyncingState = $clusterLevelStopSyncingState;
+  }
+  /**
+   * @return string
+   */
+  public function getClusterLevelStopSyncingState()
+  {
+    return $this->clusterLevelStopSyncingState;
+  }
+  /**
+   * @param int
+   */
+  public function setCrCount($crCount)
+  {
+    $this->crCount = $crCount;
+  }
+  /**
+   * @return int
+   */
+  public function getCrCount()
+  {
+    return $this->crCount;
+  }
   /**
    * @param ConfigManagementConfigSyncDeploymentState
    */
@@ -39,6 +90,62 @@ class ConfigManagementConfigSyncState extends \Google\Model
   public function getDeploymentState()
   {
     return $this->deploymentState;
+  }
+  /**
+   * @param ConfigManagementConfigSyncError[]
+   */
+  public function setErrors($errors)
+  {
+    $this->errors = $errors;
+  }
+  /**
+   * @return ConfigManagementConfigSyncError[]
+   */
+  public function getErrors()
+  {
+    return $this->errors;
+  }
+  /**
+   * @param string
+   */
+  public function setReposyncCrd($reposyncCrd)
+  {
+    $this->reposyncCrd = $reposyncCrd;
+  }
+  /**
+   * @return string
+   */
+  public function getReposyncCrd()
+  {
+    return $this->reposyncCrd;
+  }
+  /**
+   * @param string
+   */
+  public function setRootsyncCrd($rootsyncCrd)
+  {
+    $this->rootsyncCrd = $rootsyncCrd;
+  }
+  /**
+   * @return string
+   */
+  public function getRootsyncCrd()
+  {
+    return $this->rootsyncCrd;
+  }
+  /**
+   * @param string
+   */
+  public function setState($state)
+  {
+    $this->state = $state;
+  }
+  /**
+   * @return string
+   */
+  public function getState()
+  {
+    return $this->state;
   }
   /**
    * @param ConfigManagementSyncState

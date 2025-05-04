@@ -19,23 +19,45 @@ namespace Google\Service\PolyService;
 
 class PresentationParams extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $backgroundColor;
+  /**
+   * @var string
+   */
   public $colorSpace;
+  /**
+   * @var Quaternion
+   */
+  public $orientingRotation;
   protected $orientingRotationType = Quaternion::class;
   protected $orientingRotationDataType = '';
 
+  /**
+   * @param string
+   */
   public function setBackgroundColor($backgroundColor)
   {
     $this->backgroundColor = $backgroundColor;
   }
+  /**
+   * @return string
+   */
   public function getBackgroundColor()
   {
     return $this->backgroundColor;
   }
+  /**
+   * @param string
+   */
   public function setColorSpace($colorSpace)
   {
     $this->colorSpace = $colorSpace;
   }
+  /**
+   * @return string
+   */
   public function getColorSpace()
   {
     return $this->colorSpace;

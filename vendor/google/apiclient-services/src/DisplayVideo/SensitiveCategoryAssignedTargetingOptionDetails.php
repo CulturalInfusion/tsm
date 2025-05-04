@@ -19,24 +19,24 @@ namespace Google\Service\DisplayVideo;
 
 class SensitiveCategoryAssignedTargetingOptionDetails extends \Google\Model
 {
-  public $excludedTargetingOptionId;
-  public $sensitiveCategory;
+  /**
+   * @var string
+   */
+  public $excludedSensitiveCategory;
 
-  public function setExcludedTargetingOptionId($excludedTargetingOptionId)
+  /**
+   * @param string
+   */
+  public function setExcludedSensitiveCategory($excludedSensitiveCategory)
   {
-    $this->excludedTargetingOptionId = $excludedTargetingOptionId;
+    $this->excludedSensitiveCategory = $excludedSensitiveCategory;
   }
-  public function getExcludedTargetingOptionId()
+  /**
+   * @return string
+   */
+  public function getExcludedSensitiveCategory()
   {
-    return $this->excludedTargetingOptionId;
-  }
-  public function setSensitiveCategory($sensitiveCategory)
-  {
-    $this->sensitiveCategory = $sensitiveCategory;
-  }
-  public function getSensitiveCategory()
-  {
-    return $this->sensitiveCategory;
+    return $this->excludedSensitiveCategory;
   }
 }
 

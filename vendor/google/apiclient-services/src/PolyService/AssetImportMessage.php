@@ -19,25 +19,51 @@ namespace Google\Service\PolyService;
 
 class AssetImportMessage extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $code;
+  /**
+   * @var string
+   */
   public $filePath;
+  /**
+   * @var ImageError
+   */
+  public $imageError;
   protected $imageErrorType = ImageError::class;
   protected $imageErrorDataType = '';
+  /**
+   * @var ObjParseError
+   */
+  public $objParseError;
   protected $objParseErrorType = ObjParseError::class;
   protected $objParseErrorDataType = '';
 
+  /**
+   * @param string
+   */
   public function setCode($code)
   {
     $this->code = $code;
   }
+  /**
+   * @return string
+   */
   public function getCode()
   {
     return $this->code;
   }
+  /**
+   * @param string
+   */
   public function setFilePath($filePath)
   {
     $this->filePath = $filePath;
   }
+  /**
+   * @return string
+   */
   public function getFilePath()
   {
     return $this->filePath;

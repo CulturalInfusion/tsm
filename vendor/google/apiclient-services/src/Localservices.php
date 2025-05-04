@@ -34,12 +34,13 @@ use Google\Client;
  */
 class Localservices extends \Google\Service
 {
-  /** Manage your AdWords campaigns. */
+  /** See, edit, create, and delete your Google Ads accounts and data.. */
   const ADWORDS =
       "https://www.googleapis.com/auth/adwords";
 
   public $accountReports;
   public $detailedLeadReports;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Localservices service.
@@ -52,6 +53,7 @@ class Localservices extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://localservices.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://localservices.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

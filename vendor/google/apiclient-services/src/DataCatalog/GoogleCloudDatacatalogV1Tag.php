@@ -19,20 +19,56 @@ namespace Google\Service\DataCatalog;
 
 class GoogleCloudDatacatalogV1Tag extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $column;
+  /**
+   * @var string
+   */
+  public $dataplexTransferStatus;
   protected $fieldsType = GoogleCloudDatacatalogV1TagField::class;
   protected $fieldsDataType = 'map';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $template;
+  /**
+   * @var string
+   */
   public $templateDisplayName;
 
+  /**
+   * @param string
+   */
   public function setColumn($column)
   {
     $this->column = $column;
   }
+  /**
+   * @return string
+   */
   public function getColumn()
   {
     return $this->column;
+  }
+  /**
+   * @param string
+   */
+  public function setDataplexTransferStatus($dataplexTransferStatus)
+  {
+    $this->dataplexTransferStatus = $dataplexTransferStatus;
+  }
+  /**
+   * @return string
+   */
+  public function getDataplexTransferStatus()
+  {
+    return $this->dataplexTransferStatus;
   }
   /**
    * @param GoogleCloudDatacatalogV1TagField[]
@@ -48,26 +84,44 @@ class GoogleCloudDatacatalogV1Tag extends \Google\Model
   {
     return $this->fields;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setTemplate($template)
   {
     $this->template = $template;
   }
+  /**
+   * @return string
+   */
   public function getTemplate()
   {
     return $this->template;
   }
+  /**
+   * @param string
+   */
   public function setTemplateDisplayName($templateDisplayName)
   {
     $this->templateDisplayName = $templateDisplayName;
   }
+  /**
+   * @return string
+   */
   public function getTemplateDisplayName()
   {
     return $this->templateDisplayName;

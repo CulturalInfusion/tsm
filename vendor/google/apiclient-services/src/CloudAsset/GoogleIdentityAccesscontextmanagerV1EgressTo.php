@@ -20,10 +20,31 @@ namespace Google\Service\CloudAsset;
 class GoogleIdentityAccesscontextmanagerV1EgressTo extends \Google\Collection
 {
   protected $collection_key = 'resources';
+  /**
+   * @var string[]
+   */
+  public $externalResources;
   protected $operationsType = GoogleIdentityAccesscontextmanagerV1ApiOperation::class;
   protected $operationsDataType = 'array';
+  /**
+   * @var string[]
+   */
   public $resources;
 
+  /**
+   * @param string[]
+   */
+  public function setExternalResources($externalResources)
+  {
+    $this->externalResources = $externalResources;
+  }
+  /**
+   * @return string[]
+   */
+  public function getExternalResources()
+  {
+    return $this->externalResources;
+  }
   /**
    * @param GoogleIdentityAccesscontextmanagerV1ApiOperation[]
    */
@@ -38,10 +59,16 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo extends \Google\Collection
   {
     return $this->operations;
   }
+  /**
+   * @param string[]
+   */
   public function setResources($resources)
   {
     $this->resources = $resources;
   }
+  /**
+   * @return string[]
+   */
   public function getResources()
   {
     return $this->resources;

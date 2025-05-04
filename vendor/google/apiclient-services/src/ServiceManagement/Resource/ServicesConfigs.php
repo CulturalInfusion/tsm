@@ -27,7 +27,7 @@ use Google\Service\ServiceManagement\SubmitConfigSourceRequest;
  * Typical usage is:
  *  <code>
  *   $servicemanagementService = new Google\Service\ServiceManagement(...);
- *   $configs = $servicemanagementService->configs;
+ *   $configs = $servicemanagementService->services_configs;
  *  </code>
  */
 class ServicesConfigs extends \Google\Service\Resource
@@ -41,11 +41,12 @@ class ServicesConfigs extends \Google\Service\Resource
    * (configs.create)
    *
    * @param string $serviceName Required. The name of the service. See the
-   * [overview](/service-management/overview) for naming requirements. For
-   * example: `example.googleapis.com`.
+   * [overview](https://cloud.google.com/service-management/overview) for naming
+   * requirements. For example: `example.googleapis.com`.
    * @param Service $postBody
    * @param array $optParams Optional parameters.
    * @return Service
+   * @throws \Google\Service\Exception
    */
   public function create($serviceName, Service $postBody, $optParams = [])
   {
@@ -57,8 +58,8 @@ class ServicesConfigs extends \Google\Service\Resource
    * Gets a service configuration (version) for a managed service. (configs.get)
    *
    * @param string $serviceName Required. The name of the service. See the
-   * [overview](/service-management/overview) for naming requirements. For
-   * example: `example.googleapis.com`.
+   * [overview](https://cloud.google.com/service-management/overview) for naming
+   * requirements. For example: `example.googleapis.com`.
    * @param string $configId Required. The id of the service configuration
    * resource. This field must be specified for the server to return all fields,
    * including `SourceInfo`.
@@ -67,6 +68,7 @@ class ServicesConfigs extends \Google\Service\Resource
    * @opt_param string view Specifies which parts of the Service Config should be
    * returned in the response.
    * @return Service
+   * @throws \Google\Service\Exception
    */
   public function get($serviceName, $configId, $optParams = [])
   {
@@ -79,14 +81,15 @@ class ServicesConfigs extends \Google\Service\Resource
    * the newest to the oldest. (configs.listServicesConfigs)
    *
    * @param string $serviceName Required. The name of the service. See the
-   * [overview](/service-management/overview) for naming requirements. For
-   * example: `example.googleapis.com`.
+   * [overview](https://cloud.google.com/service-management/overview) for naming
+   * requirements. For example: `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The max number of items to include in the response
    * list. Page size is 50 if not specified. Maximum value is 100.
    * @opt_param string pageToken The token of the page to retrieve.
    * @return ListServiceConfigsResponse
+   * @throws \Google\Service\Exception
    */
   public function listServicesConfigs($serviceName, $optParams = [])
   {
@@ -105,11 +108,12 @@ class ServicesConfigs extends \Google\Service\Resource
    * (configs.submit)
    *
    * @param string $serviceName Required. The name of the service. See the
-   * [overview](/service-management/overview) for naming requirements. For
-   * example: `example.googleapis.com`.
+   * [overview](https://cloud.google.com/service-management/overview) for naming
+   * requirements. For example: `example.googleapis.com`.
    * @param SubmitConfigSourceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function submit($serviceName, SubmitConfigSourceRequest $postBody, $optParams = [])
   {

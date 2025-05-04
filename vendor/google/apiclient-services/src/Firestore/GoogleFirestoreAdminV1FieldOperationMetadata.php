@@ -20,7 +20,13 @@ namespace Google\Service\Firestore;
 class GoogleFirestoreAdminV1FieldOperationMetadata extends \Google\Collection
 {
   protected $collection_key = 'indexConfigDeltas';
+  /**
+   * @var string
+   */
   public $endTime;
+  /**
+   * @var string
+   */
   public $field;
   protected $indexConfigDeltasType = GoogleFirestoreAdminV1IndexConfigDelta::class;
   protected $indexConfigDeltasDataType = 'array';
@@ -28,21 +34,41 @@ class GoogleFirestoreAdminV1FieldOperationMetadata extends \Google\Collection
   protected $progressBytesDataType = '';
   protected $progressDocumentsType = GoogleFirestoreAdminV1Progress::class;
   protected $progressDocumentsDataType = '';
+  /**
+   * @var string
+   */
   public $startTime;
+  /**
+   * @var string
+   */
   public $state;
+  protected $ttlConfigDeltaType = GoogleFirestoreAdminV1TtlConfigDelta::class;
+  protected $ttlConfigDeltaDataType = '';
 
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
   }
+  /**
+   * @param string
+   */
   public function setField($field)
   {
     $this->field = $field;
   }
+  /**
+   * @return string
+   */
   public function getField()
   {
     return $this->field;
@@ -89,21 +115,47 @@ class GoogleFirestoreAdminV1FieldOperationMetadata extends \Google\Collection
   {
     return $this->progressDocuments;
   }
+  /**
+   * @param string
+   */
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
+  }
+  /**
+   * @param GoogleFirestoreAdminV1TtlConfigDelta
+   */
+  public function setTtlConfigDelta(GoogleFirestoreAdminV1TtlConfigDelta $ttlConfigDelta)
+  {
+    $this->ttlConfigDelta = $ttlConfigDelta;
+  }
+  /**
+   * @return GoogleFirestoreAdminV1TtlConfigDelta
+   */
+  public function getTtlConfigDelta()
+  {
+    return $this->ttlConfigDelta;
   }
 }
 

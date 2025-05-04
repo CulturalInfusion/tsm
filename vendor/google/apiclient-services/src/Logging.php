@@ -23,10 +23,7 @@ use Google\Client;
  * Service definition for Logging (v2).
  *
  * <p>
- * Writes log entries and manages your Cloud Logging configuration. The table
- * entries below are presented in alphabetical order, not in order of common
- * use. For explanations of the concepts found in the table entries, read the
- * documentation at https://cloud.google.com/logging/docs.</p>
+ * Writes log entries and manages your Cloud Logging configuration.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -37,10 +34,10 @@ use Google\Client;
  */
 class Logging extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
   /** Administrate log data for your projects. */
@@ -53,27 +50,36 @@ class Logging extends \Google\Service
   const LOGGING_WRITE =
       "https://www.googleapis.com/auth/logging.write";
 
-  public $billingAccounts_buckets;
-  public $billingAccounts_buckets_views;
+  public $billingAccounts;
   public $billingAccounts_exclusions;
   public $billingAccounts_locations;
   public $billingAccounts_locations_buckets;
+  public $billingAccounts_locations_buckets_links;
   public $billingAccounts_locations_buckets_views;
+  public $billingAccounts_locations_buckets_views_logs;
   public $billingAccounts_locations_operations;
+  public $billingAccounts_locations_recentQueries;
+  public $billingAccounts_locations_savedQueries;
   public $billingAccounts_logs;
-  public $billingAccounts_operations;
   public $billingAccounts_sinks;
   public $entries;
   public $exclusions;
+  public $folders;
   public $folders_exclusions;
   public $folders_locations;
   public $folders_locations_buckets;
+  public $folders_locations_buckets_links;
   public $folders_locations_buckets_views;
+  public $folders_locations_buckets_views_logs;
+  public $folders_locations_logScopes;
   public $folders_locations_operations;
+  public $folders_locations_recentQueries;
+  public $folders_locations_savedQueries;
   public $folders_logs;
   public $folders_sinks;
   public $locations;
   public $locations_buckets;
+  public $locations_buckets_links;
   public $locations_buckets_views;
   public $locations_operations;
   public $logs;
@@ -82,20 +88,32 @@ class Logging extends \Google\Service
   public $organizations_exclusions;
   public $organizations_locations;
   public $organizations_locations_buckets;
+  public $organizations_locations_buckets_links;
   public $organizations_locations_buckets_views;
+  public $organizations_locations_buckets_views_logs;
+  public $organizations_locations_logScopes;
   public $organizations_locations_operations;
+  public $organizations_locations_recentQueries;
+  public $organizations_locations_savedQueries;
   public $organizations_logs;
   public $organizations_sinks;
+  public $projects;
   public $projects_exclusions;
   public $projects_locations;
   public $projects_locations_buckets;
+  public $projects_locations_buckets_links;
   public $projects_locations_buckets_views;
+  public $projects_locations_buckets_views_logs;
+  public $projects_locations_logScopes;
   public $projects_locations_operations;
+  public $projects_locations_recentQueries;
+  public $projects_locations_savedQueries;
   public $projects_logs;
   public $projects_metrics;
   public $projects_sinks;
   public $sinks;
   public $v2;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Logging service.
@@ -108,19 +126,20 @@ class Logging extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://logging.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://logging.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v2';
     $this->serviceName = 'logging';
 
-    $this->billingAccounts_buckets = new Logging\Resource\BillingAccountsBuckets(
+    $this->billingAccounts = new Logging\Resource\BillingAccounts(
         $this,
         $this->serviceName,
-        'buckets',
+        'billingAccounts',
         [
           'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
+            'getCmekSettings' => [
+              'path' => 'v2/{+name}/cmekSettings',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -129,18 +148,8 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
-            ],
-          ]
-        ]
-    );
-    $this->billingAccounts_buckets_views = new Logging\Resource\BillingAccountsBucketsViews(
-        $this,
-        $this->serviceName,
-        'views',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
+            ],'getSettings' => [
+              'path' => 'v2/{+name}/settings',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -287,9 +296,33 @@ class Logging extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'createAsync' => [
+              'path' => 'v2/{+parent}/buckets:createAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'bucketId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
@@ -339,6 +372,82 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'updateAsync' => [
+              'path' => 'v2/{+name}:updateAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->billingAccounts_locations_buckets_links = new Logging\Resource\BillingAccountsLocationsBucketsLinks(
+        $this,
+        $this->serviceName,
+        'links',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'linkId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],
           ]
         ]
@@ -366,6 +475,16 @@ class Logging extends \Google\Service
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
@@ -409,6 +528,39 @@ class Logging extends \Google\Service
           ]
         ]
     );
+    $this->billingAccounts_locations_buckets_views_logs = new Logging\Resource\BillingAccountsLocationsBucketsViewsLogs(
+        $this,
+        $this->serviceName,
+        'logs',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/logs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'resourceNames' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->billingAccounts_locations_operations = new Logging\Resource\BillingAccountsLocationsOperations(
         $this,
         $this->serviceName,
@@ -418,6 +570,16 @@ class Logging extends \Google\Service
             'cancel' => [
               'path' => 'v2/{+name}:cancel',
               'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
                   'location' => 'path',
@@ -443,6 +605,118 @@ class Logging extends \Google\Service
                   'type' => 'integer',
                 ],
                 'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->billingAccounts_locations_recentQueries = new Logging\Resource\BillingAccountsLocationsRecentQueries(
+        $this,
+        $this->serviceName,
+        'recentQueries',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/recentQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->billingAccounts_locations_savedQueries = new Logging\Resource\BillingAccountsLocationsSavedQueries(
+        $this,
+        $this->serviceName,
+        'savedQueries',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'savedQueryId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -494,26 +768,6 @@ class Logging extends \Google\Service
           ]
         ]
     );
-    $this->billingAccounts_operations = new Logging\Resource\BillingAccountsOperations(
-        $this,
-        $this->serviceName,
-        'operations',
-        [
-          'methods' => [
-            'get' => [
-              'path' => 'v2/{+name}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->billingAccounts_sinks = new Logging\Resource\BillingAccountsSinks(
         $this,
         $this->serviceName,
@@ -528,6 +782,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -563,6 +821,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -581,6 +843,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -598,6 +864,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -694,6 +964,50 @@ class Logging extends \Google\Service
               ],
             ],'patch' => [
               'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->folders = new Logging\Resource\Folders(
+        $this,
+        $this->serviceName,
+        'folders',
+        [
+          'methods' => [
+            'getCmekSettings' => [
+              'path' => 'v2/{+name}/cmekSettings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'getSettings' => [
+              'path' => 'v2/{+name}/settings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'updateSettings' => [
+              'path' => 'v2/{+name}/settings',
               'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [
@@ -844,6 +1158,20 @@ class Logging extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'createAsync' => [
+              'path' => 'v2/{+parent}/buckets:createAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'bucketId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
@@ -906,6 +1234,82 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'updateAsync' => [
+              'path' => 'v2/{+name}:updateAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->folders_locations_buckets_links = new Logging\Resource\FoldersLocationsBucketsLinks(
+        $this,
+        $this->serviceName,
+        'links',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'linkId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],
           ]
         ]
@@ -950,8 +1354,147 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v2/{+parent}/views',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->folders_locations_buckets_views_logs = new Logging\Resource\FoldersLocationsBucketsViewsLogs(
+        $this,
+        $this->serviceName,
+        'logs',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/logs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'resourceNames' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->folders_locations_logScopes = new Logging\Resource\FoldersLocationsLogScopes(
+        $this,
+        $this->serviceName,
+        'logScopes',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/logScopes',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'logScopeId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/logScopes',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -1038,6 +1581,118 @@ class Logging extends \Google\Service
           ]
         ]
     );
+    $this->folders_locations_recentQueries = new Logging\Resource\FoldersLocationsRecentQueries(
+        $this,
+        $this->serviceName,
+        'recentQueries',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/recentQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->folders_locations_savedQueries = new Logging\Resource\FoldersLocationsSavedQueries(
+        $this,
+        $this->serviceName,
+        'savedQueries',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'savedQueryId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->folders_logs = new Logging\Resource\FoldersLogs(
         $this,
         $this->serviceName,
@@ -1096,6 +1751,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -1130,6 +1789,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -1148,6 +1811,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -1165,6 +1832,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -1241,6 +1912,20 @@ class Logging extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'createAsync' => [
+              'path' => 'v2/{+parent}/buckets:createAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'bucketId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
@@ -1303,6 +1988,82 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'updateAsync' => [
+              'path' => 'v2/{+name}:updateAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->locations_buckets_links = new Logging\Resource\LocationsBucketsLinks(
+        $this,
+        $this->serviceName,
+        'links',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'linkId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],
           ]
         ]
@@ -1347,6 +2108,16 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v2/{+parent}/views',
               'httpMethod' => 'GET',
@@ -1377,6 +2148,26 @@ class Logging extends \Google\Service
                 'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],
@@ -1517,8 +2308,32 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getSettings' => [
+              'path' => 'v2/{+name}/settings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'updateCmekSettings' => [
               'path' => 'v2/{+name}/cmekSettings',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'updateSettings' => [
+              'path' => 'v2/{+name}/settings',
               'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [
@@ -1669,6 +2484,20 @@ class Logging extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'createAsync' => [
+              'path' => 'v2/{+parent}/buckets:createAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'bucketId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
@@ -1731,6 +2560,82 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'updateAsync' => [
+              'path' => 'v2/{+name}:updateAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->organizations_locations_buckets_links = new Logging\Resource\OrganizationsLocationsBucketsLinks(
+        $this,
+        $this->serviceName,
+        'links',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'linkId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],
           ]
         ]
@@ -1775,8 +2680,147 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v2/{+parent}/views',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->organizations_locations_buckets_views_logs = new Logging\Resource\OrganizationsLocationsBucketsViewsLogs(
+        $this,
+        $this->serviceName,
+        'logs',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/logs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'resourceNames' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->organizations_locations_logScopes = new Logging\Resource\OrganizationsLocationsLogScopes(
+        $this,
+        $this->serviceName,
+        'logScopes',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/logScopes',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'logScopeId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/logScopes',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -1863,6 +2907,118 @@ class Logging extends \Google\Service
           ]
         ]
     );
+    $this->organizations_locations_recentQueries = new Logging\Resource\OrganizationsLocationsRecentQueries(
+        $this,
+        $this->serviceName,
+        'recentQueries',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/recentQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->organizations_locations_savedQueries = new Logging\Resource\OrganizationsLocationsSavedQueries(
+        $this,
+        $this->serviceName,
+        'savedQueries',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'savedQueryId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->organizations_logs = new Logging\Resource\OrganizationsLogs(
         $this,
         $this->serviceName,
@@ -1921,6 +3077,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -1955,6 +3115,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -1972,6 +3136,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -1991,6 +3159,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -1998,6 +3170,36 @@ class Logging extends \Google\Service
                 'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects = new Logging\Resource\Projects(
+        $this,
+        $this->serviceName,
+        'projects',
+        [
+          'methods' => [
+            'getCmekSettings' => [
+              'path' => 'v2/{+name}/cmekSettings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'getSettings' => [
+              'path' => 'v2/{+name}/settings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],
@@ -2138,6 +3340,20 @@ class Logging extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'createAsync' => [
+              'path' => 'v2/{+parent}/buckets:createAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'bucketId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'delete' => [
               'path' => 'v2/{+name}',
               'httpMethod' => 'DELETE',
@@ -2200,6 +3416,82 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'updateAsync' => [
+              'path' => 'v2/{+name}:updateAsync',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_buckets_links = new Logging\Resource\ProjectsLocationsBucketsLinks(
+        $this,
+        $this->serviceName,
+        'links',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'linkId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/links',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],
           ]
         ]
@@ -2244,8 +3536,147 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getIamPolicy' => [
+              'path' => 'v2/{+resource}:getIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'list' => [
               'path' => 'v2/{+parent}/views',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'setIamPolicy' => [
+              'path' => 'v2/{+resource}:setIamPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'testIamPermissions' => [
+              'path' => 'v2/{+resource}:testIamPermissions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'resource' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_buckets_views_logs = new Logging\Resource\ProjectsLocationsBucketsViewsLogs(
+        $this,
+        $this->serviceName,
+        'logs',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/logs',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'resourceNames' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_logScopes = new Logging\Resource\ProjectsLocationsLogScopes(
+        $this,
+        $this->serviceName,
+        'logScopes',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/logScopes',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'logScopeId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/logScopes',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
@@ -2324,6 +3755,118 @@ class Logging extends \Google\Service
                   'type' => 'integer',
                 ],
                 'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_recentQueries = new Logging\Resource\ProjectsLocationsRecentQueries(
+        $this,
+        $this->serviceName,
+        'recentQueries',
+        [
+          'methods' => [
+            'list' => [
+              'path' => 'v2/{+parent}/recentQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_savedQueries = new Logging\Resource\ProjectsLocationsSavedQueries(
+        $this,
+        $this->serviceName,
+        'savedQueries',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'savedQueryId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/savedQueries',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v2/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -2458,6 +4001,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -2492,6 +4039,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -2510,6 +4061,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -2527,6 +4082,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -2556,6 +4115,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
                   'type' => 'boolean',
@@ -2590,6 +4153,10 @@ class Logging extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -2607,6 +4174,10 @@ class Logging extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'customWriterIdentity' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'uniqueWriterIdentity' => [
                   'location' => 'query',
@@ -2637,8 +4208,32 @@ class Logging extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'getSettings' => [
+              'path' => 'v2/{+name}/settings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'updateCmekSettings' => [
               'path' => 'v2/{+name}/cmekSettings',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'updateSettings' => [
+              'path' => 'v2/{+name}/settings',
               'httpMethod' => 'PATCH',
               'parameters' => [
                 'name' => [

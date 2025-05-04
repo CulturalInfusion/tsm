@@ -17,31 +17,86 @@
 
 namespace Google\Service\Logging;
 
-class LogEntry extends \Google\Model
+class LogEntry extends \Google\Collection
 {
+  protected $collection_key = 'errorGroups';
+  protected $errorGroupsType = LogErrorGroup::class;
+  protected $errorGroupsDataType = 'array';
   protected $httpRequestType = HttpRequest::class;
   protected $httpRequestDataType = '';
+  /**
+   * @var string
+   */
   public $insertId;
+  /**
+   * @var array[]
+   */
   public $jsonPayload;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $logName;
   protected $metadataType = MonitoredResourceMetadata::class;
   protected $metadataDataType = '';
   protected $operationType = LogEntryOperation::class;
   protected $operationDataType = '';
+  /**
+   * @var array[]
+   */
   public $protoPayload;
+  /**
+   * @var string
+   */
   public $receiveTimestamp;
   protected $resourceType = MonitoredResource::class;
   protected $resourceDataType = '';
+  /**
+   * @var string
+   */
   public $severity;
   protected $sourceLocationType = LogEntrySourceLocation::class;
   protected $sourceLocationDataType = '';
+  /**
+   * @var string
+   */
   public $spanId;
+  protected $splitType = LogSplit::class;
+  protected $splitDataType = '';
+  /**
+   * @var string
+   */
   public $textPayload;
+  /**
+   * @var string
+   */
   public $timestamp;
+  /**
+   * @var string
+   */
   public $trace;
+  /**
+   * @var bool
+   */
   public $traceSampled;
 
+  /**
+   * @param LogErrorGroup[]
+   */
+  public function setErrorGroups($errorGroups)
+  {
+    $this->errorGroups = $errorGroups;
+  }
+  /**
+   * @return LogErrorGroup[]
+   */
+  public function getErrorGroups()
+  {
+    return $this->errorGroups;
+  }
   /**
    * @param HttpRequest
    */
@@ -56,34 +111,58 @@ class LogEntry extends \Google\Model
   {
     return $this->httpRequest;
   }
+  /**
+   * @param string
+   */
   public function setInsertId($insertId)
   {
     $this->insertId = $insertId;
   }
+  /**
+   * @return string
+   */
   public function getInsertId()
   {
     return $this->insertId;
   }
+  /**
+   * @param array[]
+   */
   public function setJsonPayload($jsonPayload)
   {
     $this->jsonPayload = $jsonPayload;
   }
+  /**
+   * @return array[]
+   */
   public function getJsonPayload()
   {
     return $this->jsonPayload;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setLogName($logName)
   {
     $this->logName = $logName;
   }
+  /**
+   * @return string
+   */
   public function getLogName()
   {
     return $this->logName;
@@ -116,18 +195,30 @@ class LogEntry extends \Google\Model
   {
     return $this->operation;
   }
+  /**
+   * @param array[]
+   */
   public function setProtoPayload($protoPayload)
   {
     $this->protoPayload = $protoPayload;
   }
+  /**
+   * @return array[]
+   */
   public function getProtoPayload()
   {
     return $this->protoPayload;
   }
+  /**
+   * @param string
+   */
   public function setReceiveTimestamp($receiveTimestamp)
   {
     $this->receiveTimestamp = $receiveTimestamp;
   }
+  /**
+   * @return string
+   */
   public function getReceiveTimestamp()
   {
     return $this->receiveTimestamp;
@@ -146,10 +237,16 @@ class LogEntry extends \Google\Model
   {
     return $this->resource;
   }
+  /**
+   * @param string
+   */
   public function setSeverity($severity)
   {
     $this->severity = $severity;
   }
+  /**
+   * @return string
+   */
   public function getSeverity()
   {
     return $this->severity;
@@ -168,42 +265,86 @@ class LogEntry extends \Google\Model
   {
     return $this->sourceLocation;
   }
+  /**
+   * @param string
+   */
   public function setSpanId($spanId)
   {
     $this->spanId = $spanId;
   }
+  /**
+   * @return string
+   */
   public function getSpanId()
   {
     return $this->spanId;
   }
+  /**
+   * @param LogSplit
+   */
+  public function setSplit(LogSplit $split)
+  {
+    $this->split = $split;
+  }
+  /**
+   * @return LogSplit
+   */
+  public function getSplit()
+  {
+    return $this->split;
+  }
+  /**
+   * @param string
+   */
   public function setTextPayload($textPayload)
   {
     $this->textPayload = $textPayload;
   }
+  /**
+   * @return string
+   */
   public function getTextPayload()
   {
     return $this->textPayload;
   }
+  /**
+   * @param string
+   */
   public function setTimestamp($timestamp)
   {
     $this->timestamp = $timestamp;
   }
+  /**
+   * @return string
+   */
   public function getTimestamp()
   {
     return $this->timestamp;
   }
+  /**
+   * @param string
+   */
   public function setTrace($trace)
   {
     $this->trace = $trace;
   }
+  /**
+   * @return string
+   */
   public function getTrace()
   {
     return $this->trace;
   }
+  /**
+   * @param bool
+   */
   public function setTraceSampled($traceSampled)
   {
     $this->traceSampled = $traceSampled;
   }
+  /**
+   * @return bool
+   */
   public function getTraceSampled()
   {
     return $this->traceSampled;

@@ -19,24 +19,60 @@ namespace Google\Service\Dialogflow;
 
 class GoogleCloudDialogflowCxV3beta1ExportAgentResponse extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $agentContent;
+  /**
+   * @var string
+   */
   public $agentUri;
+  /**
+   * @var string
+   */
+  public $commitSha;
 
+  /**
+   * @param string
+   */
   public function setAgentContent($agentContent)
   {
     $this->agentContent = $agentContent;
   }
+  /**
+   * @return string
+   */
   public function getAgentContent()
   {
     return $this->agentContent;
   }
+  /**
+   * @param string
+   */
   public function setAgentUri($agentUri)
   {
     $this->agentUri = $agentUri;
   }
+  /**
+   * @return string
+   */
   public function getAgentUri()
   {
     return $this->agentUri;
+  }
+  /**
+   * @param string
+   */
+  public function setCommitSha($commitSha)
+  {
+    $this->commitSha = $commitSha;
+  }
+  /**
+   * @return string
+   */
+  public function getCommitSha()
+  {
+    return $this->commitSha;
   }
 }
 

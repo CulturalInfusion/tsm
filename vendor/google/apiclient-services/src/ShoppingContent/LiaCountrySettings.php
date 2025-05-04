@@ -21,14 +21,25 @@ class LiaCountrySettings extends \Google\Model
 {
   protected $aboutType = LiaAboutPageSettings::class;
   protected $aboutDataType = '';
+  /**
+   * @var string
+   */
   public $country;
+  /**
+   * @var bool
+   */
   public $hostedLocalStorefrontActive;
   protected $inventoryType = LiaInventorySettings::class;
   protected $inventoryDataType = '';
+  protected $omnichannelExperienceType = LiaOmnichannelExperience::class;
+  protected $omnichannelExperienceDataType = '';
   protected $onDisplayToOrderType = LiaOnDisplayToOrderSettings::class;
   protected $onDisplayToOrderDataType = '';
   protected $posDataProviderType = LiaPosDataProvider::class;
   protected $posDataProviderDataType = '';
+  /**
+   * @var bool
+   */
   public $storePickupActive;
 
   /**
@@ -45,18 +56,30 @@ class LiaCountrySettings extends \Google\Model
   {
     return $this->about;
   }
+  /**
+   * @param string
+   */
   public function setCountry($country)
   {
     $this->country = $country;
   }
+  /**
+   * @return string
+   */
   public function getCountry()
   {
     return $this->country;
   }
+  /**
+   * @param bool
+   */
   public function setHostedLocalStorefrontActive($hostedLocalStorefrontActive)
   {
     $this->hostedLocalStorefrontActive = $hostedLocalStorefrontActive;
   }
+  /**
+   * @return bool
+   */
   public function getHostedLocalStorefrontActive()
   {
     return $this->hostedLocalStorefrontActive;
@@ -74,6 +97,20 @@ class LiaCountrySettings extends \Google\Model
   public function getInventory()
   {
     return $this->inventory;
+  }
+  /**
+   * @param LiaOmnichannelExperience
+   */
+  public function setOmnichannelExperience(LiaOmnichannelExperience $omnichannelExperience)
+  {
+    $this->omnichannelExperience = $omnichannelExperience;
+  }
+  /**
+   * @return LiaOmnichannelExperience
+   */
+  public function getOmnichannelExperience()
+  {
+    return $this->omnichannelExperience;
   }
   /**
    * @param LiaOnDisplayToOrderSettings
@@ -103,10 +140,16 @@ class LiaCountrySettings extends \Google\Model
   {
     return $this->posDataProvider;
   }
+  /**
+   * @param bool
+   */
   public function setStorePickupActive($storePickupActive)
   {
     $this->storePickupActive = $storePickupActive;
   }
+  /**
+   * @return bool
+   */
   public function getStorePickupActive()
   {
     return $this->storePickupActive;

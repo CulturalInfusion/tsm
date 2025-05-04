@@ -17,20 +17,16 @@
 
 namespace Google\Service\DataprocMetastore\Resource;
 
-use Google\Service\DataprocMetastore\Backup;
-use Google\Service\DataprocMetastore\ListBackupsResponse;
-use Google\Service\DataprocMetastore\Operation;
-use Google\Service\DataprocMetastore\Policy;
-use Google\Service\DataprocMetastore\SetIamPolicyRequest;
-use Google\Service\DataprocMetastore\TestIamPermissionsRequest;
-use Google\Service\DataprocMetastore\TestIamPermissionsResponse;
+use Google\Service\DataprocMetastore\GoogleCloudMetastoreV2Backup;
+use Google\Service\DataprocMetastore\GoogleCloudMetastoreV2ListBackupsResponse;
+use Google\Service\DataprocMetastore\GoogleLongrunningOperation;
 
 /**
  * The "backups" collection of methods.
  * Typical usage is:
  *  <code>
  *   $metastoreService = new Google\Service\DataprocMetastore(...);
- *   $backups = $metastoreService->backups;
+ *   $backups = $metastoreService->projects_locations_services_backups;
  *  </code>
  */
 class ProjectsLocationsServicesBackups extends \Google\Service\Resource
@@ -41,7 +37,7 @@ class ProjectsLocationsServicesBackups extends \Google\Service\Resource
    * @param string $parent Required. The relative resource name of the service in
    * which to create a backup of the following
    * form:projects/{project_number}/locations/{location_id}/services/{service_id}.
-   * @param Backup $postBody
+   * @param GoogleCloudMetastoreV2Backup $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string backupId Required. The ID of the backup, which is used as
@@ -57,13 +53,14 @@ class ProjectsLocationsServicesBackups extends \Google\Service\Resource
    * commitments.The request ID must be a valid UUID
    * (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero
    * UUID (00000000-0000-0000-0000-000000000000) is not supported.
-   * @return Operation
+   * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
-  public function create($parent, Backup $postBody, $optParams = [])
+  public function create($parent, GoogleCloudMetastoreV2Backup $postBody, $optParams = [])
   {
     $params = ['parent' => $parent, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('create', [$params], Operation::class);
+    return $this->call('create', [$params], GoogleLongrunningOperation::class);
   }
   /**
    * Deletes a single backup. (backups.delete)
@@ -82,13 +79,14 @@ class ProjectsLocationsServicesBackups extends \Google\Service\Resource
    * commitments.The request ID must be a valid UUID
    * (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero
    * UUID (00000000-0000-0000-0000-000000000000) is not supported.
-   * @return Operation
+   * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
-    return $this->call('delete', [$params], Operation::class);
+    return $this->call('delete', [$params], GoogleLongrunningOperation::class);
   }
   /**
    * Gets details of a single backup. (backups.get)
@@ -97,37 +95,14 @@ class ProjectsLocationsServicesBackups extends \Google\Service\Resource
    * retrieve, in the following form:projects/{project_number}/locations/{location
    * _id}/services/{service_id}/backups/{backup_id}.
    * @param array $optParams Optional parameters.
-   * @return Backup
+   * @return GoogleCloudMetastoreV2Backup
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
-    return $this->call('get', [$params], Backup::class);
-  }
-  /**
-   * Gets the access control policy for a resource. Returns an empty policy if the
-   * resource exists and does not have a policy set. (backups.getIamPolicy)
-   *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
-   * @param array $optParams Optional parameters.
-   *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned.Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected.Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset.To learn which resources
-   * support conditions in their IAM policies, see the IAM documentation
-   * (https://cloud.google.com/iam/help/conditions/resource-policies).
-   * @return Policy
-   */
-  public function getIamPolicy($resource, $optParams = [])
-  {
-    $params = ['resource' => $resource];
-    $params = array_merge($params, $optParams);
-    return $this->call('getIamPolicy', [$params], Policy::class);
+    return $this->call('get', [$params], GoogleCloudMetastoreV2Backup::class);
   }
   /**
    * Lists backups in a service. (backups.listProjectsLocationsServicesBackups)
@@ -151,51 +126,14 @@ class ProjectsLocationsServicesBackups extends \Google\Service\Resource
    * subsequent page.To retrieve the first page, supply an empty page token.When
    * paginating, other parameters provided to DataprocMetastore.ListBackups must
    * match the call that provided the page token.
-   * @return ListBackupsResponse
+   * @return GoogleCloudMetastoreV2ListBackupsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsServicesBackups($parent, $optParams = [])
   {
     $params = ['parent' => $parent];
     $params = array_merge($params, $optParams);
-    return $this->call('list', [$params], ListBackupsResponse::class);
-  }
-  /**
-   * Sets the access control policy on the specified resource. Replaces any
-   * existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
-   * errors. (backups.setIamPolicy)
-   *
-   * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
-   * @param SetIamPolicyRequest $postBody
-   * @param array $optParams Optional parameters.
-   * @return Policy
-   */
-  public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
-  {
-    $params = ['resource' => $resource, 'postBody' => $postBody];
-    $params = array_merge($params, $optParams);
-    return $this->call('setIamPolicy', [$params], Policy::class);
-  }
-  /**
-   * Returns permissions that a caller has on the specified resource. If the
-   * resource does not exist, this will return an empty set of permissions, not a
-   * NOT_FOUND error.Note: This operation is designed to be used for building
-   * permission-aware UIs and command-line tools, not for authorization checking.
-   * This operation may "fail open" without warning. (backups.testIamPermissions)
-   *
-   * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
-   * @param TestIamPermissionsRequest $postBody
-   * @param array $optParams Optional parameters.
-   * @return TestIamPermissionsResponse
-   */
-  public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
-  {
-    $params = ['resource' => $resource, 'postBody' => $postBody];
-    $params = array_merge($params, $optParams);
-    return $this->call('testIamPermissions', [$params], TestIamPermissionsResponse::class);
+    return $this->call('list', [$params], GoogleCloudMetastoreV2ListBackupsResponse::class);
   }
 }
 

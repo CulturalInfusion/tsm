@@ -44,38 +44,35 @@ class ShoppingContent extends \Google\Service
   public $accounts_returncarrier;
   public $accountstatuses;
   public $accounttax;
-  public $buyongoogleprograms;
   public $collections;
   public $collectionstatuses;
+  public $conversionsources;
   public $csses;
   public $datafeeds;
   public $datafeedstatuses;
   public $freelistingsprogram;
+  public $freelistingsprogram_checkoutsettings;
   public $liasettings;
   public $localinventory;
-  public $orderinvoices;
-  public $orderreports;
-  public $orderreturns;
-  public $orderreturns_labels;
-  public $orders;
+  public $merchantsupport;
   public $ordertrackingsignals;
   public $pos;
+  public $productdeliverytime;
   public $products;
   public $productstatuses;
-  public $productstatuses_repricingreports;
+  public $promotions;
   public $pubsubnotificationsettings;
+  public $quotas;
+  public $recommendations;
   public $regionalinventory;
   public $regions;
   public $reports;
-  public $repricingrules;
-  public $repricingrules_repricingreports;
   public $returnaddress;
   public $returnpolicy;
   public $returnpolicyonline;
-  public $settlementreports;
-  public $settlementtransactions;
   public $shippingsettings;
   public $shoppingadsprogram;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ShoppingContent service.
@@ -88,6 +85,7 @@ class ShoppingContent extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://shoppingcontent.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://shoppingcontent.UNIVERSE_DOMAIN/';
     $this->servicePath = 'content/v2.1/';
     $this->batchPath = 'batch';
     $this->version = 'v2.1';
@@ -577,91 +575,6 @@ class ShoppingContent extends \Google\Service
           ]
         ]
     );
-    $this->buyongoogleprograms = new ShoppingContent\Resource\Buyongoogleprograms(
-        $this,
-        $this->serviceName,
-        'buyongoogleprograms',
-        [
-          'methods' => [
-            'activate' => [
-              'path' => '{merchantId}/buyongoogleprograms/{regionCode}/activate',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'regionCode' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => '{merchantId}/buyongoogleprograms/{regionCode}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'regionCode' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'onboard' => [
-              'path' => '{merchantId}/buyongoogleprograms/{regionCode}/onboard',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'regionCode' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'pause' => [
-              'path' => '{merchantId}/buyongoogleprograms/{regionCode}/pause',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'regionCode' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'requestreview' => [
-              'path' => '{merchantId}/buyongoogleprograms/{regionCode}/requestreview',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'regionCode' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
     $this->collections = new ShoppingContent\Resource\Collections(
         $this,
         $this->serviceName,
@@ -767,6 +680,112 @@ class ShoppingContent extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->conversionsources = new ShoppingContent\Resource\Conversionsources(
+        $this,
+        $this->serviceName,
+        'conversionsources',
+        [
+          'methods' => [
+            'create' => [
+              'path' => '{merchantId}/conversionsources',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => '{merchantId}/conversionsources/{conversionSourceId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'conversionSourceId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => '{merchantId}/conversionsources/{conversionSourceId}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'conversionSourceId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => '{merchantId}/conversionsources',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'patch' => [
+              'path' => '{merchantId}/conversionsources/{conversionSourceId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'conversionSourceId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'undelete' => [
+              'path' => '{merchantId}/conversionsources/{conversionSourceId}:undelete',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'conversionSourceId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],
@@ -961,6 +980,10 @@ class ShoppingContent extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'feedLabel' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'language' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -1006,6 +1029,46 @@ class ShoppingContent extends \Google\Service
               ],
             ],'requestreview' => [
               'path' => '{merchantId}/freelistingsprogram/requestreview',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->freelistingsprogram_checkoutsettings = new ShoppingContent\Resource\FreelistingsprogramCheckoutsettings(
+        $this,
+        $this->serviceName,
+        'checkoutsettings',
+        [
+          'methods' => [
+            'delete' => [
+              'path' => '{merchantId}/freelistingsprogram/checkoutsettings',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => '{merchantId}/freelistingsprogram/checkoutsettings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'insert' => [
+              'path' => '{merchantId}/freelistingsprogram/checkoutsettings',
               'httpMethod' => 'POST',
               'parameters' => [
                 'merchantId' => [
@@ -1155,6 +1218,34 @@ class ShoppingContent extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'setomnichannelexperience' => [
+              'path' => '{merchantId}/liasettings/{accountId}/setomnichannelexperience',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'accountId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'country' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'lsfType' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pickupTypes' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
             ],'setposdataprovider' => [
               'path' => '{merchantId}/liasettings/{accountId}/setposdataprovider',
               'httpMethod' => 'POST',
@@ -1231,14 +1322,14 @@ class ShoppingContent extends \Google\Service
           ]
         ]
     );
-    $this->orderinvoices = new ShoppingContent\Resource\Orderinvoices(
+    $this->merchantsupport = new ShoppingContent\Resource\Merchantsupport(
         $this,
         $this->serviceName,
-        'orderinvoices',
+        'merchantsupport',
         [
           'methods' => [
-            'createchargeinvoice' => [
-              'path' => '{merchantId}/orderinvoices/{orderId}/createChargeInvoice',
+            'renderaccountissues' => [
+              'path' => '{merchantId}/merchantsupport/renderaccountissues',
               'httpMethod' => 'POST',
               'parameters' => [
                 'merchantId' => [
@@ -1246,14 +1337,17 @@ class ShoppingContent extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'orderId' => [
-                  'location' => 'path',
+                'languageCode' => [
+                  'location' => 'query',
                   'type' => 'string',
-                  'required' => true,
+                ],
+                'timeZone' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
-            ],'createrefundinvoice' => [
-              'path' => '{merchantId}/orderinvoices/{orderId}/createRefundInvoice',
+            ],'renderproductissues' => [
+              'path' => '{merchantId}/merchantsupport/renderproductissues/{productId}',
               'httpMethod' => 'POST',
               'parameters' => [
                 'merchantId' => [
@@ -1261,91 +1355,22 @@ class ShoppingContent extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'orderId' => [
+                'productId' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->orderreports = new ShoppingContent\Resource\Orderreports(
-        $this,
-        $this->serviceName,
-        'orderreports',
-        [
-          'methods' => [
-            'listdisbursements' => [
-              'path' => '{merchantId}/orderreports/disbursements',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'disbursementEndDate' => [
+                'languageCode' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
-                'disbursementStartDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
+                'timeZone' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
               ],
-            ],'listtransactions' => [
-              'path' => '{merchantId}/orderreports/disbursements/{disbursementId}/transactions',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'disbursementId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'transactionEndDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'transactionStartDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->orderreturns = new ShoppingContent\Resource\Orderreturns(
-        $this,
-        $this->serviceName,
-        'orderreturns',
-        [
-          'methods' => [
-            'acknowledge' => [
-              'path' => '{merchantId}/orderreturns/{returnId}/acknowledge',
+            ],'triggeraction' => [
+              'path' => '{merchantId}/merchantsupport/triggeraction',
               'httpMethod' => 'POST',
               'parameters' => [
                 'merchantId' => [
@@ -1353,482 +1378,9 @@ class ShoppingContent extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'returnId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'createorderreturn' => [
-              'path' => '{merchantId}/orderreturns/createOrderReturn',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => '{merchantId}/orderreturns/{returnId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'returnId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => '{merchantId}/orderreturns',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'acknowledged' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'createdEndDate' => [
+                'languageCode' => [
                   'location' => 'query',
                   'type' => 'string',
-                ],
-                'createdStartDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'googleOrderIds' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'shipmentStates' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-                'shipmentStatus' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-                'shipmentTrackingNumbers' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-                'shipmentTypes' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-              ],
-            ],'process' => [
-              'path' => '{merchantId}/orderreturns/{returnId}/process',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'returnId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->orderreturns_labels = new ShoppingContent\Resource\OrderreturnsLabels(
-        $this,
-        $this->serviceName,
-        'labels',
-        [
-          'methods' => [
-            'create' => [
-              'path' => '{merchantId}/orderreturns/{returnId}/labels',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'returnId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->orders = new ShoppingContent\Resource\Orders(
-        $this,
-        $this->serviceName,
-        'orders',
-        [
-          'methods' => [
-            'acknowledge' => [
-              'path' => '{merchantId}/orders/{orderId}/acknowledge',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'advancetestorder' => [
-              'path' => '{merchantId}/testorders/{orderId}/advance',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'cancel' => [
-              'path' => '{merchantId}/orders/{orderId}/cancel',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'cancellineitem' => [
-              'path' => '{merchantId}/orders/{orderId}/cancelLineItem',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'canceltestorderbycustomer' => [
-              'path' => '{merchantId}/testorders/{orderId}/cancelByCustomer',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'createtestorder' => [
-              'path' => '{merchantId}/testorders',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'createtestreturn' => [
-              'path' => '{merchantId}/orders/{orderId}/testreturn',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => '{merchantId}/orders/{orderId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'getbymerchantorderid' => [
-              'path' => '{merchantId}/ordersbymerchantid/{merchantOrderId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'merchantOrderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'gettestordertemplate' => [
-              'path' => '{merchantId}/testordertemplates/{templateName}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'templateName' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'country' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'instorerefundlineitem' => [
-              'path' => '{merchantId}/orders/{orderId}/inStoreRefundLineItem',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => '{merchantId}/orders',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'acknowledged' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'orderBy' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'placedDateEnd' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'placedDateStart' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'statuses' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ],
-              ],
-            ],'refunditem' => [
-              'path' => '{merchantId}/orders/{orderId}/refunditem',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'refundorder' => [
-              'path' => '{merchantId}/orders/{orderId}/refundorder',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'rejectreturnlineitem' => [
-              'path' => '{merchantId}/orders/{orderId}/rejectReturnLineItem',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'returnrefundlineitem' => [
-              'path' => '{merchantId}/orders/{orderId}/returnRefundLineItem',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'setlineitemmetadata' => [
-              'path' => '{merchantId}/orders/{orderId}/setLineItemMetadata',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'shiplineitems' => [
-              'path' => '{merchantId}/orders/{orderId}/shipLineItems',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'updatelineitemshippingdetails' => [
-              'path' => '{merchantId}/orders/{orderId}/updateLineItemShippingDetails',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'updatemerchantorderid' => [
-              'path' => '{merchantId}/orders/{orderId}/updateMerchantOrderId',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'updateshipment' => [
-              'path' => '{merchantId}/orders/{orderId}/updateShipment',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'orderId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
                 ],
               ],
             ],
@@ -1960,6 +1512,56 @@ class ShoppingContent extends \Google\Service
                   'required' => true,
                 ],
                 'targetMerchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->productdeliverytime = new ShoppingContent\Resource\Productdeliverytime(
+        $this,
+        $this->serviceName,
+        'productdeliverytime',
+        [
+          'methods' => [
+            'create' => [
+              'path' => '{merchantId}/productdeliverytime',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => '{merchantId}/productdeliverytime/{productId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'productId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => '{merchantId}/productdeliverytime/{productId}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'productId' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -2125,14 +1727,24 @@ class ShoppingContent extends \Google\Service
           ]
         ]
     );
-    $this->productstatuses_repricingreports = new ShoppingContent\Resource\ProductstatusesRepricingreports(
+    $this->promotions = new ShoppingContent\Resource\Promotions(
         $this,
         $this->serviceName,
-        'repricingreports',
+        'promotions',
         [
           'methods' => [
-            'list' => [
-              'path' => '{merchantId}/productstatuses/{productId}/repricingreports',
+            'create' => [
+              'path' => '{merchantId}/promotions',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => '{merchantId}/promotions/{id}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'merchantId' => [
@@ -2140,12 +1752,26 @@ class ShoppingContent extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'productId' => [
+                'id' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
                 ],
-                'endDate' => [
+              ],
+            ],'list' => [
+              'path' => '{merchantId}/promotions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'countryCode' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'languageCode' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -2154,14 +1780,6 @@ class ShoppingContent extends \Google\Service
                   'type' => 'integer',
                 ],
                 'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'ruleId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'startDate' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -2189,6 +1807,73 @@ class ShoppingContent extends \Google\Service
             ],'update' => [
               'path' => '{merchantId}/pubsubnotificationsettings',
               'httpMethod' => 'PUT',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->quotas = new ShoppingContent\Resource\Quotas(
+        $this,
+        $this->serviceName,
+        'quotas',
+        [
+          'methods' => [
+            'list' => [
+              'path' => '{merchantId}/quotas',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->recommendations = new ShoppingContent\Resource\Recommendations(
+        $this,
+        $this->serviceName,
+        'recommendations',
+        [
+          'methods' => [
+            'generate' => [
+              'path' => '{merchantId}/recommendations/generate',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'merchantId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'allowedTag' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+                'languageCode' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'reportInteraction' => [
+              'path' => '{merchantId}/recommendations/reportInteraction',
+              'httpMethod' => 'POST',
               'parameters' => [
                 'merchantId' => [
                   'location' => 'path',
@@ -2334,142 +2019,6 @@ class ShoppingContent extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->repricingrules = new ShoppingContent\Resource\Repricingrules(
-        $this,
-        $this->serviceName,
-        'repricingrules',
-        [
-          'methods' => [
-            'create' => [
-              'path' => '{merchantId}/repricingrules',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'ruleId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'delete' => [
-              'path' => '{merchantId}/repricingrules/{ruleId}',
-              'httpMethod' => 'DELETE',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'ruleId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'get' => [
-              'path' => '{merchantId}/repricingrules/{ruleId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'ruleId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => '{merchantId}/repricingrules',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'countryCode' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'languageCode' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],'patch' => [
-              'path' => '{merchantId}/repricingrules/{ruleId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'ruleId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->repricingrules_repricingreports = new ShoppingContent\Resource\RepricingrulesRepricingreports(
-        $this,
-        $this->serviceName,
-        'repricingreports',
-        [
-          'methods' => [
-            'list' => [
-              'path' => '{merchantId}/repricingrules/{ruleId}/repricingreports',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'ruleId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'endDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'pageSize' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'startDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
                 ],
               ],
             ],
@@ -2685,95 +2234,6 @@ class ShoppingContent extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->settlementreports = new ShoppingContent\Resource\Settlementreports(
-        $this,
-        $this->serviceName,
-        'settlementreports',
-        [
-          'methods' => [
-            'get' => [
-              'path' => '{merchantId}/settlementreports/{settlementId}',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'settlementId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'list' => [
-              'path' => '{merchantId}/settlementreports',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'transferEndDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'transferStartDate' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->settlementtransactions = new ShoppingContent\Resource\Settlementtransactions(
-        $this,
-        $this->serviceName,
-        'settlementtransactions',
-        [
-          'methods' => [
-            'list' => [
-              'path' => '{merchantId}/settlementreports/{settlementId}/transactions',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'merchantId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'settlementId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'maxResults' => [
-                  'location' => 'query',
-                  'type' => 'integer',
-                ],
-                'pageToken' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-                'transactionIds' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
                 ],
               ],
             ],

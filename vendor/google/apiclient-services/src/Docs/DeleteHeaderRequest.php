@@ -19,15 +19,42 @@ namespace Google\Service\Docs;
 
 class DeleteHeaderRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $headerId;
+  /**
+   * @var string
+   */
+  public $tabId;
 
+  /**
+   * @param string
+   */
   public function setHeaderId($headerId)
   {
     $this->headerId = $headerId;
   }
+  /**
+   * @return string
+   */
   public function getHeaderId()
   {
     return $this->headerId;
+  }
+  /**
+   * @param string
+   */
+  public function setTabId($tabId)
+  {
+    $this->tabId = $tabId;
+  }
+  /**
+   * @return string
+   */
+  public function getTabId()
+  {
+    return $this->tabId;
   }
 }
 

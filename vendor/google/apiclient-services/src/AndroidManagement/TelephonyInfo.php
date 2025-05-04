@@ -19,21 +19,57 @@ namespace Google\Service\AndroidManagement;
 
 class TelephonyInfo extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $carrierName;
+  /**
+   * @var string
+   */
+  public $iccId;
+  /**
+   * @var string
+   */
   public $phoneNumber;
 
+  /**
+   * @param string
+   */
   public function setCarrierName($carrierName)
   {
     $this->carrierName = $carrierName;
   }
+  /**
+   * @return string
+   */
   public function getCarrierName()
   {
     return $this->carrierName;
   }
+  /**
+   * @param string
+   */
+  public function setIccId($iccId)
+  {
+    $this->iccId = $iccId;
+  }
+  /**
+   * @return string
+   */
+  public function getIccId()
+  {
+    return $this->iccId;
+  }
+  /**
+   * @param string
+   */
   public function setPhoneNumber($phoneNumber)
   {
     $this->phoneNumber = $phoneNumber;
   }
+  /**
+   * @return string
+   */
   public function getPhoneNumber()
   {
     return $this->phoneNumber;

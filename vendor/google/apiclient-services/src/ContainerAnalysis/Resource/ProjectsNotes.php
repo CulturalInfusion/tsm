@@ -33,7 +33,7 @@ use Google\Service\ContainerAnalysis\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $containeranalysisService = new Google\Service\ContainerAnalysis(...);
- *   $notes = $containeranalysisService->notes;
+ *   $notes = $containeranalysisService->projects_notes;
  *  </code>
  */
 class ProjectsNotes extends \Google\Service\Resource
@@ -46,6 +46,7 @@ class ProjectsNotes extends \Google\Service\Resource
    * @param BatchCreateNotesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return BatchCreateNotesResponse
+   * @throws \Google\Service\Exception
    */
   public function batchCreate($parent, BatchCreateNotesRequest $postBody, $optParams = [])
   {
@@ -63,6 +64,7 @@ class ProjectsNotes extends \Google\Service\Resource
    *
    * @opt_param string noteId Required. The ID to use for this note.
    * @return Note
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Note $postBody, $optParams = [])
   {
@@ -77,6 +79,7 @@ class ProjectsNotes extends \Google\Service\Resource
    * `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
    * @param array $optParams Optional parameters.
    * @return ContaineranalysisEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -91,6 +94,7 @@ class ProjectsNotes extends \Google\Service\Resource
    * `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
    * @param array $optParams Optional parameters.
    * @return Note
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -108,11 +112,13 @@ class ProjectsNotes extends \Google\Service\Resource
    * (notes.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param GetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, GetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -134,6 +140,7 @@ class ProjectsNotes extends \Google\Service\Resource
    * @opt_param string pageToken Token to provide to skip to a particular spot in
    * the list.
    * @return ListNotesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsNotes($parent, $optParams = [])
   {
@@ -151,6 +158,7 @@ class ProjectsNotes extends \Google\Service\Resource
    *
    * @opt_param string updateMask The fields to update.
    * @return Note
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Note $postBody, $optParams = [])
   {
@@ -168,11 +176,13 @@ class ProjectsNotes extends \Google\Service\Resource
    * (notes.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -189,11 +199,13 @@ class ProjectsNotes extends \Google\Service\Resource
    * (notes.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

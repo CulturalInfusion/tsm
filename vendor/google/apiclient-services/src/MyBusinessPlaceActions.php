@@ -24,7 +24,8 @@ use Google\Client;
  *
  * <p>
  * The My Business Place Actions API provides an interface for managing place
- * action links of a location on Google.</p>
+ * action links of a location on Google. Note - If you have a quota of 0 after
+ * enabling the API, please request for GBP API access.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -39,6 +40,7 @@ class MyBusinessPlaceActions extends \Google\Service
 
   public $locations_placeActionLinks;
   public $placeActionTypeMetadata;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the MyBusinessPlaceActions
@@ -52,6 +54,7 @@ class MyBusinessPlaceActions extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://mybusinessplaceactions.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://mybusinessplaceactions.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

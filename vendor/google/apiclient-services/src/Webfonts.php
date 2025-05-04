@@ -38,6 +38,7 @@ class Webfonts extends \Google\Service
 
 
   public $webfonts;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Webfonts service.
@@ -50,6 +51,7 @@ class Webfonts extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://webfonts.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://webfonts.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -65,7 +67,25 @@ class Webfonts extends \Google\Service
               'path' => 'v1/webfonts',
               'httpMethod' => 'GET',
               'parameters' => [
+                'capability' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+                'category' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'family' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
                 'sort' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'subset' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],

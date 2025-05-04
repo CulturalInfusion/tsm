@@ -19,30 +19,75 @@ namespace Google\Service\Directory;
 
 class DirectoryChromeosdevicesCommandResult extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $commandResultPayload;
+  /**
+   * @var string
+   */
   public $errorMessage;
+  /**
+   * @var string
+   */
   public $executeTime;
+  /**
+   * @var string
+   */
   public $result;
 
+  /**
+   * @param string
+   */
+  public function setCommandResultPayload($commandResultPayload)
+  {
+    $this->commandResultPayload = $commandResultPayload;
+  }
+  /**
+   * @return string
+   */
+  public function getCommandResultPayload()
+  {
+    return $this->commandResultPayload;
+  }
+  /**
+   * @param string
+   */
   public function setErrorMessage($errorMessage)
   {
     $this->errorMessage = $errorMessage;
   }
+  /**
+   * @return string
+   */
   public function getErrorMessage()
   {
     return $this->errorMessage;
   }
+  /**
+   * @param string
+   */
   public function setExecuteTime($executeTime)
   {
     $this->executeTime = $executeTime;
   }
+  /**
+   * @return string
+   */
   public function getExecuteTime()
   {
     return $this->executeTime;
   }
+  /**
+   * @param string
+   */
   public function setResult($result)
   {
     $this->result = $result;
   }
+  /**
+   * @return string
+   */
   public function getResult()
   {
     return $this->result;

@@ -19,6 +19,59 @@ namespace Google\Service\DatabaseMigrationService;
 
 class RestartMigrationJobRequest extends \Google\Model
 {
+  protected $objectsFilterType = MigrationJobObjectsConfig::class;
+  protected $objectsFilterDataType = '';
+  /**
+   * @var bool
+   */
+  public $restartFailedObjects;
+  /**
+   * @var bool
+   */
+  public $skipValidation;
+
+  /**
+   * @param MigrationJobObjectsConfig
+   */
+  public function setObjectsFilter(MigrationJobObjectsConfig $objectsFilter)
+  {
+    $this->objectsFilter = $objectsFilter;
+  }
+  /**
+   * @return MigrationJobObjectsConfig
+   */
+  public function getObjectsFilter()
+  {
+    return $this->objectsFilter;
+  }
+  /**
+   * @param bool
+   */
+  public function setRestartFailedObjects($restartFailedObjects)
+  {
+    $this->restartFailedObjects = $restartFailedObjects;
+  }
+  /**
+   * @return bool
+   */
+  public function getRestartFailedObjects()
+  {
+    return $this->restartFailedObjects;
+  }
+  /**
+   * @param bool
+   */
+  public function setSkipValidation($skipValidation)
+  {
+    $this->skipValidation = $skipValidation;
+  }
+  /**
+   * @return bool
+   */
+  public function getSkipValidation()
+  {
+    return $this->skipValidation;
+  }
 }
 
 // Adding a class alias for backwards compatibility with the previous class name.

@@ -42,12 +42,32 @@ class Users extends \Google\Service\Resource
    * @opt_param string host Host of the user in the instance.
    * @opt_param string name Name of the user in the instance.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($project, $instance, $optParams = [])
   {
     $params = ['project' => $project, 'instance' => $instance];
     $params = array_merge($params, $optParams);
     return $this->call('delete', [$params], Operation::class);
+  }
+  /**
+   * Retrieves a resource containing information about a user. (users.get)
+   *
+   * @param string $project Project ID of the project that contains the instance.
+   * @param string $instance Database instance ID. This does not include the
+   * project ID.
+   * @param string $name User of the instance.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string host Host of a user of the instance.
+   * @return User
+   * @throws \Google\Service\Exception
+   */
+  public function get($project, $instance, $name, $optParams = [])
+  {
+    $params = ['project' => $project, 'instance' => $instance, 'name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('get', [$params], User::class);
   }
   /**
    * Creates a new user in a Cloud SQL instance. (users.insert)
@@ -58,6 +78,7 @@ class Users extends \Google\Service\Resource
    * @param User $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function insert($project, $instance, User $postBody, $optParams = [])
   {
@@ -73,6 +94,7 @@ class Users extends \Google\Service\Resource
    * project ID.
    * @param array $optParams Optional parameters.
    * @return UsersListResponse
+   * @throws \Google\Service\Exception
    */
   public function listUsers($project, $instance, $optParams = [])
   {
@@ -92,6 +114,7 @@ class Users extends \Google\Service\Resource
    * @opt_param string host Optional. Host of the user in the instance.
    * @opt_param string name Name of the user in the instance.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function update($project, $instance, User $postBody, $optParams = [])
   {

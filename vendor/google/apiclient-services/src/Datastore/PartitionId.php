@@ -19,21 +19,57 @@ namespace Google\Service\Datastore;
 
 class PartitionId extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $databaseId;
+  /**
+   * @var string
+   */
   public $namespaceId;
+  /**
+   * @var string
+   */
   public $projectId;
 
+  /**
+   * @param string
+   */
+  public function setDatabaseId($databaseId)
+  {
+    $this->databaseId = $databaseId;
+  }
+  /**
+   * @return string
+   */
+  public function getDatabaseId()
+  {
+    return $this->databaseId;
+  }
+  /**
+   * @param string
+   */
   public function setNamespaceId($namespaceId)
   {
     $this->namespaceId = $namespaceId;
   }
+  /**
+   * @return string
+   */
   public function getNamespaceId()
   {
     return $this->namespaceId;
   }
+  /**
+   * @param string
+   */
   public function setProjectId($projectId)
   {
     $this->projectId = $projectId;
   }
+  /**
+   * @return string
+   */
   public function getProjectId()
   {
     return $this->projectId;

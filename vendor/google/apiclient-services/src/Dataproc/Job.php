@@ -20,14 +20,33 @@ namespace Google\Service\Dataproc;
 class Job extends \Google\Collection
 {
   protected $collection_key = 'yarnApplications';
+  /**
+   * @var bool
+   */
   public $done;
+  /**
+   * @var string
+   */
   public $driverControlFilesUri;
+  /**
+   * @var string
+   */
   public $driverOutputResourceUri;
+  protected $driverSchedulingConfigType = DriverSchedulingConfig::class;
+  protected $driverSchedulingConfigDataType = '';
+  protected $flinkJobType = FlinkJob::class;
+  protected $flinkJobDataType = '';
   protected $hadoopJobType = HadoopJob::class;
   protected $hadoopJobDataType = '';
   protected $hiveJobType = HiveJob::class;
   protected $hiveJobDataType = '';
+  /**
+   * @var string
+   */
   public $jobUuid;
+  /**
+   * @var string[]
+   */
   public $labels;
   protected $pigJobType = PigJob::class;
   protected $pigJobDataType = '';
@@ -51,32 +70,80 @@ class Job extends \Google\Collection
   protected $statusDataType = '';
   protected $statusHistoryType = JobStatus::class;
   protected $statusHistoryDataType = 'array';
+  protected $trinoJobType = TrinoJob::class;
+  protected $trinoJobDataType = '';
   protected $yarnApplicationsType = YarnApplication::class;
   protected $yarnApplicationsDataType = 'array';
 
+  /**
+   * @param bool
+   */
   public function setDone($done)
   {
     $this->done = $done;
   }
+  /**
+   * @return bool
+   */
   public function getDone()
   {
     return $this->done;
   }
+  /**
+   * @param string
+   */
   public function setDriverControlFilesUri($driverControlFilesUri)
   {
     $this->driverControlFilesUri = $driverControlFilesUri;
   }
+  /**
+   * @return string
+   */
   public function getDriverControlFilesUri()
   {
     return $this->driverControlFilesUri;
   }
+  /**
+   * @param string
+   */
   public function setDriverOutputResourceUri($driverOutputResourceUri)
   {
     $this->driverOutputResourceUri = $driverOutputResourceUri;
   }
+  /**
+   * @return string
+   */
   public function getDriverOutputResourceUri()
   {
     return $this->driverOutputResourceUri;
+  }
+  /**
+   * @param DriverSchedulingConfig
+   */
+  public function setDriverSchedulingConfig(DriverSchedulingConfig $driverSchedulingConfig)
+  {
+    $this->driverSchedulingConfig = $driverSchedulingConfig;
+  }
+  /**
+   * @return DriverSchedulingConfig
+   */
+  public function getDriverSchedulingConfig()
+  {
+    return $this->driverSchedulingConfig;
+  }
+  /**
+   * @param FlinkJob
+   */
+  public function setFlinkJob(FlinkJob $flinkJob)
+  {
+    $this->flinkJob = $flinkJob;
+  }
+  /**
+   * @return FlinkJob
+   */
+  public function getFlinkJob()
+  {
+    return $this->flinkJob;
   }
   /**
    * @param HadoopJob
@@ -106,18 +173,30 @@ class Job extends \Google\Collection
   {
     return $this->hiveJob;
   }
+  /**
+   * @param string
+   */
   public function setJobUuid($jobUuid)
   {
     $this->jobUuid = $jobUuid;
   }
+  /**
+   * @return string
+   */
   public function getJobUuid()
   {
     return $this->jobUuid;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
@@ -275,6 +354,20 @@ class Job extends \Google\Collection
   public function getStatusHistory()
   {
     return $this->statusHistory;
+  }
+  /**
+   * @param TrinoJob
+   */
+  public function setTrinoJob(TrinoJob $trinoJob)
+  {
+    $this->trinoJob = $trinoJob;
+  }
+  /**
+   * @return TrinoJob
+   */
+  public function getTrinoJob()
+  {
+    return $this->trinoJob;
   }
   /**
    * @param YarnApplication[]

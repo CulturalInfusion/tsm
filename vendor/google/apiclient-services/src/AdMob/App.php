@@ -19,18 +19,51 @@ namespace Google\Service\AdMob;
 
 class App extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $appApprovalState;
+  /**
+   * @var string
+   */
   public $appId;
   protected $linkedAppInfoType = AppLinkedAppInfo::class;
   protected $linkedAppInfoDataType = '';
   protected $manualAppInfoType = AppManualAppInfo::class;
   protected $manualAppInfoDataType = '';
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $platform;
 
+  /**
+   * @param string
+   */
+  public function setAppApprovalState($appApprovalState)
+  {
+    $this->appApprovalState = $appApprovalState;
+  }
+  /**
+   * @return string
+   */
+  public function getAppApprovalState()
+  {
+    return $this->appApprovalState;
+  }
+  /**
+   * @param string
+   */
   public function setAppId($appId)
   {
     $this->appId = $appId;
   }
+  /**
+   * @return string
+   */
   public function getAppId()
   {
     return $this->appId;
@@ -63,18 +96,30 @@ class App extends \Google\Model
   {
     return $this->manualAppInfo;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPlatform($platform)
   {
     $this->platform = $platform;
   }
+  /**
+   * @return string
+   */
   public function getPlatform()
   {
     return $this->platform;

@@ -17,40 +17,94 @@
 
 namespace Google\Service\CloudRun\Resource;
 
-use Google\Service\CloudRun\ListLocationsResponse;
+use Google\Service\CloudRun\GoogleCloudRunV2ExportImageRequest;
+use Google\Service\CloudRun\GoogleCloudRunV2ExportImageResponse;
+use Google\Service\CloudRun\GoogleCloudRunV2Metadata;
 
 /**
  * The "locations" collection of methods.
  * Typical usage is:
  *  <code>
  *   $runService = new Google\Service\CloudRun(...);
- *   $locations = $runService->locations;
+ *   $locations = $runService->projects_locations;
  *  </code>
  */
 class ProjectsLocations extends \Google\Service\Resource
 {
   /**
-   * Lists information about the supported locations for this service.
-   * (locations.listProjectsLocations)
+   * Export image for a given resource. (locations.exportImage)
    *
-   * @param string $name The resource that owns the locations collection, if
-   * applicable.
+   * @param string $name Required. The name of the resource of which image
+   * metadata should be exported. Format: `projects/{project_id_or_number}/locatio
+   * ns/{location}/services/{service}/revisions/{revision}` for Revision `projects
+   * /{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution
+   * }` for Execution
+   * @param GoogleCloudRunV2ExportImageRequest $postBody
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param string filter A filter to narrow down results to a preferred
-   * subset. The filtering language accepts strings like "displayName=tokyo", and
-   * is documented in more detail in [AIP-160](https://google.aip.dev/160).
-   * @opt_param int pageSize The maximum number of results to return. If not set,
-   * the service selects a default.
-   * @opt_param string pageToken A page token received from the `next_page_token`
-   * field in the response. Send that page token to receive the subsequent page.
-   * @return ListLocationsResponse
+   * @return GoogleCloudRunV2ExportImageResponse
+   * @throws \Google\Service\Exception
    */
-  public function listProjectsLocations($name, $optParams = [])
+  public function exportImage($name, GoogleCloudRunV2ExportImageRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('exportImage', [$params], GoogleCloudRunV2ExportImageResponse::class);
+  }
+  /**
+   * Export image metadata for a given resource. (locations.exportImageMetadata)
+   *
+   * @param string $name Required. The name of the resource of which image
+   * metadata should be exported. Format: `projects/{project_id_or_number}/locatio
+   * ns/{location}/services/{service}/revisions/{revision}` for Revision `projects
+   * /{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution
+   * }` for Execution
+   * @param array $optParams Optional parameters.
+   * @return GoogleCloudRunV2Metadata
+   * @throws \Google\Service\Exception
+   */
+  public function exportImageMetadata($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
-    return $this->call('list', [$params], ListLocationsResponse::class);
+    return $this->call('exportImageMetadata', [$params], GoogleCloudRunV2Metadata::class);
+  }
+  /**
+   * Export generated customer metadata for a given resource.
+   * (locations.exportMetadata)
+   *
+   * @param string $name Required. The name of the resource of which metadata
+   * should be exported. Format:
+   * `projects/{project_id_or_number}/locations/{location}/services/{service}` for
+   * Service `projects/{project_id_or_number}/locations/{location}/services/{servi
+   * ce}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locat
+   * ions/{location}/jobs/{job}/executions/{execution}` for Execution
+   * @param array $optParams Optional parameters.
+   * @return GoogleCloudRunV2Metadata
+   * @throws \Google\Service\Exception
+   */
+  public function exportMetadata($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('exportMetadata', [$params], GoogleCloudRunV2Metadata::class);
+  }
+  /**
+   * Export generated customer metadata for a given project.
+   * (locations.exportProjectMetadata)
+   *
+   * @param string $name Required. The name of the project of which metadata
+   * should be exported. Format:
+   * `projects/{project_id_or_number}/locations/{location}` for Project in a given
+   * location.
+   * @param array $optParams Optional parameters.
+   * @return GoogleCloudRunV2Metadata
+   * @throws \Google\Service\Exception
+   */
+  public function exportProjectMetadata($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('exportProjectMetadata', [$params], GoogleCloudRunV2Metadata::class);
   }
 }
 

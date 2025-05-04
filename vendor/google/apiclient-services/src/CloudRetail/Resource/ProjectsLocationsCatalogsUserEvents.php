@@ -18,6 +18,7 @@
 namespace Google\Service\CloudRetail\Resource;
 
 use Google\Service\CloudRetail\GoogleApiHttpBody;
+use Google\Service\CloudRetail\GoogleCloudRetailV2CollectUserEventRequest;
 use Google\Service\CloudRetail\GoogleCloudRetailV2ImportUserEventsRequest;
 use Google\Service\CloudRetail\GoogleCloudRetailV2PurgeUserEventsRequest;
 use Google\Service\CloudRetail\GoogleCloudRetailV2RejoinUserEventsRequest;
@@ -29,50 +30,44 @@ use Google\Service\CloudRetail\GoogleLongrunningOperation;
  * Typical usage is:
  *  <code>
  *   $retailService = new Google\Service\CloudRetail(...);
- *   $userEvents = $retailService->userEvents;
+ *   $userEvents = $retailService->projects_locations_catalogs_userEvents;
  *  </code>
  */
 class ProjectsLocationsCatalogsUserEvents extends \Google\Service\Resource
 {
   /**
-   * Writes a single user event from the browser. This uses a GET request to due
-   * to browser restriction of POST-ing to a 3rd party domain. This method is used
-   * only by the Retail API JavaScript pixel and Google Tag Manager. Users should
-   * not call this method directly. (userEvents.collect)
+   * Writes a single user event from the browser. For larger user event payload
+   * over 16 KB, the POST method should be used instead, otherwise a 400 Bad
+   * Request error is returned. This method is used only by the Retail API
+   * JavaScript pixel and Google Tag Manager. Users should not call this method
+   * directly. (userEvents.collect)
    *
    * @param string $parent Required. The parent catalog name, such as
    * `projects/1234/locations/global/catalogs/default_catalog`.
+   * @param GoogleCloudRetailV2CollectUserEventRequest $postBody
    * @param array $optParams Optional parameters.
-   *
-   * @opt_param string ets The event timestamp in milliseconds. This prevents
-   * browser caching of otherwise identical get requests. The name is abbreviated
-   * to reduce the payload bytes.
-   * @opt_param string uri The URL including cgi-parameters but excluding the hash
-   * fragment with a length limit of 5,000 characters. This is often more useful
-   * than the referer URL, because many browsers only send the domain for 3rd
-   * party requests.
-   * @opt_param string userEvent Required. URL encoded UserEvent proto with a
-   * length limit of 2,000,000 characters.
    * @return GoogleApiHttpBody
+   * @throws \Google\Service\Exception
    */
-  public function collect($parent, $optParams = [])
+  public function collect($parent, GoogleCloudRetailV2CollectUserEventRequest $postBody, $optParams = [])
   {
-    $params = ['parent' => $parent];
+    $params = ['parent' => $parent, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('collect', [$params], GoogleApiHttpBody::class);
   }
   /**
    * Bulk import of User events. Request processing might be synchronous. Events
    * that already exist are skipped. Use this method for backfilling historical
-   * user events. Operation.response is of type ImportResponse. Note that it is
-   * possible for a subset of the items to be successfully inserted.
-   * Operation.metadata is of type ImportMetadata. (userEvents.import)
+   * user events. `Operation.response` is of type `ImportResponse`. Note that it
+   * is possible for a subset of the items to be successfully inserted.
+   * `Operation.metadata` is of type `ImportMetadata`. (userEvents.import)
    *
    * @param string $parent Required.
    * `projects/1234/locations/global/catalogs/default_catalog`
    * @param GoogleCloudRetailV2ImportUserEventsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function import($parent, GoogleCloudRetailV2ImportUserEventsRequest $postBody, $optParams = [])
   {
@@ -92,6 +87,7 @@ class ProjectsLocationsCatalogsUserEvents extends \Google\Service\Resource
    * @param GoogleCloudRetailV2PurgeUserEventsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function purge($parent, GoogleCloudRetailV2PurgeUserEventsRequest $postBody, $optParams = [])
   {
@@ -100,19 +96,21 @@ class ProjectsLocationsCatalogsUserEvents extends \Google\Service\Resource
     return $this->call('purge', [$params], GoogleLongrunningOperation::class);
   }
   /**
-   * Triggers a user event rejoin operation with latest product catalog. Events
-   * will not be annotated with detailed product information if product is missing
-   * from the catalog at the time the user event is ingested, and these events are
-   * stored as unjoined events with a limited usage on training and serving. This
-   * API can be used to trigger a 'join' operation on specified events with latest
-   * version of product catalog. It can also be used to correct events joined with
-   * wrong product catalog. (userEvents.rejoin)
+   * Starts a user-event rejoin operation with latest product catalog. Events are
+   * not annotated with detailed product information for products that are missing
+   * from the catalog when the user event is ingested. These events are stored as
+   * unjoined events with limited usage on training and serving. You can use this
+   * method to start a join operation on specified events with the latest version
+   * of product catalog. You can also use this method to correct events joined
+   * with the wrong product catalog. A rejoin operation can take hours or days to
+   * complete. (userEvents.rejoin)
    *
    * @param string $parent Required. The parent catalog resource name, such as
    * `projects/1234/locations/global/catalogs/default_catalog`.
    * @param GoogleCloudRetailV2RejoinUserEventsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
    */
   public function rejoin($parent, GoogleCloudRetailV2RejoinUserEventsRequest $postBody, $optParams = [])
   {
@@ -127,7 +125,14 @@ class ProjectsLocationsCatalogsUserEvents extends \Google\Service\Resource
    * `projects/1234/locations/global/catalogs/default_catalog`.
    * @param GoogleCloudRetailV2UserEvent $postBody
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool writeAsync If set to true, the user event will be written
+   * asynchronously after validation, and the API will respond without waiting for
+   * the write. Therefore, silent failures can occur even if the API returns
+   * success. In case of silent failures, error messages can be found in
+   * Stackdriver logs.
    * @return GoogleCloudRetailV2UserEvent
+   * @throws \Google\Service\Exception
    */
   public function write($parent, GoogleCloudRetailV2UserEvent $postBody, $optParams = [])
   {

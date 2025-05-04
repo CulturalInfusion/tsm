@@ -19,27 +19,66 @@ namespace Google\Service\Spanner;
 
 class UpdateInstanceMetadata extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $cancelTime;
+  /**
+   * @var string
+   */
   public $endTime;
+  /**
+   * @var string
+   */
+  public $expectedFulfillmentPeriod;
   protected $instanceType = Instance::class;
   protected $instanceDataType = '';
+  /**
+   * @var string
+   */
   public $startTime;
 
+  /**
+   * @param string
+   */
   public function setCancelTime($cancelTime)
   {
     $this->cancelTime = $cancelTime;
   }
+  /**
+   * @return string
+   */
   public function getCancelTime()
   {
     return $this->cancelTime;
   }
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
+  }
+  /**
+   * @param string
+   */
+  public function setExpectedFulfillmentPeriod($expectedFulfillmentPeriod)
+  {
+    $this->expectedFulfillmentPeriod = $expectedFulfillmentPeriod;
+  }
+  /**
+   * @return string
+   */
+  public function getExpectedFulfillmentPeriod()
+  {
+    return $this->expectedFulfillmentPeriod;
   }
   /**
    * @param Instance
@@ -55,10 +94,16 @@ class UpdateInstanceMetadata extends \Google\Model
   {
     return $this->instance;
   }
+  /**
+   * @param string
+   */
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;

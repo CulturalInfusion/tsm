@@ -20,40 +20,134 @@ namespace Google\Service\CloudBuild;
 class BuildTrigger extends \Google\Collection
 {
   protected $collection_key = 'tags';
+  protected $approvalConfigType = ApprovalConfig::class;
+  protected $approvalConfigDataType = '';
+  /**
+   * @var bool
+   */
   public $autodetect;
+  protected $bitbucketServerTriggerConfigType = BitbucketServerTriggerConfig::class;
+  protected $bitbucketServerTriggerConfigDataType = '';
   protected $buildType = Build::class;
   protected $buildDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var bool
+   */
   public $disabled;
+  /**
+   * @var string
+   */
+  public $eventType;
+  /**
+   * @var string
+   */
   public $filename;
+  /**
+   * @var string
+   */
   public $filter;
+  protected $gitFileSourceType = GitFileSource::class;
+  protected $gitFileSourceDataType = '';
   protected $githubType = GitHubEventsConfig::class;
   protected $githubDataType = '';
+  protected $gitlabEnterpriseEventsConfigType = GitLabEventsConfig::class;
+  protected $gitlabEnterpriseEventsConfigDataType = '';
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string[]
+   */
   public $ignoredFiles;
+  /**
+   * @var string
+   */
+  public $includeBuildLogs;
+  /**
+   * @var string[]
+   */
   public $includedFiles;
+  /**
+   * @var string
+   */
   public $name;
   protected $pubsubConfigType = PubsubConfig::class;
   protected $pubsubConfigDataType = '';
+  protected $repositoryEventConfigType = RepositoryEventConfig::class;
+  protected $repositoryEventConfigDataType = '';
+  /**
+   * @var string
+   */
   public $resourceName;
+  /**
+   * @var string
+   */
   public $serviceAccount;
   protected $sourceToBuildType = GitRepoSource::class;
   protected $sourceToBuildDataType = '';
+  /**
+   * @var string[]
+   */
   public $substitutions;
+  /**
+   * @var string[]
+   */
   public $tags;
   protected $triggerTemplateType = RepoSource::class;
   protected $triggerTemplateDataType = '';
   protected $webhookConfigType = WebhookConfig::class;
   protected $webhookConfigDataType = '';
 
+  /**
+   * @param ApprovalConfig
+   */
+  public function setApprovalConfig(ApprovalConfig $approvalConfig)
+  {
+    $this->approvalConfig = $approvalConfig;
+  }
+  /**
+   * @return ApprovalConfig
+   */
+  public function getApprovalConfig()
+  {
+    return $this->approvalConfig;
+  }
+  /**
+   * @param bool
+   */
   public function setAutodetect($autodetect)
   {
     $this->autodetect = $autodetect;
   }
+  /**
+   * @return bool
+   */
   public function getAutodetect()
   {
     return $this->autodetect;
+  }
+  /**
+   * @param BitbucketServerTriggerConfig
+   */
+  public function setBitbucketServerTriggerConfig(BitbucketServerTriggerConfig $bitbucketServerTriggerConfig)
+  {
+    $this->bitbucketServerTriggerConfig = $bitbucketServerTriggerConfig;
+  }
+  /**
+   * @return BitbucketServerTriggerConfig
+   */
+  public function getBitbucketServerTriggerConfig()
+  {
+    return $this->bitbucketServerTriggerConfig;
   }
   /**
    * @param Build
@@ -69,45 +163,103 @@ class BuildTrigger extends \Google\Collection
   {
     return $this->build;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param bool
+   */
   public function setDisabled($disabled)
   {
     $this->disabled = $disabled;
   }
+  /**
+   * @return bool
+   */
   public function getDisabled()
   {
     return $this->disabled;
   }
+  /**
+   * @param string
+   */
+  public function setEventType($eventType)
+  {
+    $this->eventType = $eventType;
+  }
+  /**
+   * @return string
+   */
+  public function getEventType()
+  {
+    return $this->eventType;
+  }
+  /**
+   * @param string
+   */
   public function setFilename($filename)
   {
     $this->filename = $filename;
   }
+  /**
+   * @return string
+   */
   public function getFilename()
   {
     return $this->filename;
   }
+  /**
+   * @param string
+   */
   public function setFilter($filter)
   {
     $this->filter = $filter;
   }
+  /**
+   * @return string
+   */
   public function getFilter()
   {
     return $this->filter;
+  }
+  /**
+   * @param GitFileSource
+   */
+  public function setGitFileSource(GitFileSource $gitFileSource)
+  {
+    $this->gitFileSource = $gitFileSource;
+  }
+  /**
+   * @return GitFileSource
+   */
+  public function getGitFileSource()
+  {
+    return $this->gitFileSource;
   }
   /**
    * @param GitHubEventsConfig
@@ -123,34 +275,86 @@ class BuildTrigger extends \Google\Collection
   {
     return $this->github;
   }
+  /**
+   * @param GitLabEventsConfig
+   */
+  public function setGitlabEnterpriseEventsConfig(GitLabEventsConfig $gitlabEnterpriseEventsConfig)
+  {
+    $this->gitlabEnterpriseEventsConfig = $gitlabEnterpriseEventsConfig;
+  }
+  /**
+   * @return GitLabEventsConfig
+   */
+  public function getGitlabEnterpriseEventsConfig()
+  {
+    return $this->gitlabEnterpriseEventsConfig;
+  }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string[]
+   */
   public function setIgnoredFiles($ignoredFiles)
   {
     $this->ignoredFiles = $ignoredFiles;
   }
+  /**
+   * @return string[]
+   */
   public function getIgnoredFiles()
   {
     return $this->ignoredFiles;
   }
+  /**
+   * @param string
+   */
+  public function setIncludeBuildLogs($includeBuildLogs)
+  {
+    $this->includeBuildLogs = $includeBuildLogs;
+  }
+  /**
+   * @return string
+   */
+  public function getIncludeBuildLogs()
+  {
+    return $this->includeBuildLogs;
+  }
+  /**
+   * @param string[]
+   */
   public function setIncludedFiles($includedFiles)
   {
     $this->includedFiles = $includedFiles;
   }
+  /**
+   * @return string[]
+   */
   public function getIncludedFiles()
   {
     return $this->includedFiles;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -169,18 +373,44 @@ class BuildTrigger extends \Google\Collection
   {
     return $this->pubsubConfig;
   }
+  /**
+   * @param RepositoryEventConfig
+   */
+  public function setRepositoryEventConfig(RepositoryEventConfig $repositoryEventConfig)
+  {
+    $this->repositoryEventConfig = $repositoryEventConfig;
+  }
+  /**
+   * @return RepositoryEventConfig
+   */
+  public function getRepositoryEventConfig()
+  {
+    return $this->repositoryEventConfig;
+  }
+  /**
+   * @param string
+   */
   public function setResourceName($resourceName)
   {
     $this->resourceName = $resourceName;
   }
+  /**
+   * @return string
+   */
   public function getResourceName()
   {
     return $this->resourceName;
   }
+  /**
+   * @param string
+   */
   public function setServiceAccount($serviceAccount)
   {
     $this->serviceAccount = $serviceAccount;
   }
+  /**
+   * @return string
+   */
   public function getServiceAccount()
   {
     return $this->serviceAccount;
@@ -199,18 +429,30 @@ class BuildTrigger extends \Google\Collection
   {
     return $this->sourceToBuild;
   }
+  /**
+   * @param string[]
+   */
   public function setSubstitutions($substitutions)
   {
     $this->substitutions = $substitutions;
   }
+  /**
+   * @return string[]
+   */
   public function getSubstitutions()
   {
     return $this->substitutions;
   }
+  /**
+   * @param string[]
+   */
   public function setTags($tags)
   {
     $this->tags = $tags;
   }
+  /**
+   * @return string[]
+   */
   public function getTags()
   {
     return $this->tags;

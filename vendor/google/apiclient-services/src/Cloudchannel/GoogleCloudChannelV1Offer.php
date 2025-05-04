@@ -22,9 +22,19 @@ class GoogleCloudChannelV1Offer extends \Google\Collection
   protected $collection_key = 'priceByResources';
   protected $constraintsType = GoogleCloudChannelV1Constraints::class;
   protected $constraintsDataType = '';
+  /**
+   * @var string
+   */
+  public $dealCode;
+  /**
+   * @var string
+   */
   public $endTime;
   protected $marketingInfoType = GoogleCloudChannelV1MarketingInfo::class;
   protected $marketingInfoDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   protected $parameterDefinitionsType = GoogleCloudChannelV1ParameterDefinition::class;
   protected $parameterDefinitionsDataType = 'array';
@@ -34,6 +44,9 @@ class GoogleCloudChannelV1Offer extends \Google\Collection
   protected $priceByResourcesDataType = 'array';
   protected $skuType = GoogleCloudChannelV1Sku::class;
   protected $skuDataType = '';
+  /**
+   * @var string
+   */
   public $startTime;
 
   /**
@@ -50,10 +63,30 @@ class GoogleCloudChannelV1Offer extends \Google\Collection
   {
     return $this->constraints;
   }
+  /**
+   * @param string
+   */
+  public function setDealCode($dealCode)
+  {
+    $this->dealCode = $dealCode;
+  }
+  /**
+   * @return string
+   */
+  public function getDealCode()
+  {
+    return $this->dealCode;
+  }
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
@@ -72,10 +105,16 @@ class GoogleCloudChannelV1Offer extends \Google\Collection
   {
     return $this->marketingInfo;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -136,10 +175,16 @@ class GoogleCloudChannelV1Offer extends \Google\Collection
   {
     return $this->sku;
   }
+  /**
+   * @param string
+   */
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;

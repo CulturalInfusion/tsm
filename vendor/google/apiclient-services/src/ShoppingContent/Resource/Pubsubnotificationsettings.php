@@ -37,6 +37,7 @@ class Pubsubnotificationsettings extends \Google\Service\Resource
    * notification settings.
    * @param array $optParams Optional parameters.
    * @return PubsubNotificationSettingsModel
+   * @throws \Google\Service\Exception
    */
   public function get($merchantId, $optParams = [])
   {
@@ -46,13 +47,14 @@ class Pubsubnotificationsettings extends \Google\Service\Resource
   }
   /**
    * Register a Merchant Center account for pubsub notifications. Note that cloud
-   * topic name should not be provided as part of the request.
+   * topic name shouldn't be provided as part of the request.
    * (pubsubnotificationsettings.update)
    *
    * @param string $merchantId The ID of the account.
    * @param PubsubNotificationSettingsModel $postBody
    * @param array $optParams Optional parameters.
    * @return PubsubNotificationSettingsModel
+   * @throws \Google\Service\Exception
    */
   public function update($merchantId, PubsubNotificationSettingsModel $postBody, $optParams = [])
   {

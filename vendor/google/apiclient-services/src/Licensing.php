@@ -23,8 +23,8 @@ use Google\Client;
  * Service definition for Licensing (v1).
  *
  * <p>
- * The Google Enterprise License Manager API's allows you to license apps for
- * all the users of a domain managed by you.</p>
+ * The Google Enterprise License Manager API lets you manage Google Workspace
+ * and related licenses for all users of a customer that you manage.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -40,6 +40,7 @@ class Licensing extends \Google\Service
       "https://www.googleapis.com/auth/apps.licensing";
 
   public $licenseAssignments;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Licensing service.
@@ -52,6 +53,7 @@ class Licensing extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://licensing.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://licensing.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

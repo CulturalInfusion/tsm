@@ -20,89 +20,233 @@ namespace Google\Service\Compute;
 class PublicDelegatedPrefix extends \Google\Collection
 {
   protected $collection_key = 'publicDelegatedSubPrefixs';
+  /**
+   * @var int
+   */
+  public $allocatablePrefixLength;
+  /**
+   * @var string
+   */
+  public $byoipApiVersion;
+  /**
+   * @var string
+   */
   public $creationTimestamp;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $fingerprint;
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $ipCidrRange;
+  /**
+   * @var bool
+   */
   public $isLiveMigration;
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
+  public $mode;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $parentPrefix;
   protected $publicDelegatedSubPrefixsType = PublicDelegatedPrefixPublicDelegatedSubPrefix::class;
   protected $publicDelegatedSubPrefixsDataType = 'array';
+  /**
+   * @var string
+   */
   public $region;
+  /**
+   * @var string
+   */
   public $selfLink;
+  /**
+   * @var string
+   */
   public $status;
 
+  /**
+   * @param int
+   */
+  public function setAllocatablePrefixLength($allocatablePrefixLength)
+  {
+    $this->allocatablePrefixLength = $allocatablePrefixLength;
+  }
+  /**
+   * @return int
+   */
+  public function getAllocatablePrefixLength()
+  {
+    return $this->allocatablePrefixLength;
+  }
+  /**
+   * @param string
+   */
+  public function setByoipApiVersion($byoipApiVersion)
+  {
+    $this->byoipApiVersion = $byoipApiVersion;
+  }
+  /**
+   * @return string
+   */
+  public function getByoipApiVersion()
+  {
+    return $this->byoipApiVersion;
+  }
+  /**
+   * @param string
+   */
   public function setCreationTimestamp($creationTimestamp)
   {
     $this->creationTimestamp = $creationTimestamp;
   }
+  /**
+   * @return string
+   */
   public function getCreationTimestamp()
   {
     return $this->creationTimestamp;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
+  /**
+   * @return string
+   */
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setIpCidrRange($ipCidrRange)
   {
     $this->ipCidrRange = $ipCidrRange;
   }
+  /**
+   * @return string
+   */
   public function getIpCidrRange()
   {
     return $this->ipCidrRange;
   }
+  /**
+   * @param bool
+   */
   public function setIsLiveMigration($isLiveMigration)
   {
     $this->isLiveMigration = $isLiveMigration;
   }
+  /**
+   * @return bool
+   */
   public function getIsLiveMigration()
   {
     return $this->isLiveMigration;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
+  public function setMode($mode)
+  {
+    $this->mode = $mode;
+  }
+  /**
+   * @return string
+   */
+  public function getMode()
+  {
+    return $this->mode;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setParentPrefix($parentPrefix)
   {
     $this->parentPrefix = $parentPrefix;
   }
+  /**
+   * @return string
+   */
   public function getParentPrefix()
   {
     return $this->parentPrefix;
@@ -121,26 +265,44 @@ class PublicDelegatedPrefix extends \Google\Collection
   {
     return $this->publicDelegatedSubPrefixs;
   }
+  /**
+   * @param string
+   */
   public function setRegion($region)
   {
     $this->region = $region;
   }
+  /**
+   * @return string
+   */
   public function getRegion()
   {
     return $this->region;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
   }
+  /**
+   * @param string
+   */
   public function setStatus($status)
   {
     $this->status = $status;
   }
+  /**
+   * @return string
+   */
   public function getStatus()
   {
     return $this->status;

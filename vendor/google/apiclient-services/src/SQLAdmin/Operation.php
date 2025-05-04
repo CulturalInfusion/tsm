@@ -19,8 +19,15 @@ namespace Google\Service\SQLAdmin;
 
 class Operation extends \Google\Model
 {
+  protected $acquireSsrsLeaseContextType = AcquireSsrsLeaseContext::class;
+  protected $acquireSsrsLeaseContextDataType = '';
+  protected $apiWarningType = ApiWarning::class;
+  protected $apiWarningDataType = '';
   protected $backupContextType = BackupContext::class;
   protected $backupContextDataType = '';
+  /**
+   * @var string
+   */
   public $endTime;
   protected $errorType = OperationErrors::class;
   protected $errorDataType = '';
@@ -28,18 +35,81 @@ class Operation extends \Google\Model
   protected $exportContextDataType = '';
   protected $importContextType = ImportContext::class;
   protected $importContextDataType = '';
+  /**
+   * @var string
+   */
   public $insertTime;
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $operationType;
+  /**
+   * @var string
+   */
   public $selfLink;
+  /**
+   * @var string
+   */
   public $startTime;
+  /**
+   * @var string
+   */
   public $status;
+  protected $subOperationTypeType = SqlSubOperationType::class;
+  protected $subOperationTypeDataType = '';
+  /**
+   * @var string
+   */
   public $targetId;
+  /**
+   * @var string
+   */
   public $targetLink;
+  /**
+   * @var string
+   */
   public $targetProject;
+  /**
+   * @var string
+   */
   public $user;
 
+  /**
+   * @param AcquireSsrsLeaseContext
+   */
+  public function setAcquireSsrsLeaseContext(AcquireSsrsLeaseContext $acquireSsrsLeaseContext)
+  {
+    $this->acquireSsrsLeaseContext = $acquireSsrsLeaseContext;
+  }
+  /**
+   * @return AcquireSsrsLeaseContext
+   */
+  public function getAcquireSsrsLeaseContext()
+  {
+    return $this->acquireSsrsLeaseContext;
+  }
+  /**
+   * @param ApiWarning
+   */
+  public function setApiWarning(ApiWarning $apiWarning)
+  {
+    $this->apiWarning = $apiWarning;
+  }
+  /**
+   * @return ApiWarning
+   */
+  public function getApiWarning()
+  {
+    return $this->apiWarning;
+  }
   /**
    * @param BackupContext
    */
@@ -54,10 +124,16 @@ class Operation extends \Google\Model
   {
     return $this->backupContext;
   }
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
@@ -104,90 +180,170 @@ class Operation extends \Google\Model
   {
     return $this->importContext;
   }
+  /**
+   * @param string
+   */
   public function setInsertTime($insertTime)
   {
     $this->insertTime = $insertTime;
   }
+  /**
+   * @return string
+   */
   public function getInsertTime()
   {
     return $this->insertTime;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setOperationType($operationType)
   {
     $this->operationType = $operationType;
   }
+  /**
+   * @return string
+   */
   public function getOperationType()
   {
     return $this->operationType;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
   }
+  /**
+   * @param string
+   */
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;
   }
+  /**
+   * @param string
+   */
   public function setStatus($status)
   {
     $this->status = $status;
   }
+  /**
+   * @return string
+   */
   public function getStatus()
   {
     return $this->status;
   }
+  /**
+   * @param SqlSubOperationType
+   */
+  public function setSubOperationType(SqlSubOperationType $subOperationType)
+  {
+    $this->subOperationType = $subOperationType;
+  }
+  /**
+   * @return SqlSubOperationType
+   */
+  public function getSubOperationType()
+  {
+    return $this->subOperationType;
+  }
+  /**
+   * @param string
+   */
   public function setTargetId($targetId)
   {
     $this->targetId = $targetId;
   }
+  /**
+   * @return string
+   */
   public function getTargetId()
   {
     return $this->targetId;
   }
+  /**
+   * @param string
+   */
   public function setTargetLink($targetLink)
   {
     $this->targetLink = $targetLink;
   }
+  /**
+   * @return string
+   */
   public function getTargetLink()
   {
     return $this->targetLink;
   }
+  /**
+   * @param string
+   */
   public function setTargetProject($targetProject)
   {
     $this->targetProject = $targetProject;
   }
+  /**
+   * @return string
+   */
   public function getTargetProject()
   {
     return $this->targetProject;
   }
+  /**
+   * @param string
+   */
   public function setUser($user)
   {
     $this->user = $user;
   }
+  /**
+   * @return string
+   */
   public function getUser()
   {
     return $this->user;

@@ -21,9 +21,16 @@ class DeidentifyDicomStoreRequest extends \Google\Model
 {
   protected $configType = DeidentifyConfig::class;
   protected $configDataType = '';
+  /**
+   * @var string
+   */
   public $destinationStore;
   protected $filterConfigType = DicomFilterConfig::class;
   protected $filterConfigDataType = '';
+  /**
+   * @var string
+   */
+  public $gcsConfigUri;
 
   /**
    * @param DeidentifyConfig
@@ -39,10 +46,16 @@ class DeidentifyDicomStoreRequest extends \Google\Model
   {
     return $this->config;
   }
+  /**
+   * @param string
+   */
   public function setDestinationStore($destinationStore)
   {
     $this->destinationStore = $destinationStore;
   }
+  /**
+   * @return string
+   */
   public function getDestinationStore()
   {
     return $this->destinationStore;
@@ -60,6 +73,20 @@ class DeidentifyDicomStoreRequest extends \Google\Model
   public function getFilterConfig()
   {
     return $this->filterConfig;
+  }
+  /**
+   * @param string
+   */
+  public function setGcsConfigUri($gcsConfigUri)
+  {
+    $this->gcsConfigUri = $gcsConfigUri;
+  }
+  /**
+   * @return string
+   */
+  public function getGcsConfigUri()
+  {
+    return $this->gcsConfigUri;
   }
 }
 

@@ -17,6 +17,7 @@
 
 namespace Google\Service\Doubleclicksearch\Resource;
 
+use Google\Service\Doubleclicksearch\IdMappingFile;
 use Google\Service\Doubleclicksearch\Report;
 use Google\Service\Doubleclicksearch\ReportRequest;
 
@@ -36,6 +37,7 @@ class Reports extends \Google\Service\Resource
    * @param ReportRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Report
+   * @throws \Google\Service\Exception
    */
   public function generate(ReportRequest $postBody, $optParams = [])
   {
@@ -49,6 +51,7 @@ class Reports extends \Google\Service\Resource
    * @param string $reportId ID of the report request being polled.
    * @param array $optParams Optional parameters.
    * @return Report
+   * @throws \Google\Service\Exception
    */
   public function get($reportId, $optParams = [])
   {
@@ -62,6 +65,7 @@ class Reports extends \Google\Service\Resource
    * @param string $reportId ID of the report.
    * @param int $reportFragment The index of the report fragment to download.
    * @param array $optParams Optional parameters.
+   * @throws \Google\Service\Exception
    */
   public function getFile($reportId, $reportFragment, $optParams = [])
   {
@@ -70,11 +74,30 @@ class Reports extends \Google\Service\Resource
     return $this->call('getFile', [$params]);
   }
   /**
+   * Downloads a csv file(encoded in UTF-8) that contains ID mappings between
+   * legacy SA360 and new SA360. The file includes all children entities of the
+   * given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist
+   * in both legacy SA360 and new SA360. (reports.getIdMappingFile)
+   *
+   * @param string $agencyId Legacy SA360 agency ID.
+   * @param string $advertiserId Legacy SA360 advertiser ID.
+   * @param array $optParams Optional parameters.
+   * @return IdMappingFile
+   * @throws \Google\Service\Exception
+   */
+  public function getIdMappingFile($agencyId, $advertiserId, $optParams = [])
+  {
+    $params = ['agencyId' => $agencyId, 'advertiserId' => $advertiserId];
+    $params = array_merge($params, $optParams);
+    return $this->call('getIdMappingFile', [$params], IdMappingFile::class);
+  }
+  /**
    * Inserts a report request into the reporting system. (reports.request)
    *
    * @param ReportRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Report
+   * @throws \Google\Service\Exception
    */
   public function request(ReportRequest $postBody, $optParams = [])
   {

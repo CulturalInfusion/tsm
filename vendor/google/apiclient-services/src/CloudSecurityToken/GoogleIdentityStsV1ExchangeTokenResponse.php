@@ -20,44 +20,99 @@ namespace Google\Service\CloudSecurityToken;
 class GoogleIdentityStsV1ExchangeTokenResponse extends \Google\Model
 {
   protected $internal_gapi_mappings = [
+        "accessBoundarySessionKey" => "access_boundary_session_key",
         "accessToken" => "access_token",
         "expiresIn" => "expires_in",
         "issuedTokenType" => "issued_token_type",
         "tokenType" => "token_type",
   ];
+  /**
+   * @var string
+   */
+  public $accessBoundarySessionKey;
+  /**
+   * @var string
+   */
   public $accessToken;
+  /**
+   * @var int
+   */
   public $expiresIn;
+  /**
+   * @var string
+   */
   public $issuedTokenType;
+  /**
+   * @var string
+   */
   public $tokenType;
 
+  /**
+   * @param string
+   */
+  public function setAccessBoundarySessionKey($accessBoundarySessionKey)
+  {
+    $this->accessBoundarySessionKey = $accessBoundarySessionKey;
+  }
+  /**
+   * @return string
+   */
+  public function getAccessBoundarySessionKey()
+  {
+    return $this->accessBoundarySessionKey;
+  }
+  /**
+   * @param string
+   */
   public function setAccessToken($accessToken)
   {
     $this->accessToken = $accessToken;
   }
+  /**
+   * @return string
+   */
   public function getAccessToken()
   {
     return $this->accessToken;
   }
+  /**
+   * @param int
+   */
   public function setExpiresIn($expiresIn)
   {
     $this->expiresIn = $expiresIn;
   }
+  /**
+   * @return int
+   */
   public function getExpiresIn()
   {
     return $this->expiresIn;
   }
+  /**
+   * @param string
+   */
   public function setIssuedTokenType($issuedTokenType)
   {
     $this->issuedTokenType = $issuedTokenType;
   }
+  /**
+   * @return string
+   */
   public function getIssuedTokenType()
   {
     return $this->issuedTokenType;
   }
+  /**
+   * @param string
+   */
   public function setTokenType($tokenType)
   {
     $this->tokenType = $tokenType;
   }
+  /**
+   * @return string
+   */
   public function getTokenType()
   {
     return $this->tokenType;

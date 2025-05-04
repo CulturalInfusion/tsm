@@ -21,6 +21,10 @@ class ColumnFamily extends \Google\Model
 {
   protected $gcRuleType = GcRule::class;
   protected $gcRuleDataType = '';
+  protected $statsType = ColumnFamilyStats::class;
+  protected $statsDataType = '';
+  protected $valueTypeType = Type::class;
+  protected $valueTypeDataType = '';
 
   /**
    * @param GcRule
@@ -35,6 +39,34 @@ class ColumnFamily extends \Google\Model
   public function getGcRule()
   {
     return $this->gcRule;
+  }
+  /**
+   * @param ColumnFamilyStats
+   */
+  public function setStats(ColumnFamilyStats $stats)
+  {
+    $this->stats = $stats;
+  }
+  /**
+   * @return ColumnFamilyStats
+   */
+  public function getStats()
+  {
+    return $this->stats;
+  }
+  /**
+   * @param Type
+   */
+  public function setValueType(Type $valueType)
+  {
+    $this->valueType = $valueType;
+  }
+  /**
+   * @return Type
+   */
+  public function getValueType()
+  {
+    return $this->valueType;
   }
 }
 

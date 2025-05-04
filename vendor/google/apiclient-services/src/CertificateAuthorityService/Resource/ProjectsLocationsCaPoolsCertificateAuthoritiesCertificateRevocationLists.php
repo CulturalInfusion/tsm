@@ -30,7 +30,7 @@ use Google\Service\CertificateAuthorityService\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $privatecaService = new Google\Service\CertificateAuthorityService(...);
- *   $certificateRevocationLists = $privatecaService->certificateRevocationLists;
+ *   $certificateRevocationLists = $privatecaService->projects_locations_caPools_certificateAuthorities_certificateRevocationLists;
  *  </code>
  */
 class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists extends \Google\Service\Resource
@@ -42,6 +42,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * get.
    * @param array $optParams Optional parameters.
    * @return CertificateRevocationList
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -55,19 +56,25 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * (certificateRevocationLists.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -95,6 +102,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * @opt_param string pageToken Optional. Pagination token, returned earlier via
    * ListCertificateRevocationListsResponse.next_page_token.
    * @return ListCertificateRevocationListsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists($parent, $optParams = [])
   {
@@ -105,7 +113,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
   /**
    * Update a CertificateRevocationList. (certificateRevocationLists.patch)
    *
-   * @param string $name Output only. The resource name for this
+   * @param string $name Identifier. The resource name for this
    * CertificateRevocationList in the format
    * `projects/locations/caPoolscertificateAuthorities/
    * certificateRevocationLists`.
@@ -116,7 +124,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * unique request ID so that if you must retry your request, the server will
    * know to ignore the request if it has already been completed. The server will
    * guarantee that for at least 60 minutes since the first request. For example,
-   * consider a situation where you make an initial request and t he request times
+   * consider a situation where you make an initial request and the request times
    * out. If you make the request again with the same request ID, the server can
    * check if original operation with the same request ID was received, and if so,
    * will ignore the second request. This prevents clients from accidentally
@@ -126,6 +134,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * @opt_param string updateMask Required. A list of fields to be updated in this
    * request.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, CertificateRevocationList $postBody, $optParams = [])
   {
@@ -139,11 +148,13 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * `PERMISSION_DENIED` errors. (certificateRevocationLists.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -160,11 +171,13 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists e
    * (certificateRevocationLists.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

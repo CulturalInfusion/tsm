@@ -20,12 +20,33 @@ namespace Google\Service\Vision;
 class AsyncBatchAnnotateImagesRequest extends \Google\Collection
 {
   protected $collection_key = 'requests';
+  /**
+   * @var string[]
+   */
+  public $labels;
   protected $outputConfigType = OutputConfig::class;
   protected $outputConfigDataType = '';
+  /**
+   * @var string
+   */
   public $parent;
   protected $requestsType = AnnotateImageRequest::class;
   protected $requestsDataType = 'array';
 
+  /**
+   * @param string[]
+   */
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  /**
+   * @return string[]
+   */
+  public function getLabels()
+  {
+    return $this->labels;
+  }
   /**
    * @param OutputConfig
    */
@@ -40,10 +61,16 @@ class AsyncBatchAnnotateImagesRequest extends \Google\Collection
   {
     return $this->outputConfig;
   }
+  /**
+   * @param string
+   */
   public function setParent($parent)
   {
     $this->parent = $parent;
   }
+  /**
+   * @return string
+   */
   public function getParent()
   {
     return $this->parent;

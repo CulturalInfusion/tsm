@@ -34,7 +34,7 @@ use Google\Client;
  */
 class Pubsub extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage Pub/Sub topics and subscriptions. */
@@ -47,6 +47,7 @@ class Pubsub extends \Google\Service
   public $projects_topics;
   public $projects_topics_snapshots;
   public $projects_topics_subscriptions;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Pubsub service.
@@ -59,6 +60,7 @@ class Pubsub extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://pubsub.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://pubsub.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -70,7 +72,17 @@ class Pubsub extends \Google\Service
         'schemas',
         [
           'methods' => [
-            'create' => [
+            'commit' => [
+              'path' => 'v1/{+name}:commit',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'create' => [
               'path' => 'v1/{+parent}/schemas',
               'httpMethod' => 'POST',
               'parameters' => [
@@ -92,6 +104,20 @@ class Pubsub extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'deleteRevision' => [
+              'path' => 'v1/{+name}:deleteRevision',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'revisionId' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'get' => [
@@ -142,6 +168,38 @@ class Pubsub extends \Google\Service
                 'view' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],'listRevisions' => [
+              'path' => 'v1/{+name}:listRevisions',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'view' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'rollback' => [
+              'path' => 'v1/{+name}:rollback',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],'setIamPolicy' => [

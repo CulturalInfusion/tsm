@@ -34,16 +34,17 @@ use Google\Client;
  */
 class ApiKeysService extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
 
   public $keys;
   public $operations;
   public $projects_locations_keys;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ApiKeysService service.
@@ -56,6 +57,7 @@ class ApiKeysService extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://apikeys.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://apikeys.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v2';
@@ -106,17 +108,7 @@ class ApiKeysService extends \Google\Service
         'keys',
         [
           'methods' => [
-            'clone' => [
-              'path' => 'v2/{+name}:clone',
-              'httpMethod' => 'POST',
-              'parameters' => [
-                'name' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-              ],
-            ],'create' => [
+            'create' => [
               'path' => 'v2/{+parent}/keys',
               'httpMethod' => 'POST',
               'parameters' => [
@@ -173,10 +165,6 @@ class ApiKeysService extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'filter' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -184,6 +172,10 @@ class ApiKeysService extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+                'showDeleted' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
               ],
             ],'patch' => [

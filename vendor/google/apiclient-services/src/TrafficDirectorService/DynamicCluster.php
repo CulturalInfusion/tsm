@@ -19,30 +19,91 @@ namespace Google\Service\TrafficDirectorService;
 
 class DynamicCluster extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $clientStatus;
+  /**
+   * @var array[]
+   */
   public $cluster;
+  protected $errorStateType = UpdateFailureState::class;
+  protected $errorStateDataType = '';
+  /**
+   * @var string
+   */
   public $lastUpdated;
+  /**
+   * @var string
+   */
   public $versionInfo;
 
+  /**
+   * @param string
+   */
+  public function setClientStatus($clientStatus)
+  {
+    $this->clientStatus = $clientStatus;
+  }
+  /**
+   * @return string
+   */
+  public function getClientStatus()
+  {
+    return $this->clientStatus;
+  }
+  /**
+   * @param array[]
+   */
   public function setCluster($cluster)
   {
     $this->cluster = $cluster;
   }
+  /**
+   * @return array[]
+   */
   public function getCluster()
   {
     return $this->cluster;
   }
+  /**
+   * @param UpdateFailureState
+   */
+  public function setErrorState(UpdateFailureState $errorState)
+  {
+    $this->errorState = $errorState;
+  }
+  /**
+   * @return UpdateFailureState
+   */
+  public function getErrorState()
+  {
+    return $this->errorState;
+  }
+  /**
+   * @param string
+   */
   public function setLastUpdated($lastUpdated)
   {
     $this->lastUpdated = $lastUpdated;
   }
+  /**
+   * @return string
+   */
   public function getLastUpdated()
   {
     return $this->lastUpdated;
   }
+  /**
+   * @param string
+   */
   public function setVersionInfo($versionInfo)
   {
     $this->versionInfo = $versionInfo;
   }
+  /**
+   * @return string
+   */
   public function getVersionInfo()
   {
     return $this->versionInfo;

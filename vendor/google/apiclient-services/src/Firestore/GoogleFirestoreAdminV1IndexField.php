@@ -19,33 +19,76 @@ namespace Google\Service\Firestore;
 
 class GoogleFirestoreAdminV1IndexField extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $arrayConfig;
+  /**
+   * @var string
+   */
   public $fieldPath;
+  /**
+   * @var string
+   */
   public $order;
+  protected $vectorConfigType = GoogleFirestoreAdminV1VectorConfig::class;
+  protected $vectorConfigDataType = '';
 
+  /**
+   * @param string
+   */
   public function setArrayConfig($arrayConfig)
   {
     $this->arrayConfig = $arrayConfig;
   }
+  /**
+   * @return string
+   */
   public function getArrayConfig()
   {
     return $this->arrayConfig;
   }
+  /**
+   * @param string
+   */
   public function setFieldPath($fieldPath)
   {
     $this->fieldPath = $fieldPath;
   }
+  /**
+   * @return string
+   */
   public function getFieldPath()
   {
     return $this->fieldPath;
   }
+  /**
+   * @param string
+   */
   public function setOrder($order)
   {
     $this->order = $order;
   }
+  /**
+   * @return string
+   */
   public function getOrder()
   {
     return $this->order;
+  }
+  /**
+   * @param GoogleFirestoreAdminV1VectorConfig
+   */
+  public function setVectorConfig(GoogleFirestoreAdminV1VectorConfig $vectorConfig)
+  {
+    $this->vectorConfig = $vectorConfig;
+  }
+  /**
+   * @return GoogleFirestoreAdminV1VectorConfig
+   */
+  public function getVectorConfig()
+  {
+    return $this->vectorConfig;
   }
 }
 

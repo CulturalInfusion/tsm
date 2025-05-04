@@ -19,15 +19,42 @@ namespace Google\Service\Compute;
 
 class WafExpressionSetExpression extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var int
+   */
+  public $sensitivity;
 
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
+  }
+  /**
+   * @param int
+   */
+  public function setSensitivity($sensitivity)
+  {
+    $this->sensitivity = $sensitivity;
+  }
+  /**
+   * @return int
+   */
+  public function getSensitivity()
+  {
+    return $this->sensitivity;
   }
 }
 

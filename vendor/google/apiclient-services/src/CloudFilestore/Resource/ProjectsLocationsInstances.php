@@ -20,14 +20,16 @@ namespace Google\Service\CloudFilestore\Resource;
 use Google\Service\CloudFilestore\Instance;
 use Google\Service\CloudFilestore\ListInstancesResponse;
 use Google\Service\CloudFilestore\Operation;
+use Google\Service\CloudFilestore\PromoteReplicaRequest;
 use Google\Service\CloudFilestore\RestoreInstanceRequest;
+use Google\Service\CloudFilestore\RevertInstanceRequest;
 
 /**
  * The "instances" collection of methods.
  * Typical usage is:
  *  <code>
  *   $fileService = new Google\Service\CloudFilestore(...);
- *   $instances = $fileService->instances;
+ *   $instances = $fileService->projects_locations_instances;
  *  </code>
  */
 class ProjectsLocationsInstances extends \Google\Service\Resource
@@ -39,14 +41,15 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * (instances.create)
    *
    * @param string $parent Required. The instance's project and location, in the
-   * format projects/{project_id}/locations/{location}. In Cloud Filestore,
-   * locations map to GCP zones, for example **us-west1-b**.
+   * format `projects/{project_id}/locations/{location}`. In Filestore, locations
+   * map to Google Cloud zones, for example **us-west1-b**.
    * @param Instance $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string instanceId Required. The name of the instance to create.
    * The name must be unique for the specified project and location.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Instance $postBody, $optParams = [])
   {
@@ -58,9 +61,14 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * Deletes an instance. (instances.delete)
    *
    * @param string $name Required. The instance resource name, in the format
-   * projects/{project_id}/locations/{location}/instances/{instance_id}
+   * `projects/{project_id}/locations/{location}/instances/{instance_id}`
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool force If set to true, all snapshots of the instance will also
+   * be deleted. (Otherwise, the request will only work if the instance has no
+   * snapshots.)
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -72,9 +80,10 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * Gets the details of a specific instance. (instances.get)
    *
    * @param string $name Required. The instance resource name, in the format
-   * projects/{project_id}/locations/{location}/instances/{instance_id}.
+   * `projects/{project_id}/locations/{location}/instances/{instance_id}`.
    * @param array $optParams Optional parameters.
    * @return Instance
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -88,9 +97,9 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    *
    * @param string $parent Required. The project and location for which to
    * retrieve instance information, in the format
-   * projects/{project_id}/locations/{location}. In Cloud Filestore, locations map
-   * to GCP zones, for example **us-west1-b**. To retrieve instance information
-   * for all locations, use "-" for the {location} value.
+   * `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations
+   * map to Google Cloud zones, for example **us-west1-b**. To retrieve instance
+   * information for all locations, use "-" for the `{location}` value.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter List filter.
@@ -100,6 +109,7 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * @opt_param string pageToken The next_page_token value to use if there are
    * additional results to retrieve for this list request.
    * @return ListInstancesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsInstances($parent, $optParams = [])
   {
@@ -111,20 +121,40 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * Updates the settings of a specific instance. (instances.patch)
    *
    * @param string $name Output only. The resource name of the instance, in the
-   * format projects/{project}/locations/{location}/instances/{instance}.
+   * format `projects/{project}/locations/{location}/instances/{instance}`.
    * @param Instance $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Mask of fields to update. At least one path must
    * be supplied in this field. The elements of the repeated paths field may only
-   * include these fields: * "description" * "file_shares" * "labels"
+   * include these fields: * "description" * "file_shares" * "labels" *
+   * "performance_config" * "deletion_protection_enabled" *
+   * "deletion_protection_reason"
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Instance $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('patch', [$params], Operation::class);
+  }
+  /**
+   * Promote the standby instance (replica). (instances.promoteReplica)
+   *
+   * @param string $name Required. The resource name of the instance, in the
+   * format
+   * `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+   * @param PromoteReplicaRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function promoteReplica($name, PromoteReplicaRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('promoteReplica', [$params], Operation::class);
   }
   /**
    * Restores an existing instance's file share from a backup. The capacity of the
@@ -134,16 +164,35 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    *
    * @param string $name Required. The resource name of the instance, in the
    * format
-   * projects/{project_number}/locations/{location_id}/instances/{instance_id}.
+   * `projects/{project_number}/locations/{location_id}/instances/{instance_id}`.
    * @param RestoreInstanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function restore($name, RestoreInstanceRequest $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('restore', [$params], Operation::class);
+  }
+  /**
+   * Revert an existing instance's file system to a specified snapshot.
+   * (instances.revert)
+   *
+   * @param string $name Required. The resource name of the instance, in the
+   * format
+   * `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+   * @param RevertInstanceRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function revert($name, RevertInstanceRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('revert', [$params], Operation::class);
   }
 }
 

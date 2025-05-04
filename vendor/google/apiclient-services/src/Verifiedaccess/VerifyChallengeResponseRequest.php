@@ -19,28 +19,39 @@ namespace Google\Service\Verifiedaccess;
 
 class VerifyChallengeResponseRequest extends \Google\Model
 {
-  protected $challengeResponseType = SignedData::class;
-  protected $challengeResponseDataType = '';
+  /**
+   * @var string
+   */
+  public $challengeResponse;
+  /**
+   * @var string
+   */
   public $expectedIdentity;
 
   /**
-   * @param SignedData
+   * @param string
    */
-  public function setChallengeResponse(SignedData $challengeResponse)
+  public function setChallengeResponse($challengeResponse)
   {
     $this->challengeResponse = $challengeResponse;
   }
   /**
-   * @return SignedData
+   * @return string
    */
   public function getChallengeResponse()
   {
     return $this->challengeResponse;
   }
+  /**
+   * @param string
+   */
   public function setExpectedIdentity($expectedIdentity)
   {
     $this->expectedIdentity = $expectedIdentity;
   }
+  /**
+   * @return string
+   */
   public function getExpectedIdentity()
   {
     return $this->expectedIdentity;

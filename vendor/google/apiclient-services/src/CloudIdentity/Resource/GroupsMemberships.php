@@ -24,6 +24,7 @@ use Google\Service\CloudIdentity\Membership;
 use Google\Service\CloudIdentity\ModifyMembershipRolesRequest;
 use Google\Service\CloudIdentity\ModifyMembershipRolesResponse;
 use Google\Service\CloudIdentity\Operation;
+use Google\Service\CloudIdentity\SearchDirectGroupsResponse;
 use Google\Service\CloudIdentity\SearchTransitiveGroupsResponse;
 use Google\Service\CloudIdentity\SearchTransitiveMembershipsResponse;
 
@@ -32,7 +33,7 @@ use Google\Service\CloudIdentity\SearchTransitiveMembershipsResponse;
  * Typical usage is:
  *  <code>
  *   $cloudidentityService = new Google\Service\CloudIdentity(...);
- *   $memberships = $cloudidentityService->memberships;
+ *   $memberships = $cloudidentityService->groups_memberships;
  *  </code>
  */
 class GroupsMemberships extends \Google\Service\Resource
@@ -49,9 +50,8 @@ class GroupsMemberships extends \Google\Service\Resource
    *
    * @param string $parent [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the group to
-   * check the transitive membership in. Format: `groups/{group_id}`, where
-   * `group_id` is the unique id assigned to the Group to which the Membership
-   * belongs to.
+   * check the transitive membership in. Format: `groups/{group}`, where `group`
+   * is the unique id assigned to the Group to which the Membership belongs to.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string query Required. A CEL expression that MUST include member
@@ -60,6 +60,7 @@ class GroupsMemberships extends \Google\Service\Resource
    * requires an additional query input: 'member_key_namespace'. Example query:
    * `member_key_id == 'member_key_id_value'`
    * @return CheckTransitiveMembershipResponse
+   * @throws \Google\Service\Exception
    */
   public function checkTransitiveMembership($parent, $optParams = [])
   {
@@ -71,10 +72,11 @@ class GroupsMemberships extends \Google\Service\Resource
    * Creates a `Membership`. (memberships.create)
    *
    * @param string $parent Required. The parent `Group` resource under which to
-   * create the `Membership`. Must be of the form `groups/{group_id}`.
+   * create the `Membership`. Must be of the form `groups/{group}`.
    * @param Membership $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Membership $postBody, $optParams = [])
   {
@@ -88,9 +90,10 @@ class GroupsMemberships extends \Google\Service\Resource
    * @param string $name Required. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the
    * `Membership` to delete. Must be of the form
-   * `groups/{group_id}/memberships/{membership_id}`
+   * `groups/{group}/memberships/{membership}`
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -104,9 +107,10 @@ class GroupsMemberships extends \Google\Service\Resource
    * @param string $name Required. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the
    * `Membership` to retrieve. Must be of the form
-   * `groups/{group_id}/memberships/{membership_id}`.
+   * `groups/{group}/memberships/{membership}`.
    * @param array $optParams Optional parameters.
    * @return Membership
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -126,12 +130,12 @@ class GroupsMemberships extends \Google\Service\Resource
    *
    * @param string $parent Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the group to
-   * search transitive memberships in. Format: `groups/{group_id}`, where
-   * `group_id` is the unique ID assigned to the Group to which the Membership
-   * belongs to. group_id can be a wildcard collection id "-". When a group_id is
-   * specified, the membership graph will be constrained to paths between the
-   * member (defined in the query) and the parent. If a wildcard collection is
-   * provided, all membership paths connected to the member will be returned.
+   * search transitive memberships in. Format: `groups/{group}`, where `group` is
+   * the unique ID assigned to the Group to which the Membership belongs to. group
+   * can be a wildcard collection id "-". When a group is specified, the
+   * membership graph will be constrained to paths between the member (defined in
+   * the query) and the parent. If a wildcard collection is provided, all
+   * membership paths connected to the member will be returned.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string query Required. A CEL expression that MUST include member
@@ -140,6 +144,7 @@ class GroupsMemberships extends \Google\Service\Resource
    * query input: 'member_key_namespace'. Example query: `member_key_id ==
    * 'member_key_id_value' && in labels`
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function getMembershipGraph($parent, $optParams = [])
   {
@@ -151,7 +156,7 @@ class GroupsMemberships extends \Google\Service\Resource
    * Lists the `Membership`s within a `Group`. (memberships.listGroupsMemberships)
    *
    * @param string $parent Required. The parent `Group` resource under which to
-   * lookup the `Membership` name. Must be of the form `groups/{group_id}`.
+   * lookup the `Membership` name. Must be of the form `groups/{group}`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The maximum number of results to return. Note that
@@ -166,6 +171,7 @@ class GroupsMemberships extends \Google\Service\Resource
    * @opt_param string view The level of detail to be returned. If unspecified,
    * defaults to `View.BASIC`.
    * @return ListMembershipsResponse
+   * @throws \Google\Service\Exception
    */
   public function listGroupsMemberships($parent, $optParams = [])
   {
@@ -179,20 +185,23 @@ class GroupsMemberships extends \Google\Service\Resource
    * by its `EntityKey`. (memberships.lookup)
    *
    * @param string $parent Required. The parent `Group` resource under which to
-   * lookup the `Membership` name. Must be of the form `groups/{group_id}`.
+   * lookup the `Membership` name. Must be of the form `groups/{group}`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string memberKey.id The ID of the entity. For Google-managed
    * entities, the `id` should be the email address of an existing group or user.
-   * For external-identity-mapped entities, the `id` must be a string conforming
-   * to the Identity Source's requirements. Must be unique within a `namespace`.
+   * Email addresses need to adhere to [name guidelines for users and
+   * groups](https://support.google.com/a/answer/9193374). For external-identity-
+   * mapped entities, the `id` must be a string conforming to the Identity
+   * Source's requirements. Must be unique within a `namespace`.
    * @opt_param string memberKey.namespace The namespace in which the entity
    * exists. If not specified, the `EntityKey` represents a Google-managed entity
    * such as a Google user or a Google Group. If specified, the `EntityKey`
    * represents an external-identity-mapped group. The namespace must correspond
    * to an identity source created in Admin Console and must be in the form of
-   * `identitysources/{identity_source_id}`.
+   * `identitysources/{identity_source}`.
    * @return LookupMembershipNameResponse
+   * @throws \Google\Service\Exception
    */
   public function lookup($parent, $optParams = [])
   {
@@ -207,16 +216,52 @@ class GroupsMemberships extends \Google\Service\Resource
    * @param string $name Required. The [resource
    * name](https://cloud.google.com/apis/design/resource_names) of the
    * `Membership` whose roles are to be modified. Must be of the form
-   * `groups/{group_id}/memberships/{membership_id}`.
+   * `groups/{group}/memberships/{membership}`.
    * @param ModifyMembershipRolesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return ModifyMembershipRolesResponse
+   * @throws \Google\Service\Exception
    */
   public function modifyMembershipRoles($name, ModifyMembershipRolesRequest $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('modifyMembershipRoles', [$params], ModifyMembershipRolesResponse::class);
+  }
+  /**
+   * Searches direct groups of a member. (memberships.searchDirectGroups)
+   *
+   * @param string $parent [Resource
+   * name](https://cloud.google.com/apis/design/resource_names) of the group to
+   * search transitive memberships in. Format: groups/{group_id}, where group_id
+   * is always '-' as this API will search across all groups for a given member.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string orderBy The ordering of membership relation for the display
+   * name or email in the response. The syntax for this field can be found at
+   * https://cloud.google.com/apis/design/design_patterns#sorting_order. Example:
+   * Sort by the ascending display name: order_by="group_name" or
+   * order_by="group_name asc". Sort by the descending display name:
+   * order_by="group_name desc". Sort by the ascending group key:
+   * order_by="group_key" or order_by="group_key asc". Sort by the descending
+   * group key: order_by="group_key desc".
+   * @opt_param int pageSize The default page size is 200 (max 1000).
+   * @opt_param string pageToken The `next_page_token` value returned from a
+   * previous list request, if any
+   * @opt_param string query Required. A CEL expression that MUST include member
+   * specification AND label(s). Users can search on label attributes of groups.
+   * CONTAINS match ('in') is supported on labels. Identity-mapped groups are
+   * uniquely identified by both a `member_key_id` and a `member_key_namespace`,
+   * which requires an additional query input: `member_key_namespace`. Example
+   * query: `member_key_id == 'member_key_id_value' && 'label_value' in labels`
+   * @return SearchDirectGroupsResponse
+   * @throws \Google\Service\Exception
+   */
+  public function searchDirectGroups($parent, $optParams = [])
+  {
+    $params = ['parent' => $parent];
+    $params = array_merge($params, $optParams);
+    return $this->call('searchDirectGroups', [$params], SearchDirectGroupsResponse::class);
   }
   /**
    * Search transitive groups of a member. **Note:** This feature is only
@@ -229,13 +274,12 @@ class GroupsMemberships extends \Google\Service\Resource
    *
    * @param string $parent [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the group to
-   * search transitive memberships in. Format: `groups/{group_id}`, where
-   * `group_id` is always '-' as this API will search across all groups for a
-   * given member.
+   * search transitive memberships in. Format: `groups/{group}`, where `group` is
+   * always '-' as this API will search across all groups for a given member.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The default page size is 200 (max 1000).
-   * @opt_param string pageToken The next_page_token value returned from a
+   * @opt_param string pageToken The `next_page_token` value returned from a
    * previous list request, if any.
    * @opt_param string query Required. A CEL expression that MUST include member
    * specification AND label(s). This is a `required` field. Users can search on
@@ -243,8 +287,15 @@ class GroupsMemberships extends \Google\Service\Resource
    * Identity-mapped groups are uniquely identified by both a `member_key_id` and
    * a `member_key_namespace`, which requires an additional query input:
    * `member_key_namespace`. Example query: `member_key_id ==
-   * 'member_key_id_value' && in labels`
+   * 'member_key_id_value' && in labels` Query may optionally contain equality
+   * operators on the parent of the group restricting the search within a
+   * particular customer, e.g. `parent == 'customers/{customer_id}'`. The
+   * `customer_id` must begin with "C" (for example, 'C046psxkn'). This filtering
+   * is only supported for Admins with groups read permissions on the input
+   * customer. Example query: `member_key_id == 'member_key_id_value' && in labels
+   * && parent == 'customers/C046psxkn'`
    * @return SearchTransitiveGroupsResponse
+   * @throws \Google\Service\Exception
    */
   public function searchTransitiveGroups($parent, $optParams = [])
   {
@@ -263,14 +314,15 @@ class GroupsMemberships extends \Google\Service\Resource
    *
    * @param string $parent [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the group to
-   * search transitive memberships in. Format: `groups/{group_id}`, where
-   * `group_id` is the unique ID assigned to the Group.
+   * search transitive memberships in. Format: `groups/{group}`, where `group` is
+   * the unique ID assigned to the Group.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize The default page size is 200 (max 1000).
-   * @opt_param string pageToken The next_page_token value returned from a
+   * @opt_param string pageToken The `next_page_token` value returned from a
    * previous list request, if any.
    * @return SearchTransitiveMembershipsResponse
+   * @throws \Google\Service\Exception
    */
   public function searchTransitiveMemberships($parent, $optParams = [])
   {

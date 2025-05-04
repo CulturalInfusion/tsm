@@ -32,7 +32,7 @@ use Google\Service\Pubsub\UpdateSnapshotRequest;
  * Typical usage is:
  *  <code>
  *   $pubsubService = new Google\Service\Pubsub(...);
- *   $snapshots = $pubsubService->snapshots;
+ *   $snapshots = $pubsubService->projects_snapshots;
  *  </code>
  */
 class ProjectsSnapshots extends \Google\Service\Resource
@@ -49,19 +49,21 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
    * If the name is not provided in the request, the server will assign a random
    * name for this snapshot on the same project as the subscription, conforming to
-   * the [resource name format]
-   * (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
-   * name is populated in the returned Snapshot object. Note that for REST API
-   * requests, you must specify a name in the request. (snapshots.create)
+   * the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-
+   * basics#resource_names). The generated name is populated in the returned
+   * Snapshot object. Note that for REST API requests, you must specify a name in
+   * the request. (snapshots.create)
    *
    * @param string $name Required. User-provided name for this snapshot. If the
    * name is not provided in the request, the server will assign a random name for
    * this snapshot on the same project as the subscription. Note that for REST API
-   * requests, you must specify a name. See the resource name rules. Format is
-   * `projects/{project}/snapshots/{snap}`.
+   * requests, you must specify a name. See the [resource name
+   * rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
+   * Format is `projects/{project}/snapshots/{snap}`.
    * @param CreateSnapshotRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Snapshot
+   * @throws \Google\Service\Exception
    */
   public function create($name, CreateSnapshotRequest $postBody, $optParams = [])
   {
@@ -84,6 +86,7 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * is `projects/{project}/snapshots/{snap}`.
    * @param array $optParams Optional parameters.
    * @return PubsubEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($snapshot, $optParams = [])
   {
@@ -92,15 +95,17 @@ class ProjectsSnapshots extends \Google\Service\Resource
     return $this->call('delete', [$params], PubsubEmpty::class);
   }
   /**
-   * Gets the configuration details of a snapshot. Snapshots are used in Seek
-   * operations, which allow you to manage message acknowledgments in bulk. That
-   * is, you can set the acknowledgment state of messages in an existing
-   * subscription to the state captured by a snapshot. (snapshots.get)
+   * Gets the configuration details of a snapshot. Snapshots are used in
+   * [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+   * which allow you to manage message acknowledgments in bulk. That is, you can
+   * set the acknowledgment state of messages in an existing subscription to the
+   * state captured by a snapshot. (snapshots.get)
    *
    * @param string $snapshot Required. The name of the snapshot to get. Format is
    * `projects/{project}/snapshots/{snap}`.
    * @param array $optParams Optional parameters.
    * @return Snapshot
+   * @throws \Google\Service\Exception
    */
   public function get($snapshot, $optParams = [])
   {
@@ -113,19 +118,25 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * resource exists and does not have a policy set. (snapshots.getIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * requested. See the operation documentation for the appropriate value for this
-   * field.
+   * requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
-   * invalid value will be rejected. Requests for policies with any conditional
-   * bindings must specify version 3. Policies without any conditional bindings
-   * may specify any valid value or leave the field unset. To learn which
-   * resources support conditions in their IAM policies, see the [IAM
+   * @opt_param int options.requestedPolicyVersion Optional. The maximum policy
+   * version that will be used to format the policy. Valid values are 0, 1, and 3.
+   * Requests specifying an invalid value will be rejected. Requests for policies
+   * with any conditional role bindings must specify version 3. Policies with no
+   * conditional role bindings may specify any valid value or leave the field
+   * unset. The policy in the response might use the policy version that you
+   * specified, or it might use a lower policy version. For example, if you
+   * specify version 3, but the policy has no conditional role bindings, the
+   * response uses version 1. To learn which resources support conditions in their
+   * IAM policies, see the [IAM
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -144,12 +155,13 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * snapshots. Format is `projects/{project-id}`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Maximum number of snapshots to return.
-   * @opt_param string pageToken The value returned by the last
+   * @opt_param int pageSize Optional. Maximum number of snapshots to return.
+   * @opt_param string pageToken Optional. The value returned by the last
    * `ListSnapshotsResponse`; indicates that this is a continuation of a prior
    * `ListSnapshots` call, and that the system should return the next page of
    * data.
    * @return ListSnapshotsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsSnapshots($project, $optParams = [])
   {
@@ -158,15 +170,18 @@ class ProjectsSnapshots extends \Google\Service\Resource
     return $this->call('list', [$params], ListSnapshotsResponse::class);
   }
   /**
-   * Updates an existing snapshot. Snapshots are used in Seek operations, which
-   * allow you to manage message acknowledgments in bulk. That is, you can set the
-   * acknowledgment state of messages in an existing subscription to the state
-   * captured by a snapshot. (snapshots.patch)
+   * Updates an existing snapshot by updating the fields specified in the update
+   * mask. Snapshots are used in
+   * [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+   * which allow you to manage message acknowledgments in bulk. That is, you can
+   * set the acknowledgment state of messages in an existing subscription to the
+   * state captured by a snapshot. (snapshots.patch)
    *
-   * @param string $name The name of the snapshot.
+   * @param string $name Optional. The name of the snapshot.
    * @param UpdateSnapshotRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Snapshot
+   * @throws \Google\Service\Exception
    */
   public function patch($name, UpdateSnapshotRequest $postBody, $optParams = [])
   {
@@ -180,11 +195,13 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * `PERMISSION_DENIED` errors. (snapshots.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
-   * specified. See the operation documentation for the appropriate value for this
-   * field.
+   * specified. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -201,11 +218,13 @@ class ProjectsSnapshots extends \Google\Service\Resource
    * (snapshots.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
-   * being requested. See the operation documentation for the appropriate value
-   * for this field.
+   * being requested. See [Resource
+   * names](https://cloud.google.com/apis/design/resource_names) for the
+   * appropriate value for this field.
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

@@ -21,6 +21,10 @@ class ReportRuntimeEventRequest extends \Google\Model
 {
   protected $eventType = Event::class;
   protected $eventDataType = '';
+  public $event;
+  /**
+   * @var string
+   */
   public $vmId;
 
   /**
@@ -37,10 +41,16 @@ class ReportRuntimeEventRequest extends \Google\Model
   {
     return $this->event;
   }
+  /**
+   * @param string
+   */
   public function setVmId($vmId)
   {
     $this->vmId = $vmId;
   }
+  /**
+   * @return string
+   */
   public function getVmId()
   {
     return $this->vmId;

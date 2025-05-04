@@ -31,13 +31,14 @@ use Google\Service\PolicyTroubleshooter\GoogleCloudPolicytroubleshooterV1Trouble
 class Iam extends \Google\Service\Resource
 {
   /**
-   * Checks whether a member has a specific permission for a specific resource,
-   * and explains why the member does or does not have that permission.
+   * Checks whether a principal has a specific permission for a specific resource,
+   * and explains why the principal does or does not have that permission.
    * (iam.troubleshoot)
    *
    * @param GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
+   * @throws \Google\Service\Exception
    */
   public function troubleshoot(GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest $postBody, $optParams = [])
   {

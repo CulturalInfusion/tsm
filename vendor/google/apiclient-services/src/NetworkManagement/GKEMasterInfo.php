@@ -19,39 +19,93 @@ namespace Google\Service\NetworkManagement;
 
 class GKEMasterInfo extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $clusterNetworkUri;
+  /**
+   * @var string
+   */
   public $clusterUri;
+  /**
+   * @var string
+   */
+  public $dnsEndpoint;
+  /**
+   * @var string
+   */
   public $externalIp;
+  /**
+   * @var string
+   */
   public $internalIp;
 
+  /**
+   * @param string
+   */
   public function setClusterNetworkUri($clusterNetworkUri)
   {
     $this->clusterNetworkUri = $clusterNetworkUri;
   }
+  /**
+   * @return string
+   */
   public function getClusterNetworkUri()
   {
     return $this->clusterNetworkUri;
   }
+  /**
+   * @param string
+   */
   public function setClusterUri($clusterUri)
   {
     $this->clusterUri = $clusterUri;
   }
+  /**
+   * @return string
+   */
   public function getClusterUri()
   {
     return $this->clusterUri;
   }
+  /**
+   * @param string
+   */
+  public function setDnsEndpoint($dnsEndpoint)
+  {
+    $this->dnsEndpoint = $dnsEndpoint;
+  }
+  /**
+   * @return string
+   */
+  public function getDnsEndpoint()
+  {
+    return $this->dnsEndpoint;
+  }
+  /**
+   * @param string
+   */
   public function setExternalIp($externalIp)
   {
     $this->externalIp = $externalIp;
   }
+  /**
+   * @return string
+   */
   public function getExternalIp()
   {
     return $this->externalIp;
   }
+  /**
+   * @param string
+   */
   public function setInternalIp($internalIp)
   {
     $this->internalIp = $internalIp;
   }
+  /**
+   * @return string
+   */
   public function getInternalIp()
   {
     return $this->internalIp;

@@ -17,38 +17,87 @@
 
 namespace Google\Service\CloudRetail;
 
-class GoogleCloudRetailV2SearchResponseSearchResult extends \Google\Model
+class GoogleCloudRetailV2SearchResponseSearchResult extends \Google\Collection
 {
+  protected $collection_key = 'personalLabels';
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var int
+   */
   public $matchingVariantCount;
+  /**
+   * @var string[]
+   */
   public $matchingVariantFields;
+  /**
+   * @var string[]
+   */
+  public $personalLabels;
   protected $productType = GoogleCloudRetailV2Product::class;
   protected $productDataType = '';
+  /**
+   * @var array[]
+   */
   public $variantRollupValues;
 
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param int
+   */
   public function setMatchingVariantCount($matchingVariantCount)
   {
     $this->matchingVariantCount = $matchingVariantCount;
   }
+  /**
+   * @return int
+   */
   public function getMatchingVariantCount()
   {
     return $this->matchingVariantCount;
   }
+  /**
+   * @param string[]
+   */
   public function setMatchingVariantFields($matchingVariantFields)
   {
     $this->matchingVariantFields = $matchingVariantFields;
   }
+  /**
+   * @return string[]
+   */
   public function getMatchingVariantFields()
   {
     return $this->matchingVariantFields;
+  }
+  /**
+   * @param string[]
+   */
+  public function setPersonalLabels($personalLabels)
+  {
+    $this->personalLabels = $personalLabels;
+  }
+  /**
+   * @return string[]
+   */
+  public function getPersonalLabels()
+  {
+    return $this->personalLabels;
   }
   /**
    * @param GoogleCloudRetailV2Product
@@ -64,10 +113,16 @@ class GoogleCloudRetailV2SearchResponseSearchResult extends \Google\Model
   {
     return $this->product;
   }
+  /**
+   * @param array[]
+   */
   public function setVariantRollupValues($variantRollupValues)
   {
     $this->variantRollupValues = $variantRollupValues;
   }
+  /**
+   * @return array[]
+   */
   public function getVariantRollupValues()
   {
     return $this->variantRollupValues;

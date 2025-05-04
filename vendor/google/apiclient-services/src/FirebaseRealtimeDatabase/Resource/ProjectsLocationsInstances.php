@@ -21,13 +21,14 @@ use Google\Service\FirebaseRealtimeDatabase\DatabaseInstance;
 use Google\Service\FirebaseRealtimeDatabase\DisableDatabaseInstanceRequest;
 use Google\Service\FirebaseRealtimeDatabase\ListDatabaseInstancesResponse;
 use Google\Service\FirebaseRealtimeDatabase\ReenableDatabaseInstanceRequest;
+use Google\Service\FirebaseRealtimeDatabase\UndeleteDatabaseInstanceRequest;
 
 /**
  * The "instances" collection of methods.
  * Typical usage is:
  *  <code>
  *   $firebasedatabaseService = new Google\Service\FirebaseRealtimeDatabase(...);
- *   $instances = $firebasedatabaseService->instances;
+ *   $instances = $firebasedatabaseService->projects_locations_instances;
  *  </code>
  */
 class ProjectsLocationsInstances extends \Google\Service\Resource
@@ -40,8 +41,9 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * might take a few minutes for billing enablement state to propagate to
    * Firebase systems. (instances.create)
    *
-   * @param string $parent The parent project for which to create a database
-   * instance, in the form: `projects/{project-number}/locations/{location-id}`.
+   * @param string $parent Required. The parent project for which to create a
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}`.
    * @param DatabaseInstance $postBody
    * @param array $optParams Optional parameters.
    *
@@ -50,6 +52,7 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * @opt_param bool validateOnly When set to true, the request will be validated
    * but not submitted.
    * @return DatabaseInstance
+   * @throws \Google\Service\Exception
    */
   public function create($parent, DatabaseInstance $postBody, $optParams = [])
   {
@@ -58,16 +61,18 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
     return $this->call('create', [$params], DatabaseInstance::class);
   }
   /**
-   * Marks a DatabaseInstance to be deleted. The DatabaseInstance will be purged
-   * within 30 days. The default database cannot be deleted. IDs for deleted
-   * database instances may never be recovered or re-used. The Database may only
-   * be deleted if it is already in a DISABLED state. (instances.delete)
+   * Marks a DatabaseInstance to be deleted. The DatabaseInstance will be set to
+   * the DELETED state for 20 days, and will be purged within 30 days. The default
+   * database cannot be deleted. IDs for deleted database instances may never be
+   * recovered or re-used. The Database may only be deleted if it is already in a
+   * DISABLED state. (instances.delete)
    *
-   * @param string $name The fully qualified resource name of the database
-   * instance, in the form: `projects/{project-number}/locations/{location-
-   * id}/instances/{database-id}`
+   * @param string $name Required. The fully qualified resource name of the
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}/instances/{database-id}`
    * @param array $optParams Optional parameters.
    * @return DatabaseInstance
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -81,12 +86,13 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * are denied, including view access in the Firebase console.
    * (instances.disable)
    *
-   * @param string $name The fully qualified resource name of the database
-   * instance, in the form: `projects/{project-number}/locations/{location-
-   * id}/instances/{database-id}`
+   * @param string $name Required. The fully qualified resource name of the
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}/instances/{database-id}`
    * @param DisableDatabaseInstanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return DatabaseInstance
+   * @throws \Google\Service\Exception
    */
   public function disable($name, DisableDatabaseInstanceRequest $postBody, $optParams = [])
   {
@@ -98,15 +104,17 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * Gets the DatabaseInstance identified by the specified resource name.
    * (instances.get)
    *
-   * @param string $name The fully qualified resource name of the database
-   * instance, in the form: `projects/{project-number}/locations/{location-
-   * id}/instances/{database-id}`. `database-id` is a globally unique identifier
-   * across all parent collections. For convenience, this method allows you to
-   * supply `-` as a wildcard character in place of specific collections under
-   * `projects` and `locations`. The resulting wildcarding form of the method is:
+   * @param string $name Required. The fully qualified resource name of the
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}/instances/{database-id}`. `database-id` is a
+   * globally unique identifier across all parent collections. For convenience,
+   * this method allows you to supply `-` as a wildcard character in place of
+   * specific collections under `projects` and `locations`. The resulting
+   * wildcarding form of the method is:
    * `projects/-/locations/-/instances/{database-id}`.
    * @param array $optParams Optional parameters.
    * @return DatabaseInstance
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -122,7 +130,7 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * results may be stale by a few seconds. Use GetDatabaseInstance for consistent
    * reads. (instances.listProjectsLocationsInstances)
    *
-   * @param string $parent The parent project for which to list database
+   * @param string $parent Required. The parent project for which to list database
    * instances, in the form: `projects/{project-number}/locations/{location-id}`
    * To list across all locations, use a parent in the form: `projects/{project-
    * number}/locations/-`
@@ -135,7 +143,10 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * @opt_param string pageToken Token returned from a previous call to
    * `ListDatabaseInstances` indicating where in the set of database instances to
    * resume listing.
+   * @opt_param bool showDeleted Indicate that DatabaseInstances in the `DELETED`
+   * state should also be returned.
    * @return ListDatabaseInstancesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsInstances($parent, $optParams = [])
   {
@@ -148,18 +159,41 @@ class ProjectsLocationsInstances extends \Google\Service\Resource
    * using DisableDatabaseInstance. The state of a successfully reenabled
    * DatabaseInstance is ACTIVE. (instances.reenable)
    *
-   * @param string $name The fully qualified resource name of the database
-   * instance, in the form: `projects/{project-number}/locations/{location-
-   * id}/instances/{database-id}`
+   * @param string $name Required. The fully qualified resource name of the
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}/instances/{database-id}`
    * @param ReenableDatabaseInstanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return DatabaseInstance
+   * @throws \Google\Service\Exception
    */
   public function reenable($name, ReenableDatabaseInstanceRequest $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('reenable', [$params], DatabaseInstance::class);
+  }
+  /**
+   * Restores a DatabaseInstance that was previously marked to be deleted. After
+   * the delete method is used, DatabaseInstances are set to the DELETED state for
+   * 20 days, and will be purged within 30 days. Databases in the DELETED state
+   * can be undeleted without losing any data. This method may only be used on a
+   * DatabaseInstance in the DELETED state. Purged DatabaseInstances may not be
+   * recovered. (instances.undelete)
+   *
+   * @param string $name Required. The fully qualified resource name of the
+   * database instance, in the form: `projects/{project-
+   * number}/locations/{location-id}/instances/{database-id}`
+   * @param UndeleteDatabaseInstanceRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return DatabaseInstance
+   * @throws \Google\Service\Exception
+   */
+  public function undelete($name, UndeleteDatabaseInstanceRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('undelete', [$params], DatabaseInstance::class);
   }
 }
 

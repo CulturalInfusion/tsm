@@ -25,15 +25,15 @@ use Google\Service\Monitoring\CreateCollectdTimeSeriesResponse;
  * Typical usage is:
  *  <code>
  *   $monitoringService = new Google\Service\Monitoring(...);
- *   $collectdTimeSeries = $monitoringService->collectdTimeSeries;
+ *   $collectdTimeSeries = $monitoringService->projects_collectdTimeSeries;
  *  </code>
  */
 class ProjectsCollectdTimeSeries extends \Google\Service\Resource
 {
   /**
-   * Stackdriver Monitoring Agent only: Creates a new time series.This method is
-   * only for use by the Stackdriver Monitoring Agent. Use
-   * projects.timeSeries.create instead. (collectdTimeSeries.create)
+   * Cloud Monitoring Agent only: Creates a new time series.This method is only
+   * for use by the Cloud Monitoring Agent. Use projects.timeSeries.create
+   * instead. (collectdTimeSeries.create)
    *
    * @param string $name The project
    * (https://cloud.google.com/monitoring/api/v3#project_name) in which to create
@@ -41,6 +41,7 @@ class ProjectsCollectdTimeSeries extends \Google\Service\Resource
    * @param CreateCollectdTimeSeriesRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CreateCollectdTimeSeriesResponse
+   * @throws \Google\Service\Exception
    */
   public function create($name, CreateCollectdTimeSeriesRequest $postBody, $optParams = [])
   {

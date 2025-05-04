@@ -44,6 +44,9 @@ class Lodging extends \Google\Collection
   protected $housekeepingDataType = '';
   protected $metadataType = LodgingMetadata::class;
   protected $metadataDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   protected $parkingType = Parking::class;
   protected $parkingDataType = '';
@@ -59,6 +62,8 @@ class Lodging extends \Google\Collection
   protected $servicesDataType = '';
   protected $someUnitsType = GuestUnitFeatures::class;
   protected $someUnitsDataType = '';
+  protected $sustainabilityType = Sustainability::class;
+  protected $sustainabilityDataType = '';
   protected $transportationType = Transportation::class;
   protected $transportationDataType = '';
   protected $wellnessType = Wellness::class;
@@ -232,10 +237,16 @@ class Lodging extends \Google\Collection
   {
     return $this->metadata;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -337,6 +348,20 @@ class Lodging extends \Google\Collection
   public function getSomeUnits()
   {
     return $this->someUnits;
+  }
+  /**
+   * @param Sustainability
+   */
+  public function setSustainability(Sustainability $sustainability)
+  {
+    $this->sustainability = $sustainability;
+  }
+  /**
+   * @return Sustainability
+   */
+  public function getSustainability()
+  {
+    return $this->sustainability;
   }
   /**
    * @param Transportation

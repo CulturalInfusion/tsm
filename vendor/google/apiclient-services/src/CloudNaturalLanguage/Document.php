@@ -19,39 +19,75 @@ namespace Google\Service\CloudNaturalLanguage;
 
 class Document extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $content;
+  /**
+   * @var string
+   */
   public $gcsContentUri;
-  public $language;
+  /**
+   * @var string
+   */
+  public $languageCode;
+  /**
+   * @var string
+   */
   public $type;
 
+  /**
+   * @param string
+   */
   public function setContent($content)
   {
     $this->content = $content;
   }
+  /**
+   * @return string
+   */
   public function getContent()
   {
     return $this->content;
   }
+  /**
+   * @param string
+   */
   public function setGcsContentUri($gcsContentUri)
   {
     $this->gcsContentUri = $gcsContentUri;
   }
+  /**
+   * @return string
+   */
   public function getGcsContentUri()
   {
     return $this->gcsContentUri;
   }
-  public function setLanguage($language)
+  /**
+   * @param string
+   */
+  public function setLanguageCode($languageCode)
   {
-    $this->language = $language;
+    $this->languageCode = $languageCode;
   }
-  public function getLanguage()
+  /**
+   * @return string
+   */
+  public function getLanguageCode()
   {
-    return $this->language;
+    return $this->languageCode;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;

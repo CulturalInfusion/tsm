@@ -24,19 +24,45 @@ class TestMatrix extends \Google\Collection
   protected $clientInfoDataType = '';
   protected $environmentMatrixType = EnvironmentMatrix::class;
   protected $environmentMatrixDataType = '';
+  protected $extendedInvalidMatrixDetailsType = MatrixErrorDetail::class;
+  protected $extendedInvalidMatrixDetailsDataType = 'array';
+  /**
+   * @var bool
+   */
   public $failFast;
+  /**
+   * @var int
+   */
   public $flakyTestAttempts;
+  /**
+   * @var string
+   */
   public $invalidMatrixDetails;
+  /**
+   * @var string
+   */
   public $outcomeSummary;
+  /**
+   * @var string
+   */
   public $projectId;
   protected $resultStorageType = ResultStorage::class;
   protected $resultStorageDataType = '';
+  /**
+   * @var string
+   */
   public $state;
   protected $testExecutionsType = TestExecution::class;
   protected $testExecutionsDataType = 'array';
+  /**
+   * @var string
+   */
   public $testMatrixId;
   protected $testSpecificationType = TestSpecification::class;
   protected $testSpecificationDataType = '';
+  /**
+   * @var string
+   */
   public $timestamp;
 
   /**
@@ -67,42 +93,86 @@ class TestMatrix extends \Google\Collection
   {
     return $this->environmentMatrix;
   }
+  /**
+   * @param MatrixErrorDetail[]
+   */
+  public function setExtendedInvalidMatrixDetails($extendedInvalidMatrixDetails)
+  {
+    $this->extendedInvalidMatrixDetails = $extendedInvalidMatrixDetails;
+  }
+  /**
+   * @return MatrixErrorDetail[]
+   */
+  public function getExtendedInvalidMatrixDetails()
+  {
+    return $this->extendedInvalidMatrixDetails;
+  }
+  /**
+   * @param bool
+   */
   public function setFailFast($failFast)
   {
     $this->failFast = $failFast;
   }
+  /**
+   * @return bool
+   */
   public function getFailFast()
   {
     return $this->failFast;
   }
+  /**
+   * @param int
+   */
   public function setFlakyTestAttempts($flakyTestAttempts)
   {
     $this->flakyTestAttempts = $flakyTestAttempts;
   }
+  /**
+   * @return int
+   */
   public function getFlakyTestAttempts()
   {
     return $this->flakyTestAttempts;
   }
+  /**
+   * @param string
+   */
   public function setInvalidMatrixDetails($invalidMatrixDetails)
   {
     $this->invalidMatrixDetails = $invalidMatrixDetails;
   }
+  /**
+   * @return string
+   */
   public function getInvalidMatrixDetails()
   {
     return $this->invalidMatrixDetails;
   }
+  /**
+   * @param string
+   */
   public function setOutcomeSummary($outcomeSummary)
   {
     $this->outcomeSummary = $outcomeSummary;
   }
+  /**
+   * @return string
+   */
   public function getOutcomeSummary()
   {
     return $this->outcomeSummary;
   }
+  /**
+   * @param string
+   */
   public function setProjectId($projectId)
   {
     $this->projectId = $projectId;
   }
+  /**
+   * @return string
+   */
   public function getProjectId()
   {
     return $this->projectId;
@@ -121,10 +191,16 @@ class TestMatrix extends \Google\Collection
   {
     return $this->resultStorage;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
@@ -143,10 +219,16 @@ class TestMatrix extends \Google\Collection
   {
     return $this->testExecutions;
   }
+  /**
+   * @param string
+   */
   public function setTestMatrixId($testMatrixId)
   {
     $this->testMatrixId = $testMatrixId;
   }
+  /**
+   * @return string
+   */
   public function getTestMatrixId()
   {
     return $this->testMatrixId;
@@ -165,10 +247,16 @@ class TestMatrix extends \Google\Collection
   {
     return $this->testSpecification;
   }
+  /**
+   * @param string
+   */
   public function setTimestamp($timestamp)
   {
     $this->timestamp = $timestamp;
   }
+  /**
+   * @return string
+   */
   public function getTimestamp()
   {
     return $this->timestamp;

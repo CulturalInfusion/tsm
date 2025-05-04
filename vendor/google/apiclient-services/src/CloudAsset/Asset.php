@@ -24,21 +24,35 @@ class Asset extends \Google\Collection
   protected $accessLevelDataType = '';
   protected $accessPolicyType = GoogleIdentityAccesscontextmanagerV1AccessPolicy::class;
   protected $accessPolicyDataType = '';
+  /**
+   * @var string[]
+   */
   public $ancestors;
+  /**
+   * @var string
+   */
   public $assetType;
   protected $iamPolicyType = Policy::class;
   protected $iamPolicyDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   protected $orgPolicyType = GoogleCloudOrgpolicyV1Policy::class;
   protected $orgPolicyDataType = 'array';
   protected $osInventoryType = Inventory::class;
   protected $osInventoryDataType = '';
+  protected $relatedAssetType = RelatedAsset::class;
+  protected $relatedAssetDataType = '';
   protected $relatedAssetsType = RelatedAssets::class;
   protected $relatedAssetsDataType = '';
   protected $resourceType = CloudassetResource::class;
   protected $resourceDataType = '';
   protected $servicePerimeterType = GoogleIdentityAccesscontextmanagerV1ServicePerimeter::class;
   protected $servicePerimeterDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
 
   /**
@@ -69,18 +83,30 @@ class Asset extends \Google\Collection
   {
     return $this->accessPolicy;
   }
+  /**
+   * @param string[]
+   */
   public function setAncestors($ancestors)
   {
     $this->ancestors = $ancestors;
   }
+  /**
+   * @return string[]
+   */
   public function getAncestors()
   {
     return $this->ancestors;
   }
+  /**
+   * @param string
+   */
   public function setAssetType($assetType)
   {
     $this->assetType = $assetType;
   }
+  /**
+   * @return string
+   */
   public function getAssetType()
   {
     return $this->assetType;
@@ -99,10 +125,16 @@ class Asset extends \Google\Collection
   {
     return $this->iamPolicy;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -134,6 +166,20 @@ class Asset extends \Google\Collection
   public function getOsInventory()
   {
     return $this->osInventory;
+  }
+  /**
+   * @param RelatedAsset
+   */
+  public function setRelatedAsset(RelatedAsset $relatedAsset)
+  {
+    $this->relatedAsset = $relatedAsset;
+  }
+  /**
+   * @return RelatedAsset
+   */
+  public function getRelatedAsset()
+  {
+    return $this->relatedAsset;
   }
   /**
    * @param RelatedAssets
@@ -177,10 +223,16 @@ class Asset extends \Google\Collection
   {
     return $this->servicePerimeter;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

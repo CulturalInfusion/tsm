@@ -25,7 +25,7 @@ use Google\Client;
  * <p>
  * Allows external bidders to manage their RTB integration with Google. This
  * includes managing bidder endpoints, QPS quotas, configuring what ad inventory
- * to receive via pretargeting, submitting creatives for verification, and
+ * to receive with pretargeting, submitting creatives for verification, and
  * accessing creative metadata such as approval status.</p>
  *
  * <p>
@@ -45,9 +45,11 @@ class RealTimeBidding extends \Google\Service
   public $bidders_creatives;
   public $bidders_endpoints;
   public $bidders_pretargetingConfigs;
+  public $bidders_publisherConnections;
   public $buyers;
   public $buyers_creatives;
   public $buyers_userLists;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the RealTimeBidding service.
@@ -60,6 +62,7 @@ class RealTimeBidding extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://realtimebidding.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://realtimebidding.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -174,6 +177,20 @@ class RealTimeBidding extends \Google\Service
                   'type' => 'integer',
                 ],
                 'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -328,6 +345,72 @@ class RealTimeBidding extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->bidders_publisherConnections = new RealTimeBidding\Resource\BiddersPublisherConnections(
+        $this,
+        $this->serviceName,
+        'publisherConnections',
+        [
+          'methods' => [
+            'batchApprove' => [
+              'path' => 'v1/{+parent}/publisherConnections:batchApprove',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'batchReject' => [
+              'path' => 'v1/{+parent}/publisherConnections:batchReject',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/publisherConnections',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'orderBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],

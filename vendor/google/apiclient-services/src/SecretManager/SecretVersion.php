@@ -19,42 +19,119 @@ namespace Google\Service\SecretManager;
 
 class SecretVersion extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $clientSpecifiedPayloadChecksum;
+  /**
+   * @var string
+   */
   public $createTime;
+  protected $customerManagedEncryptionType = CustomerManagedEncryptionStatus::class;
+  protected $customerManagedEncryptionDataType = '';
+  /**
+   * @var string
+   */
   public $destroyTime;
+  /**
+   * @var string
+   */
   public $etag;
+  /**
+   * @var string
+   */
   public $name;
   protected $replicationStatusType = ReplicationStatus::class;
   protected $replicationStatusDataType = '';
+  /**
+   * @var string
+   */
+  public $scheduledDestroyTime;
+  /**
+   * @var string
+   */
   public $state;
 
+  /**
+   * @param bool
+   */
+  public function setClientSpecifiedPayloadChecksum($clientSpecifiedPayloadChecksum)
+  {
+    $this->clientSpecifiedPayloadChecksum = $clientSpecifiedPayloadChecksum;
+  }
+  /**
+   * @return bool
+   */
+  public function getClientSpecifiedPayloadChecksum()
+  {
+    return $this->clientSpecifiedPayloadChecksum;
+  }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param CustomerManagedEncryptionStatus
+   */
+  public function setCustomerManagedEncryption(CustomerManagedEncryptionStatus $customerManagedEncryption)
+  {
+    $this->customerManagedEncryption = $customerManagedEncryption;
+  }
+  /**
+   * @return CustomerManagedEncryptionStatus
+   */
+  public function getCustomerManagedEncryption()
+  {
+    return $this->customerManagedEncryption;
+  }
+  /**
+   * @param string
+   */
   public function setDestroyTime($destroyTime)
   {
     $this->destroyTime = $destroyTime;
   }
+  /**
+   * @return string
+   */
   public function getDestroyTime()
   {
     return $this->destroyTime;
   }
+  /**
+   * @param string
+   */
   public function setEtag($etag)
   {
     $this->etag = $etag;
   }
+  /**
+   * @return string
+   */
   public function getEtag()
   {
     return $this->etag;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -73,10 +150,30 @@ class SecretVersion extends \Google\Model
   {
     return $this->replicationStatus;
   }
+  /**
+   * @param string
+   */
+  public function setScheduledDestroyTime($scheduledDestroyTime)
+  {
+    $this->scheduledDestroyTime = $scheduledDestroyTime;
+  }
+  /**
+   * @return string
+   */
+  public function getScheduledDestroyTime()
+  {
+    return $this->scheduledDestroyTime;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;

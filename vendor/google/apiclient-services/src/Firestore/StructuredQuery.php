@@ -22,9 +22,17 @@ class StructuredQuery extends \Google\Collection
   protected $collection_key = 'orderBy';
   protected $endAtType = Cursor::class;
   protected $endAtDataType = '';
+  protected $findNearestType = FindNearest::class;
+  protected $findNearestDataType = '';
   protected $fromType = CollectionSelector::class;
   protected $fromDataType = 'array';
+  /**
+   * @var int
+   */
   public $limit;
+  /**
+   * @var int
+   */
   public $offset;
   protected $orderByType = Order::class;
   protected $orderByDataType = 'array';
@@ -50,6 +58,20 @@ class StructuredQuery extends \Google\Collection
     return $this->endAt;
   }
   /**
+   * @param FindNearest
+   */
+  public function setFindNearest(FindNearest $findNearest)
+  {
+    $this->findNearest = $findNearest;
+  }
+  /**
+   * @return FindNearest
+   */
+  public function getFindNearest()
+  {
+    return $this->findNearest;
+  }
+  /**
    * @param CollectionSelector[]
    */
   public function setFrom($from)
@@ -63,18 +85,30 @@ class StructuredQuery extends \Google\Collection
   {
     return $this->from;
   }
+  /**
+   * @param int
+   */
   public function setLimit($limit)
   {
     $this->limit = $limit;
   }
+  /**
+   * @return int
+   */
   public function getLimit()
   {
     return $this->limit;
   }
+  /**
+   * @param int
+   */
   public function setOffset($offset)
   {
     $this->offset = $offset;
   }
+  /**
+   * @return int
+   */
   public function getOffset()
   {
     return $this->offset;

@@ -20,14 +20,41 @@ namespace Google\Service\Datastore;
 class CommitResponse extends \Google\Collection
 {
   protected $collection_key = 'mutationResults';
+  /**
+   * @var string
+   */
+  public $commitTime;
+  /**
+   * @var int
+   */
   public $indexUpdates;
   protected $mutationResultsType = MutationResult::class;
   protected $mutationResultsDataType = 'array';
 
+  /**
+   * @param string
+   */
+  public function setCommitTime($commitTime)
+  {
+    $this->commitTime = $commitTime;
+  }
+  /**
+   * @return string
+   */
+  public function getCommitTime()
+  {
+    return $this->commitTime;
+  }
+  /**
+   * @param int
+   */
   public function setIndexUpdates($indexUpdates)
   {
     $this->indexUpdates = $indexUpdates;
   }
+  /**
+   * @return int
+   */
   public function getIndexUpdates()
   {
     return $this->indexUpdates;

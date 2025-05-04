@@ -20,24 +20,108 @@ namespace Google\Service\CloudComposer;
 class NodeConfig extends \Google\Collection
 {
   protected $collection_key = 'tags';
+  /**
+   * @var string
+   */
+  public $composerInternalIpv4CidrBlock;
+  /**
+   * @var string
+   */
+  public $composerNetworkAttachment;
+  /**
+   * @var int
+   */
   public $diskSizeGb;
+  /**
+   * @var bool
+   */
+  public $enableIpMasqAgent;
   protected $ipAllocationPolicyType = IPAllocationPolicy::class;
   protected $ipAllocationPolicyDataType = '';
+  /**
+   * @var string
+   */
   public $location;
+  /**
+   * @var string
+   */
   public $machineType;
+  /**
+   * @var string
+   */
   public $network;
+  /**
+   * @var string[]
+   */
   public $oauthScopes;
+  /**
+   * @var string
+   */
   public $serviceAccount;
+  /**
+   * @var string
+   */
   public $subnetwork;
+  /**
+   * @var string[]
+   */
   public $tags;
 
+  /**
+   * @param string
+   */
+  public function setComposerInternalIpv4CidrBlock($composerInternalIpv4CidrBlock)
+  {
+    $this->composerInternalIpv4CidrBlock = $composerInternalIpv4CidrBlock;
+  }
+  /**
+   * @return string
+   */
+  public function getComposerInternalIpv4CidrBlock()
+  {
+    return $this->composerInternalIpv4CidrBlock;
+  }
+  /**
+   * @param string
+   */
+  public function setComposerNetworkAttachment($composerNetworkAttachment)
+  {
+    $this->composerNetworkAttachment = $composerNetworkAttachment;
+  }
+  /**
+   * @return string
+   */
+  public function getComposerNetworkAttachment()
+  {
+    return $this->composerNetworkAttachment;
+  }
+  /**
+   * @param int
+   */
   public function setDiskSizeGb($diskSizeGb)
   {
     $this->diskSizeGb = $diskSizeGb;
   }
+  /**
+   * @return int
+   */
   public function getDiskSizeGb()
   {
     return $this->diskSizeGb;
+  }
+  /**
+   * @param bool
+   */
+  public function setEnableIpMasqAgent($enableIpMasqAgent)
+  {
+    $this->enableIpMasqAgent = $enableIpMasqAgent;
+  }
+  /**
+   * @return bool
+   */
+  public function getEnableIpMasqAgent()
+  {
+    return $this->enableIpMasqAgent;
   }
   /**
    * @param IPAllocationPolicy
@@ -53,58 +137,100 @@ class NodeConfig extends \Google\Collection
   {
     return $this->ipAllocationPolicy;
   }
+  /**
+   * @param string
+   */
   public function setLocation($location)
   {
     $this->location = $location;
   }
+  /**
+   * @return string
+   */
   public function getLocation()
   {
     return $this->location;
   }
+  /**
+   * @param string
+   */
   public function setMachineType($machineType)
   {
     $this->machineType = $machineType;
   }
+  /**
+   * @return string
+   */
   public function getMachineType()
   {
     return $this->machineType;
   }
+  /**
+   * @param string
+   */
   public function setNetwork($network)
   {
     $this->network = $network;
   }
+  /**
+   * @return string
+   */
   public function getNetwork()
   {
     return $this->network;
   }
+  /**
+   * @param string[]
+   */
   public function setOauthScopes($oauthScopes)
   {
     $this->oauthScopes = $oauthScopes;
   }
+  /**
+   * @return string[]
+   */
   public function getOauthScopes()
   {
     return $this->oauthScopes;
   }
+  /**
+   * @param string
+   */
   public function setServiceAccount($serviceAccount)
   {
     $this->serviceAccount = $serviceAccount;
   }
+  /**
+   * @return string
+   */
   public function getServiceAccount()
   {
     return $this->serviceAccount;
   }
+  /**
+   * @param string
+   */
   public function setSubnetwork($subnetwork)
   {
     $this->subnetwork = $subnetwork;
   }
+  /**
+   * @return string
+   */
   public function getSubnetwork()
   {
     return $this->subnetwork;
   }
+  /**
+   * @param string[]
+   */
   public function setTags($tags)
   {
     $this->tags = $tags;
   }
+  /**
+   * @return string[]
+   */
   public function getTags()
   {
     return $this->tags;

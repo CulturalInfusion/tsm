@@ -20,21 +20,35 @@ namespace Google\Service\ShoppingContent;
 class LiasettingsCustomBatchResponseEntry extends \Google\Collection
 {
   protected $collection_key = 'posDataProviders';
+  /**
+   * @var string
+   */
   public $batchId;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
   protected $gmbAccountsType = GmbAccounts::class;
   protected $gmbAccountsDataType = '';
+  /**
+   * @var string
+   */
   public $kind;
   protected $liaSettingsType = LiaSettings::class;
   protected $liaSettingsDataType = '';
+  protected $omnichannelExperienceType = LiaOmnichannelExperience::class;
+  protected $omnichannelExperienceDataType = '';
   protected $posDataProvidersType = PosDataProviders::class;
   protected $posDataProvidersDataType = 'array';
 
+  /**
+   * @param string
+   */
   public function setBatchId($batchId)
   {
     $this->batchId = $batchId;
   }
+  /**
+   * @return string
+   */
   public function getBatchId()
   {
     return $this->batchId;
@@ -67,10 +81,16 @@ class LiasettingsCustomBatchResponseEntry extends \Google\Collection
   {
     return $this->gmbAccounts;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
@@ -88,6 +108,20 @@ class LiasettingsCustomBatchResponseEntry extends \Google\Collection
   public function getLiaSettings()
   {
     return $this->liaSettings;
+  }
+  /**
+   * @param LiaOmnichannelExperience
+   */
+  public function setOmnichannelExperience(LiaOmnichannelExperience $omnichannelExperience)
+  {
+    $this->omnichannelExperience = $omnichannelExperience;
+  }
+  /**
+   * @return LiaOmnichannelExperience
+   */
+  public function getOmnichannelExperience()
+  {
+    return $this->omnichannelExperience;
   }
   /**
    * @param PosDataProviders[]

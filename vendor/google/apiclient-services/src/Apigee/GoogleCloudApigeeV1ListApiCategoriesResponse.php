@@ -20,55 +20,91 @@ namespace Google\Service\Apigee;
 class GoogleCloudApigeeV1ListApiCategoriesResponse extends \Google\Collection
 {
   protected $collection_key = 'data';
-  protected $dataType = GoogleCloudApigeeV1ApiCategoryData::class;
+  protected $dataType = GoogleCloudApigeeV1ApiCategory::class;
   protected $dataDataType = 'array';
+  /**
+   * @var string
+   */
   public $errorCode;
+  /**
+   * @var string
+   */
   public $message;
+  /**
+   * @var string
+   */
   public $requestId;
+  /**
+   * @var string
+   */
   public $status;
 
   /**
-   * @param GoogleCloudApigeeV1ApiCategoryData[]
+   * @param GoogleCloudApigeeV1ApiCategory[]
    */
   public function setData($data)
   {
     $this->data = $data;
   }
   /**
-   * @return GoogleCloudApigeeV1ApiCategoryData[]
+   * @return GoogleCloudApigeeV1ApiCategory[]
    */
   public function getData()
   {
     return $this->data;
   }
+  /**
+   * @param string
+   */
   public function setErrorCode($errorCode)
   {
     $this->errorCode = $errorCode;
   }
+  /**
+   * @return string
+   */
   public function getErrorCode()
   {
     return $this->errorCode;
   }
+  /**
+   * @param string
+   */
   public function setMessage($message)
   {
     $this->message = $message;
   }
+  /**
+   * @return string
+   */
   public function getMessage()
   {
     return $this->message;
   }
+  /**
+   * @param string
+   */
   public function setRequestId($requestId)
   {
     $this->requestId = $requestId;
   }
+  /**
+   * @return string
+   */
   public function getRequestId()
   {
     return $this->requestId;
   }
+  /**
+   * @param string
+   */
   public function setStatus($status)
   {
     $this->status = $status;
   }
+  /**
+   * @return string
+   */
   public function getStatus()
   {
     return $this->status;

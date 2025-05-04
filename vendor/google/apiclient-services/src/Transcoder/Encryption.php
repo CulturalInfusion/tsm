@@ -21,12 +21,18 @@ class Encryption extends \Google\Model
 {
   protected $aes128Type = Aes128Encryption::class;
   protected $aes128DataType = '';
-  public $iv;
-  public $key;
+  protected $drmSystemsType = DrmSystems::class;
+  protected $drmSystemsDataType = '';
+  /**
+   * @var string
+   */
+  public $id;
   protected $mpegCencType = MpegCommonEncryption::class;
   protected $mpegCencDataType = '';
   protected $sampleAesType = SampleAesEncryption::class;
   protected $sampleAesDataType = '';
+  protected $secretManagerKeySourceType = SecretManagerSource::class;
+  protected $secretManagerKeySourceDataType = '';
 
   /**
    * @param Aes128Encryption
@@ -42,21 +48,33 @@ class Encryption extends \Google\Model
   {
     return $this->aes128;
   }
-  public function setIv($iv)
+  /**
+   * @param DrmSystems
+   */
+  public function setDrmSystems(DrmSystems $drmSystems)
   {
-    $this->iv = $iv;
+    $this->drmSystems = $drmSystems;
   }
-  public function getIv()
+  /**
+   * @return DrmSystems
+   */
+  public function getDrmSystems()
   {
-    return $this->iv;
+    return $this->drmSystems;
   }
-  public function setKey($key)
+  /**
+   * @param string
+   */
+  public function setId($id)
   {
-    $this->key = $key;
+    $this->id = $id;
   }
-  public function getKey()
+  /**
+   * @return string
+   */
+  public function getId()
   {
-    return $this->key;
+    return $this->id;
   }
   /**
    * @param MpegCommonEncryption
@@ -85,6 +103,20 @@ class Encryption extends \Google\Model
   public function getSampleAes()
   {
     return $this->sampleAes;
+  }
+  /**
+   * @param SecretManagerSource
+   */
+  public function setSecretManagerKeySource(SecretManagerSource $secretManagerKeySource)
+  {
+    $this->secretManagerKeySource = $secretManagerKeySource;
+  }
+  /**
+   * @return SecretManagerSource
+   */
+  public function getSecretManagerKeySource()
+  {
+    return $this->secretManagerKeySource;
   }
 }
 

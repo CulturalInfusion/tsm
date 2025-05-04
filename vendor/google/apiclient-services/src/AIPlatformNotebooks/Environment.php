@@ -21,13 +21,30 @@ class Environment extends \Google\Model
 {
   protected $containerImageType = ContainerImage::class;
   protected $containerImageDataType = '';
+  public $containerImage;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $description;
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $postStartupScript;
   protected $vmImageType = VmImage::class;
   protected $vmImageDataType = '';
+  public $vmImage;
 
   /**
    * @param ContainerImage
@@ -43,42 +60,72 @@ class Environment extends \Google\Model
   {
     return $this->containerImage;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setPostStartupScript($postStartupScript)
   {
     $this->postStartupScript = $postStartupScript;
   }
+  /**
+   * @return string
+   */
   public function getPostStartupScript()
   {
     return $this->postStartupScript;

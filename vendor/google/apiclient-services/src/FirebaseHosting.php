@@ -37,9 +37,16 @@ use Google\Client;
  */
 class FirebaseHosting extends \Google\Service
 {
-
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
+  const CLOUD_PLATFORM =
+      "https://www.googleapis.com/auth/cloud-platform";
+  /** View and administer all your Firebase data and settings. */
+  const FIREBASE =
+      "https://www.googleapis.com/auth/firebase";
 
   public $operations;
+  public $projects_sites_customDomains_operations;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the FirebaseHosting service.
@@ -52,6 +59,7 @@ class FirebaseHosting extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://firebasehosting.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://firebasehosting.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -103,6 +111,36 @@ class FirebaseHosting extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_sites_customDomains_operations = new FirebaseHosting\Resource\ProjectsSitesCustomDomainsOperations(
+        $this,
+        $this->serviceName,
+        'operations',
+        [
+          'methods' => [
+            'cancel' => [
+              'path' => 'v1/{+name}:cancel',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],

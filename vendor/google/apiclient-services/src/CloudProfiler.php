@@ -34,7 +34,7 @@ use Google\Client;
  */
 class CloudProfiler extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and write monitoring data for all of your Google and third-party Cloud and API projects. */
@@ -45,6 +45,7 @@ class CloudProfiler extends \Google\Service
       "https://www.googleapis.com/auth/monitoring.write";
 
   public $projects_profiles;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the CloudProfiler service.
@@ -57,6 +58,7 @@ class CloudProfiler extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://cloudprofiler.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://cloudprofiler.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v2';
@@ -86,6 +88,24 @@ class CloudProfiler extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v2/{+parent}/profiles',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'patch' => [

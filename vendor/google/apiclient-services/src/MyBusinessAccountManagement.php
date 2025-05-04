@@ -24,7 +24,8 @@ use Google\Client;
  *
  * <p>
  * The My Business Account Management API provides an interface for managing
- * access to a location on Google.</p>
+ * access to a location on Google. Note - If you have a quota of 0 after
+ * enabling the API, please request for GBP API access.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -42,6 +43,7 @@ class MyBusinessAccountManagement extends \Google\Service
   public $accounts_invitations;
   public $locations;
   public $locations_admins;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the MyBusinessAccountManagement
@@ -55,6 +57,7 @@ class MyBusinessAccountManagement extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://mybusinessaccountmanagement.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://mybusinessaccountmanagement.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

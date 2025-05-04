@@ -21,7 +21,12 @@ class ReplaceAllTextRequest extends \Google\Model
 {
   protected $containsTextType = SubstringMatchCriteria::class;
   protected $containsTextDataType = '';
+  /**
+   * @var string
+   */
   public $replaceText;
+  protected $tabsCriteriaType = TabsCriteria::class;
+  protected $tabsCriteriaDataType = '';
 
   /**
    * @param SubstringMatchCriteria
@@ -37,13 +42,33 @@ class ReplaceAllTextRequest extends \Google\Model
   {
     return $this->containsText;
   }
+  /**
+   * @param string
+   */
   public function setReplaceText($replaceText)
   {
     $this->replaceText = $replaceText;
   }
+  /**
+   * @return string
+   */
   public function getReplaceText()
   {
     return $this->replaceText;
+  }
+  /**
+   * @param TabsCriteria
+   */
+  public function setTabsCriteria(TabsCriteria $tabsCriteria)
+  {
+    $this->tabsCriteria = $tabsCriteria;
+  }
+  /**
+   * @return TabsCriteria
+   */
+  public function getTabsCriteria()
+  {
+    return $this->tabsCriteria;
   }
 }
 

@@ -20,33 +20,95 @@ namespace Google\Service\NetworkManagement;
 class ConnectivityTest extends \Google\Collection
 {
   protected $collection_key = 'relatedProjects';
+  /**
+   * @var bool
+   */
+  public $bypassFirewallChecks;
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $description;
   protected $destinationType = Endpoint::class;
   protected $destinationDataType = '';
+  /**
+   * @var string
+   */
   public $displayName;
+  /**
+   * @var string[]
+   */
   public $labels;
+  /**
+   * @var string
+   */
   public $name;
+  protected $probingDetailsType = ProbingDetails::class;
+  protected $probingDetailsDataType = '';
+  /**
+   * @var string
+   */
   public $protocol;
   protected $reachabilityDetailsType = ReachabilityDetails::class;
   protected $reachabilityDetailsDataType = '';
+  /**
+   * @var string[]
+   */
   public $relatedProjects;
+  protected $returnReachabilityDetailsType = ReachabilityDetails::class;
+  protected $returnReachabilityDetailsDataType = '';
+  /**
+   * @var bool
+   */
+  public $roundTrip;
   protected $sourceType = Endpoint::class;
   protected $sourceDataType = '';
+  /**
+   * @var string
+   */
   public $updateTime;
 
+  /**
+   * @param bool
+   */
+  public function setBypassFirewallChecks($bypassFirewallChecks)
+  {
+    $this->bypassFirewallChecks = $bypassFirewallChecks;
+  }
+  /**
+   * @return bool
+   */
+  public function getBypassFirewallChecks()
+  {
+    return $this->bypassFirewallChecks;
+  }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
@@ -65,34 +127,72 @@ class ConnectivityTest extends \Google\Collection
   {
     return $this->destination;
   }
+  /**
+   * @param string
+   */
   public function setDisplayName($displayName)
   {
     $this->displayName = $displayName;
   }
+  /**
+   * @return string
+   */
   public function getDisplayName()
   {
     return $this->displayName;
   }
+  /**
+   * @param string[]
+   */
   public function setLabels($labels)
   {
     $this->labels = $labels;
   }
+  /**
+   * @return string[]
+   */
   public function getLabels()
   {
     return $this->labels;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param ProbingDetails
+   */
+  public function setProbingDetails(ProbingDetails $probingDetails)
+  {
+    $this->probingDetails = $probingDetails;
+  }
+  /**
+   * @return ProbingDetails
+   */
+  public function getProbingDetails()
+  {
+    return $this->probingDetails;
+  }
+  /**
+   * @param string
+   */
   public function setProtocol($protocol)
   {
     $this->protocol = $protocol;
   }
+  /**
+   * @return string
+   */
   public function getProtocol()
   {
     return $this->protocol;
@@ -111,13 +211,47 @@ class ConnectivityTest extends \Google\Collection
   {
     return $this->reachabilityDetails;
   }
+  /**
+   * @param string[]
+   */
   public function setRelatedProjects($relatedProjects)
   {
     $this->relatedProjects = $relatedProjects;
   }
+  /**
+   * @return string[]
+   */
   public function getRelatedProjects()
   {
     return $this->relatedProjects;
+  }
+  /**
+   * @param ReachabilityDetails
+   */
+  public function setReturnReachabilityDetails(ReachabilityDetails $returnReachabilityDetails)
+  {
+    $this->returnReachabilityDetails = $returnReachabilityDetails;
+  }
+  /**
+   * @return ReachabilityDetails
+   */
+  public function getReturnReachabilityDetails()
+  {
+    return $this->returnReachabilityDetails;
+  }
+  /**
+   * @param bool
+   */
+  public function setRoundTrip($roundTrip)
+  {
+    $this->roundTrip = $roundTrip;
+  }
+  /**
+   * @return bool
+   */
+  public function getRoundTrip()
+  {
+    return $this->roundTrip;
   }
   /**
    * @param Endpoint
@@ -133,10 +267,16 @@ class ConnectivityTest extends \Google\Collection
   {
     return $this->source;
   }
+  /**
+   * @param string
+   */
   public function setUpdateTime($updateTime)
   {
     $this->updateTime = $updateTime;
   }
+  /**
+   * @return string
+   */
   public function getUpdateTime()
   {
     return $this->updateTime;

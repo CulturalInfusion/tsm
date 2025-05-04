@@ -17,23 +17,78 @@
 
 namespace Google\Service\NetworkManagement;
 
-class AbortInfo extends \Google\Model
+class AbortInfo extends \Google\Collection
 {
+  protected $collection_key = 'projectsMissingPermission';
+  /**
+   * @var string
+   */
   public $cause;
+  /**
+   * @var string
+   */
+  public $ipAddress;
+  /**
+   * @var string[]
+   */
+  public $projectsMissingPermission;
+  /**
+   * @var string
+   */
   public $resourceUri;
 
+  /**
+   * @param string
+   */
   public function setCause($cause)
   {
     $this->cause = $cause;
   }
+  /**
+   * @return string
+   */
   public function getCause()
   {
     return $this->cause;
   }
+  /**
+   * @param string
+   */
+  public function setIpAddress($ipAddress)
+  {
+    $this->ipAddress = $ipAddress;
+  }
+  /**
+   * @return string
+   */
+  public function getIpAddress()
+  {
+    return $this->ipAddress;
+  }
+  /**
+   * @param string[]
+   */
+  public function setProjectsMissingPermission($projectsMissingPermission)
+  {
+    $this->projectsMissingPermission = $projectsMissingPermission;
+  }
+  /**
+   * @return string[]
+   */
+  public function getProjectsMissingPermission()
+  {
+    return $this->projectsMissingPermission;
+  }
+  /**
+   * @param string
+   */
   public function setResourceUri($resourceUri)
   {
     $this->resourceUri = $resourceUri;
   }
+  /**
+   * @return string
+   */
   public function getResourceUri()
   {
     return $this->resourceUri;

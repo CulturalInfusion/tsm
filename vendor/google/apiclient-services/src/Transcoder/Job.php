@@ -17,29 +17,79 @@
 
 namespace Google\Service\Transcoder;
 
-class Job extends \Google\Collection
+class Job extends \Google\Model
 {
-  protected $collection_key = 'failureDetails';
+  /**
+   * @var int
+   */
+  public $batchModePriority;
   protected $configType = JobConfig::class;
   protected $configDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $endTime;
-  protected $failureDetailsType = FailureDetail::class;
-  protected $failureDetailsDataType = 'array';
-  public $failureReason;
+  protected $errorType = Status::class;
+  protected $errorDataType = '';
+  /**
+   * @var string
+   */
   public $inputUri;
+  /**
+   * @var string[]
+   */
+  public $labels;
+  /**
+   * @var string
+   */
+  public $mode;
+  /**
+   * @var string
+   */
   public $name;
-  protected $originUriType = OriginUri::class;
-  protected $originUriDataType = '';
+  /**
+   * @var string
+   */
+  public $optimization;
+  /**
+   * @var string
+   */
   public $outputUri;
-  public $priority;
-  protected $progressType = Progress::class;
-  protected $progressDataType = '';
+  /**
+   * @var string
+   */
   public $startTime;
+  /**
+   * @var string
+   */
   public $state;
+  /**
+   * @var string
+   */
   public $templateId;
+  /**
+   * @var int
+   */
   public $ttlAfterCompletionDays;
 
+  /**
+   * @param int
+   */
+  public function setBatchModePriority($batchModePriority)
+  {
+    $this->batchModePriority = $batchModePriority;
+  }
+  /**
+   * @return int
+   */
+  public function getBatchModePriority()
+  {
+    return $this->batchModePriority;
+  }
   /**
    * @param JobConfig
    */
@@ -54,132 +104,184 @@ class Job extends \Google\Collection
   {
     return $this->config;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setEndTime($endTime)
   {
     $this->endTime = $endTime;
   }
+  /**
+   * @return string
+   */
   public function getEndTime()
   {
     return $this->endTime;
   }
   /**
-   * @param FailureDetail[]
+   * @param Status
    */
-  public function setFailureDetails($failureDetails)
+  public function setError(Status $error)
   {
-    $this->failureDetails = $failureDetails;
+    $this->error = $error;
   }
   /**
-   * @return FailureDetail[]
+   * @return Status
    */
-  public function getFailureDetails()
+  public function getError()
   {
-    return $this->failureDetails;
+    return $this->error;
   }
-  public function setFailureReason($failureReason)
-  {
-    $this->failureReason = $failureReason;
-  }
-  public function getFailureReason()
-  {
-    return $this->failureReason;
-  }
+  /**
+   * @param string
+   */
   public function setInputUri($inputUri)
   {
     $this->inputUri = $inputUri;
   }
+  /**
+   * @return string
+   */
   public function getInputUri()
   {
     return $this->inputUri;
   }
+  /**
+   * @param string[]
+   */
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  /**
+   * @return string[]
+   */
+  public function getLabels()
+  {
+    return $this->labels;
+  }
+  /**
+   * @param string
+   */
+  public function setMode($mode)
+  {
+    $this->mode = $mode;
+  }
+  /**
+   * @return string
+   */
+  public function getMode()
+  {
+    return $this->mode;
+  }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
   /**
-   * @param OriginUri
+   * @param string
    */
-  public function setOriginUri(OriginUri $originUri)
+  public function setOptimization($optimization)
   {
-    $this->originUri = $originUri;
+    $this->optimization = $optimization;
   }
   /**
-   * @return OriginUri
+   * @return string
    */
-  public function getOriginUri()
+  public function getOptimization()
   {
-    return $this->originUri;
+    return $this->optimization;
   }
+  /**
+   * @param string
+   */
   public function setOutputUri($outputUri)
   {
     $this->outputUri = $outputUri;
   }
+  /**
+   * @return string
+   */
   public function getOutputUri()
   {
     return $this->outputUri;
   }
-  public function setPriority($priority)
-  {
-    $this->priority = $priority;
-  }
-  public function getPriority()
-  {
-    return $this->priority;
-  }
   /**
-   * @param Progress
+   * @param string
    */
-  public function setProgress(Progress $progress)
-  {
-    $this->progress = $progress;
-  }
-  /**
-   * @return Progress
-   */
-  public function getProgress()
-  {
-    return $this->progress;
-  }
   public function setStartTime($startTime)
   {
     $this->startTime = $startTime;
   }
+  /**
+   * @return string
+   */
   public function getStartTime()
   {
     return $this->startTime;
   }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;
   }
+  /**
+   * @param string
+   */
   public function setTemplateId($templateId)
   {
     $this->templateId = $templateId;
   }
+  /**
+   * @return string
+   */
   public function getTemplateId()
   {
     return $this->templateId;
   }
+  /**
+   * @param int
+   */
   public function setTtlAfterCompletionDays($ttlAfterCompletionDays)
   {
     $this->ttlAfterCompletionDays = $ttlAfterCompletionDays;
   }
+  /**
+   * @return int
+   */
   public function getTtlAfterCompletionDays()
   {
     return $this->ttlAfterCompletionDays;

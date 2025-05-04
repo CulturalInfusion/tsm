@@ -17,17 +17,45 @@
 
 namespace Google\Service\Spanner;
 
-class EncryptionConfig extends \Google\Model
+class EncryptionConfig extends \Google\Collection
 {
+  protected $collection_key = 'kmsKeyNames';
+  /**
+   * @var string
+   */
   public $kmsKeyName;
+  /**
+   * @var string[]
+   */
+  public $kmsKeyNames;
 
+  /**
+   * @param string
+   */
   public function setKmsKeyName($kmsKeyName)
   {
     $this->kmsKeyName = $kmsKeyName;
   }
+  /**
+   * @return string
+   */
   public function getKmsKeyName()
   {
     return $this->kmsKeyName;
+  }
+  /**
+   * @param string[]
+   */
+  public function setKmsKeyNames($kmsKeyNames)
+  {
+    $this->kmsKeyNames = $kmsKeyNames;
+  }
+  /**
+   * @return string[]
+   */
+  public function getKmsKeyNames()
+  {
+    return $this->kmsKeyNames;
   }
 }
 

@@ -19,15 +19,42 @@ namespace Google\Service\CloudHealthcare;
 
 class NotificationConfig extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $pubsubTopic;
+  /**
+   * @var bool
+   */
+  public $sendForBulkImport;
 
+  /**
+   * @param string
+   */
   public function setPubsubTopic($pubsubTopic)
   {
     $this->pubsubTopic = $pubsubTopic;
   }
+  /**
+   * @return string
+   */
   public function getPubsubTopic()
   {
     return $this->pubsubTopic;
+  }
+  /**
+   * @param bool
+   */
+  public function setSendForBulkImport($sendForBulkImport)
+  {
+    $this->sendForBulkImport = $sendForBulkImport;
+  }
+  /**
+   * @return bool
+   */
+  public function getSendForBulkImport()
+  {
+    return $this->sendForBulkImport;
   }
 }
 

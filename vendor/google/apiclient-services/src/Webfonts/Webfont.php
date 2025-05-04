@@ -20,75 +20,199 @@ namespace Google\Service\Webfonts;
 class Webfont extends \Google\Collection
 {
   protected $collection_key = 'variants';
+  protected $axesType = Axis::class;
+  protected $axesDataType = 'array';
+  /**
+   * @var string
+   */
   public $category;
+  /**
+   * @var string[]
+   */
+  public $colorCapabilities;
+  /**
+   * @var string
+   */
   public $family;
+  /**
+   * @var string[]
+   */
   public $files;
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $lastModified;
+  /**
+   * @var string
+   */
+  public $menu;
+  /**
+   * @var string[]
+   */
   public $subsets;
+  /**
+   * @var string[]
+   */
   public $variants;
+  /**
+   * @var string
+   */
   public $version;
 
+  /**
+   * @param Axis[]
+   */
+  public function setAxes($axes)
+  {
+    $this->axes = $axes;
+  }
+  /**
+   * @return Axis[]
+   */
+  public function getAxes()
+  {
+    return $this->axes;
+  }
+  /**
+   * @param string
+   */
   public function setCategory($category)
   {
     $this->category = $category;
   }
+  /**
+   * @return string
+   */
   public function getCategory()
   {
     return $this->category;
   }
+  /**
+   * @param string[]
+   */
+  public function setColorCapabilities($colorCapabilities)
+  {
+    $this->colorCapabilities = $colorCapabilities;
+  }
+  /**
+   * @return string[]
+   */
+  public function getColorCapabilities()
+  {
+    return $this->colorCapabilities;
+  }
+  /**
+   * @param string
+   */
   public function setFamily($family)
   {
     $this->family = $family;
   }
+  /**
+   * @return string
+   */
   public function getFamily()
   {
     return $this->family;
   }
+  /**
+   * @param string[]
+   */
   public function setFiles($files)
   {
     $this->files = $files;
   }
+  /**
+   * @return string[]
+   */
   public function getFiles()
   {
     return $this->files;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setLastModified($lastModified)
   {
     $this->lastModified = $lastModified;
   }
+  /**
+   * @return string
+   */
   public function getLastModified()
   {
     return $this->lastModified;
   }
+  /**
+   * @param string
+   */
+  public function setMenu($menu)
+  {
+    $this->menu = $menu;
+  }
+  /**
+   * @return string
+   */
+  public function getMenu()
+  {
+    return $this->menu;
+  }
+  /**
+   * @param string[]
+   */
   public function setSubsets($subsets)
   {
     $this->subsets = $subsets;
   }
+  /**
+   * @return string[]
+   */
   public function getSubsets()
   {
     return $this->subsets;
   }
+  /**
+   * @param string[]
+   */
   public function setVariants($variants)
   {
     $this->variants = $variants;
   }
+  /**
+   * @return string[]
+   */
   public function getVariants()
   {
     return $this->variants;
   }
+  /**
+   * @param string
+   */
   public function setVersion($version)
   {
     $this->version = $version;
   }
+  /**
+   * @return string
+   */
   public function getVersion()
   {
     return $this->version;

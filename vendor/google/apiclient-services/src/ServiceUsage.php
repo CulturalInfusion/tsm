@@ -36,10 +36,10 @@ use Google\Client;
  */
 class ServiceUsage extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** View your data across Google Cloud Platform services. */
+  /** View your data across Google Cloud services and see the email address of your Google Account. */
   const CLOUD_PLATFORM_READ_ONLY =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
   /** Manage your Google API service configuration. */
@@ -48,6 +48,7 @@ class ServiceUsage extends \Google\Service
 
   public $operations;
   public $services;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the ServiceUsage service.
@@ -60,6 +61,7 @@ class ServiceUsage extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://serviceusage.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://serviceusage.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

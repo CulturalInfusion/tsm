@@ -20,11 +20,11 @@ namespace Google\Service;
 use Google\Client;
 
 /**
- * Service definition for Transcoder (v1beta1).
+ * Service definition for Transcoder (v1).
  *
  * <p>
  * This API converts video files into formats suitable for consumer
- * distribution.</p>
+ * distribution. For more information, see the Transcoder API overview.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -35,12 +35,13 @@ use Google\Client;
  */
 class Transcoder extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_locations_jobTemplates;
   public $projects_locations_jobs;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Transcoder service.
@@ -53,9 +54,10 @@ class Transcoder extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://transcoder.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://transcoder.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v1beta1';
+    $this->version = 'v1';
     $this->serviceName = 'transcoder';
 
     $this->projects_locations_jobTemplates = new Transcoder\Resource\ProjectsLocationsJobTemplates(
@@ -65,7 +67,7 @@ class Transcoder extends \Google\Service
         [
           'methods' => [
             'create' => [
-              'path' => 'v1beta1/{+parent}/jobTemplates',
+              'path' => 'v1/{+parent}/jobTemplates',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
@@ -79,7 +81,7 @@ class Transcoder extends \Google\Service
                 ],
               ],
             ],'delete' => [
-              'path' => 'v1beta1/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -87,9 +89,13 @@ class Transcoder extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'get' => [
-              'path' => 'v1beta1/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -99,13 +105,21 @@ class Transcoder extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1beta1/{+parent}/jobTemplates',
+              'path' => 'v1/{+parent}/jobTemplates',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'orderBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',
@@ -127,7 +141,7 @@ class Transcoder extends \Google\Service
         [
           'methods' => [
             'create' => [
-              'path' => 'v1beta1/{+parent}/jobs',
+              'path' => 'v1/{+parent}/jobs',
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
@@ -137,7 +151,7 @@ class Transcoder extends \Google\Service
                 ],
               ],
             ],'delete' => [
-              'path' => 'v1beta1/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => [
                 'name' => [
@@ -145,9 +159,13 @@ class Transcoder extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'allowMissing' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
               ],
             ],'get' => [
-              'path' => 'v1beta1/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [
                 'name' => [
@@ -157,13 +175,21 @@ class Transcoder extends \Google\Service
                 ],
               ],
             ],'list' => [
-              'path' => 'v1beta1/{+parent}/jobs',
+              'path' => 'v1/{+parent}/jobs',
               'httpMethod' => 'GET',
               'parameters' => [
                 'parent' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'orderBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',

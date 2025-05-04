@@ -19,42 +19,220 @@ namespace Google\Service\Verifiedaccess;
 
 class VerifyChallengeResponseResult extends \Google\Model
 {
+  /**
+   * @var string
+   */
+  public $attestedDeviceId;
+  /**
+   * @var string
+   */
+  public $customerId;
+  /**
+   * @var string
+   */
   public $deviceEnrollmentId;
+  /**
+   * @var string
+   */
   public $devicePermanentId;
+  /**
+   * @var string
+   */
+  public $deviceSignal;
+  protected $deviceSignalsType = DeviceSignals::class;
+  protected $deviceSignalsDataType = '';
+  /**
+   * @var string
+   */
+  public $keyTrustLevel;
+  /**
+   * @var string
+   */
+  public $profileCustomerId;
+  /**
+   * @var string
+   */
+  public $profileKeyTrustLevel;
+  /**
+   * @var string
+   */
   public $signedPublicKeyAndChallenge;
-  public $verificationOutput;
+  /**
+   * @var string
+   */
+  public $virtualDeviceId;
+  /**
+   * @var string
+   */
+  public $virtualProfileId;
 
+  /**
+   * @param string
+   */
+  public function setAttestedDeviceId($attestedDeviceId)
+  {
+    $this->attestedDeviceId = $attestedDeviceId;
+  }
+  /**
+   * @return string
+   */
+  public function getAttestedDeviceId()
+  {
+    return $this->attestedDeviceId;
+  }
+  /**
+   * @param string
+   */
+  public function setCustomerId($customerId)
+  {
+    $this->customerId = $customerId;
+  }
+  /**
+   * @return string
+   */
+  public function getCustomerId()
+  {
+    return $this->customerId;
+  }
+  /**
+   * @param string
+   */
   public function setDeviceEnrollmentId($deviceEnrollmentId)
   {
     $this->deviceEnrollmentId = $deviceEnrollmentId;
   }
+  /**
+   * @return string
+   */
   public function getDeviceEnrollmentId()
   {
     return $this->deviceEnrollmentId;
   }
+  /**
+   * @param string
+   */
   public function setDevicePermanentId($devicePermanentId)
   {
     $this->devicePermanentId = $devicePermanentId;
   }
+  /**
+   * @return string
+   */
   public function getDevicePermanentId()
   {
     return $this->devicePermanentId;
   }
+  /**
+   * @param string
+   */
+  public function setDeviceSignal($deviceSignal)
+  {
+    $this->deviceSignal = $deviceSignal;
+  }
+  /**
+   * @return string
+   */
+  public function getDeviceSignal()
+  {
+    return $this->deviceSignal;
+  }
+  /**
+   * @param DeviceSignals
+   */
+  public function setDeviceSignals(DeviceSignals $deviceSignals)
+  {
+    $this->deviceSignals = $deviceSignals;
+  }
+  /**
+   * @return DeviceSignals
+   */
+  public function getDeviceSignals()
+  {
+    return $this->deviceSignals;
+  }
+  /**
+   * @param string
+   */
+  public function setKeyTrustLevel($keyTrustLevel)
+  {
+    $this->keyTrustLevel = $keyTrustLevel;
+  }
+  /**
+   * @return string
+   */
+  public function getKeyTrustLevel()
+  {
+    return $this->keyTrustLevel;
+  }
+  /**
+   * @param string
+   */
+  public function setProfileCustomerId($profileCustomerId)
+  {
+    $this->profileCustomerId = $profileCustomerId;
+  }
+  /**
+   * @return string
+   */
+  public function getProfileCustomerId()
+  {
+    return $this->profileCustomerId;
+  }
+  /**
+   * @param string
+   */
+  public function setProfileKeyTrustLevel($profileKeyTrustLevel)
+  {
+    $this->profileKeyTrustLevel = $profileKeyTrustLevel;
+  }
+  /**
+   * @return string
+   */
+  public function getProfileKeyTrustLevel()
+  {
+    return $this->profileKeyTrustLevel;
+  }
+  /**
+   * @param string
+   */
   public function setSignedPublicKeyAndChallenge($signedPublicKeyAndChallenge)
   {
     $this->signedPublicKeyAndChallenge = $signedPublicKeyAndChallenge;
   }
+  /**
+   * @return string
+   */
   public function getSignedPublicKeyAndChallenge()
   {
     return $this->signedPublicKeyAndChallenge;
   }
-  public function setVerificationOutput($verificationOutput)
+  /**
+   * @param string
+   */
+  public function setVirtualDeviceId($virtualDeviceId)
   {
-    $this->verificationOutput = $verificationOutput;
+    $this->virtualDeviceId = $virtualDeviceId;
   }
-  public function getVerificationOutput()
+  /**
+   * @return string
+   */
+  public function getVirtualDeviceId()
   {
-    return $this->verificationOutput;
+    return $this->virtualDeviceId;
+  }
+  /**
+   * @param string
+   */
+  public function setVirtualProfileId($virtualProfileId)
+  {
+    $this->virtualProfileId = $virtualProfileId;
+  }
+  /**
+   * @return string
+   */
+  public function getVirtualProfileId()
+  {
+    return $this->virtualProfileId;
   }
 }
 

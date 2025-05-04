@@ -19,6 +19,9 @@ namespace Google\Service\Slides;
 
 class PageElement extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $description;
   protected $elementGroupType = Group::class;
   protected $elementGroupDataType = '';
@@ -26,6 +29,9 @@ class PageElement extends \Google\Model
   protected $imageDataType = '';
   protected $lineType = Line::class;
   protected $lineDataType = '';
+  /**
+   * @var string
+   */
   public $objectId;
   protected $shapeType = Shape::class;
   protected $shapeDataType = '';
@@ -33,8 +39,13 @@ class PageElement extends \Google\Model
   protected $sheetsChartDataType = '';
   protected $sizeType = Size::class;
   protected $sizeDataType = '';
+  protected $speakerSpotlightType = SpeakerSpotlight::class;
+  protected $speakerSpotlightDataType = '';
   protected $tableType = Table::class;
   protected $tableDataType = '';
+  /**
+   * @var string
+   */
   public $title;
   protected $transformType = AffineTransform::class;
   protected $transformDataType = '';
@@ -43,10 +54,16 @@ class PageElement extends \Google\Model
   protected $wordArtType = WordArt::class;
   protected $wordArtDataType = '';
 
+  /**
+   * @param string
+   */
   public function setDescription($description)
   {
     $this->description = $description;
   }
+  /**
+   * @return string
+   */
   public function getDescription()
   {
     return $this->description;
@@ -93,10 +110,16 @@ class PageElement extends \Google\Model
   {
     return $this->line;
   }
+  /**
+   * @param string
+   */
   public function setObjectId($objectId)
   {
     $this->objectId = $objectId;
   }
+  /**
+   * @return string
+   */
   public function getObjectId()
   {
     return $this->objectId;
@@ -144,6 +167,20 @@ class PageElement extends \Google\Model
     return $this->size;
   }
   /**
+   * @param SpeakerSpotlight
+   */
+  public function setSpeakerSpotlight(SpeakerSpotlight $speakerSpotlight)
+  {
+    $this->speakerSpotlight = $speakerSpotlight;
+  }
+  /**
+   * @return SpeakerSpotlight
+   */
+  public function getSpeakerSpotlight()
+  {
+    return $this->speakerSpotlight;
+  }
+  /**
    * @param Table
    */
   public function setTable(Table $table)
@@ -157,10 +194,16 @@ class PageElement extends \Google\Model
   {
     return $this->table;
   }
+  /**
+   * @param string
+   */
   public function setTitle($title)
   {
     $this->title = $title;
   }
+  /**
+   * @return string
+   */
   public function getTitle()
   {
     return $this->title;

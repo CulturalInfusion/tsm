@@ -26,7 +26,7 @@ use Google\Service\BigQueryReservation\SearchAssignmentsResponse;
  * Typical usage is:
  *  <code>
  *   $bigqueryreservationService = new Google\Service\BigQueryReservation(...);
- *   $locations = $bigqueryreservationService->locations;
+ *   $locations = $bigqueryreservationService->projects_locations;
  *  </code>
  */
 class ProjectsLocations extends \Google\Service\Resource
@@ -38,6 +38,7 @@ class ProjectsLocations extends \Google\Service\Resource
    * `projects/{project_id}/locations/{location_id}/biReservation`
    * @param array $optParams Optional parameters.
    * @return BiReservation
+   * @throws \Google\Service\Exception
    */
   public function getBiReservation($name, $optParams = [])
   {
@@ -70,6 +71,7 @@ class ProjectsLocations extends \Google\Service\Resource
    * query. Examples: * `assignee=projects/myproject` * `assignee=folders/123` *
    * `assignee=organizations/456`
    * @return SearchAllAssignmentsResponse
+   * @throws \Google\Service\Exception
    */
   public function searchAllAssignments($parent, $optParams = [])
   {
@@ -78,13 +80,13 @@ class ProjectsLocations extends \Google\Service\Resource
     return $this->call('searchAllAssignments', [$params], SearchAllAssignmentsResponse::class);
   }
   /**
-   * Looks up assignments for a specified resource for a particular region. If the
-   * request is about a project: 1. Assignments created on the project will be
-   * returned if they exist. 2. Otherwise assignments created on the closest
-   * ancestor will be returned. 3. Assignments for different JobTypes will all be
-   * returned. The same logic applies if the request is about a folder. If the
-   * request is about an organization, then assignments created on the
-   * organization will be returned (organization doesn't have ancestors).
+   * Deprecated: Looks up assignments for a specified resource for a particular
+   * region. If the request is about a project: 1. Assignments created on the
+   * project will be returned if they exist. 2. Otherwise assignments created on
+   * the closest ancestor will be returned. 3. Assignments for different JobTypes
+   * will all be returned. The same logic applies if the request is about a
+   * folder. If the request is about an organization, then assignments created on
+   * the organization will be returned (organization doesn't have ancestors).
    * Comparing to ListAssignments, there are some behavior differences: 1.
    * permission on the assignee will be verified in this API. 2. Hierarchy lookup
    * (project->folder->organization) happens in this API. 3. Parent here is
@@ -103,6 +105,7 @@ class ProjectsLocations extends \Google\Service\Resource
    * query. Examples: * `assignee=projects/myproject` * `assignee=folders/123` *
    * `assignee=organizations/456`
    * @return SearchAssignmentsResponse
+   * @throws \Google\Service\Exception
    */
   public function searchAssignments($parent, $optParams = [])
   {
@@ -125,6 +128,7 @@ class ProjectsLocations extends \Google\Service\Resource
    *
    * @opt_param string updateMask A list of fields to be updated in this request.
    * @return BiReservation
+   * @throws \Google\Service\Exception
    */
   public function updateBiReservation($name, BiReservation $postBody, $optParams = [])
   {

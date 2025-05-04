@@ -34,18 +34,12 @@ use Google\Client;
  */
 class Dataflow extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage your Google Compute Engine resources. */
   const COMPUTE =
       "https://www.googleapis.com/auth/compute";
-  /** View your Google Compute Engine resources. */
-  const COMPUTE_READONLY =
-      "https://www.googleapis.com/auth/compute.readonly";
-  /** See your primary Google Account email address. */
-  const USERINFO_EMAIL =
-      "https://www.googleapis.com/auth/userinfo.email";
 
   public $projects;
   public $projects_jobs;
@@ -61,10 +55,10 @@ class Dataflow extends \Google\Service
   public $projects_locations_jobs_stages;
   public $projects_locations_jobs_workItems;
   public $projects_locations_snapshots;
-  public $projects_locations_sql;
   public $projects_locations_templates;
   public $projects_snapshots;
   public $projects_templates;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Dataflow service.
@@ -77,6 +71,7 @@ class Dataflow extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://dataflow.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://dataflow.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1b3';
@@ -140,6 +135,10 @@ class Dataflow extends \Google\Service
                   'type' => 'string',
                 ],
                 'location' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'name' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -241,6 +240,10 @@ class Dataflow extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'name' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -284,6 +287,10 @@ class Dataflow extends \Google\Service
                   'required' => true,
                 ],
                 'location' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'updateMask' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],
@@ -594,6 +601,10 @@ class Dataflow extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'name' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -645,6 +656,10 @@ class Dataflow extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],
@@ -943,35 +958,6 @@ class Dataflow extends \Google\Service
                   'required' => true,
                 ],
                 'jobId' => [
-                  'location' => 'query',
-                  'type' => 'string',
-                ],
-              ],
-            ],
-          ]
-        ]
-    );
-    $this->projects_locations_sql = new Dataflow\Resource\ProjectsLocationsSql(
-        $this,
-        $this->serviceName,
-        'sql',
-        [
-          'methods' => [
-            'validate' => [
-              'path' => 'v1b3/projects/{projectId}/locations/{location}/sql:validate',
-              'httpMethod' => 'GET',
-              'parameters' => [
-                'projectId' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'location' => [
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ],
-                'query' => [
                   'location' => 'query',
                   'type' => 'string',
                 ],

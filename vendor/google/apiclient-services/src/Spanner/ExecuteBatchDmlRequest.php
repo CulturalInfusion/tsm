@@ -20,14 +20,35 @@ namespace Google\Service\Spanner;
 class ExecuteBatchDmlRequest extends \Google\Collection
 {
   protected $collection_key = 'statements';
+  /**
+   * @var bool
+   */
+  public $lastStatements;
   protected $requestOptionsType = RequestOptions::class;
   protected $requestOptionsDataType = '';
+  /**
+   * @var string
+   */
   public $seqno;
   protected $statementsType = Statement::class;
   protected $statementsDataType = 'array';
   protected $transactionType = TransactionSelector::class;
   protected $transactionDataType = '';
 
+  /**
+   * @param bool
+   */
+  public function setLastStatements($lastStatements)
+  {
+    $this->lastStatements = $lastStatements;
+  }
+  /**
+   * @return bool
+   */
+  public function getLastStatements()
+  {
+    return $this->lastStatements;
+  }
   /**
    * @param RequestOptions
    */
@@ -42,10 +63,16 @@ class ExecuteBatchDmlRequest extends \Google\Collection
   {
     return $this->requestOptions;
   }
+  /**
+   * @param string
+   */
   public function setSeqno($seqno)
   {
     $this->seqno = $seqno;
   }
+  /**
+   * @return string
+   */
   public function getSeqno()
   {
     return $this->seqno;

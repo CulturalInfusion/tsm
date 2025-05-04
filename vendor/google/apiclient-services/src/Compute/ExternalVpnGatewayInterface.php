@@ -19,24 +19,60 @@ namespace Google\Service\Compute;
 
 class ExternalVpnGatewayInterface extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $ipAddress;
+  /**
+   * @var string
+   */
+  public $ipv6Address;
 
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setIpAddress($ipAddress)
   {
     $this->ipAddress = $ipAddress;
   }
+  /**
+   * @return string
+   */
   public function getIpAddress()
   {
     return $this->ipAddress;
+  }
+  /**
+   * @param string
+   */
+  public function setIpv6Address($ipv6Address)
+  {
+    $this->ipv6Address = $ipv6Address;
+  }
+  /**
+   * @return string
+   */
+  public function getIpv6Address()
+  {
+    return $this->ipv6Address;
   }
 }
 

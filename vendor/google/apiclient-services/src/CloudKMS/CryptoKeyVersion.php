@@ -19,26 +19,77 @@ namespace Google\Service\CloudKMS;
 
 class CryptoKeyVersion extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $algorithm;
   protected $attestationType = KeyOperationAttestation::class;
   protected $attestationDataType = '';
+  /**
+   * @var string
+   */
   public $createTime;
+  /**
+   * @var string
+   */
   public $destroyEventTime;
+  /**
+   * @var string
+   */
   public $destroyTime;
+  /**
+   * @var string
+   */
+  public $externalDestructionFailureReason;
   protected $externalProtectionLevelOptionsType = ExternalProtectionLevelOptions::class;
   protected $externalProtectionLevelOptionsDataType = '';
+  /**
+   * @var string
+   */
   public $generateTime;
+  /**
+   * @var string
+   */
+  public $generationFailureReason;
+  /**
+   * @var string
+   */
   public $importFailureReason;
+  /**
+   * @var string
+   */
   public $importJob;
+  /**
+   * @var string
+   */
   public $importTime;
+  /**
+   * @var string
+   */
   public $name;
+  /**
+   * @var string
+   */
   public $protectionLevel;
+  /**
+   * @var bool
+   */
+  public $reimportEligible;
+  /**
+   * @var string
+   */
   public $state;
 
+  /**
+   * @param string
+   */
   public function setAlgorithm($algorithm)
   {
     $this->algorithm = $algorithm;
   }
+  /**
+   * @return string
+   */
   public function getAlgorithm()
   {
     return $this->algorithm;
@@ -57,29 +108,61 @@ class CryptoKeyVersion extends \Google\Model
   {
     return $this->attestation;
   }
+  /**
+   * @param string
+   */
   public function setCreateTime($createTime)
   {
     $this->createTime = $createTime;
   }
+  /**
+   * @return string
+   */
   public function getCreateTime()
   {
     return $this->createTime;
   }
+  /**
+   * @param string
+   */
   public function setDestroyEventTime($destroyEventTime)
   {
     $this->destroyEventTime = $destroyEventTime;
   }
+  /**
+   * @return string
+   */
   public function getDestroyEventTime()
   {
     return $this->destroyEventTime;
   }
+  /**
+   * @param string
+   */
   public function setDestroyTime($destroyTime)
   {
     $this->destroyTime = $destroyTime;
   }
+  /**
+   * @return string
+   */
   public function getDestroyTime()
   {
     return $this->destroyTime;
+  }
+  /**
+   * @param string
+   */
+  public function setExternalDestructionFailureReason($externalDestructionFailureReason)
+  {
+    $this->externalDestructionFailureReason = $externalDestructionFailureReason;
+  }
+  /**
+   * @return string
+   */
+  public function getExternalDestructionFailureReason()
+  {
+    return $this->externalDestructionFailureReason;
   }
   /**
    * @param ExternalProtectionLevelOptions
@@ -95,58 +178,128 @@ class CryptoKeyVersion extends \Google\Model
   {
     return $this->externalProtectionLevelOptions;
   }
+  /**
+   * @param string
+   */
   public function setGenerateTime($generateTime)
   {
     $this->generateTime = $generateTime;
   }
+  /**
+   * @return string
+   */
   public function getGenerateTime()
   {
     return $this->generateTime;
   }
+  /**
+   * @param string
+   */
+  public function setGenerationFailureReason($generationFailureReason)
+  {
+    $this->generationFailureReason = $generationFailureReason;
+  }
+  /**
+   * @return string
+   */
+  public function getGenerationFailureReason()
+  {
+    return $this->generationFailureReason;
+  }
+  /**
+   * @param string
+   */
   public function setImportFailureReason($importFailureReason)
   {
     $this->importFailureReason = $importFailureReason;
   }
+  /**
+   * @return string
+   */
   public function getImportFailureReason()
   {
     return $this->importFailureReason;
   }
+  /**
+   * @param string
+   */
   public function setImportJob($importJob)
   {
     $this->importJob = $importJob;
   }
+  /**
+   * @return string
+   */
   public function getImportJob()
   {
     return $this->importJob;
   }
+  /**
+   * @param string
+   */
   public function setImportTime($importTime)
   {
     $this->importTime = $importTime;
   }
+  /**
+   * @return string
+   */
   public function getImportTime()
   {
     return $this->importTime;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
   }
+  /**
+   * @param string
+   */
   public function setProtectionLevel($protectionLevel)
   {
     $this->protectionLevel = $protectionLevel;
   }
+  /**
+   * @return string
+   */
   public function getProtectionLevel()
   {
     return $this->protectionLevel;
   }
+  /**
+   * @param bool
+   */
+  public function setReimportEligible($reimportEligible)
+  {
+    $this->reimportEligible = $reimportEligible;
+  }
+  /**
+   * @return bool
+   */
+  public function getReimportEligible()
+  {
+    return $this->reimportEligible;
+  }
+  /**
+   * @param string
+   */
   public function setState($state)
   {
     $this->state = $state;
   }
+  /**
+   * @return string
+   */
   public function getState()
   {
     return $this->state;

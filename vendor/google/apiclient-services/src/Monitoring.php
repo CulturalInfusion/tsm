@@ -23,12 +23,7 @@ use Google\Client;
  * Service definition for Monitoring (v3).
  *
  * <p>
- * Manages your Cloud Monitoring data and configurations. Most projects must be
- * associated with a Workspace, with a few exceptions as noted on the individual
- * method pages. The table entries below are presented in alphabetical order,
- * not in order of common use. For explanations of the concepts found in the
- * table entries, read the Cloud Monitoring documentation
- * (https://cloud.google.com/monitoring/docs).</p>
+ * Manages your Cloud Monitoring data and configurations.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -39,7 +34,7 @@ use Google\Client;
  */
 class Monitoring extends \Google\Service
 {
-  /** See, edit, configure, and delete your Google Cloud Platform data. */
+  /** See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and write monitoring data for all of your Google and third-party Cloud and API projects. */
@@ -62,11 +57,13 @@ class Monitoring extends \Google\Service
   public $projects_monitoredResourceDescriptors;
   public $projects_notificationChannelDescriptors;
   public $projects_notificationChannels;
+  public $projects_snoozes;
   public $projects_timeSeries;
   public $projects_uptimeCheckConfigs;
   public $services;
   public $services_serviceLevelObjectives;
   public $uptimeCheckIps;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the Monitoring service.
@@ -79,6 +76,7 @@ class Monitoring extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://monitoring.googleapis.com/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://monitoring.UNIVERSE_DOMAIN/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v3';
@@ -525,6 +523,10 @@ class Monitoring extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'activeOnly' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
                 'filter' => [
                   'location' => 'query',
                   'type' => 'string',
@@ -736,6 +738,72 @@ class Monitoring extends \Google\Service
           ]
         ]
     );
+    $this->projects_snoozes = new Monitoring\Resource\ProjectsSnoozes(
+        $this,
+        $this->serviceName,
+        'snoozes',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v3/{+parent}/snoozes',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v3/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v3/{+parent}/snoozes',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'patch' => [
+              'path' => 'v3/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'updateMask' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->projects_timeSeries = new Monitoring\Resource\ProjectsTimeSeries(
         $this,
         $this->serviceName,
@@ -744,6 +812,16 @@ class Monitoring extends \Google\Service
           'methods' => [
             'create' => [
               'path' => 'v3/{+name}/timeSeries',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'createService' => [
+              'path' => 'v3/{+name}/timeSeries:createService',
               'httpMethod' => 'POST',
               'parameters' => [
                 'name' => [
@@ -882,6 +960,10 @@ class Monitoring extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
                 'pageSize' => [
                   'location' => 'query',

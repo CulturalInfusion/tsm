@@ -20,11 +20,31 @@ namespace Google\Service\Datastore;
 class LookupRequest extends \Google\Collection
 {
   protected $collection_key = 'keys';
+  /**
+   * @var string
+   */
+  public $databaseId;
   protected $keysType = Key::class;
   protected $keysDataType = 'array';
+  protected $propertyMaskType = PropertyMask::class;
+  protected $propertyMaskDataType = '';
   protected $readOptionsType = ReadOptions::class;
   protected $readOptionsDataType = '';
 
+  /**
+   * @param string
+   */
+  public function setDatabaseId($databaseId)
+  {
+    $this->databaseId = $databaseId;
+  }
+  /**
+   * @return string
+   */
+  public function getDatabaseId()
+  {
+    return $this->databaseId;
+  }
   /**
    * @param Key[]
    */
@@ -38,6 +58,20 @@ class LookupRequest extends \Google\Collection
   public function getKeys()
   {
     return $this->keys;
+  }
+  /**
+   * @param PropertyMask
+   */
+  public function setPropertyMask(PropertyMask $propertyMask)
+  {
+    $this->propertyMask = $propertyMask;
+  }
+  /**
+   * @return PropertyMask
+   */
+  public function getPropertyMask()
+  {
+    return $this->propertyMask;
   }
   /**
    * @param ReadOptions

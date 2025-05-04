@@ -19,30 +19,75 @@ namespace Google\Service\Apigee;
 
 class GoogleCloudApigeeV1ProvisionOrganizationRequest extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $analyticsRegion;
+  /**
+   * @var string
+   */
   public $authorizedNetwork;
+  /**
+   * @var bool
+   */
+  public $disableVpcPeering;
+  /**
+   * @var string
+   */
   public $runtimeLocation;
 
+  /**
+   * @param string
+   */
   public function setAnalyticsRegion($analyticsRegion)
   {
     $this->analyticsRegion = $analyticsRegion;
   }
+  /**
+   * @return string
+   */
   public function getAnalyticsRegion()
   {
     return $this->analyticsRegion;
   }
+  /**
+   * @param string
+   */
   public function setAuthorizedNetwork($authorizedNetwork)
   {
     $this->authorizedNetwork = $authorizedNetwork;
   }
+  /**
+   * @return string
+   */
   public function getAuthorizedNetwork()
   {
     return $this->authorizedNetwork;
   }
+  /**
+   * @param bool
+   */
+  public function setDisableVpcPeering($disableVpcPeering)
+  {
+    $this->disableVpcPeering = $disableVpcPeering;
+  }
+  /**
+   * @return bool
+   */
+  public function getDisableVpcPeering()
+  {
+    return $this->disableVpcPeering;
+  }
+  /**
+   * @param string
+   */
   public function setRuntimeLocation($runtimeLocation)
   {
     $this->runtimeLocation = $runtimeLocation;
   }
+  /**
+   * @return string
+   */
   public function getRuntimeLocation()
   {
     return $this->runtimeLocation;

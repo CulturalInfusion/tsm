@@ -29,7 +29,7 @@ use Google\Service\BigQueryReservation\SplitCapacityCommitmentResponse;
  * Typical usage is:
  *  <code>
  *   $bigqueryreservationService = new Google\Service\BigQueryReservation(...);
- *   $capacityCommitments = $bigqueryreservationService->capacityCommitments;
+ *   $capacityCommitments = $bigqueryreservationService->projects_locations_capacityCommitments;
  *  </code>
  */
 class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
@@ -45,11 +45,13 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * @opt_param string capacityCommitmentId The optional capacity commitment ID.
    * Capacity commitment name will be generated automatically if this field is
    * empty. This field must only contain lower case alphanumeric characters or
-   * dash. Max length is 64 characters. NOTE: this ID won't be kept if the
-   * capacity commitment is split or merged.
+   * dashes. The first and last character cannot be a dash. Max length is 64
+   * characters. NOTE: this ID won't be kept if the capacity commitment is split
+   * or merged.
    * @opt_param bool enforceSingleAdminProjectPerOrg If true, fail the request if
    * another project in the organization has a capacity commitment.
    * @return CapacityCommitment
+   * @throws \Google\Service\Exception
    */
   public function create($parent, CapacityCommitment $postBody, $optParams = [])
   {
@@ -65,7 +67,12 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * @param string $name Required. Resource name of the capacity commitment to
    * delete. E.g., `projects/myproject/locations/US/capacityCommitments/123`
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool force Can be used to force delete commitments even if
+   * assignments exist. Deleting commitments with assignments may cause queries to
+   * fail if they no longer have access to slots.
    * @return BigqueryreservationEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -80,6 +87,7 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * retrieve. E.g., `projects/myproject/locations/US/capacityCommitments/123`
    * @param array $optParams Optional parameters.
    * @return CapacityCommitment
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -99,6 +107,7 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * @opt_param string pageToken The next_page_token value returned from a
    * previous List request, if any.
    * @return ListCapacityCommitmentsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsCapacityCommitments($parent, $optParams = [])
   {
@@ -118,6 +127,7 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * @param MergeCapacityCommitmentsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return CapacityCommitment
+   * @throws \Google\Service\Exception
    */
   public function merge($parent, MergeCapacityCommitmentsRequest $postBody, $optParams = [])
   {
@@ -134,12 +144,16 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    *
    * @param string $name Output only. The resource name of the capacity
    * commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+   * The commitment_id must only contain lower case alphanumeric characters or
+   * dashes. It must start with a letter and must not end with a dash. Its maximum
+   * length is 64 characters.
    * @param CapacityCommitment $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Standard field mask for the set of fields to be
    * updated.
    * @return CapacityCommitment
+   * @throws \Google\Service\Exception
    */
   public function patch($name, CapacityCommitment $postBody, $optParams = [])
   {
@@ -152,14 +166,15 @@ class ProjectsLocationsCapacityCommitments extends \Google\Service\Resource
    * `commitment_end_time`. A common use case is to enable downgrading
    * commitments. For example, in order to downgrade from 10000 slots to 8000, you
    * might split a 10000 capacity commitment into commitments of 2000 and 8000.
-   * Then, you would change the plan of the first one to `FLEX` and then delete
-   * it. (capacityCommitments.split)
+   * Then, you delete the first one after the commitment end time passes.
+   * (capacityCommitments.split)
    *
    * @param string $name Required. The resource name e.g.,:
    * `projects/myproject/locations/US/capacityCommitments/123`
    * @param SplitCapacityCommitmentRequest $postBody
    * @param array $optParams Optional parameters.
    * @return SplitCapacityCommitmentResponse
+   * @throws \Google\Service\Exception
    */
   public function split($name, SplitCapacityCommitmentRequest $postBody, $optParams = [])
   {

@@ -26,20 +26,23 @@ use Google\Service\Classroom\Student;
  * Typical usage is:
  *  <code>
  *   $classroomService = new Google\Service\Classroom(...);
- *   $students = $classroomService->students;
+ *   $students = $classroomService->courses_students;
  *  </code>
  */
 class CoursesStudents extends \Google\Service\Resource
 {
   /**
-   * Adds a user as a student of a course. This method returns the following error
-   * codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-   * create students in this course or for access errors. * `NOT_FOUND` if the
-   * requested course ID does not exist. * `FAILED_PRECONDITION` if the requested
-   * user's account is disabled, for the following request errors: *
-   * CourseMemberLimitReached * CourseNotModifiable *
-   * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
-   * student or teacher in the course. (students.create)
+   * Adds a user as a student of a course. Domain administrators are permitted to
+   * [directly add](https://developers.google.com/classroom/guides/manage-users)
+   * users within their domain as students to courses within their domain.
+   * Students are permitted to add themselves to a course using an enrollment
+   * code. This method returns the following error codes: * `PERMISSION_DENIED` if
+   * the requesting user is not permitted to create students in this course or for
+   * access errors. * `NOT_FOUND` if the requested course ID does not exist. *
+   * `FAILED_PRECONDITION` if the requested user's account is disabled, for the
+   * following request errors: * CourseMemberLimitReached * CourseNotModifiable *
+   * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if
+   * the user is already a student or teacher in the course. (students.create)
    *
    * @param string $courseId Identifier of the course to create the student in.
    * This identifier can be either the Classroom-assigned identifier or an alias.
@@ -51,6 +54,7 @@ class CoursesStudents extends \Google\Service\Resource
    * user; it may be omitted if the requesting user has administrative permissions
    * to create students for any user.
    * @return Student
+   * @throws \Google\Service\Exception
    */
   public function create($courseId, Student $postBody, $optParams = [])
   {
@@ -73,6 +77,7 @@ class CoursesStudents extends \Google\Service\Resource
    * user
    * @param array $optParams Optional parameters.
    * @return ClassroomEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($courseId, $userId, $optParams = [])
   {
@@ -95,6 +100,7 @@ class CoursesStudents extends \Google\Service\Resource
    * user
    * @param array $optParams Optional parameters.
    * @return Student
+   * @throws \Google\Service\Exception
    */
   public function get($courseId, $userId, $optParams = [])
   {
@@ -120,6 +126,7 @@ class CoursesStudents extends \Google\Service\Resource
    * list request must be otherwise identical to the one that resulted in this
    * token.
    * @return ListStudentsResponse
+   * @throws \Google\Service\Exception
    */
   public function listCoursesStudents($courseId, $optParams = [])
   {

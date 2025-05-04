@@ -20,39 +20,41 @@ namespace Google\Service\Dns;
 class PoliciesListResponse extends \Google\Collection
 {
   protected $collection_key = 'policies';
-  protected $headerType = ResponseHeader::class;
-  protected $headerDataType = '';
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $nextPageToken;
   protected $policiesType = Policy::class;
   protected $policiesDataType = 'array';
 
   /**
-   * @param ResponseHeader
+   * @param string
    */
-  public function setHeader(ResponseHeader $header)
-  {
-    $this->header = $header;
-  }
-  /**
-   * @return ResponseHeader
-   */
-  public function getHeader()
-  {
-    return $this->header;
-  }
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;

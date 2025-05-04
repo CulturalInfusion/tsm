@@ -40,10 +40,9 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
+   * @throws \Google\Service\Exception
    */
   public function delete($bucket, $entity, $optParams = [])
   {
@@ -61,11 +60,10 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return ObjectAccessControl
+   * @throws \Google\Service\Exception
    */
   public function get($bucket, $entity, $optParams = [])
   {
@@ -81,11 +79,10 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * @param ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return ObjectAccessControl
+   * @throws \Google\Service\Exception
    */
   public function insert($bucket, ObjectAccessControl $postBody, $optParams = [])
   {
@@ -105,11 +102,10 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * @opt_param string ifMetagenerationNotMatch If present, only return default
    * ACL listing if the bucket's current metageneration does not match the given
    * value.
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
-   * @return ObjectAccessControls
+   * @return ObjectAccessControlsModel
+   * @throws \Google\Service\Exception
    */
   public function listDefaultObjectAccessControls($bucket, $optParams = [])
   {
@@ -128,11 +124,10 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * @param ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return ObjectAccessControl
+   * @throws \Google\Service\Exception
    */
   public function patch($bucket, $entity, ObjectAccessControl $postBody, $optParams = [])
   {
@@ -151,11 +146,10 @@ class DefaultObjectAccessControls extends \Google\Service\Resource
    * @param ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string provisionalUserProject The project to be billed for this
-   * request if the target bucket is requester-pays bucket.
    * @opt_param string userProject The project to be billed for this request.
    * Required for Requester Pays buckets.
    * @return ObjectAccessControl
+   * @throws \Google\Service\Exception
    */
   public function update($bucket, $entity, ObjectAccessControl $postBody, $optParams = [])
   {

@@ -20,12 +20,39 @@ namespace Google\Service\Spanner;
 class GetDatabaseDdlResponse extends \Google\Collection
 {
   protected $collection_key = 'statements';
+  /**
+   * @var string
+   */
+  public $protoDescriptors;
+  /**
+   * @var string[]
+   */
   public $statements;
 
+  /**
+   * @param string
+   */
+  public function setProtoDescriptors($protoDescriptors)
+  {
+    $this->protoDescriptors = $protoDescriptors;
+  }
+  /**
+   * @return string
+   */
+  public function getProtoDescriptors()
+  {
+    return $this->protoDescriptors;
+  }
+  /**
+   * @param string[]
+   */
   public function setStatements($statements)
   {
     $this->statements = $statements;
   }
+  /**
+   * @return string[]
+   */
   public function getStatements()
   {
     return $this->statements;

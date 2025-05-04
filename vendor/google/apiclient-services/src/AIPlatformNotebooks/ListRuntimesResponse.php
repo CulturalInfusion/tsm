@@ -20,15 +20,28 @@ namespace Google\Service\AIPlatformNotebooks;
 class ListRuntimesResponse extends \Google\Collection
 {
   protected $collection_key = 'unreachable';
+  /**
+   * @var string
+   */
   public $nextPageToken;
   protected $runtimesType = Runtime::class;
   protected $runtimesDataType = 'array';
-  public $unreachable;
+  public $runtimes = [];
+  /**
+   * @var string[]
+   */
+  public $unreachable = [];
 
+  /**
+   * @param string
+   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
+  /**
+   * @return string
+   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;
@@ -47,10 +60,16 @@ class ListRuntimesResponse extends \Google\Collection
   {
     return $this->runtimes;
   }
+  /**
+   * @param string[]
+   */
   public function setUnreachable($unreachable)
   {
     $this->unreachable = $unreachable;
   }
+  /**
+   * @return string[]
+   */
   public function getUnreachable()
   {
     return $this->unreachable;

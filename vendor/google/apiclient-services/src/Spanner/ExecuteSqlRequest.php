@@ -19,21 +19,91 @@ namespace Google\Service\Spanner;
 
 class ExecuteSqlRequest extends \Google\Model
 {
+  /**
+   * @var bool
+   */
+  public $dataBoostEnabled;
+  protected $directedReadOptionsType = DirectedReadOptions::class;
+  protected $directedReadOptionsDataType = '';
+  /**
+   * @var bool
+   */
+  public $lastStatement;
   protected $paramTypesType = Type::class;
   protected $paramTypesDataType = 'map';
+  /**
+   * @var array[]
+   */
   public $params;
+  /**
+   * @var string
+   */
   public $partitionToken;
+  /**
+   * @var string
+   */
   public $queryMode;
   protected $queryOptionsType = QueryOptions::class;
   protected $queryOptionsDataType = '';
   protected $requestOptionsType = RequestOptions::class;
   protected $requestOptionsDataType = '';
+  /**
+   * @var string
+   */
   public $resumeToken;
+  /**
+   * @var string
+   */
   public $seqno;
+  /**
+   * @var string
+   */
   public $sql;
   protected $transactionType = TransactionSelector::class;
   protected $transactionDataType = '';
 
+  /**
+   * @param bool
+   */
+  public function setDataBoostEnabled($dataBoostEnabled)
+  {
+    $this->dataBoostEnabled = $dataBoostEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getDataBoostEnabled()
+  {
+    return $this->dataBoostEnabled;
+  }
+  /**
+   * @param DirectedReadOptions
+   */
+  public function setDirectedReadOptions(DirectedReadOptions $directedReadOptions)
+  {
+    $this->directedReadOptions = $directedReadOptions;
+  }
+  /**
+   * @return DirectedReadOptions
+   */
+  public function getDirectedReadOptions()
+  {
+    return $this->directedReadOptions;
+  }
+  /**
+   * @param bool
+   */
+  public function setLastStatement($lastStatement)
+  {
+    $this->lastStatement = $lastStatement;
+  }
+  /**
+   * @return bool
+   */
+  public function getLastStatement()
+  {
+    return $this->lastStatement;
+  }
   /**
    * @param Type[]
    */
@@ -48,26 +118,44 @@ class ExecuteSqlRequest extends \Google\Model
   {
     return $this->paramTypes;
   }
+  /**
+   * @param array[]
+   */
   public function setParams($params)
   {
     $this->params = $params;
   }
+  /**
+   * @return array[]
+   */
   public function getParams()
   {
     return $this->params;
   }
+  /**
+   * @param string
+   */
   public function setPartitionToken($partitionToken)
   {
     $this->partitionToken = $partitionToken;
   }
+  /**
+   * @return string
+   */
   public function getPartitionToken()
   {
     return $this->partitionToken;
   }
+  /**
+   * @param string
+   */
   public function setQueryMode($queryMode)
   {
     $this->queryMode = $queryMode;
   }
+  /**
+   * @return string
+   */
   public function getQueryMode()
   {
     return $this->queryMode;
@@ -100,26 +188,44 @@ class ExecuteSqlRequest extends \Google\Model
   {
     return $this->requestOptions;
   }
+  /**
+   * @param string
+   */
   public function setResumeToken($resumeToken)
   {
     $this->resumeToken = $resumeToken;
   }
+  /**
+   * @return string
+   */
   public function getResumeToken()
   {
     return $this->resumeToken;
   }
+  /**
+   * @param string
+   */
   public function setSeqno($seqno)
   {
     $this->seqno = $seqno;
   }
+  /**
+   * @return string
+   */
   public function getSeqno()
   {
     return $this->seqno;
   }
+  /**
+   * @param string
+   */
   public function setSql($sql)
   {
     $this->sql = $sql;
   }
+  /**
+   * @return string
+   */
   public function getSql()
   {
     return $this->sql;

@@ -17,6 +17,7 @@
 
 namespace Google\Service\AccessApproval\Resource;
 
+use Google\Service\AccessApproval\AccessApprovalServiceAccount;
 use Google\Service\AccessApproval\AccessApprovalSettings;
 use Google\Service\AccessApproval\AccessapprovalEmpty;
 
@@ -41,6 +42,7 @@ class Organizations extends \Google\Service\Resource
    * @param string $name Name of the AccessApprovalSettings to delete.
    * @param array $optParams Optional parameters.
    * @return AccessapprovalEmpty
+   * @throws \Google\Service\Exception
    */
   public function deleteAccessApprovalSettings($name, $optParams = [])
   {
@@ -52,15 +54,33 @@ class Organizations extends \Google\Service\Resource
    * Gets the settings associated with a project, folder, or organization.
    * (organizations.getAccessApprovalSettings)
    *
-   * @param string $name Name of the AccessApprovalSettings to retrieve.
+   * @param string $name The name of the AccessApprovalSettings to retrieve.
+   * Format: "{projects|folders|organizations}/{id}/accessApprovalSettings"
    * @param array $optParams Optional parameters.
    * @return AccessApprovalSettings
+   * @throws \Google\Service\Exception
    */
   public function getAccessApprovalSettings($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('getAccessApprovalSettings', [$params], AccessApprovalSettings::class);
+  }
+  /**
+   * Retrieves the service account that is used by Access Approval to access KMS
+   * keys for signing approved approval requests.
+   * (organizations.getServiceAccount)
+   *
+   * @param string $name Name of the AccessApprovalServiceAccount to retrieve.
+   * @param array $optParams Optional parameters.
+   * @return AccessApprovalServiceAccount
+   * @throws \Google\Service\Exception
+   */
+  public function getServiceAccount($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('getServiceAccount', [$params], AccessApprovalServiceAccount::class);
   }
   /**
    * Updates the settings associated with a project, folder, or organization.
@@ -83,6 +103,7 @@ class Organizations extends \Google\Service\Resource
    * buffers/docs/reference/google.protobuf#fieldmask If this field is left unset,
    * only the notification_emails field will be updated.
    * @return AccessApprovalSettings
+   * @throws \Google\Service\Exception
    */
   public function updateAccessApprovalSettings($name, AccessApprovalSettings $postBody, $optParams = [])
   {
