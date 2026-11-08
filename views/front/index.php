@@ -4,8 +4,8 @@
     <h2>
         List of students
     </h2>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=create') ?>" title="Add new student" class="btn btn-danger btn-tsm my-10">Add new</a>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Upload your spreadsheet" class="btn btn-danger btn-tsm my-10">Upload your spreadsheet</a>
+    <a href="<?php echo $this->add_parameters($this->base_url, 'view=create') ?>" title="Add new student" class="btn btn-danger btn-tsm">Add new</a>
+    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Upload your spreadsheet" class="btn btn-danger btn-tsm">Upload your spreadsheet</a>
        <table>
         <tr class="h4">
             <th class="col-sm-1">
