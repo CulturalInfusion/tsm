@@ -4,9 +4,9 @@
     <h2>
         List of students
     </h2>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=create') ?>" title="Add new student" class="btn btn-danger">Add new</a>
-    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Upload your spreadsheet" class="btn btn-danger">Upload your spreadsheet</a>
-    <table>
+    <a href="<?php echo $this->add_parameters($this->base_url, 'view=create') ?>" title="Add new student" class="btn btn-danger btn-tsm my-10">Add new</a>
+    <a href="<?php echo $this->add_parameters($this->base_url, 'view=import&form=csv') ?>" title="Upload your spreadsheet" class="btn btn-danger btn-tsm my-10">Upload your spreadsheet</a>
+       <table>
         <tr class="h4">
             <th class="col-sm-1">
                 #
@@ -46,12 +46,12 @@
                     <?php
                     echo $student->user_email; ?>
                 <td class="col-sm-2 text-center">
-                    <a class="button btn btn-danger my-10" href="<?php echo $this->add_parameters($this->base_url, 'view=edit&student_ID=' . $student->ID) ?>">Edit</a>
+                    <a class="button btn btn-danger btn-tsm my-10" href="<?php echo $this->add_parameters($this->base_url, 'view=edit&student_ID=' . $student->ID) ?>">Edit</a>
                     <form id="delete_student_<?php $student->ID ?>" method="post">
                         <?php wp_nonce_field('delete_student'); ?>
                         <input type="hidden" name="task" value="destroy">
                         <input type="hidden" name="student_ID" value="<?php echo $student->ID ?>">
-                        <button class="button btn btn-danger my-10" onclick="return confirmAction();">Delete</button>
+                        <button class="button btn btn-danger btn-tsm my-10" onclick="return confirmAction();">Delete</button>
                     </form>
                 </td>
             </tr>

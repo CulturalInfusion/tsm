@@ -1,7 +1,7 @@
 <link href="<?php echo plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/css/style.css'?>" rel="stylesheet" type="text/css" />
 <div>
     <br>
-    <a class="button button-primary" target="_blank" onclick="return confirmAction();" href="<?php echo $this->admin_base_url_of_plugin . '&task=export' ?>">Export list</a>
+    <a class="button button-primary btn-tsm" target="_blank" onclick="return confirmAction();" href="<?php echo $this->admin_base_url_of_plugin . '&task=export' ?>">Export list</a>
     <br>
     <table class="widefat fixed" cellspacing="0">
         <thead>
@@ -58,14 +58,14 @@
                             <input type="number" min="0" name="max_allowance" value="<?php echo $this->get_maximum_signup_allowance($teacher->ID) ?>" class="regular-text max-allowance">
                             <input type="hidden" name="teacher_ID" value="<?php echo $teacher->ID ?>">
                             <input type="hidden" name="task" value="update">
-                            <button class="button button-primary" onclick="return confirmAction();">Save</button>
+                            <button class="button button-primary btn-tsm" onclick="return confirmAction();">Save</button>
                         </form>
 
                         <form action="" method="post">
                             <?php wp_nonce_field('remove_teacher_hierarchy'); ?>
                             <input type="hidden" name="teacher_ID" value="<?php echo $teacher->ID ?>">
                             <input type="hidden" name="task" value="remove_teacher_hierarchy">
-                            <button class="button button-secondary deletion" onclick="return confirmAction();">Delete all</button>
+                            <button class="button button-secondary deletion btn-tsm" onclick="return confirmAction();">Delete all</button>
                         </form>
                     </td>
                 </tr>

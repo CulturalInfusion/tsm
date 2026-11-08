@@ -38,12 +38,12 @@
                                         </select>
                                     </td>
                                     <td width="10%">
-                                        <button class="button button-primary" name="task" value="edit_report" onclick="return confirmAction();">Save</
+                                        <button class="button button-primary btn-tsm" name="task" value="edit_report" onclick="return confirmAction();">Save</
                                     </td>
                                     <td width="10%">
                                         <?php wp_nonce_field('edit_remove_report'); ?>
                                         <input type="hidden" name="report_ID" value="<?php echo $report->ID ?>">
-                                        <button class="button button-secondary" name="task" value="remove_report" onclick="return confirmAction();">X</button>
+                                        <button class="button button-secondary btn-tsm" name="task" value="remove_report" onclick="return confirmAction();">X</button>
                                     </td>
                                 </tr>
                             </table>
@@ -65,7 +65,7 @@
                     <td>
                         <?php wp_nonce_field('save_report'); ?>
                         <input type="hidden" name="task" value="save_report">
-                        <button class="button button-primary" onclick="return confirmAction();">Save Report</button>
+                        <button class="button button-primary btn-tsm" onclick="return confirmAction();">Save Report</button>
                     </td>
                 </tr>
             </tbody>

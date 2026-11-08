@@ -35,8 +35,8 @@
         <div class="tsm-field-wrap tsm-submit-wrap">
             <?php wp_nonce_field('update_student'); ?>
             <input type="hidden" name="task" value="update">
-            <input name="submit" type="submit" value="Save" class="button" onclick="return confirmPassword();">
-            <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button">Back</a>
+            <input name="submit" type="submit" value="Save" class="button btn-tsm" onclick="return confirmPassword();">
+            <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button btn-tsm">Back</a>
         </div>
     </form>
 </div>
