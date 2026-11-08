@@ -13,7 +13,7 @@
                     <?php
                     if (!isset($_SESSION['tsm_google_classroom_token'])) {
                     ?>
-                        <a href="<?= $googleAuthUrl ?>" class="button">Authorize by Google</a>
+                        <a href="<?= $googleAuthUrl ?>" class="button btn-tsm">Authorize by Google</a>
                     <?php
                     } else {
                         echo "<select name='course_id'>";
@@ -28,8 +28,8 @@
                     <?php wp_nonce_field('import'); ?>
                     <input type="hidden" name="task" value="import">
                     <input type="hidden" name="form" value="google-classroom">
-                    <input name="submit" type="submit" value="Import" class="button">
-                    <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button">Back</a>
+                    <input name="submit" type="submit" value="Import" class="button btn-tsm">
+                    <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button btn-tsm">Back</a>
                 </div>
             </form>
         <?php
@@ -55,7 +55,7 @@
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="tsm-field-wrap">
                     <label class="tsm-label">Sample file ( CSV format )</label>
-                    <a href="<?= plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/csv/students.csv' ?>" class="button">Download</a>
+                    <a href="<?= plugin_dir_url(__DIR__ . '/../../tsm.php') . 'assets/csv/students.csv' ?>" class="button btn-tsm">Download</a>
                 </div>
                 <div class="tsm-field-wrap">
                     <label class="tsm-label" for="file">CSV file</label>
@@ -65,8 +65,8 @@
                     <?php wp_nonce_field('import'); ?>
                     <input type="hidden" name="task" value="import">
                     <input type="hidden" name="form" value="csv">
-                    <input name="submit" type="submit" value="Import" class="button">
-                    <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button">Back</a>
+                    <input name="submit" type="submit" value="Import" class="button btn-tsm">
+                    <a href="<?php echo $this->add_parameters($this->base_url, 'view=index') ?>" title="Back" class="button btn-tsm">Back</a>
                 </div>
             </form>
     <?php

@@ -37,7 +37,7 @@
                     <td>
                         <?php wp_nonce_field('move_students'); ?>
                         <input type="hidden" name="task" value="move_students">
-                        <button class="button button-primary" onclick="return confirmAction();">Move</button>
+                        <button class="button button-primary btn-tsm" onclick="return confirmAction();">Move</button>
                     </td>
                 </tr>
             </tbody>

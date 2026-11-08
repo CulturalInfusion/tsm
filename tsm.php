@@ -420,11 +420,11 @@ function report_shortcode($atts, $content = null)
                 <form action='' method='GET'>";
             if (!empty($filtersInHtml)) {
                 $return .= $filtersInHtml .
-                    "<br><button class='button button-primary' type='submit' name='tsm_report_action' value='do_filter'>Filter</button>";
+                    "<br><button class='button button-primary btn-tsm' type='submit' name='tsm_report_action' value='do_filter'>Filter</button>";
             }
             $return .= "
             <input type='hidden' name='tsm_report_id' value='" . $report_ID . "'>
-            <button class='button button-primary' type='submit' name='tsm_report_action' value='export'>
+            <button class='button button-primary btn-tsm' type='submit' name='tsm_report_action' value='export'>
                 " . (!empty($filtersInHtml) ? 'Filter and ' : '') . "Export
                 </button>
                 </form>

@@ -21,7 +21,7 @@
                     <td>
                         <?php wp_nonce_field('save_settings'); ?>
                         <input type="hidden" name="task" value="save_settings">
-                        <button class="button button-primary" onclick="return confirmAction();">Save</button>
+                        <button class="button button-primary btn-tsm" onclick="return confirmAction();">Save</button>
                     </td>
                 </tr>
             </tbody>
